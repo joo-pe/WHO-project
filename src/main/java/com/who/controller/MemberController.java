@@ -15,9 +15,9 @@ public class MemberController {
 	    private MemberService memberService;
 
 	    // 메인 페이지
-	    @GetMapping("/index.html")
+	    @GetMapping("/")
 	    public String index() {
-	        return "/index";
+	        return "/index.html";
 	    }
 
 	    // 회원가입 페이지
@@ -31,13 +31,13 @@ public class MemberController {
 	    public String execSignup(MemberDto memberDto) {
 	        memberService.joinUser(memberDto);
 
-	        return "redirect:/user/login";
+	        return "redirect:/login";
 	    }
 
 	    // 로그인 페이지
-	    @GetMapping("/login.html")
+	    @GetMapping("/login")
 	    public String dispLogin() {
-	        return "/login";
+	        return "login.html";
 	    }
 
 	    // 로그인 결과 페이지

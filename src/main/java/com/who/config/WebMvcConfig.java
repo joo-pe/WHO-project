@@ -14,6 +14,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.util.pattern.PathPattern;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -28,8 +29,20 @@ public class WebMvcConfig implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resource/**").addResourceLocations("classpath:static/");
-        
+        registry.addResourceHandler(
+        		"/images/**",
+        		"/css/**",
+        		"/js/**",
+        		"/image/**",
+        		"/fonts/**",
+        		"/vendor/**")
+        		.addResourceLocations(
+        				"classpath:/static/images/",
+        				"classpath:/static/css/",
+        				"classpath:/static/js/",
+        				"classpath:/static/image/",
+        				"classpath:/static/fonts/",
+        				"classpath:/static/vendor/");
     }
 
     @Override
