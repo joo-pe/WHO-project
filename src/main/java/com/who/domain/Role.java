@@ -11,4 +11,5 @@ public enum Role {
     MEMBER("ROLE_MEMBER");
 
     private String value;
+
 }

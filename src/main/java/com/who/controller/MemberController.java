@@ -43,7 +43,7 @@ public class MemberController {
 	    // 로그인 결과 페이지
 	    @GetMapping("/login/result")
 	    public String dispLoginResult() {
-	        return "/loginSuccess";
+	        return "/loginMain";
 	    }
 
 	    // 로그아웃 결과 페이지
