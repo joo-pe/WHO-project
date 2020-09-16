@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .defaultSuccessUrl("/login/result")
                 .permitAll()
                 .and() 
-                // 로그아웃 설정
+                // 로그아웃 설정 
                .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/logout/result")
