@@ -2,14 +2,20 @@ package com.who;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 
-/**
- * created by jaden
- */
-//kwonag3 Branch Commit Test 1
+@EnableJpaAuditing
 @SpringBootApplication
 public class WhoApplication {
     public static void main(String[] args) {
         SpringApplication.run(WhoApplication.class);
     }
+
+    @Bean
+    public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
+        return new HiddenHttpMethodFilter();
+    }
+
 }

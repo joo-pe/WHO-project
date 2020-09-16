@@ -1,5 +1,17 @@
-{"properties": [{
-  "name": "hibernate",
-  "type": "java.lang.String",
-  "description": "A description for 'hibernate'"
-}]}
+{"properties": [
+  {
+    "name": "hibernate",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate'"
+  },
+  {
+    "name": "spring.freemaker.cache",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.freemaker.cache'"
+  },
+  {
+    "name": "spring.devtools.livereload.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.devtools.livereload.enabled'"
+  }
+]}
