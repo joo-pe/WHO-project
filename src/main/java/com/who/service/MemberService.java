@@ -28,6 +28,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MemberService implements UserDetailsService {
 	
+<<<<<<< HEAD
 //	@Transactional
 //    public Long savePost(MemberDto memberDto) {
 //        return memberRepository.save(memberDto.toEntity()).getNo();
@@ -71,6 +72,8 @@ public class MemberService implements UserDetailsService {
 //        return memberDto;
 //    }
 	
+=======
+>>>>>>> 971909878b3efee5999b8584ff37d1442e07acec
     @Autowired
 	MemberRepository memberRepository;
 

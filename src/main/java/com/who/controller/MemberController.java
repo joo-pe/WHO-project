@@ -23,43 +23,51 @@ public class MemberController {
     public String execSignup(MemberDto memberDto) {
         memberService.joinUser(memberDto);
 
+<<<<<<< HEAD
         return "redirect:login/login";
+=======
+        return "redirect:/login";
+>>>>>>> 971909878b3efee5999b8584ff37d1442e07acec
     }
 
     // 로그인 페이지
     @GetMapping("/login")
     public String dispLogin() {
+<<<<<<< HEAD
         return "/login";
+=======
+        return "login/login";
+>>>>>>> 971909878b3efee5999b8584ff37d1442e07acec
     }
 
     // 로그인 결과 페이지
     @GetMapping("/login/result")
     public String dispLoginResult() {
-        return "/login/loginSuccess";
+        return "login/loginSuccess";
     }
 
     // 로그아웃 결과 페이지
     @GetMapping("/logout/result")
     public String dispLogout() {
-        return "/login/logout";
+        return "login/logout";
     }
 
     // 접근 거부 페이지
     @GetMapping("/denied")
     public String dispDenied() {
-        return "/login/denied";
+        return "login/denied";
     }
 
     // 내 정보 페이지
     @GetMapping("/info")
     public String dispMyInfo() {
-        return "/login/myinfo";
+        return "login/myinfo";
     }
 
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {
-        return "/login/admin";
+        return "login/admin";
     }
 
 
