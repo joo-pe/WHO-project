@@ -16,6 +16,7 @@ public class MemberDto {
     private String phone;
     private String birthday;
     private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
     public MemberEntity toEntity() {
         MemberEntity memberEntity = MemberEntity.builder()

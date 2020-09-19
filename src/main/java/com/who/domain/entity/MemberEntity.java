@@ -16,9 +16,9 @@ import org.hibernate.annotations.CreationTimestamp;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@EqualsAndHashCode(of = "email")
+@EqualsAndHashCode(callSuper=false, of = "email")
 @Table(name="member")
-public class MemberEntity {
+public class MemberEntity extends TimeEntity{
 	
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -38,9 +38,6 @@ public class MemberEntity {
     
     @Column(length = 20, nullable = false)
     private String birthday;
-    
-    @CreationTimestamp
-	private Date created_date;
 
     @Builder
     MemberEntity(Long no, String email, String password,
