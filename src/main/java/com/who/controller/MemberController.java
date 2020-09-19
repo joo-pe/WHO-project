@@ -51,7 +51,7 @@ public class MemberController {
     }
 
     // 내 정보 페이지
-    @GetMapping("/info")
+    @GetMapping("/myinfo")
     public String dispMyInfo() {
         return "login/myinfo";
     }

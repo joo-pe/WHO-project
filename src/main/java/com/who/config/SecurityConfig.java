@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 // 403 예외처리 핸들링
                 .exceptionHandling().accessDeniedPage("/denied");
-//        		http.csrf().disable();
+//       		http.csrf().disable();
     }
 
     private ClientRegistration getRegistration(OAuth2ClientProperties clientproperties, String client) {

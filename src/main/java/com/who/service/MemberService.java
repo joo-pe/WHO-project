@@ -44,10 +44,10 @@ public class MemberService implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        if(("kwonga3").equals(email)) {
+        if(("admin").equals(email)) {
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
         } else {
-            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
 
         return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
