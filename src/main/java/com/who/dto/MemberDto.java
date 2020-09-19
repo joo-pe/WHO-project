@@ -7,28 +7,36 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class MemberDto {
-    private Long id;
+    private Long no;
     private String email;
     private String password;
+    private String name;
+    private String phone;
+    private String birthday;
     private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
 
     public MemberEntity toEntity() {
         MemberEntity memberEntity = MemberEntity.builder()
-                .id(id)
+                .no(no)
                 .email(email)
                 .password(password)
+                .name(name)
+                .phone(phone)
+                .birthday(birthday)
                 .build();
         return memberEntity;
     }
 
     @Builder
-    public MemberDto(Long id, String email, String password) {
-        this.id = id;
+    public MemberDto(Long no, String email, String password,
+    		String name, String phone, String birthday) {
+    	this.no = no;
         this.email = email;
         this.password = password;
+        this.name = name;
+        this.phone = phone;
+        this.birthday = birthday;
     }
 }

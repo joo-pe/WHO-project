@@ -13,53 +13,53 @@ public class MemberController {
     private MemberService memberService;
 
     //회원가입 페이지
-    @GetMapping("/user/signup")
+    @GetMapping("/signup")
     public String dispSignup() {
-        return "/login/signup";
+        return "login/signup";
     }
 
     //회원가입 처리
-    @PostMapping("/user/signup")
+    @PostMapping("/signup")
     public String execSignup(MemberDto memberDto) {
         memberService.joinUser(memberDto);
 
-        return "redirect:/user/login";
+        return "redirect:/login";
     }
 
     // 로그인 페이지
-    @GetMapping("/user/login")
+    @GetMapping("/login")
     public String dispLogin() {
-        return "/login/login";
+        return "login/login";
     }
 
     // 로그인 결과 페이지
-    @GetMapping("/user/login/result")
+    @GetMapping("/login/result")
     public String dispLoginResult() {
-        return "/login/loginSuccess";
+        return "login/loginSuccess";
     }
 
     // 로그아웃 결과 페이지
-    @GetMapping("/user/logout/result")
+    @GetMapping("/logout/result")
     public String dispLogout() {
-        return "/login/logout";
+        return "login/logout";
     }
 
     // 접근 거부 페이지
-    @GetMapping("/user/denied")
+    @GetMapping("/denied")
     public String dispDenied() {
-        return "/login/denied";
+        return "login/denied";
     }
 
     // 내 정보 페이지
-    @GetMapping("/user/info")
+    @GetMapping("/info")
     public String dispMyInfo() {
-        return "/login/myinfo";
+        return "login/myinfo";
     }
 
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {
-        return "/login/admin";
+        return "login/admin";
     }
 
 
