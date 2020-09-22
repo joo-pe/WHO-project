@@ -1,0 +1,597 @@
+[<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<title>전체주문 목록</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b"/>
+<meta http-equiv="X-UA-Compatible" content="IE=CHrome">
+<meta name="viewport" content=" width=1030, user-scalable=yes
+ ">
+<meta name="description" content="WHOTicket">
+	<link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.1.css}">
+	<link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/css/nanumgothic.css}">
+	<link rel="stylesheet" th:href="@{/css/admin.css}">
+<!--[if lt IE 9]>
+<script src="/Skin/js/html5shiv.min.js"></script>
+<script src="/Skin/js/respond.min.js"></script>
+<script src="/Skin/js/selectivizr-min.js"></script>
+<![endif]-->
+	<script th:src="@{/js/jquery-1.11.3.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/jquery.form.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/jquery-ui.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/common.js} " charset="utf8"></script>
+	<script th:src="@{/js/contents.js}" charset="utf8"></script>
+	<script th:src="@{/js/admin.js}" charset="utf8"></script>
+	<script th:src="@{/js/admin.extend.js}" charset="utf8"></script>
+</head>
+<style>
+/* 코딩한 body에 추가 */
+body { 
+padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+padding-top: env(safe-area-inset-top); /* iOS 11.2 */ 
+color:black;
+}
+
+</style>
+<body>
+<div id="wrap">
+		<header id="header">
+		<div id="header_wrap">
+		<h1><a th:href="@{/admin}"><span>ADMINISTRATOR</span></a></h1>
+		<nav id="gnb">
+		<ul>
+		<li class="home"><a th:href="@{/}" target="_blank">홈으로</a></li>
+		<li class="logout"><a th:href="@{/}">로그아웃</a></li>
+</ul>
+</nav>
+<nav id="tnb">
+<ul>
+<!-- <li><span><a href="/BHAdm/Config">사이트관리</a></span><ol>
+		<li><span><a href="/BHAdm/Config">환경설정</a></span></li>
+		<li><span><a href="/BHAdm/Config/Area">지점별 환경설정</a></span></li>
+		<li><span><a href="/BHAdm/BannerManager">배너관리</a></span></li>
+		<li><span><a href="/BHAdm/PopupManager">팝업관리</a></span></li>
+		<li><span><a href="/BHAdm/MPopupManager">모바일 팝업관리</a></span></li>
+		<li><span><a href="/BHAdm/AlramManager">알림관리</a></span></li>
+		<li><span><a href="/BHAdm/Config/Terms">사이트 내용관리</a></span></li>
+		<li><span><a href="/BHAdm/Config/PGTerms">PG 약관 내용관리</a></span></li>
+		<li><span><a href="/BHAdm/Push">App 알림</a></span></li></ol></li> -->
+		<li><span><a th:href="@{admin/goods/Goods}">상품관리</a></span>
+		<ol>
+		<li><span><a th:href="@{admin/goods/Category}">카테고리관리</a></span></li>
+		<li><span><a th:href="@{/admin/goods/Goods}">상품관리</a></span></li>
+		<!-- <li><span><a href="/admin/goods/UploadGoods">상품일괄등록</a></span></li> -->
+		</ol>
+		</li>
+		<li><span><a th:href="@{/admin/order/Order}">주문관리</a></span>
+		<ol>
+		<li><span><a th:href="@{/admin/order/Order}">전체주문</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order20">주문완료</a></span></li> -->
+		<li><span><a href="/BHAdm/Mall/Order30">결제완료</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order40">상품준비중</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order50">발송완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order60">배송완료</a></span></li> -->
+		<li><span><a href="/BHAdm/Mall/Order-20">반품신청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-120">반품완료</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order-10">주문취소요청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-110">주문취소완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-30">교환신청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-130">교환완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Statistics">주문통계</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Receipt">영수증신청내역</a></span></li></ol> -->
+		</li>
+		<!-- <li><span><a href="/BHAdm/Mall/Coupon">프로모션/쿠폰</a></span>
+		<ol><li><span><a href="/BHAdm/Mall/Coupon">쿠폰관리</a></span></li>
+		<li><span><a href="/BHAdm/Mall/CouponHis">쿠폰이력관리</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Event">이벤트관리</a></span></li></ol></li> -->
+		<li><span><a href="/BHAdm/Member">회원관리</a></span></li>
+		
+		<li><span><a href="/BHAdm/BoardManager">게시판관리</a></span>
+		<ol><li><span><a href="/BHAdm/BoardManager">게시판관리</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
+		<li><span><a href="/BHAdm/Board/FAQ">FAQ</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
+		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
+		<li><span><a href="/BHAdm/Board/notice">공지사항</a></span></li>
+		<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
+		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span></li>-->
+		</ol>
+		<!-- </li><li><span><a href="/BHAdm/Mall/StoreArea">지점관리</a></span>
+		<ol><li><span><a href="/BHAdm/Mall/StoreArea">지점지역관리</a></span></li></ol>
+		</li><li><span><a href="/BHAdm/DashBoard">통계/엑셀</a></span></li> -->
+</ul>
+</nav>
+</div>
+</header>
+<div id="container">
+<div id="containerWrap">
+<meta name="viewport" content="width=1500, user-scalable=yes">
+<div id="contents" class="OrderList">
+<h2>전체주문 목록</h2>
+<form id="searchForm" name="searchForm" method="get" action="/BHAdm/Mall/Order/" class="searchForm">
+<section class="searchField searchField2">
+<dl>
+<dt>매장</dt>
+<dd>
+<select id="SearchStore" name="smem">
+<option value="">전체매장</option>
+<option value="010">홈쇼핑</option><option value="190">통복점</option><option value="180">화도점</option><option value="170">영통점</option><option value="120">일원점</option><option value="100">구의점</option><option value="090">수지성복점</option><option value="060">방배점</option><option value="040">평택점</option><option value="110">송탄지산점</option></select>
+</dd>
+</dl>
+<dl>
+<dt>결제금액</dt>
+<dd>
+<input type="text" name="pmin" value="" class="w20p">원 ~
+<input type="text" name="pmax" value="" class="w20p">원
+</dd>
+</dl>
+<dl>
+<dt>기간검색</dt>
+<dd>
+<select name="dtType">
+<option value="1">주문일</option><option value="2">결제일</option><option value="3">취소일</option></select>
+<input type="text" name="dts" value="" class="date datePicker"> ~
+<input type="text" name="dte" value="" class="date datePicker">
+</dd>
+</dl>
+<dl>
+<dt>전화주문</dt>
+<dd>
+<select id="SearchCall" name="call_yn">
+<option value="">전체</option>
+<option value="Y">Y</option><option value="N">N</option>
+</select>
+</dd>
+</dl>
+<dl>
+<dt>검색어</dt>
+<dd>
+<input type="text" id="Keyword" name="Keyword" value="">
+</dd>
+</dl>
+<dl>
+<dt></dt>
+<dd></dd>
+</dl>
+</section>
+<footer>
+<button type="submit" class="mBtn">검색</button>
+</footer>
+</form>
+<table class="list checkAllArea">
+<thead>
+<tr>
+<th width="65px;">
+<input type="checkbox" value="" class="checkAll"> 번호
+</th>
+<th>매장</th>
+<th width="142px;">주문번호</th>
+<th>주문상태</th>
+<th>결제타입</th>
+<th>합계금액</th>
+<th>주문일</th>
+<th>결제일</th>
+<th>반품/취소일시</th>
+<th>주문자</th>
+<th width="100px;">배송메세지</th>
+<th width="45px;">연동여부</th>
+<th width="45px;">전화주문</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020123927016240" class="checkItem">
+<input type="hidden" value="20" >
+<input type="hidden" value="ecm_card" >
+33318</td>
+<td>평택점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020123927016240">20201239-27016240</a></td>
+<td>주문완료</td>
+<td>대면결제_카드</td>
+<td class="_price">11740</td>
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+이소현(thgus529)</td>
+<td style="max-width:190px;">
+<div class="alert">픽업</div>pm5시쯤 수령예정</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020257903625764" class="checkItem">
+<input type="hidden" value="40" >
+<input type="hidden" value="pg_card" >
+33317</td>
+<td>통복점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020257903625764">20202579-03625764</a></td>
+<td>상품준비중</td>
+<td>카드결제</td>
+<td class="_price">40600</td>
+<td>2020-09-22</td>
+<!--  <td>2020-09-22</td>  -->
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+김소연(taes31)</td>
+<td style="max-width:190px;">
+문앞에 놔주세요 감사합니다.</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2019262257351014" class="checkItem">
+<input type="hidden" value="40" >
+<input type="hidden" value="pg_card" >
+33316</td>
+<td>화도점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2019262257351014">20192622-57351014</a></td>
+<td>상품준비중</td>
+<td>카드결제</td>
+<td class="_price">27810</td>
+<td>2020-09-22</td>
+<!--  <td>2020-09-22</td>  -->
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+권재희(Hajinpapa)</td>
+<td style="max-width:190px;">
+</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020256363754396" class="checkItem">
+<input type="hidden" value="40" >
+<input type="hidden" value="transfer" >
+33315</td>
+<td>송탄지산점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020256363754396">20202563-63754396</a></td>
+<td>상품준비중</td>
+<td>무통장입금</td>
+<td class="_price">39180</td>
+<td>2020-09-22</td>
+<!--  <td>2020-09-22</td>  -->
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+김정화(Asdewq0009)</td>
+<td style="max-width:190px;">
+</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020258769949098" class="checkItem">
+<input type="hidden" value="40" >
+<input type="hidden" value="pg_card" >
+33314</td>
+<td>방배점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020258769949098">20202587-69949098</a></td>
+<td>상품준비중</td>
+<td>카드결제</td>
+<td class="_price">33230</td>
+<td>2020-09-22</td>
+<!--  <td>2020-09-22</td>  -->
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+이윤경(gizborokmc)</td>
+<td style="max-width:190px;">
+</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020260584872567" class="checkItem">
+<input type="hidden" value="20" >
+<input type="hidden" value="ecm_card" >
+33313</td>
+<td>송탄지산점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020260584872567">20202605-84872567</a></td>
+<td>주문완료<br><font color=RED>(첫주문)</font></td>
+<td>대면결제_카드</td>
+<td class="_price">687000</td>
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+허다솜(heodasom)</td>
+<td style="max-width:190px;">
+</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020260576837037" class="checkItem">
+<input type="hidden" value="40" >
+<input type="hidden" value="pg_card" >
+33312</td>
+<td>화도점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020260576837037">20202605-76837037</a></td>
+<td>상품준비중</td>
+<td>카드결제</td>
+<td class="_price">29000</td>
+<td>2020-09-22</td>
+<!--  <td>2020-09-22</td>  -->
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+최미미(mimi0926)</td>
+<td style="max-width:190px;">
+1층-종1984</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020148264473856" class="checkItem">
+<input type="hidden" value="40" >
+<input type="hidden" value="pg_card" >
+33311</td>
+<td>송탄지산점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020148264473856">20201482-64473856</a></td>
+<td>상품준비중</td>
+<td>카드결제</td>
+<td class="_price">34000</td>
+<td>2020-09-22</td>
+<!--  <td>2020-09-22</td>  -->
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+장창훈(wjang70)</td>
+<td style="max-width:190px;">
+</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020260558295396" class="checkItem">
+<input type="hidden" value="40" >
+<input type="hidden" value="pg_card" >
+33310</td>
+<td>송탄지산점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020260558295396">20202605-58295396</a></td>
+<td>상품준비중</td>
+<td>카드결제</td>
+<td class="_price">30042</td>
+<td>2020-09-22</td>
+<!--  <td>2020-09-22</td>  -->
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+장창훈(wjang70)</td>
+<td style="max-width:190px;">
+</td>
+<td class="_erpyn" style="max-width:45px;">
+Y</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ordSeq[]" value="2020255227232124" class="checkItem">
+<input type="hidden" value="20" >
+<input type="hidden" value="ecm_card" >
+33309</td>
+<td>영통점</td>
+<td><a href="/BHAdm/Mall/Order/Modify/2020255227232124">20202552-27232124</a></td>
+<td>주문완료</td>
+<td>대면결제_카드</td>
+<td class="_price">35220</td>
+<td>2020-09-22</td>
+<!--  <td></td>  -->
+<td></td>
+<!--  <td></td>  -->
+<td></td>
+<td class="_mname">
+최형철(chuliy1)</td>
+<td style="max-width:190px;">
+</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+<td class="_erpyn" style="max-width:45px;">
+N</td>
+</tr>
+</tbody>
+</table>
+<div class="left_btn">
+<!-- 18-03-31  대면결제는 주문완료일떄 주문서 출력하기위해 -->
+
+<!-- <a href="/BHAdm/Mall/Order/Write" class="mBtn">주문등록</a> -->
+<form id="copyOrdForm" name="copyOrdForm" action="/BHAdm/Mall/Order/CopyOrder" method="post" target="_blank" data-step-href="/BHAdm/Mall/Order/StepPrepare">
+<input type="hidden" name="seq" value="" id="copyOrdSeq">
+<input type="hidden" name="step" value="" id="copyOrdStep">
+<input type="hidden" name="settle_kind" value="" id="copyOrdSettleKind">
+<button type="submit" onclick="javascript:copyOrder(); return false;" class="mBtn">주문서 복사</button>
+	
+</form>
+<form id="submitOrdForm" name="submitOrdForm" action="/BHAdm/Mall/Order/ErpSubmit" method="post" target="_self" >
+	<button id="erpOrderSubmit" class="mBtn">주문 재전송(ERP)</button>	
+	<input type="hidden" name="seq" value="" id="erpSubmitSeq">
+</form>
+</div>
+<div class="paging"><div class="paging"> <span class="first" href="/BHAdm/Mall/Order/?page=1" data-page="1">First</span>  <span class="prev" href="/BHAdm/Mall/Order/?page=0" data-page="0">Prev</span>  <span class="prevp" href="/BHAdm/Mall/Order/?page=0" data-page="0">Back</span>  <strong>1</strong>  <a href="/BHAdm/Mall/Order/?page=2" data-page="2">2</a>  <a href="/BHAdm/Mall/Order/?page=3" data-page="3">3</a>  <a href="/BHAdm/Mall/Order/?page=4" data-page="4">4</a>  <a href="/BHAdm/Mall/Order/?page=5" data-page="5">5</a>  <a href="/BHAdm/Mall/Order/?page=6" data-page="6">6</a>  <a href="/BHAdm/Mall/Order/?page=7" data-page="7">7</a>  <a href="/BHAdm/Mall/Order/?page=8" data-page="8">8</a>  <a href="/BHAdm/Mall/Order/?page=9" data-page="9">9</a>  <a href="/BHAdm/Mall/Order/?page=10" data-page="10">10</a>  <a class="nextp" href="/BHAdm/Mall/Order/?page=2" data-page="2">Forward</a>  <a class="next" href="/BHAdm/Mall/Order/?page=11" data-page="11">Next</a>  <a class="last" href="/BHAdm/Mall/Order/?page=3332" data-page="3332">Last</a> </div></div>
+</div>
+<script>
+function copyOrder() {
+	
+	var chk = $('input[name^=ordSeq]:checked');
+	if(!chk.length){
+		CMAlert('복사할 주문을 선택하여 주세요.');
+		return false;
+	} else if(chk.length > 1) {
+		CMAlert('복사할 주문을 1개만 선택하여 주세요.');
+		return false;
+	}
+
+	// 주문상태 
+	if(chk.next().val() > 0){
+		CMAlert('취소된 주문만 복사할 수 있습니다.');
+		return false;
+	}
+	
+	var msg = "";
+	$(".checkAllArea").find("input[name^=ordSeq]").each(function(){
+		if($(this).prop("checked")){
+			
+			msg += "--------------------------------------\n";
+			msg += "주문번호 : "+ $(this).val().trim() + "\n";
+			msg += "주문금액 : " + JCM.setComma($(this).closest('tr').find('._price').text().trim()) +"원\n";
+			msg += "주문자 : " + $(this).closest('tr').find('._mname').text().trim() + "\n";
+			msg += "--------------------------------------\n";
+		}
+		
+	});
+	
+	
+	if(confirm(msg+"주문을 복사하시겠습니까?\r\n* 주문에 사용된 쿠폰 및 포인트는 초기화됩니다.") == true){
+		$('#copyOrdSeq').val(chk.val());
+		$('#copyOrdStep').val(chk.next().val());
+		$('#copyOrdSettleKind').val(chk.next().next().val());
+		
+		$("#copyOrdForm").submit();
+	} else {
+		return false;
+	}
+	
+}
+
+
+$("#erpOrderSubmit").click(function(){
+
+	var chk = $('input[name^=ordSeq]:checked');
+	if(!chk.length){
+		CMAlert('전송할 주문을 선택하여 주세요.');
+		return false;
+	} else if(chk.length > 1){
+		CMAlert('전송할 주문을 1건만 선택하여 주세요.');
+		return false;
+	}
+	
+	// 주문상태 
+	if(chk.next().val() < 30){
+		CMAlert('결제완료된 주문만 연동할 수 있습니다.');
+		return false;
+	}
+	
+	var msg = "";
+	var flag = true;
+	
+	$(".checkAllArea").find("input[name^=ordSeq]").each(function(){
+		if($(this).prop("checked")){
+			
+			if($(this).closest('tr').find('._erpyn').text() == 'y'){
+				CMAlert('미연동 주문만 전송할 수 있습니다.');		
+				flag = false;
+			}
+			
+			msg += "--------------------------------------\n";
+			msg += "주문번호 : "+ $(this).val().trim() + "\n";
+			msg += "주문금액 : " + JCM.setComma($(this).closest('tr').find('._price').text().trim()) +"원\n";
+			msg += "주문자 : " + $(this).closest('tr').find('._mname').text().trim() + "\n";
+			msg += "--------------------------------------\n";
+		}
+		
+	});
+	
+	
+	
+	if(flag && confirm(msg+"주문을 재전송하시겠습니까?") == true){
+		var id = '';
+		chk.each(function(){
+			id += (id == '' ? '' : ',') + this.value;
+		});
+		
+		$('#erpSubmitSeq').val(id);
+
+		$("#erpOrderSubmit").submit();
+	} else {
+		return false;
+	}
+
+	
+});
+
+
+</script>
+<script>
+App.Admin.Order.ListInit();
+</script></div>
+</div>
+<footer id="footer">
+<div id="footer_wrap"></div>
+</footer>
+</div>
+<script>
+$(document).ready(function(){
+if(JCM.getCookie('managerSideView') == 'no'){
+$('#wrap').addClass('sideHidden');
+}
+$('#containerWrap').append('<aside id="sideMenu"><a href="#" id="sideClose" title="닫기"><i class="fa fa-angle-left"></i></a><h2>' + ( $('#tnb ul > li.Active').length ? $('#tnb ul > li.Active a').eq(0).text() : '' ) + '</h2><ul>'+( $('#tnb ul > li.Active ol').length ? $('#tnb ul > li.Active ol').html() : '' ) +'</ul></aside>')
+$(document).on('click', '#sideClose', function(e){
+e.preventDefault();
+if($('#wrap').hasClass('sideHidden')){
+$('#wrap').removeClass('sideHidden');
+JCM.setCookie('managerSideView', 'yes');
+}else{
+$('#wrap').addClass('sideHidden');
+JCM.setCookie('managerSideView', 'no');
+}
+});
+$('#container').scroll(function(){
+sideScroll();
+});
+sideScroll();
+});
+function sideScroll(){
+var st = $('#container').scrollTop();
+if(st < 0) st = 0;
+$('#sideMenu').css({
+'padding-top' : st + 'px'
+});
+$('#sideClose').css({
+'top' : (st + 10) + 'px'
+});
+}
+</script>
+</body>
+</html>

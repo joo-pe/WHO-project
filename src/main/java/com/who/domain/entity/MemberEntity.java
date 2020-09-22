@@ -6,13 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.List;
-
 import javax.persistence.*;
-
-import org.hibernate.annotations.CreationTimestamp;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter

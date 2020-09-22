@@ -59,7 +59,7 @@ public class MemberController {
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {
-        return "login/admin";
+        return "admin/admin";
     }
 
 
