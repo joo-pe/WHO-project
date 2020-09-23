@@ -92,23 +92,24 @@ color:black;
 		<li><span><a href="/BHAdm/Mall/Order-30">교환신청</a></span></li>
 		<li><span><a href="/BHAdm/Mall/Order-130">교환완료</a></span></li>
 		<li><span><a href="/BHAdm/Mall/Statistics">주문통계</a></span></li>
-		<li><span><a href="/BHAdm/Mall/Receipt">영수증신청내역</a></span></li></ol> -->
+		<li><span><a href="/BHAdm/Mall/Receipt">영수증신청내역</a></span></li>-->
+		</ol>
 		</li>
 		<!-- <li><span><a href="/BHAdm/Mall/Coupon">프로모션/쿠폰</a></span>
 		<ol><li><span><a href="/BHAdm/Mall/Coupon">쿠폰관리</a></span></li>
 		<li><span><a href="/BHAdm/Mall/CouponHis">쿠폰이력관리</a></span></li>
 		<li><span><a href="/BHAdm/Mall/Event">이벤트관리</a></span></li></ol></li> -->
-		<li><span><a href="/BHAdm/Member">회원관리</a></span></li>
+		<li><span><a th:href="@{/admin/Member}">회원관리</a></span></li>
 		
-		<li><span><a href="/BHAdm/BoardManager">게시판관리</a></span>
-		<ol><li><span><a href="/BHAdm/BoardManager">게시판관리</a></span></li>
-		<!-- <li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
-		<li><span><a href="/BHAdm/Board/FAQ">FAQ</a></span></li>
+		<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span>
+		<!--<ol><li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span></li>
+		<li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
+		<li><span><a th:href="@{/admin/board/FAQ">FAQ</a></span></li>
 		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
 		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
-		<li><span><a href="/BHAdm/Board/notice">공지사항</a></span></li>
-		<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
-		<!-- <li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
+		<li><span><a th:href="@{/admin/board/notice}">공지사항</a></span></li>
+		<!--<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
+		<li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
 		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span></li>-->
 		</ol>
 		<!-- </li><li><span><a href="/BHAdm/Mall/StoreArea">지점관리</a></span>
