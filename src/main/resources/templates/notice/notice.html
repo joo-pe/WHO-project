@@ -1,0 +1,89 @@
+<div module="Board_ListPackage_[seq]">
+    <!--@css(/css/module/board/listPackage_8.css)-->
+    <div id="titleArea" module="board_title_[seq]">
+        <h1>{$HoT Notice}</h1>
+        <span module="Layout_MobileAction">
+            <a href="#none" onclick="{$go_back}"><img src=" "/></a>
+        </span>
+    </div>
+    <div module="board_listheader_[seq]" class="{$list_type_display|display}">
+        <ul>
+            <li class="selected"><a href="/board/gallery/list.html{$param_list}">image</a></li>
+            <li><a href="/board/gallery/list2.html{$param_list}">list</a></li>
+        </ul>
+    </div>
+    <div class="boardSort">
+        <span module="board_category_[seq]"><h2>{& notice }</h2></span>
+    </div>
+    <ul module="board_notice_[seq]">
+        <!--
+            $count = 2
+            $subject_cut = 22
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        
+    </ul>
+    <ul module="board_fixed_[seq]">
+        <!--
+            $count = 2
+            $subject_cut = 22
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <li>
+            <div class="thumbnail"><a href=" " class="img"></a></div>
+            <p class="summary">
+                <a href="/board/gallery/read.html{$param_read}"><strong class="subject">{$topic}<span class="comment"></span></strong></a>
+            
+                <span class="name" title="작성자">{$writer}</span>
+                <span class="date {$date_display|display}" title="작성일">{$write_date}</span>
+            </p>
+        </li>
+        <li>
+            <div class="thumbnail"><a href="/board/gallery/read.html{$param_read}" class="img"><img src="{$img_src}" onerror="this.src='http://img.echosting.cafe24.com/skin/mobile_ko_KR/board/img_no.png'" alt="" width="86" /></a></div>
+            <p class="summary">
+                <a href="/board/gallery/read.html{$param_read}"><strong class="subject">{$topic}</strong></a>
+               <span class="name" title="작성자">{$writer}</span>
+                <span class="date {$date_display|display}" title="작성일">{$write_date}</span>
+            </p>
+        </li>
+    </ul>
+    <div module="board_list_[seq]">
+        <!--
+            $count = 12
+            $subject_cut = 22
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <ul class="thumbType grid3">
+            <li>
+                <div class="thumbnail"><a href="" class="img"><img src=""/></a></div>
+                <div class="summary">
+                    <a href="" class="subject">
+                       
+                        <span class="comment">{$comment}</span>
+                        <p class="name" title="작성자">{$writer}</p>
+                        <p class="date" title="작성일">{$write_date}</p>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail"><a href="/board/gallery/read.html{$param_read}" class="img"><img src="{$img_src}" onerror="this.src='http://img.echosting.cafe24.com/skin/mobile_ko_KR/board/board/img_no.png'" alt="" /></a></div>
+                <div class="summary">
+                    <a href="/board/gallery/read.html{$param_read}" class="subject">
+                        {$icon_mobile} {$subject}
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+<div module="board_search_[seq]">
+    <!--@css(/css/module/board/search.css)-->
+    <fieldset class="boardSearch">
+        <legend>search form</legend>
+        <div class="category">{$form.search_date}</div>
+        <div class="keyword">{$form.search} <button class="btnStrong" onclick="{$action_search}">search</button></div>
+    </fieldset>
+</div>

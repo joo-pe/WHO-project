@@ -1,0 +1,12 @@
+if(cnt == 30) {
+                double arr[] = new double[cnt];
+                for (int i = 0; i < cnt; i++) {
+                    Arrays.sort(arr);
+                    arr[i] = location.getSpeed();
+                    double avg = 0;
+                    avg = avg + arr[i] / i;
+                    arr[i] += arr[i];
+                   // maxspeed.setText(": " + String.format("%.1f", arr[arr.length - 1]) + "\n");
+                   // arrayct.setText(": " + i);
+                }
+            }

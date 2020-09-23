@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
-<head>
-    <title>WHO TICKET</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        body {
+body {
             font: 400 15px Lato, sans-serif;
             line-height: 1.8;
             color: #818181;
@@ -188,18 +175,3 @@
                 font-size: 150px;
             }
         }
-    </style>
-</head>
-<body>
-<!-- HEADER -->
-<div th:insert="common/header.html" id="header"></div>
-
-<h1>QR Code Generator</h1>
-
-<button type="button" onclick="alert('Hello world!')">Click Me!</button>
-<a th:href="@{/post}">Create QR Code</a>
-
-<!-- FOOTER -->
-<div th:insert="common/footer.html" id="footer"></div>
-</body>
-</html>

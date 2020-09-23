@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 // 403 예외처리 핸들링
                 .exceptionHandling().accessDeniedPage("/user/denied");
+        http.csrf().disable();
     }
 
     @Override

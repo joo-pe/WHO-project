@@ -1,4 +1,4 @@
-e------------------------------<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,7 +9,7 @@ e------------------------------<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notis.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -17,7 +17,7 @@ e------------------------------<!DOCTYPE html>
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
-<a th:href="@{/post}">글쓰기</a>
+<a th:href="@{/post1}">글쓰기</a>
 
 <table>
     <thead>
@@ -31,27 +31,27 @@ e------------------------------<!DOCTYPE html>
 
     <tbody>
     <!-- CONTENTS !-->
-    <tr th:each="faq : ${faqList}">
+    <tr th:each="notice : ${noticeList}">
         <td>
-            <span th:text="${faq.id}"></span>
+            <span th:text="${notice.id}"></span>
         </td>
         <td>
-            <a th:href="@{'/post/' + ${faq.id}}">
-                <span th:text="${faq.title}"></span>
+            <a th:href="@{'/post1/'+ ${notice.id}}">
+                <span th:text="${notice.title}"></span>
             </a>
         </td>
         <td>
-            <span th:text="${faq.writer}"></span>
+            <span th:text="${notice.writer}"></span>
         </td>
         <td>
-            <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+            <span th:text="${#temporals.format(notice.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
         </td>
     </tr>
     </tbody>
 </table>
 
 <!-- 검색 form -->
-<form action="/faq/search" method="GET">
+<form action="/notice/search" method="GET">
     <div>
         <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
     </div>
