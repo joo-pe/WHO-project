@@ -70,9 +70,9 @@ color:black;
 		<li><span><a href="/BHAdm/Config/Terms">사이트 내용관리</a></span></li>
 		<li><span><a href="/BHAdm/Config/PGTerms">PG 약관 내용관리</a></span></li>
 		<li><span><a href="/BHAdm/Push">App 알림</a></span></li></ol></li> -->
-		<li><span><a th:href="@{admin/goods/Goods}">상품관리</a></span>
+		<li><span><a th:href="@{/admin/goods/Goods}">상품관리</a></span>
 		<ol>
-		<li><span><a th:href="@{admin/goods/Category}">카테고리관리</a></span></li>
+		<li><span><a th:href="@{/admin/goods/Category}">카테고리관리</a></span></li>
 		<li><span><a th:href="@{/admin/goods/Goods}">상품관리</a></span></li>
 		<!-- <li><span><a href="/admin/goods/UploadGoods">상품일괄등록</a></span></li> -->
 		</ol>
@@ -102,16 +102,18 @@ color:black;
 		<li><span><a th:href="@{/admin/Member}">회원관리</a></span></li>
 		
 		<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span>
-		<!--<ol><li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span></li>
+		<ol>
+		<!--<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span></li>
 		<li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
-		<li><span><a th:href="@{/admin/board/FAQ">FAQ</a></span></li>
+		<li><span><a th:href="@{/faq}">FAQ</a></span></li>
 		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
 		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
 		<li><span><a th:href="@{/admin/board/notice}">공지사항</a></span></li>
 		<!--<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
 		<li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
-		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span></li>-->
+		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span>-->
 		</ol>
+		</li>
 		<!-- </li><li><span><a href="/BHAdm/Mall/StoreArea">지점관리</a></span>
 		<ol><li><span><a href="/BHAdm/Mall/StoreArea">지점지역관리</a></span></li></ol>
 		</li><li><span><a href="/BHAdm/DashBoard">통계/엑셀</a></span></li> -->

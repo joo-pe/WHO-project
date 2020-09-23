@@ -19,7 +19,7 @@ public class FaqController {
         List<FaqDto> faqList = faqService.getFaqlist();
 
         model.addAttribute("faqList", faqList);
-        return "faq/list";
+        return "admin/faq/list";
     }
 
     @GetMapping("/post")
@@ -39,7 +39,7 @@ public class FaqController {
         FaqDto faqDto = faqService.getPost(no);
 
         model.addAttribute("faqDto", faqDto);
-        return "faq/detail";
+        return "admin/faq/detail";
     }
 
     @GetMapping("/post/edit/{no}")
