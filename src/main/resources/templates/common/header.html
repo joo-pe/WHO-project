@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container-cj">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -14,6 +14,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
+                
                     <li><a sec:authorize="isAnonymous()" th:href="@{/login}">SIGN IN</a></li>
                     <li><a sec:authorize="isAnonymous()" th:href="@{/signup}">JOIN IN</a></li>
                     <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
@@ -33,7 +34,7 @@
                             <li><a href="#">BASEBALL</a></li>
                         </ul>
                     </li>
-                    <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/myinfo}">MY Tickets</a></li>
+                    <li><a th:href="@{/myticket}">MY Tickets</a></li>
                     <li><a th:href="@{/faq}">FAQ</a></li>
                     <li><a href="#tour">NOTICE</a></li>
                 </ul>

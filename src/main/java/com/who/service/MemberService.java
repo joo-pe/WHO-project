@@ -1,8 +1,10 @@
 package com.who.service;
 
 import com.who.domain.Role;
+import com.who.domain.entity.FaqEntity;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
+import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
 
@@ -27,7 +29,65 @@ public class MemberService implements UserDetailsService {
 	
     @Autowired
 	MemberRepository memberRepository;
+    
+    @Transactional
+    public Long savePost(MemberDto memberDto) {
+        return memberRepository.save(memberDto.toEntity()).getNo();
+    }
+    
+    
+	    @Transactional
+	    public List<MemberDto> getMemberlist() {
+	        List<MemberEntity> memberEntities = memberRepository.findAll();
+	        List<MemberDto> memberList = new ArrayList<>();
+	
+	        for (MemberEntity memberEntity : memberEntities) {
+	        	MemberDto memberDto = MemberDto.builder()
+	        			.no(memberEntity.getNo())
+	                    .email(memberEntity.getEmail())
+	                    .name(memberEntity.getName())
+	                    .password(memberEntity.getPassword())
+	                    .phone(memberEntity.getPhone())
+	                    .birthday(memberEntity.getBirthday())
+	                    .build();
+	
+	        	memberList.add(memberDto);
+	        }
+	        return memberList;
+	    }
 
+    @Transactional
+    public MemberDto getmember(String email) {
+        Optional<MemberEntity> memberEntityWraper = memberRepository.findByEmail(email);
+        MemberEntity memberEntity = memberEntityWraper.get();
+
+        MemberDto memberDto = MemberDto.builder()
+                .no(memberEntity.getNo())
+                .email(memberEntity.getEmail())
+                .name(memberEntity.getName())
+                .password(memberEntity.getPassword())
+                .phone(memberEntity.getPhone())
+                .build();
+
+        return memberDto;
+    }
+
+    @Transactional
+    public MemberDto upmember(Long no) {
+        Optional<MemberEntity> memberEntityWraper = memberRepository.findById(no);
+        MemberEntity memberEntity = memberEntityWraper.get();
+
+        MemberDto memberDto = MemberDto.builder()
+                .no(memberEntity.getNo())
+                .email(memberEntity.getEmail())
+                .name(memberEntity.getName())
+                .password(memberEntity.getPassword())
+                .phone(memberEntity.getPhone())
+                .build();
+
+        return memberDto;
+    }
+    
     @Transactional
     public Long joinUser(MemberDto memberDto) {
         //비밀번호 암호화

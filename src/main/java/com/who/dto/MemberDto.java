@@ -3,7 +3,6 @@ package com.who.dto;
 import com.who.domain.entity.MemberEntity;
 import lombok.*;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Getter

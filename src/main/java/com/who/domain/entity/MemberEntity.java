@@ -6,13 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.List;
-
 import javax.persistence.*;
 
-import org.hibernate.annotations.CreationTimestamp;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -41,8 +36,7 @@ public class MemberEntity extends TimeEntity{
     private String birthday;
 
     @Builder
-    MemberEntity(Long no, String email, String password,
-    		String name, String phone, String birthday) {
+    MemberEntity(Long no, String email, String password, String name, String phone, String birthday) {
     	
         this.no = no;
         this.email = email;
