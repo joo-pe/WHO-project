@@ -42,7 +42,7 @@ color:black;
 		<nav id="gnb">
 		<ul>
 		<li class="home"><a th:href="@{/}" target="_blank">홈으로</a></li>
-		<li class="logout"><a th:href="@{/}">로그아웃</a></li>
+		<li class="logout"><a th:href="@{/logout/result}">로그아웃</a></li>
 </ul>
 </nav>
 <nav id="tnb">
@@ -92,10 +92,10 @@ color:black;
 		<ol>
 		<!--<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span></li>
 		<li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
-		<li><span><a th:href="@{/faq}">FAQ</a></span></li>
+		<li><span><a th:href="@{/admin/faq}">FAQ</a></span></li>
 		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
 		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
-		<li><span><a th:href="@{/admin/board/notice}">공지사항</a></span></li>
+		<li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
 		<!--<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
 		<li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
 		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span>-->
@@ -136,7 +136,7 @@ color:black;
             <span th:text="${faq.id}"></span>
         </td>
         <td>
-            <a th:href="@{'/post/' + ${faq.id}}">
+            <a th:href="@{'/admin/post/' + ${faq.id}}">
                 <span th:text="${faq.title}"></span>
             </a>
         </td>
@@ -159,7 +159,7 @@ color:black;
 <input type="text" name="searchKeyword" value="">
 <button type="submit" class="mBtn btn2">검색</button>
 </form>
-<div class="right_btn"><a th:href="@{/post}" class="mBtn btn2">글쓰기</a></div>
+<div class="right_btn"><a th:href="@{/admin/post}" class="mBtn btn2">글쓰기</a></div>
 <div class="paging">
 <div class="paging">
 <span class="first" href="/BHAdm/FAQ/?searchType=snc&amp;page=1" data-page="1">First</span>  
@@ -211,8 +211,8 @@ App.Admin.BoardListInit();
 <h2>게시판관리</h2>
 <ul>
 <li class="Active"><span>
-<a th:href="@{/faq}">FAQ</a></span></li>
-<li><span><a href="/BHAdm/Board/notice">공지사항</a></span></li>
+<a th:href="@{/admin/faq}">FAQ</a></span></li>
+<li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
 </ul>
 </aside>
 </div>

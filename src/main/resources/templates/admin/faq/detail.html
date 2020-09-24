@@ -47,7 +47,7 @@ float:none;
 		<nav id="gnb">
 		<ul>
 		<li class="home"><a th:href="@{/}" target="_blank">홈으로</a></li>
-		<li class="logout"><a th:href="@{/}">로그아웃</a></li>
+		<li class="logout"><a th:href="@{/logout/result}">로그아웃</a></li>
 </ul>
 </nav>
 <nav id="tnb">
@@ -97,10 +97,10 @@ float:none;
 		<ol>
 		<!--<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span></li>
 		<li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
-		<li><span><a th:href="@{/faq}">FAQ</a></span></li>
+		<li><span><a th:href="@{/admin/faq}">FAQ</a></span></li>
 		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
 		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
-		<li><span><a th:href="@{/admin/board/notice}">공지사항</a></span></li>
+		<li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
 		<!--<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
 		<li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
 		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span>-->
@@ -121,21 +121,21 @@ float:none;
 <div>
 <b th:text="${faqDto.title}"></b></div>
 <ul>
-<li class="mname"><b>이름</b> : 관리자</li>
+<li class="mname"><b>이름</b> : <b th:text="${faqDto.writer}"></b></li>
 <li><p th:inline="text">작성일 : [[${#temporals.format(faqDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</p></li>
 </ul>
 </header>
 <div class="contents">
 <p th:text="${faqDto.content}"></p>
-<div class="bottomBtn">
 
-<form id="delete-form" th:action="@{'/post/' + ${faqDto.id}}" method="post">
-     <input type="hidden" name="_method" value="delete"/>x
+<div class="bottomBtn" style="width: 1120px; margin: 0 auto;">
+<form id="delete-form" th:action="@{'/admin/post/' + ${faqDto.id}}" method="post">
+     <input type="hidden" name="_method" value="delete"/>
      <button id="delete-btn" class="mBtn btn2">삭제</button>
 </form>
     
-<a th:href="@{'/post/edit/' + ${faqDto.id}}" class="mBtn btn2">수정</a>
-<a th:href="@{/faq}" class="mBtn btn2">리스트</a>
+<a th:href="@{'/admin/post/edit/' + ${faqDto.id}}" class="mBtn btn2">수정</a>
+<a th:href="@{/admin/faq}" class="mBtn btn2">리스트</a>
 </div>
 </div>
 </div>
@@ -166,9 +166,9 @@ App.Admin.BoardViewInit();
 <h2>게시판관리</h2>
 <ul>
 <li class="Active"><span>
-<a th:href="@{/faq}">FAQ</a></span></li>
+<a th:href="@{/admin/faq}">FAQ</a></span></li>
 <li><span>
-<a href="/BHAdm/Board/notice">공지사항</a></span></li>
+<a th:href="@{/admin/notice}">공지사항</a></span></li>
 </ul></aside></div>
 </div><footer id="footer">
 <div id="footer_wrap"></div>

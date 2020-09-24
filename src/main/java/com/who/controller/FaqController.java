@@ -14,7 +14,7 @@ import java.util.List;
 public class FaqController {
     private FaqService faqService;
 
-    @GetMapping("/faq")
+    @GetMapping("/admin/faq")
     public String list(Model model) {
         List<FaqDto> faqList = faqService.getFaqlist();
 
@@ -22,19 +22,19 @@ public class FaqController {
         return "admin/faq/list";
     }
 
-    @GetMapping("/post")
+    @GetMapping("/admin/post")
     public String write() {
-        return "faq/write";
+        return "admin/faq/write";
     }
 
-    @PostMapping("/post")
+    @PostMapping("/admin/post")
     public String write(FaqDto faqDto) {
         faqService.savePost(faqDto);
 
-        return "redirect:/faq";
+        return "redirect:/admin/faq";
     }
 
-    @GetMapping("/post/{no}")
+    @GetMapping("/admin/post/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         FaqDto faqDto = faqService.getPost(no);
 
@@ -42,33 +42,33 @@ public class FaqController {
         return "admin/faq/detail";
     }
 
-    @GetMapping("/post/edit/{no}")
+    @GetMapping("/admin/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
         FaqDto faqDto = faqService.getPost(no);
 
         model.addAttribute(("faqDto"), faqDto);
-        return "faq/update";
+        return "admin/faq/update";
     }
 
-    @PutMapping("/post/edit/{no}")
+    @PutMapping("/admin/post/edit/{no}")
     public String update(FaqDto faqDto) {
         faqService.savePost(faqDto);
 
-        return "redirect:/faq";
+        return "redirect:/admin/faq";
     }
 
-    @DeleteMapping("/post/{no}")
+    @DeleteMapping("/admin/post/{no}")
     public String delete(@PathVariable("no") Long no) {
         faqService.deletePost(no);
 
-        return "redirect:/faq";
+        return "redirect:/admin/faq";
     }
 
-    @GetMapping("/faq/search")
+    @GetMapping("/admin/faq/search")
     public String search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<FaqDto> faqDtoList = faqService.searchPosts(keyword);
 
         model.addAttribute("faqList", faqDtoList);
-        return "faq/list";
+        return "admin/faq/list";
     }
 }
