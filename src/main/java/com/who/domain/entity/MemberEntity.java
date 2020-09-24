@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -36,13 +38,14 @@ public class MemberEntity extends TimeEntity{
 
     @Builder
     MemberEntity(Long no, String email, String password,
-    		String name, String phone, String birthday) {
-    	
+    		String name, String phone, String birthday, LocalDateTime createdDate) {
+    	TimeEntity timeEntity = new TimeEntity();
         this.no = no;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.birthday = birthday;
+        timeEntity.getCreatedDate();
     }
 }

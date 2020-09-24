@@ -32,12 +32,15 @@ public class MemberDto {
 
     @Builder
     public MemberDto(Long no, String email, String password,
-    		String name, String phone, String birthday) {
+    		String name, String phone, String birthday, 
+    		LocalDateTime createdDate, LocalDateTime modifiedDate) {
     	this.no = no;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.birthday = birthday;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
     }
 }

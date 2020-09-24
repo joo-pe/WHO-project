@@ -1,8 +1,10 @@
 package com.who.service;
 
 import com.who.domain.Role;
+import com.who.domain.entity.FaqEntity;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
+import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
 
@@ -51,5 +53,43 @@ public class MemberService implements UserDetailsService {
         }
 
         return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
+    }
+    
+    @Transactional
+    public List<MemberDto> getMemberlist() {
+        List<MemberEntity> memberEntities = memberRepository.findAll();
+        List<MemberDto> memberDtoList = new ArrayList<>();
+
+        for (MemberEntity memberEntity : memberEntities) {
+            MemberDto memberDto = MemberDto.builder()
+                    .no(memberEntity.getNo())
+                    .email(memberEntity.getEmail())
+                    .name(memberEntity.getName())
+                    .phone(memberEntity.getPhone())
+                    .birthday(memberEntity.getBirthday())
+                    .createdDate(memberEntity.getCreatedDate())
+                    .build();
+
+            memberDtoList.add(memberDto);
+        
+        }
+        return memberDtoList;
+    }
+    
+    @Transactional
+    public MemberDto getMember(Long no) {
+        Optional<MemberEntity> memberEntityWraper = memberRepository.findById(no);
+        MemberEntity memberEntity = memberEntityWraper.get();
+
+        MemberDto memberDto = MemberDto.builder()
+        		.no(memberEntity.getNo())
+                .email(memberEntity.getEmail())
+                .name(memberEntity.getName())
+                .phone(memberEntity.getPhone())
+                .birthday(memberEntity.getBirthday())
+                .createdDate(memberEntity.getCreatedDate())
+                .build();
+
+        return memberDto;
     }
 }

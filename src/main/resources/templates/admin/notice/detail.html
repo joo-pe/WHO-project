@@ -116,167 +116,61 @@ float:none;
 <div id="container">
 <div id="containerWrap">
 <h2>FAQ 게시물관리</h2>
-<form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{'/admin/post/edit/' + ${faqDto.id}}" enctype="multipart/form-data">
-
-<input type="hidden" name="_method" value="put"/>
-<input type="hidden" name="id" th:value="${faqDto.id}"/>
-<table class="write">
-<tbody><tr>
-<th>공지글</th>
-<td>
-<label for="MD_notice_1" class="radio">
-<input type="radio" name="notice" id="MD_notice_1" value="y" data-displayname="공지글" class=""> <span>사용</span></label>
-<label for="MD_notice_2" class="radio">
-<input type="radio" name="notice" id="MD_notice_2" value="n" data-displayname="공지글" class="" checked="checked"> 
-<span>사용안함</span></label></td>
-</tr>
-<!-- <tr>
-<th>분류</th>
-<td>
-<select name="category" required="">
-<option value="">선택</option>
-<option selected="">회원</option>
-<option>결제</option>
-<option>취소/환불</option>
-<option>상품</option>
-<option>기타</option>
-</select>
-<div id="category2" style="display: inline-block;">
-<select name="category2" id="category_choice">
-<option value="">선택</option>
-<option value="회원ID/비번">회원ID/비번</option>
-<option value="회원가입" selected="">회원가입</option>
-<option value="회원정보">회원정보</option>
-<option value="" data-type="add">추가</option></select> 
-<span id="category2_real" class="hidden">
-<input type="text" name="category2" value="회원가입">
-</span></div>
-</td>
-</tr> -->
-<!-- <tr>
-<th>비밀글</th>
-<td>
-<label for="MD_secret_1" class="radio"><input type="radio" name="secret" id="MD_secret_1" value="y" data-displayname="비밀글" class=""> <span>사용</span></label><label for="MD_secret_2" class="radio"><input type="radio" name="secret" id="MD_secret_2" value="n" data-displayname="비밀글" class="" checked="checked"> <span>사용안함</span></label></td>
-</tr> -->
-<tr>
-<th><i class="requiredBullet" title="필수항목">* </i>작성자</th>
-<td>
-<input type="text" name="writer" id="MD_subject" th:value="${faqDto.writer}"
-data-displayname="작성자" data-maxlength="10" maxlength="10" required="required" class="w100p">
-<ul class="guide">
-<li>관리자(admin)로 입력하여주세요.</li>
+<div class="BoardView">
+<header>
+<div>
+<b th:text="${noticeDto.title}"></b></div>
+<ul>
+<li class="mname"><b>이름</b> : <b th:text="${noticeDto.writer}"></b></li>
+<li><p th:inline="text">작성일 : [[${#temporals.format(noticeDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</p></li>
 </ul>
-</td>
-</tr>
-<tr>
-<th><i class="requiredBullet" title="필수항목">* </i> 제목</th>
-<td>
-<input type="text" name="title" id="MD_subject" th:value="${faqDto.title}"
-data-displayname="제목" data-maxlength="128" maxlength="128" required="required" class="w100p">
-<ul class="guide">
-<li>128자 이하로 입력하여주세요.</li>
-</ul>
-</td>
-</tr>
-<tr>
-<th>내용</th>
-<td>
-<textarea name="content" th:text="${faqDto.content}">
-</textarea>
-<!-- <iframe style=”border:0 solid transparent” scrolling="no" style="width: 100%; height: 254px;" src="/Common/smart_editor/SmartEditor2Skin.html"></iframe> -->
-<div class="se2_add_img" data-sname="MD_content"><span><button class="upbtn">이미지첨부</button></span><div></div></div></td>
-</tr>
-<tr>
-<th>파일</th>
-<td>
- <input type="file" name="file1" id="MD_file1" data-displayname="파일#1" class=""></td>
-</tr>
-<!-- <tr>
-<th>삭제여부</th>
-<td>
-<label for="MD_delis_1" class="radio">
-<input type="radio" name="delis" id="MD_delis_1" value="n" data-displayname="삭제여부" class="" checked="checked"> 
-<span>미삭제</span></label>
-<label for="MD_delis_2" class="radio">
-<input type="radio" name="delis" id="MD_delis_2" value="y" data-displayname="삭제여부" class=""> 
-<span>삭제</span></label></td>
-</tr> -->
+</header>
+<div class="contents">
+<p th:text="${noticeDto.content}"></p>
 
-</tbody></table>
 <div class="bottomBtn" style="width: 1120px; margin: 0 auto;">
-<button type="submit" class="mBtn btn2">수정</button>
-<button type="reset" class="mBtn btn1">취소</button>
-<a th:href="@{/admin/faq}" class="backbtn mBtn btn1">뒤로</a>
+<form id="delete-form" th:action="@{'/admin/post1/' + ${noticeDto.id}}" method="post">
+     <input type="hidden" name="_method" value="delete"/>
+     <button id="delete-btn" class="mBtn btn2">삭제</button>
+</form>
+    
+<a th:href="@{'/admin/post1/edit/' + ${noticeDto.id}}" class="mBtn btn2">수정</a>
+<a th:href="@{/admin/faq}" class="mBtn btn2">리스트</a>
+</div>
+</div>
+</div>
+<div id="deleteForm" class="hidden boardPassword modalConfirm">
+<form id="delForm" name="delForm" method="post" action="/BHAdm/FAQ/Delete/2LKca3?searchType=snc">
+<p>정말 삭제하시겠습니까?</p>
+<div class="sPopBtns">
+<button type="submit" class="sBtn btn2">삭제하기</button>
+<button type="reset" class="sBtn btn2">취소</button>
 </div>
 </form>
-<!-- <script>
-App.Board.Write.SubmitWrite = function(e){
-if(App.Board.Write.useSE2Is) SE2_update('MD_content');
-var res = $(this).validCheck();
-if(!res){
-e.preventDefault();
-return false;
-}
-if($('#category2_real input').val() == ''){
-e.preventDefault();
-CMAlert('상세분류를 선택하여 주세요.');
-return false;
-}
-};
-App.Board.Write.FAQInit = function(){
-App.Board.Write.CategoryChange('회원', '회원가입');
-$(document).on('change', 'select[name=category]', function(){
-App.Board.Write.CategoryChange();
-});
-$(document).on('change', '#category_choice', App.Board.Write.Category2Change);
-};
-App.Board.Write.CategoryChange = function(c1, c2){
-var category = $('select[name=category]');
-if(category.val() === ''){
-$('#category2').html('<select id="category_choice" required><option value="">분류를 선택하여 주세요.</option></select>');
-return;
-}
-JCM.get('/BHAdm/FAQ/GetCategory2/' + category.val(), {}, function(data){
-var html = '<select name="category2" id="category_choice"><option value="">선택</option>';
-var val = '';
-for(var i=0; i < data.length; i++){
-var addAttr = '';
-if(typeof(c1) !== 'undefined' && typeof(c2) !== 'undefined' && category.val() == c1 && data[i].category2 == c2){
-addAttr = ' selected';
-val = c2;
-}
-html += '<option value="' + data[i].category2 + '"' + addAttr + '>' + data[i].category2 + '</option>';
-}
-html += '<option value="" data-type="add">추가</option></select> <span id="category2_real" class="hidden"><input type="text" name="category2" value="' + val + '"></span>';
-$('#category2').html(html);
-});
-};
-App.Board.Write.Category2Change = function(){
-var selected = $(this).find('option:selected');
-console.log('Category2Change');
-if(selected[0].hasAttribute('data-type') && selected.attr('data-type') == 'add'){
-console.log('add');
-$('#category2_real input').val('');
-$('#category2_real').show();
-}else{
-console.log('not add');
-$('#category2_real input').val($(this).val());
-$('#category2_real').hide();
-}
-};
-App.Board.Write.FAQInit();
-App.Board.Write.Init(true);
-</script> -->
+</div>
+<div id="removeForm" class="hidden boardPassword modalConfirm">
+<form id="remForm" name="remForm" method="post" action="/BHAdm/FAQ/Remove/2LKca3?searchType=snc">
+<p>정말 완전히 삭제하시겠습니까?</p>
+<div class="sPopBtns">
+<button type="submit" class="sBtn btn2">완전삭제</button>
+<button type="reset" class="sBtn btn2">취소</button>
+</div>
+</form>
+</div>
+<script>
+App.Admin.BoardViewInit();
+</script>
 <aside id="sideMenu" style="padding-top: 0px;">
 <a href="#" id="sideClose" title="닫기" style="top: 10px;">
 <i class="fa fa-angle-left"></i></a>
 <h2>게시판관리</h2>
 <ul>
 <li class="Active"><span>
-<a th:href="@{/faq}">FAQ</a></span></li>
+<a th:href="@{/admin/faq}">FAQ</a></span></li>
 <li><span>
 <a th:href="@{/admin/notice}">공지사항</a></span></li>
-</ul></aside></div></div><footer id="footer">
+</ul></aside></div>
+</div><footer id="footer">
 <div id="footer_wrap"></div>
 </footer>
 </div>

@@ -1,0 +1,25 @@
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+th{
+Color : #666666;
+Font : 11px Dotum;
+Background : #81F7D8;
+padding : 10px 0px 7px;
+text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 600px;
+    text-align: center;
+    margin: 20px;
+}
+resign{
+background: #81F7D8;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+img{
+margin: 20px;
+}
