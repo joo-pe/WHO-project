@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<title>FAQ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Chrome">
+<meta name="viewport" content=" width=1030, user-scalable=yes">
+<meta name="description" content="WHOTicket">
+	<link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.1.css}">
+	<link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/css/nanumgothic.css}">
+	<link rel="stylesheet" th:href="@{/css/admin.css}">
+<!--[if lt IE 9]>
+<script src="/Skin/js/html5shiv.min.js"></script>
+<script src="/Skin/js/respond.min.js"></script>
+<script src="/Skin/js/selectivizr-min.js"></script>
+<![endif]-->
+	<script th:src="@{/js/jquery-1.11.3.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/jquery.form.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/jquery-ui.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/common.js} " charset="utf8"></script>
+	<script th:src="@{/js/contents.js}" charset="utf8"></script>
+	<script th:src="@{/js/admin.js}" charset="utf8"></script>
+	<script th:src="@{/js/admin.extend.js}" charset="utf8"></script>
+	<script th:src="@{/js/board.js} " charset="utf8"></script>
+</head>
+<style>
+/* 코딩한 body에 추가 */
+body { 
+padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+padding-top: env(safe-area-inset-top); /* iOS 11.2 */ 
+color:black;
+}
+form {
+margin:0;
+display:inline;
+height:20px;
+float:none; 
+}
+</style>
+<body>
+<div id="wrap">
+		<header id="header">
+		<div id="header_wrap">
+		<h1><a th:href="@{/admin}"><span>ADMINISTRATOR</span></a></h1>
+		<nav id="gnb">
+		<ul>
+		<li class="home"><a th:href="@{/}" target="_blank">홈으로</a></li>
+		<li class="logout"><a th:href="@{/logout/result}">로그아웃</a></li>
+</ul>
+</nav>
+<nav id="tnb">
+<ul>
+		<!-- <li><span><a href="/BHAdm/Config">사이트관리</a></span><ol>
+		<li><span><a href="/BHAdm/Config">환경설정</a></span></li>
+		<li><span><a href="/BHAdm/Config/Area">지점별 환경설정</a></span></li>
+		<li><span><a href="/BHAdm/BannerManager">배너관리</a></span></li>
+		<li><span><a href="/BHAdm/PopupManager">팝업관리</a></span></li>
+		<li><span><a href="/BHAdm/MPopupManager">모바일 팝업관리</a></span></li>
+		<li><span><a href="/BHAdm/AlramManager">알림관리</a></span></li>
+		<li><span><a href="/BHAdm/Config/Terms">사이트 내용관리</a></span></li>
+		<li><span><a href="/BHAdm/Config/PGTerms">PG 약관 내용관리</a></span></li>
+		<li><span><a href="/BHAdm/Push">App 알림</a></span></li></ol></li> -->
+		<li><span><a th:href="@{/admin/goods/Goods}">상품관리</a></span>
+		<ol>
+		<li><span><a th:href="@{/admin/goods/Category}">카테고리관리</a></span></li>
+		<li><span><a th:href="@{/admin/goods/Goods}">상품관리</a></span></li>
+		<!-- <li><span><a href="/admin/goods/UploadGoods">상품일괄등록</a></span></li> -->
+		</ol>
+		</li>
+		<li><span><a th:href="@{/admin/order/Order}">주문관리</a></span>
+		<ol>
+		<li><span><a th:href="@{/admin/order/Order}">전체주문</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order20">주문완료</a></span></li> -->
+		<li><span><a href="/BHAdm/Mall/Order30">결제완료</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order40">상품준비중</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order50">발송완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order60">배송완료</a></span></li> -->
+		<li><span><a href="/BHAdm/Mall/Order-20">반품신청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-120">반품완료</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order-10">주문취소요청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-110">주문취소완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-30">교환신청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-130">교환완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Statistics">주문통계</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Receipt">영수증신청내역</a></span></li>-->
+		</ol>
+		</li>
+		<!-- <li><span><a href="/BHAdm/Mall/Coupon">프로모션/쿠폰</a></span>
+		<ol><li><span><a href="/BHAdm/Mall/Coupon">쿠폰관리</a></span></li>
+		<li><span><a href="/BHAdm/Mall/CouponHis">쿠폰이력관리</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Event">이벤트관리</a></span></li></ol></li> -->
+		<li><span><a th:href="@{/admin/Member}">회원관리</a></span></li>
+		
+		<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span>
+		<ol>
+		<!--<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span></li>
+		<li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
+		<li><span><a th:href="@{/admin/faq}">FAQ</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
+		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
+		<li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
+		<!--<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
+		<li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
+		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span>-->
+		</ol>
+		</li>
+		<!-- </li><li><span><a href="/BHAdm/Mall/StoreArea">지점관리</a></span>
+		<ol><li><span><a href="/BHAdm/Mall/StoreArea">지점지역관리</a></span></li></ol>
+		</li><li><span><a href="/BHAdm/DashBoard">통계/엑셀</a></span></li> -->
+</ul>
+</nav>
+</div>
+</header>
+<div id="container">
+<div id="containerWrap">
+<h2>FAQ 게시물관리</h2>
+<form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{/admin/post1}" enctype="multipart/form-data">
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<table class="write">
+<tbody><tr>
+<th>공지글</th>
+<td>
+<label for="MD_notice_1" class="radio">
+<input type="radio" name="notice" id="MD_notice_1" value="y" data-displayname="공지글" class=""> <span>사용</span></label>
+<label for="MD_notice_2" class="radio">
+<input type="radio" name="notice" id="MD_notice_2" value="n" data-displayname="공지글" class="" checked="checked"> 
+<span>사용안함</span></label></td>
+</tr>
+<!-- <tr>
+<th>분류</th>
+<td>
+<select name="category" required="">
+<option value="">선택</option>
+<option selected="">회원</option>
+<option>결제</option>
+<option>취소/환불</option>
+<option>상품</option>
+<option>기타</option>
+</select>
+<div id="category2" style="display: inline-block;">
+<select name="category2" id="category_choice">
+<option value="">선택</option>
+<option value="회원ID/비번">회원ID/비번</option>
+<option value="회원가입" selected="">회원가입</option>
+<option value="회원정보">회원정보</option>
+<option value="" data-type="add">추가</option></select> 
+<span id="category2_real" class="hidden">
+<input type="text" name="category2" value="회원가입">
+</span></div>
+</td>
+</tr> -->
+<!-- <tr>
+<th>비밀글</th>
+<td>
+<label for="MD_secret_1" class="radio"><input type="radio" name="secret" id="MD_secret_1" value="y" data-displayname="비밀글" class=""> <span>사용</span></label><label for="MD_secret_2" class="radio"><input type="radio" name="secret" id="MD_secret_2" value="n" data-displayname="비밀글" class="" checked="checked"> <span>사용안함</span></label></td>
+</tr> -->
+<tr>
+<th><i class="requiredBullet" title="필수항목">* </i>작성자</th>
+<td>
+<input type="text" name="writer" id="MD_subject" data-displayname="작성자" 
+data-maxlength="10" maxlength="10" required="required" class="w100p">
+<ul class="guide">
+<li>관리자(admin)로 입력하여주세요.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th><i class="requiredBullet" title="필수항목">* </i> 제목</th>
+<td>
+<input type="text" name="title" id="MD_subject" data-displayname="제목" 
+data-maxlength="128" maxlength="128" required="required" class="w100p">
+<ul class="guide">
+<li>128자 이하로 입력하여주세요.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>내용</th>
+<td>
+<textarea name="content"></textarea>
+<!-- <iframe frameborder="0" scrolling="no" style="width: 100%; height: 254px;" src="/Common/smart_editor/SmartEditor2Skin.html"></iframe> -->
+<div class="se2_add_img" data-sname="MD_content"><span><button class="upbtn">이미지첨부</button></span><div></div></div></td>
+</tr>
+<tr>
+<th>파일</th>
+<td>
+ <input type="file" name="file1" id="MD_file1" data-displayname="파일#1" class=""></td>
+</tr>
+<!-- <tr>
+<th>삭제여부</th>
+<td>
+<label for="MD_delis_1" class="radio">
+<input type="radio" name="delis" id="MD_delis_1" value="n" data-displayname="삭제여부" class="" checked="checked"> 
+<span>미삭제</span></label>
+<label for="MD_delis_2" class="radio">
+<input type="radio" name="delis" id="MD_delis_2" value="y" data-displayname="삭제여부" class=""> 
+<span>삭제</span></label></td>
+</tr> -->
+
+</tbody></table>
+<div class="bottomBtn" style="width: 1120px; margin: 0 auto;">
+<button type="submit" class="mBtn btn2">등록</button>
+<button type="reset" class="mBtn btn1">취소</button>
+<a th:href="@{/admin/notice}" class="backbtn mBtn btn1">뒤로</a>
+</div>
+</form>
+<!-- <script>
+App.Board.Write.SubmitWrite = function(e){
+if(App.Board.Write.useSE2Is) SE2_update('MD_content');
+var res = $(this).validCheck();
+if(!res){
+e.preventDefault();
+return false;
+}
+if($('#category2_real input').val() == ''){
+e.preventDefault();
+CMAlert('상세분류를 선택하여 주세요.');
+return false;
+}
+};
+App.Board.Write.FAQInit = function(){
+App.Board.Write.CategoryChange('회원', '회원가입');
+$(document).on('change', 'select[name=category]', function(){
+App.Board.Write.CategoryChange();
+});
+$(document).on('change', '#category_choice', App.Board.Write.Category2Change);
+};
+App.Board.Write.CategoryChange = function(c1, c2){
+var category = $('select[name=category]');
+if(category.val() === ''){
+$('#category2').html('<select id="category_choice" required><option value="">분류를 선택하여 주세요.</option></select>');
+return;
+}
+JCM.get('/BHAdm/FAQ/GetCategory2/' + category.val(), {}, function(data){
+var html = '<select name="category2" id="category_choice"><option value="">선택</option>';
+var val = '';
+for(var i=0; i < data.length; i++){
+var addAttr = '';
+if(typeof(c1) !== 'undefined' && typeof(c2) !== 'undefined' && category.val() == c1 && data[i].category2 == c2){
+addAttr = ' selected';
+val = c2;
+}
+html += '<option value="' + data[i].category2 + '"' + addAttr + '>' + data[i].category2 + '</option>';
+}
+html += '<option value="" data-type="add">추가</option></select> <span id="category2_real" class="hidden"><input type="text" name="category2" value="' + val + '"></span>';
+$('#category2').html(html);
+});
+};
+App.Board.Write.Category2Change = function(){
+var selected = $(this).find('option:selected');
+console.log('Category2Change');
+if(selected[0].hasAttribute('data-type') && selected.attr('data-type') == 'add'){
+console.log('add');
+$('#category2_real input').val('');
+$('#category2_real').show();
+}else{
+console.log('not add');
+$('#category2_real input').val($(this).val());
+$('#category2_real').hide();
+}
+};
+App.Board.Write.FAQInit();
+App.Board.Write.Init(true);
+</script> -->
+<aside id="sideMenu" style="padding-top: 0px;">
+<a href="#" id="sideClose" title="닫기" style="top: 10px;">
+<i class="fa fa-angle-left"></i></a>
+<h2>게시판관리</h2>
+<ul>
+<li class="Active"><span>
+<a th:href="@{/admin/faq}">FAQ</a></span></li>
+<li><span>
+<a th:href="/@{admin/notice}">공지사항</a></span></li>
+</ul></aside></div></div><footer id="footer">
+<div id="footer_wrap"></div>
+</footer>
+</div>
+<!-- 변수 셋팅 -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var noticeDto = /*[[${noticeDto}]]*/ "";
+    /*]]>*/
+</script>
+
+<!-- script -->
+<script th:inline="javascript" th:src="@{/js/notice.js}"></script>
+<script>
+$(document).ready(function(){
+if(JCM.getCookie('managerSideView') == 'no'){
+$('#wrap').addClass('sideHidden');
+}
+$('#containerWrap').append('<aside id="sideMenu"><a href="#" id="sideClose" title="닫기"><i class="fa fa-angle-left"></i></a><h2>' + ( $('#tnb ul > li.Active').length ? $('#tnb ul > li.Active a').eq(0).text() : '' ) + '</h2><ul>'+( $('#tnb ul > li.Active ol').length ? $('#tnb ul > li.Active ol').html() : '' ) +'</ul></aside>')
+$(document).on('click', '#sideClose', function(e){
+e.preventDefault();
+if($('#wrap').hasClass('sideHidden')){
+$('#wrap').removeClass('sideHidden');
+JCM.setCookie('managerSideView', 'yes');
+}else{
+$('#wrap').addClass('sideHidden');
+JCM.setCookie('managerSideView', 'no');
+}
+});
+$('#container').scroll(function(){
+sideScroll();
+});
+sideScroll();
+});
+function sideScroll(){
+var st = $('#container').scrollTop();
+if(st < 0) st = 0;
+$('#sideMenu').css({
+'padding-top' : st + 'px'
+});
+$('#sideClose').css({
+'top' : (st + 10) + 'px'
+});
+}
+</script>
+</body>
+</html>

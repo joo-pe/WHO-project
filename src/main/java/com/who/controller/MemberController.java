@@ -1,10 +1,16 @@
 package com.who.controller;
 
+import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import com.who.service.MemberService;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -27,7 +33,7 @@ public class MemberController {
     }
 
     // 로그인 페이지
-    @GetMapping("/login")
+    @GetMapping("/login") 
     public String dispLogin() {
         return "login/login";
     }
@@ -52,15 +58,33 @@ public class MemberController {
 
     // 내 정보 페이지
     @GetMapping("/myinfo")
-    public String dispMyInfo() {
-        return "login/myinfo";
+    public String dispMyInfo(Model model) {
+    	List<MemberDto> memberList = memberService.getMemberlist();
+
+        model.addAttribute("memberList", memberList);
+        return "myticket/myinfo";
+    }
+    
+    @GetMapping("/resignup/{no}")
+    public String resignup(@PathVariable("no") Long no, Model model) {
+        MemberDto memberDto = memberService.getMember(no);
+
+        model.addAttribute("memberDto", memberDto);
+        return "myticket/resignup";
     }
 
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {
-        return "login/admin";
+        return "admin/admin";
     }
+    
+    @GetMapping("/admin/member")
+    public String list(Model model) {
+        List<MemberDto> memberList = memberService.getMemberlist();
 
+        model.addAttribute("memberList", memberList);
+        return "admin/Member";
+    }
 
 }

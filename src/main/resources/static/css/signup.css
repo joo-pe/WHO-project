@@ -10,8 +10,8 @@ body {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 #logo {
-    width: 240px;
-    height: 44px;
+    width: 100px;
+    height: 60px;
     cursor: pointer;
 }
 
@@ -83,7 +83,6 @@ input {
 }
 
 .step_url {
-    /*@naver.com*/
     position: absolute;
     top: 16px;
     right: 13px;
@@ -172,7 +171,7 @@ select {
     border: 0;
     cursor: pointer;
     color: #fff;
-    background-color: #08a600;
+    background-color: #81F7D8;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
