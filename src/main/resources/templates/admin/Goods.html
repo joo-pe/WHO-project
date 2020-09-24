@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<title>상품관리</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Chrome">
+<meta name="viewport" content=" width=1030, user-scalable=yes
+ ">
+<meta name="description" content="WHOTicket">
+	<link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.1.css}">
+	<link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/css/nanumgothic.css}">
+	<link rel="stylesheet" th:href="@{/css/admin.css}">
+<!--[if lt IE 9]>
+<script src="/Skin/js/html5shiv.min.js"></script>
+<script src="/Skin/js/respond.min.js"></script>
+<script src="/Skin/js/selectivizr-min.js"></script>
+<![endif]-->
+	<script th:src="@{/js/jquery-1.11.3.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/jquery.form.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/jquery-ui.min.js}" charset="utf8"></script>
+	<script th:src="@{/js/common.js} " charset="utf8"></script>
+	<script th:src="@{/js/contents.js}" charset="utf8"></script>
+	<script th:src="@{/js/admin.js}" charset="utf8"></script>
+	<script th:src="@{/js/admin.extend.js}" charset="utf8"></script>
+	<script th:src="@{/js/goods.js} " charset="utf8"></script>
+</head>
+<style>
+/* 코딩한 body에 추가 */
+body { 
+padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+padding-top: env(safe-area-inset-top); /* iOS 11.2 */ 
+color:black;
+}
+
+</style>
+<body><div id="wrap">
+<header id="header">
+<div id="header_wrap">
+<h1><a th:href="@{/admin}"><span>ADMINISTRATOR</span></a></h1>
+<nav id="gnb">
+<ul>
+<li class="home"><a th:href="@{/}" target="_blank">홈으로</a></li>
+		<li class="logout"><a th:href="@{/}">로그아웃</a></li>
+</ul>
+</nav>
+<nav id="tnb">
+<ul>
+<!-- <li><span><a href="/BHAdm/Config">사이트관리</a></span><ol>
+		<li><span><a href="/BHAdm/Config">환경설정</a></span></li>
+		<li><span><a href="/BHAdm/Config/Area">지점별 환경설정</a></span></li>
+		<li><span><a href="/BHAdm/BannerManager">배너관리</a></span></li>
+		<li><span><a href="/BHAdm/PopupManager">팝업관리</a></span></li>
+		<li><span><a href="/BHAdm/MPopupManager">모바일 팝업관리</a></span></li>
+		<li><span><a href="/BHAdm/AlramManager">알림관리</a></span></li>
+		<li><span><a href="/BHAdm/Config/Terms">사이트 내용관리</a></span></li>
+		<li><span><a href="/BHAdm/Config/PGTerms">PG 약관 내용관리</a></span></li>
+		<li><span><a href="/BHAdm/Push">App 알림</a></span></li></ol></li> -->
+		<li><span><a th:href="@{admin/goods/Goods}">상품관리</a></span>
+		<ol>
+		<li><span><a th:href="@{/admin/goods/Goods}">상품관리</a></span></li>
+		<li><span><a th:href="@{admin/goods/Category}">카테고리관리</a></span></li>
+		<!-- <li><span><a href="/admin/goods/UploadGoods">상품일괄등록</a></span></li> -->
+		</ol>
+		</li>
+		
+		<li><span><a th:href="@{/admin/order/Order}">주문관리</a></span>
+		<ol>
+		<li><span><a th:href="@{/admin/order/Order}">전체주문</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order20">주문완료</a></span></li> -->
+		<li><span><a th:href="@{/admin/order/Pay}">결제완료</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order40">상품준비중</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order50">발송완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order60">배송완료</a></span></li> -->
+		<li><span><a th:href="@{/admin/order/Apprefund}">반품신청</a></span></li>
+		<li><span><a th:href="@{/admin/order/Refund}">반품완료</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Mall/Order-10">주문취소요청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-110">주문취소완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-30">교환신청</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Order-130">교환완료</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Statistics">주문통계</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Receipt">영수증신청내역</a></span></li>-->
+		</ol>
+		</li>
+		
+		<!-- <li><span><a href="/BHAdm/Mall/Coupon">프로모션/쿠폰</a></span>
+		<ol><li><span><a href="/BHAdm/Mall/Coupon">쿠폰관리</a></span></li>
+		<li><span><a href="/BHAdm/Mall/CouponHis">쿠폰이력관리</a></span></li>
+		<li><span><a href="/BHAdm/Mall/Event">이벤트관리</a></span></li></ol></li>-->
+		
+		<li><span><a th:href="@{/admin/Member}">회원관리</a></span></li>
+		
+		<li><span><a th:href="@{/admin/board/BoardManager}">게시판관리</a></span>
+		<ol>
+		<li><span><a th:href="@{/admin/board/BoardManager}">게시판관리</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
+		<li><span><a th:href="@{/admin/board/FAQ}">FAQ</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
+		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
+		<li><span><a th:href="@{/admin/board/notice}">공지사항</a></span></li>
+		<!-- <li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
+		<li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
+		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span></li>-->
+		</ol>
+		</li>
+		
+		<!-- <li><span><a href="/BHAdm/Mall/StoreArea">지점관리</a></span>
+		<ol><li><span><a href="/BHAdm/Mall/StoreArea">지점지역관리</a></span></li></ol>
+		</li><li><span><a href="/BHAdm/DashBoard">통계/엑셀</a></span></li> -->
+</ul>
+</nav>
+</div>
+</header>
+<div id="container">
+<div id="containerWrap">
+<meta name="viewport" content="width=1500, user-scalable=yes">
+<div id="contents" class="GoodsList">
+<h2>상품관리</h2>
+<form id="idxSchForm" name="idxSchForm" method="get" action="/BHAdm/Mall/Goods/Index" class="searchForm">
+<section class="searchField">
+<input type="hidden" name="slide" value="up">
+<div class="default">
+<dl class="keyword">
+<dt>상품명</dt>
+<dd><input type="text" name="keyword" value=""></dd>
+</dl>
+<dl class="code">
+<dt>상품코드</dt>
+<dd><input type="text" name="code" value=""></dd>
+</dl>
+</div>
+<div class="extend">
+<dl class="category">
+<dt>분류</dt>
+<dd class="categorySelect"></dd>
+
+<dt>매장</dt>
+<dd>
+<input type="hidden" name = "scode" id="scode" value="">
+<!-- 
+
+<select id="SearchStore" name="SearchStore" >
+<option value="">전체매장</option>
+  
+</select>
+ -->
+ 
+</dd>
+</dl>
+
+
+
+
+
+
+<dl class="price">
+<dt>판매가</dt>
+<dd>
+<input type="text" name="price_begin" class="numberformat" value=""> 원
+~
+<input type="text" name="price_end" class="numberformat" value=""> 원
+</dd>
+</dl>
+<dl class="rPrice">
+<dt>소비자가</dt>
+<dd>
+<input type="text" name="retail_price_begin" class="numberformat" value=""> 원
+~
+<input type="text" name="retail_price_end" class="numberformat" value=""> 원
+</dd>
+</dl>
+<dl class="tPrice">
+<dt>공급가</dt>
+<dd>
+<input type="text" name="trade_price_begin" class="numberformat" value=""> 원
+~
+<input type="text" name="trade_price_end" class="numberformat" value=""> 원
+</dd>
+</dl>
+<!-- 
+<dl class="regDate">
+<dt>등록일</dt>
+<dd>
+<span class="dateInput"><input type="text" name="reg_date_begin" class="date datePicker" value="" maxlength="10"></span>
+~
+<span class="dateInput"><input type="text" name="reg_date_end" class="date datePicker" value="" maxlength="10"></span>
+</dd>
+</dl>
+-->
+<!-- <dl class="sOpt">
+<dt>진열여부</dt>
+<dd>
+<label class="radio"><input type="radio" name="sale_option" value="y"><span>진열</span></label></dd>
+</dl> -->
+</div>
+</section>
+<footer>
+<button type="submit" class="mBtn mBtn2">검색</button> <button type="reset" class="mBtn resetSearchBtn">초기화</button> <button type="button" class="mBtn detailSearchBtn">상세검색</button></footer>
+</form>
+<table class="list">
+<colgroup>
+<col style="width:5%;">
+<col style="width:10%;">
+<col style="">
+<col style="width:10%;">
+<col style="width:7%;">
+<col style="width:6%;">
+<col style="width:6%;">
+<col style="width:6%;">
+<col style="width:6%;">
+</colgroup>
+<thead>
+<tr>
+<th>번호</th>
+<th>작은이미지</th>
+<th>상품명</th>
+<th>판매가</th>
+<th>재고</th>
+<th>배송비</th>
+<th>진열여부</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13052</td>
+<td><img src="/Data/Upload/Mall/201803/50_20HP5TRX9H5NH.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483646">아이시안블루베리</a> 8801007219806</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483646" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483646" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13051</td>
+<td><img src="/Data/Upload/Custom/50_8801062518210_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483643">1000칸쵸</a> 8801062518210</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483643" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483643" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13050</td>
+<td><img src="/Data/Upload/Custom/50_8801019604638_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483642">10오사쯔</a> 8801019604638</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483642" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483642" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13049</td>
+<td><img src="/Data/Upload/Custom/50_8801019205507_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483641">10자유시간아몬드</a> 8801019205507</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483641" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483641" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13048</td>
+<td><img src="/Data/Upload/Custom/50_8801062318490_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483640">10자일리톨오리지널</a> 8801062318490</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483640" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483640" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13047</td>
+<td><img src="/Data/Upload/Custom/50_8801111186582_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483639">10참크래커</a> 8801111186582</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483639" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483639" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13046</td>
+<td><img src="/Data/Upload/Custom/50_8801204307788_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483638">120디저트누룽지</a> 8801204307788</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483638" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483638" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13045</td>
+<td><img src="/Data/Upload/Custom/50_8801204307801_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483637">120디저트종합</a> 8801204307801</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483637" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483637" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13044</td>
+<td><img src="/Data/Upload/Custom/50_8801019204425_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483636">13000미니자유시간</a> 8801019204425</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483636" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483636" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+<tr>
+<td>13043</td>
+<td><img src="/Data/Upload/Custom/50_8801204307979_s.jpg"></td>
+<td class="goods_name"><a href="/BHAdm/Mall/Goods/Modify/2147483635">130후르츠캔디</a> 8801204307979</td>
+<td>
+<span class="strike">1,000원</span><br>
+1,000원<br>
+</td>
+<td>무제한</td>
+<td><br>(선불)</td>
+<td>진열</td>
+<td>
+<a href="/BHAdm/Mall/Goods/PriceModify/2147483635" class="sBtn">점포별 가격설정</a><br>
+</td>
+<td>
+<a href="/BHAdm/Mall/Goods/GoodsMedal/2147483635" class="sBtn">점포별 메달설정</a><br>
+</td>
+</tr>
+</tbody>
+</table>
+<!--<div class="left_btn"><a href="/BHAdm/Mall/Goods/Write" class="mBtn">상품등록</a></div>-->
+<div class="paging"><div class="paging"> <span class="first" href="/BHAdm/Mall/Goods/?page=1" data-page="1">First</span>  <span class="prev" href="/BHAdm/Mall/Goods/?page=0" data-page="0">Prev</span>  <span class="prevp" href="/BHAdm/Mall/Goods/?page=0" data-page="0">Back</span>  <strong>1</strong>  <a href="/BHAdm/Mall/Goods/?page=2" data-page="2">2</a>  <a href="/BHAdm/Mall/Goods/?page=3" data-page="3">3</a>  <a href="/BHAdm/Mall/Goods/?page=4" data-page="4">4</a>  <a href="/BHAdm/Mall/Goods/?page=5" data-page="5">5</a>  <a href="/BHAdm/Mall/Goods/?page=6" data-page="6">6</a>  <a href="/BHAdm/Mall/Goods/?page=7" data-page="7">7</a>  <a href="/BHAdm/Mall/Goods/?page=8" data-page="8">8</a>  <a href="/BHAdm/Mall/Goods/?page=9" data-page="9">9</a>  <a href="/BHAdm/Mall/Goods/?page=10" data-page="10">10</a>  <a class="nextp" href="/BHAdm/Mall/Goods/?page=2" data-page="2">Forward</a>  <a class="next" href="/BHAdm/Mall/Goods/?page=11" data-page="11">Next</a>  <a class="last" href="/BHAdm/Mall/Goods/?page=1306" data-page="1306">Last</a> </div></div>
+</div>
+<script>
+App.GoodsCategory.Init('/BHAdm/Mall/Goods/GetSubCategory');
+App.GoodsCategory.SearchInit();
+App.GoodsCategory.getRoot('#idxSchForm .categorySelect', '');
+$('#idxSchForm').data('reset', function(){
+$('#idxSchForm').submit();
+});
+</script></div>
+</div>
+<footer id="footer">
+<div id="footer_wrap"></div>
+</footer>
+</div>
+<script>
+$(document).ready(function(){
+if(JCM.getCookie('managerSideView') == 'no'){
+$('#wrap').addClass('sideHidden');
+}
+$('#containerWrap').append('<aside id="sideMenu"><a href="#" id="sideClose" title="닫기"><i class="fa fa-angle-left"></i></a><h2>' + ( $('#tnb ul > li.Active').length ? $('#tnb ul > li.Active a').eq(0).text() : '' ) + '</h2><ul>'+( $('#tnb ul > li.Active ol').length ? $('#tnb ul > li.Active ol').html() : '' ) +'</ul></aside>')
+$(document).on('click', '#sideClose', function(e){
+e.preventDefault();
+if($('#wrap').hasClass('sideHidden')){
+$('#wrap').removeClass('sideHidden');
+JCM.setCookie('managerSideView', 'yes');
+}else{
+$('#wrap').addClass('sideHidden');
+JCM.setCookie('managerSideView', 'no');
+}
+});
+$('#container').scroll(function(){
+sideScroll();
+});
+sideScroll();
+});
+function sideScroll(){
+var st = $('#container').scrollTop();
+if(st < 0) st = 0;
+$('#sideMenu').css({
+'padding-top' : st + 'px'
+});
+$('#sideClose').css({
+'top' : (st + 10) + 'px'
+});
+}
+</script>
+</body>
+</html>

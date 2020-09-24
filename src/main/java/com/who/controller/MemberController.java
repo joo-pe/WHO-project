@@ -27,7 +27,7 @@ public class MemberController {
     }
 
     // 로그인 페이지
-    @GetMapping("/login")
+    @GetMapping("/login") 
     public String dispLogin() {
         return "login/login";
     }
@@ -59,8 +59,7 @@ public class MemberController {
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {
-        return "login/admin";
+        return "admin/admin";
     }
-
 
 }

@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}"/>
-    <link rel="stylesheet" href="new_main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -20,8 +17,8 @@
 
 <!-- header -->
         <div id="header">
-            <a href="#" target="_blank" title="WHOTicket 페이지 보러가기">
-            	<img th:src="@{/image/logo.png}" height="60px" id="logo">
+            <a href="/" target="_blank" title="WHOTicket HOME">
+            	<img th:src="@{/image/logo.png}" id="logo">
             </a>
         </div>
 
@@ -35,27 +32,27 @@
                 <!-- ID -->
                 <div>
                     <h3 class="join_title">
-                        <label for="id">아이디</label>
+                        <label for="id">EMAIL</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" id="email" name="email" class="int" maxlength="50" placeholder="이메일을 입력해주세요">       
+                        <input type="text" id="email" name="email" class="int" maxlength="50" placeholder="Email">       
                     </span>
                     <span class="error_next_box"></span>
                 </div>
 
                 <!-- PW1 -->
                 <div>
-                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <h3 class="join_title"><label for="pswd1">PASSWORD</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pass1" name="password" class="int" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                        <input type="password" id="pass1" name="password" class="int" maxlength="20" placeholder="Password">
                         <span id="alertTxt">사용불가</span>
                         <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
 
-                <!-- PW2 -->
-                <!-- <div>
+                <!-- <!-- PW2
+                <div>
                     <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                     <span class="box int_pass_check">
                         <input type="text" id="pass2" name="password" class="int" maxlength="20" placeholder="비밀번호를 재입력해주세요">
@@ -66,18 +63,18 @@
 
                 <!-- NAME -->
                 <div>
-                    <h3 class="join_title"><label for="name">이름</label></h3>
+                    <h3 class="join_title"><label for="name">Name</label></h3>
                     <span class="box int_name">
-                        <input type="text" id="name" name="name" class="int" maxlength="20" placeholder="이름를 입력해주세요">
+                        <input type="text" id="name" name="name" class="int" maxlength="20" placeholder="Name">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
                 
                  <!-- BIRTH -->
                 <div>
-                    <h3 class="join_title"><label for="birthday">생년월일</label></h3>
+                    <h3 class="join_title"><label for="birthday">BIRTHDAY</label></h3>
                     <span class="box int_name">
-                        <input type="text" id="birthday" name="birthday" class="int" maxlength="20" placeholder="생년월일를 입력해주세요">
+                        <input type="date" id="birthday" name="birthday" class="int" maxlength="20" placeholder="Birthday">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
@@ -157,9 +154,9 @@
 
                 <!-- MOBILE -->
                 <div>
-                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                    <h3 class="join_title"><label for="phoneNo">PHONE</label></h3>
                     <span class="box int_mobile">
-                        <input type="tel" id="mobile" name="phone" class="int" maxlength="15" placeholder="전화번호 입력" >
+                        <input type="tel" id="mobile" name="phone" class="int" maxlength="15" placeholder="Phone Number" >
                     </span>
                     <span class="error_next_box"></span>    
                 </div>
@@ -167,7 +164,7 @@
 
                 <!-- JOIN BTN-->
                 <div class="btn_area">
-                   <button type="submit" id="btnJoin">가입하기</button>
+                   <button type="submit" id="btnJoin">Sign up</button>
                 </div>
 
                 

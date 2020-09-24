@@ -14,6 +14,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
+                	<li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a></li>
                     <li><a sec:authorize="isAnonymous()" th:href="@{/login}">SIGN IN</a></li>
                     <li><a sec:authorize="isAnonymous()" th:href="@{/signup}">JOIN IN</a></li>
                     <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
@@ -35,7 +36,7 @@
                     </li>
                     <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/myinfo}">MY Tickets</a></li>
                     <li><a th:href="@{/faq}">FAQ</a></li>
-                    <li><a href="#tour">NOTICE</a></li>
+                    <li><a th:href="@{/notice}">NOTICE</a></li>
                 </ul>
             </div>
         </div>
