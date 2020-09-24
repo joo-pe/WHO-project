@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<title>하이웨이마트</title>
+<title>WHOTICKET ADMIN</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Chrome">
@@ -145,30 +145,44 @@ color:black;
 </div>
 <table class="list">
 <colgroup>
-<col style="width:5%">
-<col style="width:7%">
-<col style="width:9%">
-<col style="">
-<col style="">
-<col style="width:12%">
-<col style="width:8%">
-<col style="width:8%">
-<col style="width:10%">
-<col style="width:8%">
-<col style="width:7%">
-<col style="width:5%">
+<col style="width:5%;">
+<col style="width:30%;">
+<col style="width:15%;">
+<col style="width:15%;">
+<col style="width:10%;">
+<col style="width:10%;">
 </colgroup>
 <thead>
 <tr>
 <th>번호</th>
-<th>아이디</th>
+<th>이메일</th>
 <th>이름</th>
 <th>휴대폰번호</th>
+<th>생년월일</th>
 <th>등록일</th>
 </tr>
 </thead>
-<tbody>
-
+<!-- CONTENTS !-->
+    <tr th:each="member : ${memberList}">
+        <td>
+            <span th:text="${member.no}"></span>
+        </td>
+        <td>
+             <span th:text="${member.email}"></span>
+        </td>
+        <td>
+            <span th:text="${member.name}"></span>
+        </td>
+        <td>
+            <span th:text="${member.phone}"></span>
+        </td>
+        <td>
+            <span th:text="${member.birthday}"></span>
+        </td>
+        <td>
+            <span th:text="${#temporals.format(member.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+        </td>
+    </tr>
 </tbody>
 </table>
 

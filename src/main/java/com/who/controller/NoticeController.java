@@ -15,61 +15,61 @@ import java.util.List;
 public class NoticeController {
     private NoticeService noticeService;
 
-    @GetMapping("/notice")
+    @GetMapping("/admin/notice")
     public String list(Model model) {
         List<NoticeDto> noticeList = noticeService.getNoticelist();
 
         model.addAttribute("noticeList", noticeList);
-        return "notice/list";
+        return "admin/notice/list";
     }
 
-    @GetMapping("/post1")
+    @GetMapping("/admin/post1")
     public String write() {
-        return "notice/write";
+        return "admin/notice/write";
     }
 
-    @PostMapping("/post1")
+    @PostMapping("/admin/post1")
     public String write(NoticeDto noticeDto) {
         noticeService.savePost(noticeDto);
 
-        return "redirect:/notice";
+        return "redirect:/admin/notice";
     }
 
-    @GetMapping("/post1/{no}")
+    @GetMapping("/admin/post1/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         NoticeDto noticeDto = noticeService.getPost(no);
 
         model.addAttribute("noticeDto", noticeDto);
-        return "notice/detail";
+        return "admin/notice/detail";
     }
 
-    @GetMapping("/post1/edit/{no}")
+    @GetMapping("/admin/post1/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
         NoticeDto noticeDto = noticeService.getPost(no);
 
         model.addAttribute(("noticeDto"), noticeDto);
-        return "notice/update";
+        return "admin/notice/update";
     }
 
-    @PutMapping("/post1/edit/{no}")
+    @PutMapping("/admin/post1/edit/{no}")
     public String update(NoticeDto noticeDto) {
         noticeService.savePost(noticeDto);
 
-        return "redirect:/notice";
+        return "redirect:/admin/notice";
     }
     
-    @DeleteMapping("/post1/{no}")
+    @DeleteMapping("/admin/post1/{no}")
     public String delete(@PathVariable("no") Long no) {
         noticeService.deletePost(no);
 
-        return "redirect:/notice";
+        return "redirect:/admin/notice";
     }
 
-    @GetMapping("/notice/search")
+    @GetMapping("/admin/notice/search")
     public String search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<NoticeDto> noticeDtoList = noticeService.searchPosts(keyword);
 
         model.addAttribute("noticeList", noticeDtoList);
-        return "notice/list";
+        return "admin/notice/list";
     }
 }
