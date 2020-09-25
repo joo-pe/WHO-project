@@ -1,6 +1,9 @@
 package com.who.domain.entity;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

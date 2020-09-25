@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form  action="/post" method="post">
+<form action="/post" method="post">
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     제목 : <input type="text" name="title"> <br>
     작성자 : <input type="text" name="writer"> <br>
     <textarea name="content"></textarea><br>

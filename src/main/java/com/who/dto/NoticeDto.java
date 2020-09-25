@@ -1,6 +1,9 @@
 package com.who.dto;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
 import com.who.domain.entity.NoticeEntity;
 import lombok.*;
 
@@ -37,4 +40,8 @@ public class NoticeDto {
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
