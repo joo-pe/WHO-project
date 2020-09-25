@@ -449,7 +449,7 @@ iframe {
     padding-left: 15px;
     padding-right: 15px;
   }
-=======
+
 body {
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;
@@ -626,4 +626,5 @@ footer .glyphicon {
     .logo {
         font-size: 150px;
     }
+  }
 }

@@ -18,11 +18,9 @@ public class NoticeService {
     private NoticeRepository noticeRepository;
 
     @Transactional
-<<<<<<< HEAD
-    public Long savePost1(NoticeDto noticeDto) {
-=======
+
     public Long savePost(NoticeDto noticeDto) {
->>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
+
         return noticeRepository.save(noticeDto.toEntity()).getId();
     }
 
@@ -60,15 +58,12 @@ public class NoticeService {
 
         return noticeDto;
     }
-<<<<<<< HEAD
 
-=======
     
     @Transactional
     public void deletePost(Long id) {
         noticeRepository.deleteById(id);
     }
->>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
 
     @Transactional
     public List<NoticeDto> searchPosts(String keyword) {

@@ -1,9 +1,5 @@
 package com.who.controller;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
 import com.who.dto.NoticeDto;
 import com.who.service.NoticeService;
 
@@ -34,11 +30,7 @@ public class NoticeController {
 
     @PostMapping("/post1")
     public String write(NoticeDto noticeDto) {
-<<<<<<< HEAD
-        noticeService.savePost1(noticeDto);
-=======
-        noticeService.savePost(noticeDto);
->>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
+
 
         return "redirect:/notice";
     }
@@ -61,9 +53,7 @@ public class NoticeController {
 
     @PutMapping("/post1/edit/{no}")
     public String update(NoticeDto noticeDto) {
-<<<<<<< HEAD
-        noticeService.savePost1(noticeDto);
-=======
+
         noticeService.savePost(noticeDto);
 
         return "redirect:/notice";
@@ -72,8 +62,6 @@ public class NoticeController {
     @DeleteMapping("/post1/{no}")
     public String delete(@PathVariable("no") Long no) {
         noticeService.deletePost(no);
->>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
-
         return "redirect:/notice";
     }
 
