@@ -42,6 +42,6 @@ dependencies {
     runtimeOnly 'org.webjars:bootstrap:4.5.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    compile 'org.springframework.security.oauth:spring-security-oauth2'
+    compile 'org.springframework.security.oauth:spring-security-oauth2:2.3.2.RELEASE'
     compile 'org.springframework.boot:spring-boot-devtools'
 }

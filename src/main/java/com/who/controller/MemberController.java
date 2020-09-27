@@ -1,22 +1,31 @@
 package com.who.controller;
 
+import com.who.domain.MemberDetail;
+import com.who.domain.entity.MemberEntity;
+import com.who.domain.repository.MemberRepository;
 import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import com.who.service.MemberService;
 import lombok.AllArgsConstructor;
 
+import java.security.Principal;
 import java.util.List;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @AllArgsConstructor
 public class MemberController {
     private MemberService memberService;
+    private MemberRepository memberRepository;
 
     //회원가입 페이지
     @GetMapping("/signup")
@@ -56,12 +65,13 @@ public class MemberController {
         return "login/denied";
     }
 
-    // 내 정보 페이지
+    // 현재 사용자 정보 가져오기
     @GetMapping("/myinfo")
-    public String dispMyInfo(Model model) {
-    	List<MemberDto> memberList = memberService.getMemberlist();
+    public String dispCuurentUserInfo(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+        String email = memberDetail.getUsername();
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
 
-        model.addAttribute("memberList", memberList);
+        model.addAttribute("currentUser", memberEntity);
         return "myticket/myinfo";
     }
     

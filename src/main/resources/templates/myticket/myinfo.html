@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>WHO TICKET</title>
     <meta charset="utf-8">
@@ -25,26 +25,25 @@
 
 	<!-- <form th:action="@{'/get/{no}' + ${memberDto.no}}" method="get"> -->
   <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
+
+      <!-- Left Column -->
     <div class="w3-third">
-    
+
       <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container" align="center" th:each="member : ${memberDto}">
+        <div class="w3-display-container" align="center">
         	<img alt="" src="/image/logo.png" width="100px">
            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>
-           <span th:text="${member.name}"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>
+           <span th:text="${currentUser.name}"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>
            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>
-           <span th:text="${member.email}"></span></p>
+           <span th:text="${currentUser.email}"></span></p>
         </div>
-        
-        <div class="w3-container" align="center" th:each="member : ${memberDto}">
+
+        <div class="w3-container" align="center">
           <hr>
-			<form th:action="@{'/resignup/' + ${member.no}}" method="get" >
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>회원가입 수정</b></p>
-          <div class="w3-light-grey w3-round-xlarge" th:each="member : ${memberList}">
-         		 <button type="submit">회원 가입 수정</button>
+			<form th:action="@{'/resignup/' + ${currentUser.id}}" method="get" >
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>회원 정보 수정</b></p>
+          <div class="w3-light-grey w3-round-xlarge">
+         		 <button type="submit">회원 정보 수정</button>
           </div>
           </form>
           <br>
@@ -55,7 +54,7 @@
             <button type="submit">비밀번호 설정변경</button>
           </div>
           </form>
-          
+
           <br>
         </div>
       </div><br>
