@@ -1,12 +1,15 @@
 package com.who.controller;
 
-import com.who.dto.FaqDto;
+import com.who.domain.MemberDetail;
+import com.who.domain.entity.MemberEntity;
+import com.who.domain.repository.MemberRepository;
 import com.who.dto.MemberDto;
 import com.who.service.MemberService;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +20,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class MemberController {
     private MemberService memberService;
+    private MemberRepository memberRepository;
 
     //회원가입 페이지
     @GetMapping("/signup")
     public String dispSignup() {
-        return "login/signup";
+        return "login/signup2";
     }
 
     //회원가입 처리
@@ -56,15 +60,17 @@ public class MemberController {
         return "login/denied";
     }
 
-    // 내 정보 페이지
+    // 현재 사용자 정보 가져오기
     @GetMapping("/myinfo")
-    public String dispMyInfo(Model model) {
-    	List<MemberDto> memberList = memberService.getMemberlist();
+    public String dispCuurentUserInfo(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+        String email = memberDetail.getUsername();
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
 
-        model.addAttribute("memberList", memberList);
+        model.addAttribute("currentUser", memberEntity);
         return "myticket/myinfo";
     }
     
+    //현재 사용자 정보변경 페이지
     @GetMapping("/resignup/{no}")
     public String resignup(@PathVariable("no") Long no, Model model) {
         MemberDto memberDto = memberService.getMember(no);
@@ -72,13 +78,14 @@ public class MemberController {
         model.addAttribute("memberDto", memberDto);
         return "myticket/resignup";
     }
-
+    
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {
         return "admin/admin";
     }
     
+    // 어드민 회원명단 페이지
     @GetMapping("/admin/member")
     public String list(Model model) {
         List<MemberDto> memberList = memberService.getMemberlist();
