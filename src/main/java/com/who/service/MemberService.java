@@ -1,17 +1,12 @@
 package com.who.service;
 
-import com.who.domain.Role;
-import com.who.domain.entity.FaqEntity;
+import com.who.domain.MemberDetail;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
-import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,25 +31,33 @@ public class MemberService implements UserDetailsService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
 
-        return memberRepository.save(memberDto.toEntity()).getNo();
+        return memberRepository.save(memberDto.toEntity()).getId();
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<MemberEntity> userEntityWrapper = memberRepository.findByEmail(email);
-        MemberEntity userEntity = userEntityWrapper.get();
-
-        List<GrantedAuthority> authorities = new ArrayList<>();
-
-        if(("admin").equals(email)) {
-            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
-        } else {
-            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+        if(memberEntity == null) {
+            throw  new UsernameNotFoundException("Could not find user with that email");
         }
+        
+        return new MemberDetail(memberEntity);
 
-        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
+//        Optional<MemberEntity> userEntityWrapper = memberRepository.findByEmail(email);
+//        MemberEntity userEntity = userEntityWrapper.get();
+//
+//        List<GrantedAuthority> authorities = new ArrayList<>();
+//
+//        if(("admin").equals(email)) {
+//            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+//        } else {
+//            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
+//        }
+//
+//        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
     }
-    
+
+
     @Transactional
     public List<MemberDto> getMemberlist() {
         List<MemberEntity> memberEntities = memberRepository.findAll();
@@ -62,12 +65,14 @@ public class MemberService implements UserDetailsService {
 
         for (MemberEntity memberEntity : memberEntities) {
             MemberDto memberDto = MemberDto.builder()
-                    .no(memberEntity.getNo())
+                    .id(memberEntity.getId())
                     .email(memberEntity.getEmail())
                     .name(memberEntity.getName())
                     .phone(memberEntity.getPhone())
                     .birthday(memberEntity.getBirthday())
                     .createdDate(memberEntity.getCreatedDate())
+                    .enabled(memberEntity.isEnabled())
+//                    .roles(memberEntity.getRoles())
                     .build();
 
             memberDtoList.add(memberDto);
@@ -77,17 +82,19 @@ public class MemberService implements UserDetailsService {
     }
     
     @Transactional
-    public MemberDto getMember(Long no) {
-        Optional<MemberEntity> memberEntityWraper = memberRepository.findById(no);
+    public MemberDto getMember(Long id) {
+        Optional<MemberEntity> memberEntityWraper = memberRepository.findById(id);
         MemberEntity memberEntity = memberEntityWraper.get();
 
         MemberDto memberDto = MemberDto.builder()
-        		.no(memberEntity.getNo())
+        		.id(memberEntity.getId())
                 .email(memberEntity.getEmail())
                 .name(memberEntity.getName())
                 .phone(memberEntity.getPhone())
                 .birthday(memberEntity.getBirthday())
                 .createdDate(memberEntity.getCreatedDate())
+                .enabled(memberEntity.isEnabled())
+//                .roles(memberEntity.getRoles())
                 .build();
 
         return memberDto;

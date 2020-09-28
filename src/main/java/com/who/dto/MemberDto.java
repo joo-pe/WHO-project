@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class MemberDto {
-    private Long no;
+	
+    private Long id;
     private String email;
     private String password;
     private String name;
@@ -17,24 +18,29 @@ public class MemberDto {
     private String birthday;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
+    private boolean enabled = true;
 
     public MemberEntity toEntity() {
+    	
         MemberEntity memberEntity = MemberEntity.builder()
-                .no(no)
+                .id(id)
                 .email(email)
                 .password(password)
                 .name(name)
                 .phone(phone)
                 .birthday(birthday)
+                .enabled(enabled)
                 .build();
         return memberEntity;
     }
 
     @Builder
-    public MemberDto(Long no, String email, String password,
-    		String name, String phone, String birthday, 
-    		LocalDateTime createdDate, LocalDateTime modifiedDate) {
-    	this.no = no;
+    public MemberDto(Long id, String email, String password,
+    				String name, String phone, String birthday, 
+    				LocalDateTime createdDate, LocalDateTime modifiedDate,
+    				Boolean enabled) {
+    	
+    	this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -42,5 +48,6 @@ public class MemberDto {
         this.birthday = birthday;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
+        this.enabled = enabled;
     }
 }
