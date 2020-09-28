@@ -48,7 +48,7 @@
           </form>
           <br>
 
-			<form th:action="@{/repass}" method="get">
+			<form th:action="@{'/repass/' + ${currentUser.id}}" method="get">
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>비밀번호 설정변경</b></p>
           <div class="w3-light-grey w3-round-xlarge">
             <button type="submit">비밀번호 설정변경</button>

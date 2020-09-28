@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -76,11 +77,28 @@ public class MemberController {
     }
     
     @GetMapping("/resignup/{no}")
-    public String resignup(@PathVariable("no") Long no, Model model) {
-        MemberDto memberDto = memberService.getMember(no);
+    public String resignup(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+        String email = memberDetail.getUsername();
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
 
-        model.addAttribute("memberDto", memberDto);
+        model.addAttribute("currentUser", memberEntity);
         return "myticket/resignup";
+    }
+    
+    @GetMapping("/repass/{no}")
+    public String repass(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+        String email = memberDetail.getUsername();
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+
+        model.addAttribute("currentUser", memberEntity);
+        return "myticket/repass";
+    }
+    
+    @PutMapping("/resignup/update/{no}")
+    public String update(MemberDto memberDto) {
+        memberService.savePost(memberDto);
+
+        return "redirect:/myinfo";
     }
 
     // 어드민 페이지

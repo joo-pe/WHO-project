@@ -3,6 +3,7 @@ package com.who.service;
 import com.who.domain.MemberDetail;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
+import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
 
@@ -55,6 +56,11 @@ public class MemberService implements UserDetailsService {
 //        }
 //
 //        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
+    }
+    
+    @Transactional
+    public Long savePost(MemberDto memberDto) {
+        return memberRepository.save(memberDto.toEntity()).getId();
     }
 
 
