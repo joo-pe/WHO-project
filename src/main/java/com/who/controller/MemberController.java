@@ -6,10 +6,12 @@ import com.who.domain.repository.MemberRepository;
 import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import com.who.service.MemberService;
+
 import lombok.AllArgsConstructor;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
