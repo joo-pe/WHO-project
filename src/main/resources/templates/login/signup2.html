@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>WHO_TICKET : 회원가입</title>
-	<link rel= "stylesheet" type="text/css" href="/static/css/process.css">
+	<link rel= "stylesheet" type="text/css" href="/css/siginup2.css">
 
     <meta name="decorator" content="V2_JOIN">
    
@@ -17,16 +17,23 @@
           $( '.ab' ).prop( 'checked', this.checked );
         } );
       } );
+      
     </script>
 </head>
 <body>
+    
 <!-- 스킵네비게이션 : 웹접근성대응-->
 <div id="who">
     <a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;"><span>본문으로 바로가기</span></a>
 </div>
 <!-- //스킵네비게이션 -->
 <!-- header -->
-<div id="header" role="banner">
+ <div id="header">
+            <a href="/" target="_blank" title="WHOTicket HOME">
+            	<img th:src="@{/image/logo.png}" height="100" id="logo" >
+            </a>
+        </div>
+<div id="headers" role="banner">
     <h1><a href="http://localhost:8090/" class="h_logo"><span class="blind">WHO_TICKET</span></a></h1>
     <div class="lang">
         
@@ -381,7 +388,7 @@
 									<span class="input_chk">
 										<input type="checkbox" id="termsPrivacy" name="termsPrivacy" class="chk">
 										<label for="termsPrivacy" class="collect_personal">개인정보 수집 및 이용 동의<span class="terms_choice">(필수)</span></label>
-                                        <a href="#" id="termForChild" class="easy_guide" role="button" target="_blank"><span class="txt">어린이용 안내</span></a>
+                                        <a href="#" id="termForChild" class="easy_guide" role="button" target="_blank"><span class="txt">이용  안내</span></a>
 									</span>
                                 <div class="terms_box" tabindex="0" id="divPrivacy">
                                     <!-- 개인정보 수집 및 이용에 대한 안내 -->
@@ -595,17 +602,23 @@
                                                     </ul>
                         <span class="event_message" style="display:block">WHO_TICKET에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(WHO_TICKET앱 알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 WHO_TICKET 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.</span>
                         <span class="error" id="agreeMsg" style="display:none">WHO_TICKET 이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.</span>
+                        <hr>
+                        <a name='agreeBottom'></a>
+                    <div class="btn_area double">
+                         <span>
+                            <a href="http://localhost:8090/signup" id="btnAgree" class="btn_type btn_primary" aligin="right" role="button">확인</a>
+                        </span>
+                        <span>
+                            <a href="http://localhost:8090/login" id="btnAgree" class="btn_type btn_default" aligin="right" role="button">취소</a>
+                        </span>
+                       
+                    </div>
                     </div>
                     
                 </form>
 <!-- //약관동의 -->
 
-                    <a name='agreeBottom'></a>
-                    <div class="btn_area double">
-                         <span><!-- tg-text=terms_button_agree --><a href="http://localhost:8090/signup" id="btnAgree" class="btn_type btn_primary" role="button">확인     </a></span>
-                        <span><!-- tg-text=terms_button_cancel --><a href="http://localhost:8090/login" id="btnCancel" class="btn_type btn_default" role="button">취소   </a></span>
-                       
-                    </div>
+                    
             </div>
         </div>
     </div>
@@ -653,6 +666,9 @@
         })
 
         $("#btnAgree").click(function(event) {
+
+            var check = $(termsService)
+            //Check 가 다 눌렸는지 확인후 실핼
             clickcr(this, 'tos.agree', '', '', event);
             submitAgree();
             return false;
@@ -665,6 +681,7 @@
             if(agent == "M") {
                 location.href = url;
             } else {
+
                 window.open(url, "_blank");
             }
             return false;
@@ -748,15 +765,15 @@
 	<!-- footer -->
 	<div id="footer" role="contentinfo">
 		<ul>
-			<li><a href="http://   ">이용약관</a></li>
+			<li><a href="Newmem">이용약관</a></li>
 			<li><a href="http://localhost:8090/faq" target="_blank" >FAQ </a></li>
-		</ul>
-		<address>
-			<em><a href="http://localhost:8090/" target="_blank" class="logo"><span class="blind">WHO_TICKET</span></a></em>
-			<em class="copy">Copyright</em>
-			<em class="u_cri">&copy;</em>
+        </ul>
+		<address style="  width: 100px; height: 200px;">
+            <em><a href="http://localhost:8090/" target="_blank" class="logo">
+                <span class="blind">WHO_TICKET</span></a></em>
+            <em class="copy">Copyright&copy;</em>
+            <em class="u_cri"></em>
 			<a href="http://localhost:8090/" target="_blank" class="u_cra">WHO_TICKET.</a>
-			<span class="all_r">All Rights Reserved.</span>
 		</address>
 	</div>
 	<!-- //footer -->

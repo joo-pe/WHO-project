@@ -12,12 +12,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MemberController {
     private MemberService memberService;
 
+    
+//  //회원가입 페이지
+//    @GetMapping("/signup2")
+//    public String dispSignup() {
+//        return "process/signup";
+//    }
+    
+    
     //회원가입 페이지
-    @GetMapping("/signup")
+    @GetMapping("/signup2")
     public String dispSignup() {
+        return "login/signup2";
+    }
+    @GetMapping("/signup")
+    public String dispSignup2() {
         return "login/signup";
     }
-
     //회원가입 처리
     @PostMapping("/signup")
     public String execSignup(MemberDto memberDto) {
@@ -26,6 +37,7 @@ public class MemberController {
         return "redirect:/login";
     }
 
+    
     // 로그인 페이지
     @GetMapping("/login") 
     public String dispLogin() {
