@@ -3,7 +3,7 @@
 
 
 #who{
-
+text-align: center;
 }
 
 
@@ -48,13 +48,7 @@
 
 btnAgree{
 margin: 0, 0, 10px;
-    
-     
-
 }
-
-
-
 
  #footer { position: fixed; bottom: 0; width: 10%;
  }
