@@ -7,6 +7,7 @@ import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -56,6 +57,11 @@ public class MemberService implements UserDetailsService {
 //
 //        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
     }
+    
+    @Transactional
+    public Long savePost(MemberDto memberDto) {
+        return memberRepository.save(memberDto.toEntity()).getId();
+    }
 
 
     @Transactional
@@ -99,4 +105,16 @@ public class MemberService implements UserDetailsService {
 
         return memberDto;
     }
+    
+	public boolean userEmailCheck(String email, String name) {
+
+        MemberEntity memberentity = memberRepository.findMemberEntityByEmail(email);
+        if(memberentity!=null && memberentity.getName().equals(name)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+ 
 }

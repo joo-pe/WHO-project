@@ -39,8 +39,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-        		
+    	
+        		http
+        		.authorizeRequests()
         		.antMatchers("/", "/oauth2/**","/image/**","/login/**")
         		.permitAll()
                 // 페이지 권한 설정
@@ -51,7 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType()) 
                 .antMatchers("/google").hasAuthority(GOOGLE.getRoleType())
                 .anyRequest().authenticated()
-
+                .and()
+                
+                .csrf()
+    			.ignoringAntMatchers("/check/findPw/sendEmail")
+    			
                 .and() // 로그인 설정
                 .formLogin()
                 .loginPage("/login")
