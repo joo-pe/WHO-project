@@ -2,20 +2,74 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}"/>
+    <link rel="stylesheet" href="new_main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
-<h1>비밀번호 변경 창</h1>
-<hr>
+<div align="center">
+<img alt="" src="image/logo.png" width="200">
+</div>
 
+<form action="">
+<!-- wrapper -->
+        <div id="wrapper">
+
+            <!-- content-->
+            <div id="content">
+
+                <!-- ID -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">현재 비밀번호</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="password" id="pass1" name="password" class="int" maxlength="50" placeholder="현재 비밀번호">       
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+
+                <!-- PW1 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd2">새 비밀번호</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="password" id="pass1" name="password" class="int" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- PW2 -->
+                <div>
+                    <h3 class="join_title"><label for="name">새 비밀번호 확인</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="password" id="pass2" name="password" class="int" maxlength="20" placeholder="비밀번호를 재입력해주세요">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                
+               <!-- JOIN BTN-->
+                <div class="btn_area">
+                   <button type="submit" id="btnJoin">비밀번호 수정</button>
+                </div>
+
+            </div> 
+            <!-- content-->
+
+        </div> 
+        <!-- wrapper -->
+        </form>
 </body>
 </html>

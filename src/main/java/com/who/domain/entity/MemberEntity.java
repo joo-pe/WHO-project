@@ -13,7 +13,6 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@EqualsAndHashCode(callSuper=false, of = "email")
 @Table(name="member")
 public class MemberEntity extends TimeEntity{
 	

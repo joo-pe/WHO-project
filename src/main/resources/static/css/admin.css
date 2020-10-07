@@ -1899,7 +1899,7 @@ div.writeField, ul.writeField:after {
 }
 
 table.list {
-	width: 100%;
+	width: max-content;
 	font-size: 12px;
 }
 
@@ -3770,7 +3770,7 @@ table.list td.goods_name a {
 
 #optionSelect #goodsForm header {
 	padding: 15px 0;
-	border-top: 2px solid$red;
+	border-top: 2px solid red;
 	border-bottom: 1px solid #ccc;
 }
 
@@ -3831,7 +3831,7 @@ table.list td.goods_name a {
 #optionSelect #goodsForm form span.spPrice {
 	font-size: 17px;
 	line-height: 22px;
-	color: $red;
+	color: red;
 }
 
 #optionSelect #goodsForm form .selectBox, #optionSelect #goodsForm form .selectBox select
@@ -3892,7 +3892,7 @@ table.list td.goods_name a {
 }
 
 #optionSelect #goodsForm .btns #addCartBtn {
-	background: $red;
+	background: red;
 }
 
 #optionSelect #goodsForm #totalPrice {
