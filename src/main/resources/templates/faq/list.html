@@ -1,69 +1,3 @@
-<<<<<<< HEAD
-e------------------------------<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title>WHO TICKET</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-<!-- HEADER -->
-<div th:insert="common/header.html" id="header"></div>
-
-<a th:href="@{/post}">글쓰기</a>
-
-<table>
-    <thead>
-    <tr>
-        <th class="one wide">번호</th>
-        <th class="ten wide">글제목</th>
-        <th class="two wide">작성자</th>
-        <th class="three wide">작성일</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <!-- CONTENTS !-->
-    <tr th:each="faq : ${faqList}">
-        <td>
-            <span th:text="${faq.id}"></span>
-        </td>
-        <td>
-            <a th:href="@{'/post/' + ${faq.id}}">
-                <span th:text="${faq.title}"></span>
-            </a>
-        </td>
-        <td>
-            <span th:text="${faq.writer}"></span>
-        </td>
-        <td>
-            <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<!-- 검색 form -->
-<form action="/faq/search" method="GET">
-    <div>
-        <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-    </div>
-
-    <button>검색하기</button>
-</form>
-
-<!-- FOOTER -->
-<div th:insert="common/footer.html" id="footer"></div>
-</body>
-=======
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -81,51 +15,26 @@ e------------------------------<!DOCTYPE html>
 <body>
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
-
-<a th:href="@{/post}">글쓰기</a>
+<div align="center">
+<a th:insert="process/image.html"></a>
+<a th:href="@{/post}"></a>
 
 <table>
-    <thead>
-    <tr>
-        <th class="one wide">번호</th>
-        <th class="ten wide">글제목</th>
-        <th class="two wide">작성자</th>
-        <th class="three wide">작성일</th>
-    </tr>
-    </thead>
 
-    <tbody>
-    <!-- CONTENTS !-->
-    <tr th:each="faq : ${faqList}">
-        <td>
-            <span th:text="${faq.id}"></span>
-        </td>
-        <td>
-            <a th:href="@{'/post/' + ${faq.id}}">
-                <span th:text="${faq.title}"></span>
-            </a>
-        </td>
-        <td>
-            <span th:text="${faq.writer}"></span>
-        </td>
-        <td>
-            <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
-        </td>
-    </tr>
-    </tbody>
 </table>
-
 <!-- 검색 form -->
 <form action="/faq/search" method="GET">
-    <div>
-        <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-    </div>
+    <div style="TEXT-ALIGN: center">
 
+    <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+    </div>
+    <div style="TEXT-ALIGN: center">
     <button>검색하기</button>
+    </div>
 </form>
+</div>
 
 <!-- FOOTER -->
 <div th:insert="common/footer.html" id="footer"></div>
 </body>
->>>>>>> ebd1cc9297af551fc239848def478b953e92d21d
 </html>

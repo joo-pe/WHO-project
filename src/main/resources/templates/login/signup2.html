@@ -9,8 +9,26 @@
 	<link rel= "stylesheet" type="text/css" href="/css/siginup2.css">
 
     <meta name="decorator" content="V2_JOIN">
-   
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script type="text/javascript">
+        $(document).ready(function(){
+    
+            $("#btnAgree").click(function(){    
+                if($("#termsService").is(":checked") == false){
+                    alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
+                    return;
+                }else if($("#termsPrivacy").is(":checked") == false){
+                    alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다..");
+                    return;
+                }else if($("#termsLocation").is(":checked") == false){
+                    alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다...");
+                    return;
+                }else {
+                    $("#join").submit(false);
+                }
+            });    
+        });
+    </script> 
     <script>
       $( document ).ready( function() {
         $( '.check-all' ).click( function() {
@@ -55,7 +73,7 @@
 								<span class="input_chk">
 									<input type="checkbox" id="chk_all" name="chk_all">
                                     <!-- [D] ie7/8에서 checked일때 label에 클래스 on추가해주세요.  -->
-									<label for="chk_all"><span class="chk_all_txt">WHO_TICKET 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),<br class='m_br'> 프로모션 정보 수신(선택)에 모두 동의합니다.</span></label>
+									<label for="chk_all"><span class="chk_all_txt">WHO_TICKET 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),<br class='m_br'> 프로모션 정보 수신에 모두 동의합니다.</span></label>
 		                        </span>
                         </p>
                         <ul class="terms_bx_list">
@@ -605,13 +623,13 @@
                         <a name='agreeBottom'></a>
                     <div class="btn_area double">
                          <span>
-                            <a href="http://localhost:8090/signup" id="btnAgree" class="btn_type btn_primary" aligin="right" role="button">확인</a>
+                            <a href="http://localhost:8090/signup" id="btnAgree" class="btn_type btn_primary"  role="button">확인</a>
                         </span>
                         <span>
-                            <a href="http://localhost:8090/login" id="btnAgree" class="btn_type btn_default" aligin="right" role="button">취소</a>
+                            <a href="http://localhost:8090/login" id="btnCancel" class="btn_type btn_default"  role="button">취소</a>
                         </span>
                        
-                    </div>
+                    </div> 
                     </div>
                     
                 </form>
@@ -664,12 +682,13 @@
             return false;
         })
 
-        $("#btnAgree").click(function(event) {
 
-            var check = $(termsService)
-            //Check 가 다 눌렸는지 확인후 실핼
-            clickcr(this, 'tos.agree', '', '', event);
-            submitAgree();
+
+        $("#btnAgree").click(function(event) {
+            
+            if(submitAgree()){
+               clickcr(this, 'tos.agree', '', '', event);
+            }
             return false;
         })
 
@@ -680,7 +699,6 @@
             if(agent == "M") {
                 location.href = url;
             } else {
-
                 window.open(url, "_blank");
             }
             return false;
@@ -708,14 +726,12 @@
 
         return true;
     }
-
     function checkSupportedBorwser() {
         var ua = navigator.userAgent;
         var msg = "인터넷 익스플로러 8.0 이하 버전은 지원하지 않습니다.";
-
         if(ua.indexOf("MSIE 6") > 0 || ua.indexOf("MSIE 7") > 0 || ua.indexOf("MSIE 8") > 0)  {
             alert(msg);
-            location.replace("https://campaign.WHO_TICKET.com/goodbye_ie10/");
+            location.replace("https://campaign.naver.com/goodbye_ie10/");
         }
     }
 
@@ -749,17 +765,16 @@
         if (checkTerms() != true) {
             return false;
         }
-
-        $("#join_form").submit();
-        return true;
+        else{
+           $("#join_form").submit();
+           return true;
+        }
     }
-
     function submitDisagree() {
-        location.href = "http://localhost:8090/";
+        location.href = "@{index2.html}";
         return true;
     }
-
-</script>
+   </script>
 
 	<!-- footer -->
 	<div id="footer" role="contentinfo">
@@ -776,6 +791,6 @@
 		</address>
 	</div>
 	<!-- //footer -->
-</div>
+
 </body>
 </html>
