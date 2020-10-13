@@ -20,7 +20,7 @@ h4 {
 .jumbotron {
     background-color: #f4511e;
     color: #fff;
-    padding: 100px 25px;
+    /* padding: 100px 25px; */
     font-family: Montserrat, sans-serif;
 }
 .container-fluid {
@@ -110,11 +110,11 @@ h4 {
     background-color: #f4511e;
     z-index: 9999;
     border: 0;
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
-    font-family: Montserrat, sans-serif;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 .navbar li a, .navbar .navbar-brand {
     color: #fff !important;

@@ -49,3 +49,4 @@ public class MemberDto {
         this.enabled = enabled;
     }
 }
+

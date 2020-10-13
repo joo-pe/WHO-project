@@ -50,4 +50,3 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework:spring-context-support'
     compile 'com.sun.mail:javax.mail'
-}

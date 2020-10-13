@@ -65,5 +65,5 @@ $("#checkPassword").click(function () {
 				}
             })
 		},
-	})
-});   
+		})
+	});

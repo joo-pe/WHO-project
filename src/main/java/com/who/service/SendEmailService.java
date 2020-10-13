@@ -1,6 +1,5 @@
 package com.who.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.who.domain.repository.MemberRepository;
 import com.who.dto.MailDto;
-
 import lombok.AllArgsConstructor;
 
 @Service
@@ -23,6 +21,7 @@ public class SendEmailService{
     private static final String FROM_ADDRESS = "dmstjdwjd123@gmail.com";
     
   //DTO에 사용자가 원하는 내용과 제목을 저장
+
     public MailDto createMailAndChangePassword(String email, String name) {
         String str = getTempPassword();
         MailDto dto = new MailDto();
@@ -33,8 +32,7 @@ public class SendEmailService{
         updatePassword(str, email);
         return dto;
     }
-    
-  //이메일로 발송된 임시비밀번호로 해당 유저의 패스워드 변경
+    //이메일로 발송된 임시비밀번호로 해당 유저의 패스워드 변경
     public void updatePassword(String str, String email){
     	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     	String password = passwordEncoder.encode(str);
@@ -69,7 +67,7 @@ public class SendEmailService{
     }
     
     public String getTempNumber(){
-        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+    	char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
                 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
         String str = "";
@@ -89,7 +87,6 @@ public class SendEmailService{
         message.setFrom(SendEmailService.FROM_ADDRESS);
         message.setSubject(mailDto.getTitle());
         message.setText(mailDto.getMessage());
-
         mailSender.send(message);
     }
     

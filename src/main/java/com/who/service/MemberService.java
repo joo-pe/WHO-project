@@ -105,19 +105,19 @@ public class MemberService implements UserDetailsService {
         return memberDto;
     }
     
-  //입력한 email과 name이 일치하는 값을 찾는 요청
-  	public boolean userEmailCheck(String email, String name) {
+    //입력한 email과 name이 일치하는 값을 찾는 요청
+	public boolean userEmailCheck(String email, String name) {
 
-          MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
-          if(memberEntity!=null && memberEntity.getName().equals(name)) {
-              return true;
-          }
-          else {
-              return false;
-          }
-      }
-  	
-  //해당 유저의 패스워드 변경
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+        if(memberEntity!=null && memberEntity.getName().equals(name)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    //해당 유저의 패스워드 변경
     public void updatePassword(String newpw, String email){
     	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     	String password = passwordEncoder.encode(newpw);

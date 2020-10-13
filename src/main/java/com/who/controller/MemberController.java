@@ -36,6 +36,7 @@ public class MemberController {
     private SendEmailService sendEmailService;
 //    private CertifiedEntity certifiedentity;
 
+
     //회원가입 동의페이지
     @GetMapping("/signup")
     public String dispSignup() {
@@ -137,10 +138,11 @@ public class MemberController {
     @ResponseBody
     public void changePw(String newpw, String email){
       memberService.updatePassword(newpw, email);
-       
+     
     }
     
     //현재 사용자 정보변경 처리
+
     @PutMapping("/resignup/update/{no}")
     public String update(MemberDto memberDto) {
         memberService.savePost(memberDto);
