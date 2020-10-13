@@ -116,7 +116,7 @@ float:none;
 <div id="container">
 <div id="containerWrap">
 <h2>FAQ 게시물관리</h2>
-<form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{/post}" enctype="multipart/form-data">
+<form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{/admin/post}" enctype="multipart/form-data">
 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 <table class="write">
 <tbody><tr>
