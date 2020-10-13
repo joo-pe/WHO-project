@@ -4,6 +4,9 @@ import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jdk.jfr.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -21,5 +24,12 @@ public class TimeEntity {
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
+    
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime created_time;
+    
+    @Timestamp
+    private LocalDateTime finaldate;
 
 }

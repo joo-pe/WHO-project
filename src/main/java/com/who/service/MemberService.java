@@ -3,7 +3,6 @@ package com.who.service;
 import com.who.domain.MemberDetail;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
-import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
 
@@ -24,7 +23,7 @@ import java.util.Optional;
 public class MemberService implements UserDetailsService {
 	
     @Autowired
-	MemberRepository memberRepository;
+	private MemberRepository memberRepository;
 
     @Transactional
     public Long joinUser(MemberDto memberDto) {
@@ -105,4 +104,37 @@ public class MemberService implements UserDetailsService {
 
         return memberDto;
     }
+    
+  //입력한 email과 name이 일치하는 값을 찾는 요청
+  	public boolean userEmailCheck(String email, String name) {
+
+          MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+          if(memberEntity!=null && memberEntity.getName().equals(name)) {
+              return true;
+          }
+          else {
+              return false;
+          }
+      }
+  	
+  //해당 유저의 패스워드 변경
+    public void updatePassword(String newpw, String email){
+    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    	String password = passwordEncoder.encode(newpw);
+        Long id = memberRepository.findMemberEntityByEmail(email).getId();
+        memberRepository.update(id, password);
+    } 
+    
+    public String idCheck(String email) {
+        System.out.println(memberRepository.findMemberEntityByEmail(email));
+
+        if (memberRepository.findMemberEntityByEmail(email) == null) {
+            return "YES";
+        } else {
+            return "NO";
+        }
+
+    }
+    
 }
+    

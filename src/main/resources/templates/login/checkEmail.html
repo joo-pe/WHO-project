@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- header -->
+        <div id="header">
+            <a href="/" target="_blank" title="WHOTicket HOME">
+            	<img th:src="@{/image/logo.png}" id="logo">
+            </a>
+        </div>
+        
+        <!-- wrapper -->
+        <div id="wrapper">
+
+            <!-- content-->
+            <div id="content">
+			
+                <!-- ID -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">EMAIL</label>
+                    </h3>
+                    <span class="box int_mobile">
+                        <input type="text" id="email" name="email" class="int" maxlength="50" placeholder="Email">       
+                    </span>
+                    <button class="btn_ver btn_pri" id="checkEmail">
+                            <span class="">인증번호 전송</span>
+                         </button>
+                         
+                     <span class="box int_mobile">
+                        <input type="text" id="emailcheck" name="email" class="int" maxlength="50" placeholder="인증번호">       
+                    </span>
+                    <button class="btn_verify btn_primary" id="checksucess" role="button">
+                            <span class="">인증번호 확인</span>
+                         </button>
+                          
+                    <span class="text-center small mt-2" id="checkMsg" style="color: red"></span>
+                    <br>
+                    <!-- <span class="error_next_box"></span> -->
+                     
+                </div>
+                
+            </div> 
+            <!-- content-->
+
+        </div> 
+        <!-- wrapper -->
+
+</body>
+</html>

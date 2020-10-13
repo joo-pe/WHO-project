@@ -19,18 +19,16 @@
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
-<div align="center">
-<img alt="" src="image/logo.png" width="200">
-</div>
 
-<form action="">
-<!-- wrapper -->
+
+<!-- <form action="">
+wrapper
         <div id="wrapper">
 
-            <!-- content-->
+            content
             <div id="content">
 
-                <!-- ID -->
+                ID
                 <div>
                     <h3 class="join_title">
                         <label for="id">현재 비밀번호</label>
@@ -42,7 +40,7 @@
                 </div>
 
 
-                <!-- PW1 -->
+                PW1
                 <div>
                     <h3 class="join_title"><label for="pswd2">새 비밀번호</label></h3>
                     <span class="box int_pass_check">
@@ -51,7 +49,7 @@
                     <span class="error_next_box"></span>
                 </div>
 
-                <!-- PW2 -->
+                PW2
                 <div>
                     <h3 class="join_title"><label for="name">새 비밀번호 확인</label></h3>
                     <span class="box int_pass_check">
@@ -60,16 +58,110 @@
                     <span class="error_next_box"></span>
                 </div>
                 
-               <!-- JOIN BTN-->
+               JOIN BTN
                 <div class="btn_area">
                    <button type="submit" id="btnJoin">비밀번호 수정</button>
                 </div>
 
             </div> 
-            <!-- content-->
+            content
 
         </div> 
-        <!-- wrapper -->
-        </form>
+        wrapper
+        </form> -->
+        
+        <!-- <div class="container">
+    Modal
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            Modal content
+            <div class="modal-content">
+                <div class="modal-body" style="padding:40px 50px;">
+                    <div style="color: #ac2925">
+                        <h2>입력된 정보로 임시 비밀번호가 전송됩니다.</h2>
+                    </div> -->
+                    
+                    <div align="center">
+					<img alt="" src="image/logo.png" width="200">
+					</div>
+                    
+                    <hr>
+                  
+        <div id="wrapper">
+            <div id="content">
+                    <form action="" >
+					<div>
+                    <h3 class="join_title">
+                        <label for="id">EMAIL</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="text" id="email" name="email" class="int" maxlength="50" placeholder="가입시 등록한 이메일을 입력하세요.">       
+                    </span>
+                         </div>
+                         <div>
+                    <h3 class="join_title"><label for="name">Name</label></h3>
+                    <span class="box int_name">
+                        <input type="text" id="name" name="name" class="int" maxlength="20" placeholder="가입시 등록한 이름을 입력하세요.">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                        <div class="btn_area">
+                   <button type="submit" id="btnJoin">인증번호 발송</button>
+                </div>
+                    </form>
+                    <hr>     
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span
+                            class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <script>
+
+    $('.modal').on('hidden.bs.modal', function (e) {
+        console.log('modal close');
+        $(this).find('form')[0].reset()
+    });
+
+    $("#checkEmail").click(function () {
+        let email = $("#email").val();
+        let name = $("#name").val();
+
+        $.ajax({
+            type: "GET",
+            url: "/check/findPw",
+            data: {
+                "email": email,
+                "name": name
+            },
+            success: function (res) {
+                if (res['check']) {
+                    swal("발송 완료!", "입력하신 이메일로 임시비밀번호가 발송되었습니다.", "success").then((OK) => {
+                        if(OK) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/check/findPw/sendEmail",
+                                data: {
+                                    "email": email,
+                                    "name": name
+                                }
+                            })
+                            window.location = "/login";
+                        }
+
+
+                    }
+                )
+                    $('#checkMsg').html('<p style="color:darkblue"></p>');
+                } else {
+                    $('#checkMsg').html('<p style="color:red">일치하는 정보가 없습니다.</p>');
+                }
+            }
+        })
+    })
+</script>
 </body>
 </html>

@@ -28,25 +28,49 @@
 
             <!-- content-->
             <div id="content">
-
+			
                 <!-- ID -->
                 <div>
                     <h3 class="join_title">
                         <label for="id">EMAIL</label>
                     </h3>
-                    <span class="box int_id">
-                        <input type="text" id="email" name="email" class="int" maxlength="50" placeholder="Email">       
+                    <span class="box int_mobile">
+                        <input type="email" id="email" name="email" class="emailcheck" maxlength="50" placeholder="Email" required="required"/>  
                     </span>
-                    <span class="error_next_box"></span>
+                    <div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
+                    <span class="box1 int_mobile">
+                     <input class="forward" id="checkEmail" type="button" value="인증번호 전송" >
+                     </span>
+                    <!-- 경고메세지 출력 -->
+                    
+                    <br>
+                      
+                      <div> 
+                      <h3 class="join_title">
+                        <label for="id">인증번호</label>
+                    </h3>
+                     <span class="box int_mobile">
+                        <input type="text" id="emailcheck" name="email" class="int" maxlength="50" placeholder="인증번호" required="required"/>
+                     </span>
+                     <div class="text-center small mt-2" id="checkMsg1" style="color: red"></div>
+                     <span class="box1 int_mobile">
+                        <input class="check" id="checksucess" type="button" value="인증번호 확인" >
+  					 </span>
+                   </div> 
+                         
+                    
+                    <br>
+                    <!-- <span class="error_next_box"></span> -->
+                     
                 </div>
 
                 <!-- PW1 -->
                 <div>
                     <h3 class="join_title"><label for="pswd1">PASSWORD</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pass1" name="password" class="int" maxlength="20" placeholder="Password">
+                        <input type="password" id="pass1" name="password" class="int" maxlength="20" placeholder="Password" required="required"/>
                         <span id="alertTxt">사용불가</span>
-                        <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+                       <!--  <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg"> -->
                     </span>
                     <span class="error_next_box"></span>
                 </div>
@@ -65,7 +89,7 @@
                 <div>
                     <h3 class="join_title"><label for="name">Name</label></h3>
                     <span class="box int_name">
-                        <input type="text" id="name" name="name" class="int" maxlength="20" placeholder="Name">
+                        <input type="text" id="name" name="name" class="int" maxlength="20" placeholder="Name" required="required"/>
                     </span>
                     <span class="error_next_box"></span>
                 </div>
@@ -74,7 +98,7 @@
                 <div>
                     <h3 class="join_title"><label for="birthday">BIRTHDAY</label></h3>
                     <span class="box int_name">
-                        <input type="date" id="birthday" name="birthday" class="int" maxlength="20" placeholder="Birthday">
+                        <input type="date" id="birthday" name="birthday" class="int" maxlength="20" placeholder="Birthday" required="required"/>
                     </span>
                     <span class="error_next_box"></span>
                 </div>
@@ -130,19 +154,6 @@
                     <span class="error_next_box"></span>    
                 </div> -->
 
-                 <!-- GENDER -->
-              <!--  <div>
-                    <h3 class="join_title"><label for="gender">성별</label></h3>
-                    <span class="box gender_code">
-                        <select id="gender" class="sel">
-                            <option>성별</option>
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
-                        </select>                            
-                    </span>
-                    <span class="error_next_box">필수 정보입니다.</span>
-                </div> -->
-
                 <!-- EMAIL
                 <div>
                     <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional">(선택)</span></label></h3>
@@ -155,10 +166,9 @@
                 <!-- MOBILE -->
                 <div>
                     <h3 class="join_title"><label for="phoneNo">PHONE</label></h3>
-                    <span class="box int_mobile">
-                        <input type="tel" id="mobile" name="phone" class="int" maxlength="15" placeholder="Phone Number" >
-                    </span>
-                    <span class="error_next_box"></span>    
+                    <span class="box int_email">
+                        <input type="tel" id="mobile" name="phone" class="int" maxlength="15" placeholder="Phone Number" required="required"/>
+                    </span>    
                 </div>
 
 
@@ -176,49 +186,67 @@
         <!-- wrapper -->
         </form>
     <script src="main.js"></script>
-    <script>
-        $('#sendPhoneNumber').click(function(){
-            let phoneNumber = $('#inputPhoneNumber').val();
-            Swal.fire('인증번호 발송 완료!')
+    <script type="text/javascript">
+    $('.forward').click(function () {
+    	
+    	$.ajax({
+    		type: "GET",
+    		url: "idCheck",
+    		data: {
+    			email: $('#email').val()
+    		},
+    		success: function (data) {
+    			if ($.trim(data)=="YES") {
+					if ($('#email').val() !=''){
+						$('#checkMsg').html('<p style="color:blue">사용가능한 ID 입니다!</p>');
+						$.ajax({
+	                        type: "POST",
+	                        url: "/sendEmail",
+	                        data: {
+	                        	email: $('#email').val()
+	                        }
+	                    })
+					}
+				}else {
+					if ($('#email').val() != '') {
+                        $('#checkMsg').html('<p style="color:red">이미 사용중인 ID 입니다. 다른 ID를 입력하세요.</p>');
+                        $('#email').val('');
+                        $('#email').focus();
+                        
+					}
+				}
+    		}
+    	})
+    });
+    
+    /* 이메일 인증번호 입력 후 인증 버튼 클릭 이벤트  */
+    $(document).on("click", '.check', function(){
+	    $.ajax({
+	    beforeSend: function(){
+	    loadingBarStart();
+	    },
+	    type:"get",
+	    url:"<c:url value='/login/emailAuth.do'/>",
+	    data:"str=" + $('#emailcheck').val() + "&random=" + $("#random").val(),
+		    success:function(data){
+			    if(data=="complete"){
+			    	$('#checkMsg1').html('<p style="color:blue">인증번호 인증이 완료되었습니다.</p>');
+			    }else if(data == "false"){
+			    	$('#checkMsg1').html('<p style="color:red">올바르지 않은 인증번호입니다.</p>');
+			    }
+    		},
+	    complete: function(){
+	    loadingBarEnd();
+	    },
+	    error:function(data){
+	    alert("에러가 발생했습니다.");
+	    }
+    });
+    });
+   
 
-
-            $.ajax({
-                type: "GET",
-                url: "/check/sendSMS",
-                data: {
-                    "phoneNumber" : phoneNumber
-                },
-                success: function(res){
-                    $('#checkBtn').click(function(){
-                        if($.trim(res) ==$('#inputCertifiedNumber').val()){
-                            Swal.fire(
-                                '인증성공!',
-                                '휴대폰 인증이 정상적으로 완료되었습니다.',
-                                'success'
-                            )
-
-                            $.ajax({
-                                type: "GET",
-                                url: "/update/phone",
-                                data: {
-                                    "phoneNumber" : $('#inputPhoneNumber').val()
-                                }
-                            })
-                            document.location.href="/home";
-                        }else{
-                            Swal.fire({
-                                icon: 'error',
-                                title: '인증오류',
-                                text: '인증번호가 올바르지 않습니다!',
-                                footer: '<a href="/home">다음에 인증하기</a>'
-                            })
-                        }
-                    })
-
-
-                }
-            })
-        });
+    
+    
 </script>
 </body>
 </html>
