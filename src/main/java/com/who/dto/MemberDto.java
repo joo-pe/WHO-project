@@ -17,9 +17,10 @@ public class MemberDto {
     private String birthday;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
-    private Boolean enabled = true;
+    private boolean enabled = true;
 
     public MemberEntity toEntity() {
+    	
         MemberEntity memberEntity = MemberEntity.builder()
                 .id(id)
                 .email(email)
@@ -34,10 +35,10 @@ public class MemberDto {
 
     @Builder
     public MemberDto(Long id, String email, String password,
-                     String name, String phone, String birthday,
-                     LocalDateTime createdDate, LocalDateTime modifiedDate,
-                     Boolean enabled) {
-    	this.id = id;
+    				String name, String phone, String birthday, 
+    				LocalDateTime createdDate, LocalDateTime modifiedDate,
+    				Boolean enabled) {
+    	  this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;

@@ -37,21 +37,23 @@ public class MemberEntity extends TimeEntity{
     
     @Column(length = 20, nullable = false)
     private String birthday;
+    
+    @Column
+    private boolean enabled;
 
     @Column
     private boolean enabled;
 
     @Builder
     MemberEntity(Long id, String email, String password,
-    		String name, String phone, String birthday, LocalDateTime createdDate,
-                 boolean enabled) {
+    			String name, String phone, String birthday, LocalDateTime createdDate,
+    			boolean enabled) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.birthday = birthday;
-//        this.roles = roles;
         this.enabled = enabled;
     }
 }

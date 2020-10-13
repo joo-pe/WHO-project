@@ -26,60 +26,64 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
 <!--===============================================================================================-->
-	<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+	<script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{/vendor/select2/select2.min.js}"></script>
+	<script th:src="@{vendor/select2/select2.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{/vendor/daterangepicker/moment.min.js}"></script>
-	<script th:src="@{/vendor/daterangepicker/daterangepicker.js}"></script>
+	<script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{/vendor/countdowntime/countdowntime.js}"></script>
+	<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{/js/main.js}"></script>
+	<script th:src="@{js/main.js}"></script>
 </head>
-
 <body>
-
+	
 	<!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
 	<div class="container-login100">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30">
-			<form th:action="@{'/resignup/update/' + ${currentUser.id}}" method="post" class="login100-form validate-form">
-				<input type="hidden" name="_method" value="put"/>
-    			<input type="hidden" name="id" th:value="${currentUser.id}"/>
-    			<input type="hidden" id="password" name="password" th:value="${currentUser.password}" readonly/>
-    			
+			<form th:action="@{/signup2}" method="post" class="login100-form validate-form">
+			
 				<span class="login100-form-title p-b-25" >
-						Change Member Information
+					<a th:href="@{/}">
+						<img th:src="@{/image/logo.png}" height="60px"><br>
+					</a>
+					Sign up for WHOTicket
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
-					<input id="email" class="input100" type="text" name="email" maxlength="50" th:value="${currentUser.email}" readonly>
+					<input id="email" class="input100" type="text" name="email" maxlength="50" placeholder="userEmail">
 					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+					<input id="password" class="input100" type="password" name="password" maxlength="20" placeholder="password">
+                    <span class="focus-input100"></span>
 				</div>
 				
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userName">
-					<input id="name" class="input100" type="text" name="name" maxlength="20" th:value="${currentUser.name}">
+					<input id="name" class="input100" type="text" name="name" maxlength="20" placeholder="userName">
 					<span class="focus-input100"></span>
 				</div>
 				
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userBirthday">
-					<input id="birthday" class="input100" type="date" name="birthday" maxlength="20" th:value="${currentUser.birthday}" readonly>
+					<input id="birthday" class="input100" type="date" name="birthday" maxlength="20" placeholder="userBirthday">
 					<span class="focus-input100"></span>
 				</div>
 				
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userPhone">
-					<input id="phone" class="input100" type="tel" name="phone" maxlength="15" th:value="${currentUser.phone}">
+					<input id="phone" class="input100" type="tel" name="phone" maxlength="15" placeholder="userPhone">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="container-login100-form-btn">
 					<button type="submit" class="login100-form-btn">
-						수정
+						Sign Up
 					</button>
 				</div>
 
@@ -110,13 +114,14 @@
 				</script> -->
 				<br>
 				<div class="text-center">
-					<a th:href="@{/myinfo}" class="txt2 hov1">
-						Cancel
+					Have a WHOTicket account?<a sec:authorize="isAnonymous()" th:href="@{/login}" class="txt2 hov1">
+						Sign In
 					</a>
 				</div>
 			</form>			
 		</div>
 	</div>
+	
 	<div id="dropDownSelect1"></div>
 
 </body>

@@ -13,6 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-food.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2017.css">
 	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style></style>
@@ -33,7 +35,7 @@
         <div class="w3-display-container" align="center">
         	<img alt="" src="/image/logo.png" width="100px">
            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>
-           <span th:text="${currentUser.name}"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>
+           <span th:text="${currentUser.name} + 님"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>
            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>
            <span th:text="${currentUser.email}"></span></p>
         </div>
@@ -43,15 +45,15 @@
 			<form th:action="@{'/resignup/' + ${currentUser.id}}" method="get" >
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>회원 정보 수정</b></p>
           <div class="w3-light-grey w3-round-xlarge">
-         		 <button type="submit">회원 정보 수정</button>
+         		 <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">회원 정보 수정</button>
           </div>
           </form>
           <br>
 
-			<form th:action="@{/repass}" method="get">
+			<form th:action="@{'/repass/' + ${currentUser.id}}" method="get">
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>비밀번호 설정변경</b></p>
           <div class="w3-light-grey w3-round-xlarge">
-            <button type="submit">비밀번호 설정변경</button>
+            <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">비밀번호 설정변경</button>
           </div>
           </form>
 
@@ -84,10 +86,7 @@
           	</tr>
           </table>
           </div>
-        
-       
 
-      
 
     <!-- End Right Column -->
     </div>
