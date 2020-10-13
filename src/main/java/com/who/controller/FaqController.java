@@ -21,6 +21,14 @@ public class FaqController {
         model.addAttribute("faqList", faqList);
         return "admin/faq/list";
     }
+    
+    @GetMapping("/faq")
+    public String faq(Model model) {
+        List<FaqDto> faqList = faqService.getFaqlist();
+
+        model.addAttribute("faqList", faqList);
+        return "faq/list";
+    }
 
     @GetMapping("/admin/post")
     public String write() {

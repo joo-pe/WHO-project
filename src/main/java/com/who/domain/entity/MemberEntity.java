@@ -17,7 +17,7 @@ public class MemberEntity extends TimeEntity{
 	
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long no;
+    private Long id;
 
     @Column(length = 50, nullable = false)
     private String email;
@@ -35,10 +35,10 @@ public class MemberEntity extends TimeEntity{
     private String birthday;
 
     @Builder
-    MemberEntity(Long no, String email, String password,
+    MemberEntity(Long id, String email, String password,
     		String name, String phone, String birthday) {
     	
-        this.no = no;
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;

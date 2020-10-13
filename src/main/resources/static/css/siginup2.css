@@ -3,17 +3,13 @@
 
 
 #who{
-
+text-align: center;
 }
-
-
 #header {
-
 	text-align: center;
 	 columns:auto;
 }
 #headers{
-
 	text-align: center;
 	 columns:auto;
 }
@@ -30,31 +26,12 @@
 }
 
 #join_form{
-	
-    
-    height: 100px;
-    
+    height: 100px;   
   }
-  #article::-webkit-scrollbar {
-    width: 200px;
-    background-color: black;
-  }
-  
-  #container::-webkit-scrollbar {
-    width: 150px;
-    background-color: black;
-  }
-
 
 btnAgree{
 margin: 0, 0, 10px;
-    
-     
-
 }
-
-
-
 
  #footer { position: fixed; bottom: 0; width: 10%;
  }

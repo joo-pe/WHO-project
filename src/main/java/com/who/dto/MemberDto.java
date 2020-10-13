@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class MemberDto {
-    private Long no;
+    private Long id;
     private String email;
     private String password;
     private String name;
@@ -20,7 +20,7 @@ public class MemberDto {
 
     public MemberEntity toEntity() {
         MemberEntity memberEntity = MemberEntity.builder()
-                .no(no)
+                .id(id)
                 .email(email)
                 .password(password)
                 .name(name)
@@ -31,9 +31,9 @@ public class MemberDto {
     }
 
     @Builder
-    public MemberDto(Long no, String email, String password,
+    public MemberDto(Long id, String email, String password,
     		String name, String phone, String birthday) {
-    	this.no = no;
+    	this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
