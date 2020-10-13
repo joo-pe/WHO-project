@@ -41,8 +41,6 @@ public class MemberEntity extends TimeEntity{
     @Column
     private boolean enabled;
 
-    @Column
-    private boolean enabled;
 
     @Builder
     MemberEntity(Long id, String email, String password,

@@ -60,7 +60,20 @@
 					<input id="email" class="input100" type="text" name="email" maxlength="50" placeholder="userEmail">
 					<span class="focus-input100"></span>
 				</div>
-
+				<div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
+				<div class="container-login100-form-btn">
+					<input type="button" id="checkEmail" value="인증번호 전송" class="login100-form-btn"></input>
+				</div>
+				<br>
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
+					<input id="emailcheck" class="input100" type="text" name="number" maxlength="50" placeholder="Certifiednumber">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="text-center small mt-2" id="checkMsg1" style="color: red"></div>
+				<div class="container-login100-form-btn">
+					<input type="button"  id="checksucess" value="인증번호 확인" class="login100-form-btn check"></input>
+				</div>
+				<br>
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
 					<input id="password" class="input100" type="password" name="password" maxlength="20" placeholder="password">
                     <span class="focus-input100"></span>
@@ -121,6 +134,67 @@
 	</div>
 	
 	<div id="dropDownSelect1"></div>
+<script type="text/javascript">
+    $('.login100-form-btn').click(function () {
+    	
+    	$.ajax({
+    		type: "GET",
+    		url: "idCheck",
+    		data: {
+    			email: $('#email').val()
+    		},
+    		success: function (data) {
+    			if ($.trim(data)=="YES") {
+					if ($('#email').val() !=''){
+						$('#checkMsg').html('<p style="color:blue">사용가능한 ID 입니다!</p>');
+						$.ajax({
+	                        type: "POST",
+	                        url: "/sendEmail",
+	                        data: {
+	                        	email: $('#email').val()
+	                        }
+	                    })
+					}
+				}else {
+					if ($('#email').val() != '') {
+                        $('#checkMsg').html('<p style="color:red">이미 사용중인 ID 입니다. 다른 ID를 입력하세요.</p>');
+                        $('#email').val('');
+                        $('#email').focus();
+                        
+					}
+				}
+    		}
+    	})
+    });
+    
+    /* 이메일 인증번호 입력 후 인증 버튼 클릭 이벤트  */
+    $(document).on("click", '.check', function(){
+	    $.ajax({
+	    beforeSend: function(){
+	    loadingBarStart();
+	    },
+	    type:"get",
+	    url:"<c:url value='/login/emailAuth.do'/>",
+	    data:"str=" + $('#emailcheck').val() + "&random=" + $("#random").val(),
+		    success:function(data){
+			    if(data=="complete"){
+			    	$('#checkMsg1').html('<p style="color:blue">인증번호 인증이 완료되었습니다.</p>');
+			    }else if(data == "false"){
+			    	$('#checkMsg1').html('<p style="color:red">올바르지 않은 인증번호입니다.</p>');
+			    }
+    		},
+	    complete: function(){
+	    loadingBarEnd();
+	    },
+	    error:function(data){
+	    alert("에러가 발생했습니다.");
+	    }
+    });
+    });
+   
 
+    
+    
+</script>
 </body>
 </html>
