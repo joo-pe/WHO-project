@@ -1,181 +1,123 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
+	<title>Login WHOTicket</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-     <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}"/>
-    <link rel="stylesheet" href="new_main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" th:href="@{/image/icons/favicon.ico}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/select2/select2.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src="@{/vendor/daterangepicker/daterangepicker.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/countdowntime/countdowntime.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/js/main.js}"></script>
 </head>
+
 <body>
-<!-- HEADER -->
-<div th:insert="common/header.html" id="header"></div>
 
+	<!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
+	<div class="container-login100">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30">
+			<form th:action="@{'/resignup/update/' + ${currentUser.id}}" method="post" class="login100-form validate-form">
+				<input type="hidden" name="_method" value="put"/>
+    			<input type="hidden" name="id" th:value="${currentUser.id}"/>
+    			<input type="hidden" id="password" name="password" th:value="${currentUser.password}" readonly/>
+    			
+				<span class="login100-form-title p-b-25" >
+						Change Member Information
+				</span>
 
-<div align="center">
-<img alt="" src="image/logo.png" width="200">
-</div>
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
+					<input id="email" class="input100" type="text" name="email" maxlength="50" th:value="${currentUser.email}" readonly>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userName">
+					<input id="name" class="input100" type="text" name="name" maxlength="20" th:value="${currentUser.name}">
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userBirthday">
+					<input id="birthday" class="input100" type="date" name="birthday" maxlength="20" th:value="${currentUser.birthday}" readonly>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userPhone">
+					<input id="phone" class="input100" type="tel" name="phone" maxlength="15" th:value="${currentUser.phone}">
+					<span class="focus-input100"></span>
+				</div>
 
-<hr>
-<form th:action="@{'/resignup/update/' + ${currentUser.id}}" method="post">
-	<input type="hidden" name="_method" value="put"/>
-    <input type="hidden" name="id" th:value="${currentUser.id}"/>
-    <input type="hidden" id="pass1" name="password" th:value="${currentUser.password}" readonly/>
+				<div class="container-login100-form-btn">
+					<button type="submit" class="login100-form-btn">
+						수정
+					</button>
+				</div>
 
-	<!-- wrapper -->
-        <div id="wrapper">
+				<!-- <div class="text-center p-t-57 p-b-20">
+					<span class="txt1">
+						Or login with
+					</span>
+				</div>
 
-            <!-- content-->
-            <div id="content">
+				<div class="flex-c p-b-50">
+					<a href="javascript:;" class="login100-social-item" data-social="facebook">
+						<i class="fa fa-facebook-f"></i>
+					</a>
 
-                <!-- ID -->
-                <div>
-                    <h3 class="join_title">
-                        <label for="id">EMAIL</label>
-                    </h3>
-                    <span class="box int_id">
-                        <input type="text" id="email" name="email" class="int" maxlength="50" th:value="${currentUser.email}" readonly/>       
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+					<a href="javascript:;" class="login100-social-item" data-social="google">
+						<img src="image/icons/icon-google.png" alt="GOOGLE">
+					</a>
+				</div>
+				
+				<script>
+				  let socials = document.getElementsByClassName("login100-social-item");
+				  for(let social of socials) {
+					  social.addEventListener('click', function(){
+						  let socialType = this.getAttribute('data-social');
+						  location.href="/oauth2/authorization/" + socialType;
+					  })
+				  }
+				</script> -->
+				<br>
+				<div class="text-center">
+					<a th:href="@{/myinfo}" class="txt2 hov1">
+						Cancel
+					</a>
+				</div>
+			</form>			
+		</div>
+	</div>
+	<div id="dropDownSelect1"></div>
 
-
-                <!-- <!-- PW2
-                <div>
-                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-                    <span class="box int_pass_check">
-                        <input type="text" id="pass2" name="password" class="int" maxlength="20" placeholder="비밀번호를 재입력해주세요">
-                        <img src="m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div> -->
-
-                <!-- NAME -->
-                <div>
-                    <h3 class="join_title"><label for="name">Name</label></h3>
-                    <span class="box int_name">
-                        <input type="text" id="name" name="name" class="int" maxlength="20" th:value="${currentUser.name}">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
-                
-                 <!-- BIRTH -->
-                <div>
-                    <h3 class="join_title"><label for="birthday">BIRTHDAY</label></h3>
-                    <span class="box int_name">
-                        <input type="date" id="birthday" name="birthday" class="int" maxlength="20" th:value="${currentUser.birthday}" readonly/>
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
-                
-                 <!-- BIRTH -->
-                <!-- <div>
-                    <h3 class="join_title"><label for="name">생년월일</label></h3>
-                    <span class="box int_name">
-                        <input type="text" id="birthday" name="birthday" class="int" maxlength="20" placeholder="생년월일를 입력해주세요">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div> -->
-
-                <!-- BIRTH -->
-                <!--  <div>
-                    <h3 class="join_title"><label for="yy">생년월일</label></h3>
-                    <div id="birthday">
-                        BIRTH_YY
-                        <div id="bir_yy">
-                            <span class="box">
-                                <input type="text" id="yyyy" name="birthday" class="int" maxlength="4" placeholder="년(4자)">
-                            </span>
-                        </div> 
- -->
-                        <!-- BIRTH_MM -->
-                         <!-- <div id="bir_mm">
-                            <span class="box">
-                                <select id="mm" name="birthday" class="sel">
-                                    <option>월</option>
-                                    <option value="01">1</option>
-                                    <option value="02">2</option>
-                                    <option value="03">3</option>
-                                    <option value="04">4</option>
-                                    <option value="05">5</option>
-                                    <option value="06">6</option>
-                                    <option value="07">7</option>
-                                    <option value="08">8</option>
-                                    <option value="09">9</option>                                    
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
-                            </span>
-                        </div>  -->
-
-                        <!-- BIRTH_DD -->
-                         <!-- <div id="bir_dd">
-                            <span class="box">
-                                <input type="text" id="dd" name="birthday" class="int" maxlength="2" placeholder="일">
-                            </span>
-                        </div> 
-                    </div>
-                    <span class="error_next_box"></span>    
-                </div> -->
-
-                 <!-- GENDER -->
-              <!--  <div>
-                    <h3 class="join_title"><label for="gender">성별</label></h3>
-                    <span class="box gender_code">
-                        <select id="gender" class="sel">
-                            <option>성별</option>
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
-                        </select>                            
-                    </span>
-                    <span class="error_next_box">필수 정보입니다.</span>
-                </div> -->
-
-                <!-- EMAIL
-                <div>
-                    <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional">(선택)</span></label></h3>
-                    <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
-                    </span>
-                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
-                </div> -->
-
-                <!-- MOBILE -->
-                <div>
-                    <h3 class="join_title"><label for="phoneNo">PHONE</label></h3>
-                    <span class="box int_mobile">
-                        <input type="tel" id="mobile" name="phone" class="int" maxlength="15" th:value="${currentUser.phone}">
-                    </span>
-                    <span class="error_next_box"></span>    
-                </div>
-
-
-               <!-- JOIN BTN-->
-                <div class="btn_area">
-                   <button type="submit" id="btnJoin">수정</button>
-                </div>
-                <div class="btn_defalt">
-                   <button onclick="/myticket/myinfo.html" id="btnJoin">취소</button>
-                </div>
-
-                
-
-            </div> 
-            <!-- content-->
-
-        </div> 
-        <!-- wrapper -->
-        </form>
-                
 </body>
-
-
 </html>

@@ -3,6 +3,7 @@ package com.who.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.who.domain.repository.MemberRepository;
@@ -35,7 +36,8 @@ public class SendEmailService {
 
     //이메일로 발송된 임시비밀번호로 해당 유저의 패스워드 변경
     public void updatePassword(String str, String email){
-    	String password = EncryptionUtils.encryptMD5(str);
+    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    	String password = passwordEncoder.encode(str);
         Long id = memberRepository.findMemberEntityByEmail(email).getId();
         memberRepository.update(id, password);
     } 
@@ -52,6 +54,7 @@ public class SendEmailService {
             idx = (int) (charSet.length * Math.random());
             str += charSet[idx];
         }
+        
         return str;
     }
     

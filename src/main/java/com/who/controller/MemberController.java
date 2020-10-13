@@ -15,13 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -56,17 +56,17 @@ public class MemberController {
     public String dispLogin() {
         return "login/login";
     }
-    
-    // 비밀번호 찾기 페이지
-    @GetMapping("/searchpass") 
-    public String searchPass() {
-        return "login/searchPass";
-    }
 
     // 로그인 결과 페이지
     @GetMapping("/login/result")
     public String dispLoginResult() {
         return "login/loginSuccess";
+    }
+    
+    // 비밀번호 찾기 페이지
+    @GetMapping("/searchpass") 
+    public String searchPass() {
+        return "login/searchPass";
     }
     
     // 로그아웃 결과 페이지
@@ -100,6 +100,7 @@ public class MemberController {
         model.addAttribute("currentUser", memberEntity);
         return "myticket/resignup";
     }
+    
     //현재 사용자 비밀번호변경 페이지
     @GetMapping("/repass/{no}")
     public String repass(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
@@ -109,6 +110,30 @@ public class MemberController {
         model.addAttribute("currentUser", memberEntity);
         return "myticket/repass";
     }
+    
+    //입력한 password와 DB상 password 일치여부를 check하는 컨트롤러
+    @PostMapping("/check/Pw")
+    public @ResponseBody void userPasswordCheck(String currentpw, String email) {	
+
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println("DB 회원의 비밀번호 : " + memberEntity.getPassword());
+        System.out.println("입력한 비밀번호 : " + currentpw);	
+        
+        if(encoder.matches(currentpw, memberEntity.getPassword())) { 
+    		System.out.println("비밀번호 일치");
+    	} else {
+    		System.out.println("비밀번호 불일치");
+    	}
+    }
+    
+    //새로 입력한 password로 사용자의 password를 변경하는 컨트롤러
+    @PostMapping("/check/Pw/changePw")
+    public @ResponseBody void changePw(String newpw, String email){
+      memberService.updatePassword(newpw, email);
+       
+    }
+    
     //현재 사용자 정보변경 처리
     @PutMapping("/resignup/update/{no}")
     public String update(MemberDto memberDto) {
@@ -116,8 +141,7 @@ public class MemberController {
 
         return "redirect:/myinfo";
     }
-    
-    
+        
     //Email과 name의 일치여부를 check하는 컨트롤러
     @GetMapping("/check/findPw")
        public @ResponseBody Map<String, Boolean> pw_find(String email, String name){
@@ -128,7 +152,7 @@ public class MemberController {
            return json;
        }
 
-    //등록된 이메일로 임시비밀번호를 발송하고 발송된 임시비밀번호로 사용자의 pw를 변경하는 컨트롤러
+    //등록된 이메일로 임시비밀번호를 발송하고 발송된 임시비밀번호로 사용자의 password를 변경하는 컨트롤러
     @PostMapping("/check/findPw/sendEmail")
     public @ResponseBody void sendEmail(String email, String name){
        MailDto dto = sendEmailService.createMailAndChangePassword(email, name);
