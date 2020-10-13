@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -135,7 +137,9 @@ public class MemberController {
     }
     
     //현재 사용자 정보변경 처리
-    @PutMapping("/resignup/update/{no}")
+    @
+  
+  Mapping("/resignup/update/{no}")
     public String update(MemberDto memberDto) {
         memberService.savePost(memberDto);
 

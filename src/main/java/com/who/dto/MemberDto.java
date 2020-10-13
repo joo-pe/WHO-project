@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class MemberDto {
-	
     private Long id;
     private String email;
     private String password;
@@ -39,8 +38,7 @@ public class MemberDto {
     				String name, String phone, String birthday, 
     				LocalDateTime createdDate, LocalDateTime modifiedDate,
     				Boolean enabled) {
-    	
-    	this.id = id;
+    	  this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;

@@ -56,7 +56,8 @@ public class MemberService implements UserDetailsService {
 //
 //        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
     }
-    
+
+
     @Transactional
     public Long savePost(MemberDto memberDto) {
         return memberRepository.save(memberDto.toEntity()).getId();

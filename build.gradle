@@ -36,6 +36,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time'
     implementation 'com.google.zxing:core:3.3.3'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-context-support'
@@ -44,7 +45,7 @@ dependencies {
     runtimeOnly 'org.webjars:bootstrap:4.5.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    compile 'org.springframework.security.oauth:spring-security-oauth2'
+    compile 'org.springframework.security.oauth:spring-security-oauth2:2.3.2.RELEASE'
     compile("org.springframework.boot:spring-boot-starter-mail")
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework:spring-context-support'

@@ -34,8 +34,4 @@ public class FaqEntity extends TimeEntity {
         this.title = title;
         this.content = content;
     }
-
-
-
-
 }

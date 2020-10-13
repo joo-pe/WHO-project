@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>스포츠</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Chrome">
+    <meta name="viewport" content=" width=1030, user-scalable=yes">
+    <meta name="description" content="WHOTicket">
+    <link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.1.css}">
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/nanumgothic.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <!--[if lt IE 9]>
+    <script src="/Skin/js/html5shiv.min.js"></script>
+    <script src="/Skin/js/respond.min.js"></script>
+    <script src="/Skin/js/selectivizr-min.js"></script>
+    <![endif]-->
+    <script th:src="@{/js/jquery-1.11.3.min.js}" charset="utf8"></script>
+    <script th:src="@{/js/jquery.form.min.js}" charset="utf8"></script>
+    <script th:src="@{/js/jquery-ui.min.js}" charset="utf8"></script>
+    <script th:src="@{/js/common.js} " charset="utf8"></script>
+    <script th:src="@{/js/contents.js}" charset="utf8"></script>
+    <script th:src="@{/js/admin.js}" charset="utf8"></script>
+    <script th:src="@{/js/admin.extend.js}" charset="utf8"></script>
+    <script th:src="@{/js/board.js} " charset="utf8"></script>
+</head>
+<style>
+    /* 코딩한 body에 추가 */
+    body {
+        padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+        padding-top: env(safe-area-inset-top); /* iOS 11.2 */
+        color:black;
+    }
+    form {
+        margin:0;
+        display:inline;
+        height:20px;
+        float:none;
+    }
+</style>
+<body>
+<div id="wrap">
+    <div th:insert="common/adminHeader.html" id="header"></div>
+    <div id="container">
+        <div id="containerWrap">
+            <h2>스포츠 관리</h2>
+            <form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{'/admin/sports/post/edit/' + ${sportsDto.id}}" enctype="multipart/form-data">
+
+                <input type="hidden" name="_method" value="put"/>
+                <input type="hidden" name="id" th:value="${sportsDto.id}"/>
+                <table class="write">
+                    <tbody>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i>분류</th>
+                        <td>
+                            <select name="category" id="category" required="required" value="&{sportsDto.category}">
+                                <option value="">선택</option>
+                                <option value="축구">축구</option>
+                                <option value="야구">야구</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 제목</th>
+                        <td>
+                            <input type="text" name="title" id="title" data-displayname="제목" th:value="${sportsDto.title}"
+                                   data-maxlength="20" maxlength="20" required="required" class="w100p">
+                            <ul class="guide">
+                                <li>20자 이하로 입력하여주세요.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 내용</th>
+                        <td>
+                            <textarea name="detail" required="required" th:text="${sportsDto.detail}" ></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>이미지</th>
+                        <td>
+                            이미지
+<!--                            <input name="file" type="file" class="custom-file-input" id="customFile">-->
+<!--                            <div th:if="${sportsDto.fileId != null}">-->
+<!--                                <a class="card-text" th:href="@{'/download/' + ${sportsDto.fileId}}" th:text="${fileDto.fileName}"></a>-->
+<!--                            </div>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class ="requiredBullet" title="필수항목">* </i> 날짜</th>
+                        <td>
+                            <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                            <input type="datetime-local" name="dateTime" id="Date" data-displayname="날짜" th:value="${sportsDto.dateTime}"
+                                   required="required" class="dateInput">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i>도시</th>
+                        <td>
+                            <select name="city" required="required">
+                                <option value="">선택</option>
+                                <option value='서울'>서울</option>
+                                <option value='부산'>부산</option>
+                                <option value='대구'>대구</option>
+                                <option value='인천'>인천</option>
+                                <option value='광주'>광주</option>
+                                <option value='대전'>대전</option>
+                                <option value='울산'>울산</option>
+                                <option value='강원'>강원</option>
+                                <option value='경기'>경기</option>
+                                <option value='경남'>경남</option>
+                                <option value='경북'>경북</option>
+                                <option value='전남'>전남</option>
+                                <option value='전북'>전북</option>
+                                <option value='제주'>제주</option>
+                                <option value='충남'>충남</option>
+                                <option value='충북'>충북</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 장소</th>
+                        <td>
+                            <input type="text" name="location" id="MD_subject" data-displayname="장소" th:value="${sportsDto.location}"
+                                   data-maxlength="20" maxlength="20" required="required" class="w100p">
+                            <ul class="guide">
+                                <li>20자 이하로 입력하여주세요.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class ="requiredBullet" title="필수항목">* </i> 티켓 예매</th>
+                        <td>
+                            <div>
+                                <span class="guide"> 시작 </span>
+                                <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                                <input type="datetime-local" name="ticketOpen" id="Date" data-displayname="시작날짜" required="required" class="dateInput" th:value="${sportsDto.ticketOpen}">
+                            </div>
+                            <br>
+                            <div>
+                                <span class="guide"> 종료 </span>
+                                <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                                <input type="datetime-local" name="ticketClose" id="Date" data-displayname="종료날짜" required="required" class="dateInput" th:value="${sportsDto.ticketClose}">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 예매 가능 티켓 수</th>
+                        <td>
+                            <input type="text" name="ticketMax" id="MD_subject" data-displayname="예매가능티켓수" th:value="${sportsDto.ticketMax}"
+                                   required="required" class="w6p" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class ="requiredBullet" title="필수항목">* </i> 팀 정보</th>
+                        <td>
+                            <div>
+                                <span class="guide"> 팀1 </span>
+                                <input type="text" name="team1" id="MD-subject" data-displayname="팀1" th:value="${sportsDto.team1}"
+                                       data-maxlength="20" maxlength="20" required="required" class="w50p">
+                            </div>
+                            <br>
+                            <div>
+                                <span class="guide"> 팀2 </span>
+                                <input type="text" name="team2" id="MD-subject" data-displayname="팀2" th:value="${sportsDto.team2}"
+                                       data-maxlength="20" maxlength="20" required="required" class="w50p">
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="bottomBtn" style="width: 1120px; margin: 0 auto;">
+                    <button type="submit" class="mBtn btn2">수정</button>
+                    <button type="reset" class="mBtn btn1">취소</button>
+                    <a th:href="@{/admin/faq}" class="backbtn mBtn btn1">뒤로</a>
+                </div>
+            </form>
+            <!-- <script>
+            App.Board.Write.SubmitWrite = function(e){
+            if(App.Board.Write.useSE2Is) SE2_update('MD_content');
+            var res = $(this).validCheck();
+            if(!res){
+            e.preventDefault();
+            return false;
+            }
+            if($('#category2_real input').val() == ''){
+            e.preventDefault();
+            CMAlert('상세분류를 선택하여 주세요.');
+            return false;
+            }
+            };
+            App.Board.Write.FAQInit = function(){
+            App.Board.Write.CategoryChange('회원', '회원가입');
+            $(document).on('change', 'select[name=category]', function(){
+            App.Board.Write.CategoryChange();
+            });
+            $(document).on('change', '#category_choice', App.Board.Write.Category2Change);
+            };
+            App.Board.Write.CategoryChange = function(c1, c2){
+            var category = $('select[name=category]');
+            if(category.val() === ''){
+            $('#category2').html('<select id="category_choice" required><option value="">분류를 선택하여 주세요.</option></select>');
+            return;
+            }
+            JCM.get('/BHAdm/FAQ/GetCategory2/' + category.val(), {}, function(data){
+            var html = '<select name="category2" id="category_choice"><option value="">선택</option>';
+            var val = '';
+            for(var i=0; i < data.length; i++){
+            var addAttr = '';
+            if(typeof(c1) !== 'undefined' && typeof(c2) !== 'undefined' && category.val() == c1 && data[i].category2 == c2){
+            addAttr = ' selected';
+            val = c2;
+            }
+            html += '<option value="' + data[i].category2 + '"' + addAttr + '>' + data[i].category2 + '</option>';
+            }
+            html += '<option value="" data-type="add">추가</option></select> <span id="category2_real" class="hidden"><input type="text" name="category2" value="' + val + '"></span>';
+            $('#category2').html(html);
+            });
+            };
+            App.Board.Write.Category2Change = function(){
+            var selected = $(this).find('option:selected');
+            console.log('Category2Change');
+            if(selected[0].hasAttribute('data-type') && selected.attr('data-type') == 'add'){
+            console.log('add');
+            $('#category2_real input').val('');
+            $('#category2_real').show();
+            }else{
+            console.log('not add');
+            $('#category2_real input').val($(this).val());
+            $('#category2_real').hide();
+            }
+            };
+            App.Board.Write.FAQInit();
+            App.Board.Write.Init(true);
+            </script> -->
+            <aside id="sideMenu" style="padding-top: 0px;">
+                <a href="#" id="sideClose" title="닫기" style="top: 10px;">
+                    <i class="fa fa-angle-left"></i></a>
+                <h2>게시판관리</h2>
+                <ul>
+                    <li class="Active"><span>
+<a th:href="@{/faq}">FAQ</a></span></li>
+                    <li><span>
+<a th:href="@{/admin/notice}">공지사항</a></span></li>
+                </ul></aside></div></div><footer id="footer">
+    <div id="footer_wrap"></div>
+</footer>
+</div>
+<!-- 변수 셋팅 -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var faqDto = /*[[${faqDto}]]*/ "";
+    /*]]>*/
+</script>
+
+<!-- script -->
+<script th:inline="javascript" th:src="@{/js/faq.js}"></script>
+<script>
+    $(document).ready(function(){
+        if(JCM.getCookie('managerSideView') == 'no'){
+            $('#wrap').addClass('sideHidden');
+        }
+        $('#containerWrap').append('<aside id="sideMenu"><a href="#" id="sideClose" title="닫기"><i class="fa fa-angle-left"></i></a><h2>' + ( $('#tnb ul > li.Active').length ? $('#tnb ul > li.Active a').eq(0).text() : '' ) + '</h2><ul>'+( $('#tnb ul > li.Active ol').length ? $('#tnb ul > li.Active ol').html() : '' ) +'</ul></aside>')
+        $(document).on('click', '#sideClose', function(e){
+            e.preventDefault();
+            if($('#wrap').hasClass('sideHidden')){
+                $('#wrap').removeClass('sideHidden');
+                JCM.setCookie('managerSideView', 'yes');
+            }else{
+                $('#wrap').addClass('sideHidden');
+                JCM.setCookie('managerSideView', 'no');
+            }
+        });
+        $('#container').scroll(function(){
+            sideScroll();
+        });
+        sideScroll();
+    });
+    function sideScroll(){
+        var st = $('#container').scrollTop();
+        if(st < 0) st = 0;
+        $('#sideMenu').css({
+            'padding-top' : st + 'px'
+        });
+        $('#sideClose').css({
+            'top' : (st + 10) + 'px'
+        });
+    }
+</script>
+</body>
+</html>
