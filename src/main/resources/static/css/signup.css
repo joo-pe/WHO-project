@@ -1,3 +1,21 @@
+@charset "utf-8";
+ 
+#who{
+	
+text-align: center;
+}
+
+#header {
+
+	text-align: center;
+	 columns:auto;
+}
+#headers{
+
+	text-align: center;
+	 columns:auto;
+}
+
 /* 레이아웃 틀 */
 html {
     height: 100%;
@@ -20,6 +38,19 @@ body {
     padding-bottom: 20px;
     text-align: center;
 }
+.terms_box {
+	
+	overflow: auto;
+	height:150px;
+}
+
+#content{
+	
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color :#ffffff;
+}
 #wrapper {
     position: relative;
     height: 100%;
@@ -31,7 +62,34 @@ body {
     transform: translate(-50%);
     width: 460px;
 }
+#join_form{	
+    
+    height: 100px;   
+  }
+  
+#article::-webkit-scrollbar {
+	
+    width: 200px;
+    background-color: black;
+  }
+  
+#container::-webkit-scrollbar {
 
+    width: 150px;
+    background-color: black;
+  }
+
+btnAgree{
+	
+	margin: 0, 0, 10px;
+}
+
+ #footer { 
+ 
+ 	position: fixed; 
+ 	bottom: 0; 
+ 	width: 10%;
+ }
 
 
 
