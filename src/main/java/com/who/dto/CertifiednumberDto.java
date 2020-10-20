@@ -2,8 +2,10 @@ package com.who.dto;
 
 import java.time.LocalDateTime;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
+import com.who.domain.entity.CertifiedEntity;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,9 +18,22 @@ public class CertifiednumberDto {
 	private Long id;
 	private String email;
 	private String number;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime created_time;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime finaldate;
+	
+	public CertifiedEntity toEntity() {
+		
+		CertifiedEntity certifiedEntity = CertifiedEntity.builder()
+                .id(id)
+                .email(email)
+                .number(number)
+                .build();
+        return certifiedEntity;		
+	}
+	
+	@Builder
+    public CertifiednumberDto(Long id, String email, String number) {
+    	this.id = id;
+        this.email = email;
+        this.number = number;
+    }
 	
 }

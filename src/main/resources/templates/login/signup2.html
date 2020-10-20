@@ -66,12 +66,12 @@
 				</div>
 				<br>
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
-					<input id="emailcheck" class="input100" type="text" name="number" maxlength="50" placeholder="Certifiednumber">
+					<input id="number" class="input100" type="text" name="number" maxlength="50" placeholder="Certifiednumber">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="text-center small mt-2" id="checkMsg1" style="color: red"></div>
 				<div class="container-login100-form-btn">
-					<input type="button"  id="checksucess" value="인증번호 확인" class="login100-form-btn check"></input>
+					<input type="button"  id="checksucess" value="인증번호 확인" class="login100-form-btn1 check"></input>
 				</div>
 				<br>
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
@@ -139,7 +139,7 @@
     	
     	$.ajax({
     		type: "GET",
-    		url: "idCheck",
+    		url: "/idCheck",
     		data: {
     			email: $('#email').val()
     		},
@@ -149,7 +149,7 @@
 						$('#checkMsg').html('<p style="color:blue">사용가능한 ID 입니다!</p>');
 						$.ajax({
 	                        type: "POST",
-	                        url: "/sendEmail",
+	                        url: "/idCheck/sendEmail",
 	                        data: {
 	                        	email: $('#email').val()
 	                        }
@@ -167,30 +167,34 @@
     	})
     });
     
-    /* 이메일 인증번호 입력 후 인증 버튼 클릭 이벤트  */
-    $(document).on("click", '.check', function(){
-	    $.ajax({
-	    beforeSend: function(){
-	    loadingBarStart();
-	    },
-	    type:"get",
-	    url:"<c:url value='/login/emailAuth.do'/>",
-	    data:"str=" + $('#emailcheck').val() + "&random=" + $("#random").val(),
-		    success:function(data){
-			    if(data=="complete"){
-			    	$('#checkMsg1').html('<p style="color:blue">인증번호 인증이 완료되었습니다.</p>');
-			    }else if(data == "false"){
-			    	$('#checkMsg1').html('<p style="color:red">올바르지 않은 인증번호입니다.</p>');
-			    }
-    		},
-	    complete: function(){
-	    loadingBarEnd();
-	    },
-	    error:function(data){
-	    alert("에러가 발생했습니다.");
-	    }
-    });
-    });
+	$('.check').click(function () {
+	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		url: "/CertifiedCheck",
+	    		data: {
+	    			number: $('#number').val()
+	    		},
+	    		success: function (data) {
+	    			if ($.trim(data)=="YES") {
+						if ($('#number').val() !=''){
+							$('#checkMsg1').html('<p style="color:blue">인증이 완료 되었습니다!</p>');
+							
+						}
+					}else {
+						if ($('#number').val() != '') {
+	                        $('#checkMsg1').html('<p style="color:red">인증번호가 틀립니다.</p>');
+	                        $('#number').val('');
+	                        $('#number').focus();
+	                        
+						}
+					}
+	    		}
+	    	})
+	    });
+   
+    
+    
    
 
     

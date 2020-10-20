@@ -1,7 +1,9 @@
 package com.who.service;
 
 import com.who.domain.MemberDetail;
+import com.who.domain.entity.CertifiedEntity;
 import com.who.domain.entity.MemberEntity;
+import com.who.domain.repository.CertifiedRepository;
 import com.who.domain.repository.MemberRepository;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
@@ -24,6 +26,7 @@ public class MemberService implements UserDetailsService {
 	
     @Autowired
 	private MemberRepository memberRepository;
+    private CertifiedRepository certifiedRepository;
 
     @Transactional
     public Long joinUser(MemberDto memberDto) {
@@ -133,6 +136,22 @@ public class MemberService implements UserDetailsService {
         } else {
             return "NO";
         }
+
+    }
+    
+    public String CertifiedCheck(String number) {
+    	CertifiedEntity certifiedEntity = certifiedRepository.findCertifiedEntityByNumber(number);
+	        if(certifiedEntity!=null && certifiedEntity.getNumber().equals(number)) {
+	            return "YES";
+	        }
+	        else {
+	            return "NO";
+	        }
+//        if (certifiedRepository.findCertifiedEntityByEmail(number) == null) {
+//            return "YES";
+//        } else {
+//            return "NO";
+//        }
 
     }
     

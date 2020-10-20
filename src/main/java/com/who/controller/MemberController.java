@@ -4,6 +4,7 @@ import com.who.domain.MemberDetail;
 import com.who.domain.entity.CertifiedEntity;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
+import com.who.dto.CertifiednumberDto;
 import com.who.dto.MailDto;
 import com.who.dto.MemberDto;
 import com.who.service.MemberService;
@@ -182,7 +183,7 @@ public class MemberController {
         return "admin/Member";
     }
     
-    @GetMapping("idCheck")
+    @GetMapping("/idCheck")
     @ResponseBody
     public String email_check(String email) {
         System.out.println(email);
@@ -190,12 +191,25 @@ public class MemberController {
         return str;
     }
     
+    @PostMapping("/CertifiedCheck")
+    @ResponseBody
+    public String certified_Check(String number) {
+        System.out.println(number);
+        return memberService.CertifiedCheck(number);
+        
+    }
+    
   //등록된 이메일로 인증번호를 발송하고 발송된 인증번호로 사용자 이메일로 보내는 컨트롤러
-    @PostMapping("/sendEmail")
-    public void sendEmail(@RequestParam String email){
-        MailDto dto = sendEmailService.createMailAndCheck(email);
+    @PostMapping("/idCheck/sendEmail")
+    public @ResponseBody void sendEmail(CertifiednumberDto certifiednumberDto, String email){
+    	// 1. 랜덤넘버 생성
+    	String number =sendEmailService.getTempNumber();
+    	certifiednumberDto.setNumber(number);
+    	sendEmailService.joinCertified(certifiednumberDto);
+        MailDto dto = sendEmailService.createMailAndCheck(email, number);
         sendEmailService.mailSend(dto);
-
+        //4. DB에 저장한다.
+        //sendEmailService.saveNumber(email, number);
     }
     
 //	@GetMapping("/checkEmail")

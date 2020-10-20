@@ -1,5 +1,7 @@
 package com.who.domain.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+
+import jdk.jfr.Timestamp;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -18,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @EqualsAndHashCode(callSuper=false, of = "email")
 @Table(name = "certifiednumber")
-public class CertifiedEntity extends TimeEntity{
+public class CertifiedEntity{
 
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +34,7 @@ public class CertifiedEntity extends TimeEntity{
 	 
 	 	@Column(length = 10, nullable = false)
 	    private String number;
-	 
+
 	 @Builder
 	 CertifiedEntity(Long id, String email, String number){
 		 this.id = id;

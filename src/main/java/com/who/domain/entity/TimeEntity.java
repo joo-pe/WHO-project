@@ -24,12 +24,5 @@ public class TimeEntity {
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
-    
-    @CreatedDate
-    @Column(updatable = false)
-    private LocalDateTime created_time;
-    
-    @Timestamp
-    private LocalDateTime finaldate;
 
 }
