@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.3'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-context-support'
+    implementation 'org.hyperledger.fabric:fabric-gateway-java:1.4.1'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.webjars:bootstrap:4.5.0'
@@ -48,6 +49,6 @@ dependencies {
     compile 'org.springframework.security.oauth:spring-security-oauth2:2.3.2.RELEASE'
     compile("org.springframework.boot:spring-boot-starter-mail")
     compile 'org.springframework.boot:spring-boot-devtools'
-    compile 'org.springframework:spring-context-support'
+    //compile 'org.springframework:spring-context-support'
     compile 'com.sun.mail:javax.mail'
 }
