@@ -60,33 +60,33 @@
 					<a th:href="@{/}">
 						<img th:src="@{/image/logo.png}" height="60px">
 					</a><br>
-					Change Password
+					비밀번호 변경
 				</span>
 				<div style="color: #ac2925">
-                      <div style="text-align: center;">Enter your current password</div>
+                      <div style="text-align: center;">현재 비밀번호를 입력하세요</div>
                     </div><br>
                     
 					<input type="hidden" id="email" class="input100" name="email" maxlength="50" th:value="${currentUser.email}" readonly>
 					
 				<div class="wrap-input100 validate-input m-b-20">
-					<input id="currentPw" class="input100" type="password" name="currentpw" placeholder="Current Password">
+					<input id="currentPw" class="input100" type="password" name="currentpw" placeholder="현재 비밀번호">
 					<span class="focus-input100"></span>
 				</div>
 				
 				<div class="wrap-input100 validate-input m-b-20">
-					<input id="newPw" class="input100" type="password" name="newpw" placeholder="New Password">
+					<input id="newPw" class="input100" type="password" name="newpw" placeholder="새 비밀번호">
 					<span class="focus-input100"></span>
 				</div>
 				
 				<div class="wrap-input100 validate-input m-b-20">
-					<input id="newPwCheck" class="input100" type="password" name="newpwcheck" placeholder="Check New Password">
+					<input id="newPwCheck" class="input100" type="password" name="newpwcheck" placeholder="새 비밀번호 확인">
 					<span class="focus-input100"></span>
 				</div>
 				
 				<br>
 				<div class="container-login100-form-btn">
 					<button type="button" class="login100-form-btn" id="checkPassword">
-						Check
+						비밀번호 변경
 					</button>
 				</div>
 				<div class="text-center small mt-2" id="passwordMsg" style="color: red"></div>
@@ -94,7 +94,7 @@
 
 				<div class="text-center">
 					<a th:href="@{/myinfo}" class="txt2 hov1">
-						Cancel
+						취소
 					</a>
 				</div>
 			</form>			

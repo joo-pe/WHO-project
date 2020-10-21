@@ -60,6 +60,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     			.ignoringAntMatchers("/check/findPw/sendEmail")
     			.ignoringAntMatchers("/check/Pw")
     			.ignoringAntMatchers("/check/Pw/changePw")
+    			.ignoringAntMatchers("/idCheck/sendEmail")
+    			.ignoringAntMatchers("/CertifiedCheck")
     			
                 .and() // 로그인 설정
                 .formLogin()

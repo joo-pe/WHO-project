@@ -54,7 +54,10 @@
     			<input type="hidden" id="password" name="password" th:value="${currentUser.password}" readonly/>
     			
 				<span class="login100-form-title p-b-25" >
-						Change Member Information
+				<a th:href="@{/}">
+						<img th:src="@{/image/logo.png}" height="60px">
+					</a><br>
+						회원정보 변경
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
@@ -111,7 +114,7 @@
 				<br>
 				<div class="text-center">
 					<a th:href="@{/myinfo}" class="txt2 hov1">
-						Cancel
+						취소
 					</a>
 				</div>
 			</form>			

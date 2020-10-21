@@ -3,6 +3,7 @@ package com.who.controller;
 import com.who.domain.MemberDetail;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
+import com.who.dto.CertifiednumberDto;
 import com.who.dto.MailDto;
 import com.who.dto.MemberDto;
 import com.who.service.MemberService;
@@ -15,15 +16,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -137,9 +134,7 @@ public class MemberController {
     }
     
     //현재 사용자 정보변경 처리
-    @
-  
-  Mapping("/resignup/update/{no}")
+    @GetMapping("/resignup/update/{no}")
     public String update(MemberDto memberDto) {
         memberService.savePost(memberDto);
 
@@ -161,6 +156,36 @@ public class MemberController {
     public @ResponseBody void sendEmail(String email, String name){
        MailDto dto = sendEmailService.createMailAndChangePassword(email, name);
        sendEmailService.mailSend(dto);
+    }
+    
+    //회원가입 시 사용가능한 email인지 체크
+    @GetMapping("/idCheck")
+    @ResponseBody
+    public String email_check(String email) {
+        System.out.println(email);
+        String str = memberService.idCheck(email);
+        return str;
+    }
+    
+    //이메일로 보낸 인증번호 입력 시 일치하는지 여부확인
+    @PostMapping("/CertifiedCheck")
+    @ResponseBody
+    public String certified_Check(String number) {
+        System.out.println(number);
+        return memberService.CertifiedCheck(number);
+        
+    }
+    
+    //등록된 이메일로 인증번호를 발송하고 인증번호를 DB에 저장
+    @PostMapping("/idCheck/sendEmail")
+    public @ResponseBody void sendEmail(CertifiednumberDto certifiednumberDto, String email){
+    	// 인증번호 생성
+    	String number =sendEmailService.getTempNumber();
+    	certifiednumberDto.setNumber(number);
+    	sendEmailService.joinCertified(certifiednumberDto);
+        MailDto dto = sendEmailService.createMailAndCheck(email, number);
+        sendEmailService.mailSend(dto);
+        
     }
     
     // 어드민 페이지
