@@ -5,9 +5,11 @@ import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
 import com.who.dto.MailDto;
 import com.who.dto.MemberDto;
+import com.who.dto.SportsDto;
 import com.who.service.MemberService;
 import com.who.service.SendEmailService;
 
+import com.who.service.SportsService;
 import lombok.AllArgsConstructor;
 
 import java.util.HashMap;
@@ -32,6 +34,7 @@ public class MemberController {
     private MemberService memberService;
     private MemberRepository memberRepository;
     private SendEmailService sendEmailService;
+    private SportsService SportsService;
 
     //회원가입 동의페이지
     @GetMapping("/signup")
@@ -89,7 +92,11 @@ public class MemberController {
         String email = memberDetail.getUsername();
         MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
 
+        Long no = Long.valueOf(1);
+//        SportsDto sportsDto = SportsService.getSports(no);
+
         model.addAttribute("currentUser", memberEntity);
+//        model.addAttribute("sports", sportsDto);
         return "myticket/myinfo";
     }
     
@@ -139,7 +146,7 @@ public class MemberController {
     //현재 사용자 정보변경 처리
     @
   
-  Mapping("/resignup/update/{no}")
+  GetMapping("/resignup/update/{no}")
     public String update(MemberDto memberDto) {
         memberService.savePost(memberDto);
 

@@ -1,38 +1,27 @@
 package com.who.controller;
 
 import com.who.MD5Generator;
-import com.who.domain.entity.FileEntity;
-import com.who.domain.entity.SportsEntity;
 import com.who.dto.FileDto;
 import com.who.dto.SportsDto;
 import com.who.service.FileService;
 import com.who.service.SportsService;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.apache.tomcat.jni.Local;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.beans.PropertyEditorSupport;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,8 +33,14 @@ public class SportsController {
     @GetMapping("/admin/sports")
     public String list(Model model) {
         List<SportsDto> sportsDtoList = sportsService.getSportsList();
+        List<FileDto> fileDtoList = new ArrayList<>();
+        for(SportsDto sportsDto: sportsDtoList) {
+            FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+            fileDtoList.add(fileDto);
+        }
 
         model.addAttribute("sportsList", sportsDtoList);
+        model.addAttribute("fileList", fileDtoList);
         return "admin/sports/sports";
     }
 
@@ -61,19 +56,18 @@ public class SportsController {
             String originFileName = files.getOriginalFilename();
             int idx = originFileName.indexOf(".");
             String fileExtension = originFileName.substring(idx+1);
-            String fileName = new MD5Generator(originFileName.substring(0, idx)).toString();
+            String fileName = new MD5Generator(originFileName.substring(0, idx)).toString() + "." + fileExtension;
             // 실행되는 위치의 'files' 폴더에 파일 저장
-            String savePath = System.getProperty("user.dir") + "\\files";
+            String savePath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images";
             // 파일이 저장되는 폴더가 없으면 폴더 생성
             if(!new File(savePath).exists()) {
                 try {
                     new File(savePath).mkdir();
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.getStackTrace();
                 }
             }
-            String filePath = savePath + "\\" + fileName + "." + fileExtension;
+            String filePath = savePath + "\\" + fileName;
             files.transferTo(new File(filePath));
 
             FileDto fileDto = new FileDto();
@@ -87,6 +81,7 @@ public class SportsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return "redirect:/admin/sports";
     }
 
@@ -100,11 +95,23 @@ public class SportsController {
         return "admin/sports/detail";
     }
 
+    @GetMapping("/soccer/post/{no}")
+    public String soccerDetail(@PathVariable("no") Long no, Model model) {
+        SportsDto sportsDto = sportsService.getSports(no);
+        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+
+        model.addAttribute("sportsDto", sportsDto);
+        model.addAttribute("fileDto", fileDto);
+        return "sports/detail";
+    }
+
     @GetMapping("/admin/sports/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
         SportsDto sportsDto = sportsService.getSports(no);
+        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
 
         model.addAttribute("sportsDto", sportsDto);
+        model.addAttribute("fileDto", fileDto);
         return "admin/sports/update";
     }
 

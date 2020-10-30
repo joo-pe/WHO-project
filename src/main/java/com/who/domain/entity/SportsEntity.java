@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -52,15 +54,14 @@ public class SportsEntity {
     @Column(nullable = false)
     private String team2;
 
-
-
-
+    @OneToMany(mappedBy = "sportsEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SeatEntity> seats= new ArrayList<>();
 
     @Builder
     public SportsEntity(Long id, String category, String title, String  detail,
                         Long fileId, LocalDateTime dateTime, String city, String location,
                         LocalDateTime ticketOpen, LocalDateTime ticketClose,
-                        String ticketMax, String team1, String team2) {
+                        String ticketMax, String team1, String team2, List<SeatEntity> seats) {
         this.id = id;
         this.category = category;
         this.title = title;
@@ -74,7 +75,7 @@ public class SportsEntity {
         this.ticketMax = ticketMax;
         this.team1 = team1;
         this.team2 = team2;
-
+        this.seats = seats;
     }
 
 }

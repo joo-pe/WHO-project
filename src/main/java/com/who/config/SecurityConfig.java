@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         		.antMatchers("/", "/oauth2/**","/image/**","/login/**","/myticket/**")
         		.permitAll()
                 // 페이지 권한 설정
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/myinfo").hasRole("MEMBER")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/myinfo").hasRole("MEMBER")
                 .antMatchers("/**")
                 .permitAll()
                 .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType()) 
@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     			.ignoringAntMatchers("/check/findPw/sendEmail")
     			.ignoringAntMatchers("/check/Pw")
     			.ignoringAntMatchers("/check/Pw/changePw")
-    			
+
                 .and() // 로그인 설정
                 .formLogin()
                 .loginPage("/login")
