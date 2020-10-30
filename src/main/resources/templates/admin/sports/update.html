@@ -38,6 +38,11 @@
         height:20px;
         float:none;
     }
+    img {
+        width: auto;
+        height: auto;
+        max-width: 30%;
+    }
 </style>
 <body>
 <div id="wrap">
@@ -54,10 +59,10 @@
                     <tr>
                         <th><i class="requiredBullet" title="필수항목">* </i>분류</th>
                         <td>
-                            <select name="category" id="category" required="required" value="&{sportsDto.category}">
-                                <option value="">선택</option>
-                                <option value="축구">축구</option>
-                                <option value="야구">야구</option>
+                            <select name="category" id="category" required="required">
+                                <option value="" th:selected="${sportsDto.category}">선택</option>
+                                <option value="축구" th:selected="${sportsDto.category}">축구</option>
+                                <option value="야구" th:selected="${sportsDto.category}">야구</option>
                             </select>
                         </td>
                     </tr>
@@ -80,11 +85,7 @@
                     <tr>
                         <th>이미지</th>
                         <td>
-                            이미지
-<!--                            <input name="file" type="file" class="custom-file-input" id="customFile">-->
-<!--                            <div th:if="${sportsDto.fileId != null}">-->
-<!--                                <a class="card-text" th:href="@{'/download/' + ${sportsDto.fileId}}" th:text="${fileDto.fileName}"></a>-->
-<!--                            </div>-->
+                            <input name="file" type="file" class="custom-file-input" id="customFile">
                         </td>
                     </tr>
                     <tr>
@@ -99,23 +100,23 @@
                         <th><i class="requiredBullet" title="필수항목">* </i>도시</th>
                         <td>
                             <select name="city" required="required">
-                                <option value="">선택</option>
-                                <option value='서울'>서울</option>
-                                <option value='부산'>부산</option>
-                                <option value='대구'>대구</option>
-                                <option value='인천'>인천</option>
-                                <option value='광주'>광주</option>
-                                <option value='대전'>대전</option>
-                                <option value='울산'>울산</option>
-                                <option value='강원'>강원</option>
-                                <option value='경기'>경기</option>
-                                <option value='경남'>경남</option>
-                                <option value='경북'>경북</option>
-                                <option value='전남'>전남</option>
-                                <option value='전북'>전북</option>
-                                <option value='제주'>제주</option>
-                                <option value='충남'>충남</option>
-                                <option value='충북'>충북</option>
+                                <option value="" th:selected="${sportsDto.city}">선택</option>
+                                <option value='서울' th:selected="${sportsDto.city}">서울</option>
+                                <option value='부산' th:selected="${sportsDto.city}">부산</option>
+                                <option value='대구' th:selected="${sportsDto.city}">대구</option>
+                                <option value='인천' th:selected="${sportsDto.city}">인천</option>
+                                <option value='광주' th:selected="${sportsDto.city}">광주</option>
+                                <option value='대전' th:selected="${sportsDto.city}">대전</option>
+                                <option value='울산' th:selected="${sportsDto.city}">울산</option>
+                                <option value='강원' th:selected="${sportsDto.city}">강원</option>
+                                <option value='경기' th:selected="${sportsDto.city}">경기</option>
+                                <option value='경남' th:selected="${sportsDto.city}">경남</option>
+                                <option value='경북' th:selected="${sportsDto.city}">경북</option>
+                                <option value='전남' th:selected="${sportsDto.city}">전남</option>
+                                <option value='전북' th:selected="${sportsDto.city}">전북</option>
+                                <option value='제주' th:selected="${sportsDto.city}">제주</option>
+                                <option value='충남' th:selected="${sportsDto.city}">충남</option>
+                                <option value='충북' th:selected="${sportsDto.city}">충북</option>
                             </select>
                         </td>
                     </tr>
