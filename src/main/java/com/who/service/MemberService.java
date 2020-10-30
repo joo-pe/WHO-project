@@ -1,12 +1,16 @@
 package com.who.service;
 
-import com.who.domain.MemberDetail;
+import com.who.domain.entity.FaqEntity;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
+import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,39 +35,25 @@ public class MemberService implements UserDetailsService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
 
-        return memberRepository.save(memberDto.toEntity()).getId();
+        return memberRepository.save(memberDto.toEntity()).getNo();
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
-        if(memberEntity == null) {
-            throw  new UsernameNotFoundException("Could not find user with that email");
+        Optional<MemberEntity> userEntityWrapper = memberRepository.findByEmail(email);
+        MemberEntity userEntity = userEntityWrapper.get();
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if(("admin").equals(email)) {
+            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+        } else {
+            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
-        
-        return new MemberDetail(memberEntity);
 
-//        Optional<MemberEntity> userEntityWrapper = memberRepository.findByEmail(email);
-//        MemberEntity userEntity = userEntityWrapper.get();
-//
-//        List<GrantedAuthority> authorities = new ArrayList<>();
-//
-//        if(("admin").equals(email)) {
-//            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
-//        } else {
-//            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
-//        }
-//
-//        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
+        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
     }
-
-
-    @Transactional
-    public Long savePost(MemberDto memberDto) {
-        return memberRepository.save(memberDto.toEntity()).getId();
-    }
-
-
+    
     @Transactional
     public List<MemberDto> getMemberlist() {
         List<MemberEntity> memberEntities = memberRepository.findAll();
@@ -71,14 +61,12 @@ public class MemberService implements UserDetailsService {
 
         for (MemberEntity memberEntity : memberEntities) {
             MemberDto memberDto = MemberDto.builder()
-                    .id(memberEntity.getId())
+                    .no(memberEntity.getNo())
                     .email(memberEntity.getEmail())
                     .name(memberEntity.getName())
                     .phone(memberEntity.getPhone())
                     .birthday(memberEntity.getBirthday())
                     .createdDate(memberEntity.getCreatedDate())
-                    .enabled(memberEntity.isEnabled())
-//                    .roles(memberEntity.getRoles())
                     .build();
 
             memberDtoList.add(memberDto);
@@ -88,42 +76,19 @@ public class MemberService implements UserDetailsService {
     }
     
     @Transactional
-    public MemberDto getMember(Long id) {
-        Optional<MemberEntity> memberEntityWraper = memberRepository.findById(id);
+    public MemberDto getMember(Long no) {
+        Optional<MemberEntity> memberEntityWraper = memberRepository.findById(no);
         MemberEntity memberEntity = memberEntityWraper.get();
 
         MemberDto memberDto = MemberDto.builder()
-        		.id(memberEntity.getId())
+        		.no(memberEntity.getNo())
                 .email(memberEntity.getEmail())
                 .name(memberEntity.getName())
                 .phone(memberEntity.getPhone())
                 .birthday(memberEntity.getBirthday())
                 .createdDate(memberEntity.getCreatedDate())
-                .enabled(memberEntity.isEnabled())
-//                .roles(memberEntity.getRoles())
                 .build();
 
         return memberDto;
     }
-    
-    //입력한 email과 name이 일치하는 값을 찾는 요청
-	public boolean userEmailCheck(String email, String name) {
-
-        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
-        if(memberEntity!=null && memberEntity.getName().equals(name)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    //해당 유저의 패스워드 변경
-    public void updatePassword(String newpw, String email){
-    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    	String password = passwordEncoder.encode(newpw);
-        Long id = memberRepository.findMemberEntityByEmail(email).getId();
-        memberRepository.update(id, password);
-    } 
- 
 }

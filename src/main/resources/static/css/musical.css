@@ -1,0 +1,37 @@
+@charset "UTF-8";
+box1 {
+    width: 200px;
+    height: 100px;
+}
+
+box2 {
+    width: 100px;
+    height: 200px;
+}
+
+#layer_fixed {
+    height: 46px;
+    width: 100%;
+    color: #000;
+    font-size: 12px;
+    position: fixed;
+    z-index: 999;
+}
+
+.col-lg-8 {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+col-sm-3 sidenav {
+    float: right;
+}
+
+.infoDesc {
+    font-size: x-large;
+    border-top: solid black;
+    border-right: solid black;
+    border-left: solid black;
+    border-bottom: solid black;
+}

@@ -53,21 +53,34 @@
 					<a th:href="@{/}">
 						<img th:src="@{/image/logo.png}" height="60px"><br>
 					</a>
-					Sign up for WHOTicket
+					WHOTicket 가입
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
-					<input id="email" class="input100" type="text" name="email" maxlength="50" placeholder="userEmail">
+					<input id="email" class="input100" type="text" name="email" maxlength="50" placeholder="이메일 입력">
 					<span class="focus-input100"></span>
 				</div>
-
+				<div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
+				<div class="container-login100-form-btn">
+					<button type="button" id="checkEmail" class="login100-form-btn">인증번호 전송</button>
+				</div>
+				<br>
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
+					<input id="number" class="input100" type="text" name="number" maxlength="50" placeholder="인증번호 입력">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="text-center small mt-2" id="checkMsg1" style="color: red"></div>
+				<div class="container-login100-form-btn">
+					<button type="button"  id="checksucess" class="login100-form-btn1 check">인증번호 확인</button>
+				</div>
+				<br>
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
-					<input id="password" class="input100" type="password" name="password" maxlength="20" placeholder="password">
+					<input id="password" class="input100" type="password" name="password" maxlength="20" placeholder="비밀번호 입력">
                     <span class="focus-input100"></span>
 				</div>
 				
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userName">
-					<input id="name" class="input100" type="text" name="name" maxlength="20" placeholder="userName">
+					<input id="name" class="input100" type="text" name="name" maxlength="20" placeholder="이름 입력">
 					<span class="focus-input100"></span>
 				</div>
 				
@@ -77,13 +90,13 @@
 				</div>
 				
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userPhone">
-					<input id="phone" class="input100" type="tel" name="phone" maxlength="15" placeholder="userPhone">
+					<input id="phone" class="input100" type="tel" name="phone" maxlength="15" placeholder="연락처 입력">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="container-login100-form-btn">
 					<button type="submit" class="login100-form-btn">
-						Sign Up
+						가입하기
 					</button>
 				</div>
 
@@ -92,12 +105,10 @@
 						Or login with
 					</span>
 				</div>
-
 				<div class="flex-c p-b-50">
 					<a href="javascript:;" class="login100-social-item" data-social="facebook">
 						<i class="fa fa-facebook-f"></i>
 					</a>
-
 					<a href="javascript:;" class="login100-social-item" data-social="google">
 						<img src="image/icons/icon-google.png" alt="GOOGLE">
 					</a>
@@ -114,8 +125,8 @@
 				</script> -->
 				<br>
 				<div class="text-center">
-					Have a WHOTicket account?<a sec:authorize="isAnonymous()" th:href="@{/login}" class="txt2 hov1">
-						Sign In
+					WHOTicket 계정이 있나요?<a sec:authorize="isAnonymous()" th:href="@{/login}" class="txt2 hov1">
+						로그인
 					</a>
 				</div>
 			</form>			
@@ -123,6 +134,66 @@
 	</div>
 	
 	<div id="dropDownSelect1"></div>
-
+<script type="text/javascript">
+    $('.login100-form-btn').click(function () {
+    	
+    	$.ajax({
+    		type: "GET",
+    		url: "/idCheck",
+    		data: {
+    			email: $('#email').val()
+    		},
+    		success: function (data) {
+    			if ($.trim(data)=="YES") {
+					if ($('#email').val() !=''){
+						$('#checkMsg').html('<p style="color:blue">인증번호가 입력한 이메일로 전송되었습니다.</p>');
+						$.ajax({
+	                        type: "POST",
+	                        url: "/idCheck/sendEmail",
+	                        data: {
+	                        	email: $('#email').val()
+	                        }
+	                    })
+					}
+				}else {
+					if ($('#email').val() != '') {
+                        $('#checkMsg').html('<p style="color:red">이미 사용중인 ID 입니다.</p>');
+                        $('#email').val('');
+                        $('#email').focus();
+                        
+					}
+				}
+    		}
+    	})
+    });
+    
+	$('.check').click(function () {
+	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		url: "/CertifiedCheck",
+	    		data: {
+	    			number: $('#number').val()
+	    		},
+	    		success: function (data) {
+	    			if ($.trim(data)=="YES") {
+						if ($('#number').val() !=''){
+							$('#checkMsg1').html('<p style="color:blue">인증이 완료 되었습니다!</p>');
+							
+						}
+					}else {
+						if ($('#number').val() != '') {
+	                        $('#checkMsg1').html('<p style="color:red">인증번호가 틀립니다.</p>');
+	                        $('#number').val('');
+	                        $('#number').focus();
+	                        
+						}
+					}
+	    		}
+	    	})
+	    });
+   
+</script>
 </body>
+>>>>>>> 7e56f09d81b6bc9555a394b6ec28a39e99d476bc
 </html>

@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -21,7 +19,7 @@ public class MemberEntity extends TimeEntity{
 	
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Long no;
 
     @Column(length = 50, nullable = false)
     private String email;
@@ -37,20 +35,17 @@ public class MemberEntity extends TimeEntity{
     
     @Column(length = 20, nullable = false)
     private String birthday;
-    
-    @Column
-    private boolean enabled;
 
     @Builder
-     MemberEntity(Long id, String email, String password,
-    			String name, String phone, String birthday, LocalDateTime createdDate,
-    			boolean enabled) {
-        this.id = id;
+    MemberEntity(Long no, String email, String password,
+    		String name, String phone, String birthday, LocalDateTime createdDate) {
+    	TimeEntity timeEntity = new TimeEntity();
+        this.no = no;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.birthday = birthday;
-        this.enabled = enabled;
+        timeEntity.getCreatedDate();
     }
 }

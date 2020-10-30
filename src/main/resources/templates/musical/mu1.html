@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<head>
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b" />
+            <meta http-equiv="X-UA-Compatible" content="IE=Chrome" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="WHOTicket" />
+            <link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.1.css}" />
+            <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}" />
+            <link rel="stylesheet" th:href="@{/css/nanumgothic.css}" />
+            <!-- 	<link rel="stylesheet" th:href="@{/css/admin.css}"> -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+            <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+            <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="musical/css" />
+            <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+            <link rel="stylesheet" type="text/css" th:href="@{/css/musical.css}" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+            <title>WHO 티켓</title>
+
+            <!-- 파비콘 -->
+            <link rel="shortcut icon" type="image/x-icon" />
+
+            <!-- IOS용 -->
+            <link rel="apple-touch-icon-precomposed" href="https://cdnticket.melon.co.kr/resource/image/web/common/ios_120.png" />
+            <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://cdnticket.melon.co.kr/resource/image/web/common/ios_180.png" />
+
+            <meta name="viewport" content="width=1126" />
+            <!-- 모바일 접속시 컨텐츠 넓이 -->
+
+            <!--     <script src="../resource/script/web/common/jquery-1.11.3.min.js"></script> -->
+            <!--     <script src="../resource/script/web/common/jquery.inputmask.bundle.js"></script> -->
+            <!--     <script src="../resource/script/web/common/ui_script.js"></script> -->
+            <!--     <script src="../resource/script/web/common/melonweb_member_external.js"></script> -->
+            <script src="/resource/script/web/common/jquery-1.11.3.min.js"></script>
+            <script src="/resource/script/web/common/jquery.inputmask.bundle.js"></script>
+            <script src="/resource/script/web/common/ui_script.js"></script>
+            <script src="/resource/script/web/common/melonweb_member_external.js?t=20180626"></script>
+            <script src="/resource/script/web/common/underscore.js"></script>
+
+            <script type="text/javascript" src="https://cdnimg.melon.co.kr/static/web/resource/script/w1/zz/j/1o6z3dft8cp.js"></script>
+            <link rel="stylesheet" type="text/css" href="//cdnticket.melon.co.kr/resource/style/web/common/common-d09a5246f7.css" />
+            <link rel="stylesheet" type="text/css" href="//cdnticket.melon.co.kr/resource/style/web/common/concert-543992d674.css" />
+            <script src="/resource/script/phase/deployPhaseUtils.js"></script>
+            <script type="text/javascript"></script>
+
+            <!-- End Kakao Pixel Code -->
+        </head>
+        <body>
+            <div id="wrap" class="index">
+                <!-- 이벤트일 경우 event_gnb 추가 -->
+
+                <div id="header">
+                    <a th:insert="common/header.html"></a>
+
+                    <div id="header_wrap" class="pr_none">
+                        <h1 id="logo"><a href="/image/logo"></a></h1>
+
+                        <div class="cmn_banner" style="display: none;">
+                            <div class="gnb_banner_btn">
+                                <a href="" class="btn prev d_btn_ctrl" title="이전 이벤트 보기">이전 이벤트 보기</a>
+                                <a href="" class="btn next d_btn_ctrl" title="다음 이벤트 보기">다음 이벤트 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cont_wrap" class="clear_g">
+                    <div id="conts_section" class="pr_none">
+                        <div id="conts" class="clear_g theme">
+                            <h2 class="sub_tit tit_musical">뮤지컬/연극</h2>
+                            <br />
+                            <br />
+                            <br />
+                            <ul class="list" style="float: left;">
+                                <li class="item">
+                                    <div class="thumb">
+                                        <a href="javascript:bannerLanding('BR', '100294');">
+                                            <img
+                                                src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2020/10/20201006110457845c4df9-b33e-4a4e-895c-1867433338fe.jpg"
+                                                width="250"
+                                                alt="강렬한 대작의 5번째 귀환!"
+                                                onerror="noImage(this, 256, 320)"
+                                            />
+
+                                            <span class="frame"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">뮤지컬 〈몬테크리스토〉 10주년 기념 공연</div>
+                                        <div class="text">강렬한 대작의 5번째 귀환!</div>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumb">
+                                        <a href="javascript:bannerLanding('BR', '100285');">
+                                            <img
+                                                src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2020/10/20201013115337c05ff3b6-7641-4cfd-93ce-f4400b4bce1a.jpg"
+                                                width="250"
+                                                alt="기념비적인 40주년 내한 공연!"
+                                                onerror="noImage(this, 256, 320)"
+                                            />
+                                            <span class="frame"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">뮤지컬 〈캣츠〉 40주년 오리지널 내한공연（Musical CATS）</div>
+                                        <div class="text">기념비적인 40주년 내한 공연!</div>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumb">
+                                        <a href="javascript:bannerLanding('TD', '205542');">
+                                            <img
+                                                src="https://cdnticket.melon.co.kr/resource/image/upload/product/2020/10/20201007145358b04e3a6d-f72c-482f-a142-ce78755e66fa.jpg"
+                                                width="250"
+                                                alt="기상천외한 독창적 코미디 뮤지컬"
+                                                onerror="noImage(this, 256, 320)"
+                                            />
+                                            <span class="frame"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">뮤지컬 〈젠틀맨스 가이드：사랑과 살인편〉</div>
+                                        <div class="text">기상천외한 독창적 코미디 뮤지컬</div>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumb">
+                                        <a href="javascript:bannerLanding('BR', '100285');">
+                                            <img
+                                                src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2020/10/20201013115337c05ff3b6-7641-4cfd-93ce-f4400b4bce1a.jpg"
+                                                width="250"
+                                                alt="기념비적인 40주년 내한 공연!"
+                                                onerror="noImage(this, 256, 320)"
+                                            />
+                                            <span class="frame"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">뮤지컬 〈캣츠〉 40주년 오리지널 내한공연（Musical CATS）</div>
+                                        <div class="text">기념비적인 40주년 내한 공연!</div>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumb">
+                                        <a href="javascript:bannerLanding('BR', '100285');">
+                                            <img
+                                                src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2020/10/20201013115337c05ff3b6-7641-4cfd-93ce-f4400b4bce1a.jpg"
+                                                width="250"
+                                                alt="기념비적인 40주년 내한 공연!"
+                                                onerror="noImage(this, 256, 320)"
+                                            />
+                                            <span class="frame"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">뮤지컬 〈캣츠〉 40주년 오리지널 내한공연（Musical CATS）</div>
+                                        <div class="text">기념비적인 40주년 내한 공연!</div>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumb">
+                                        <a href="javascript:bannerLanding('BR', '100285');">
+                                            <img
+                                                src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2020/10/20201013115337c05ff3b6-7641-4cfd-93ce-f4400b4bce1a.jpg"
+                                                width="250"
+                                                alt="기념비적인 40주년 내한 공연!"
+                                                onerror="noImage(this, 256, 320)"
+                                            />
+                                            <span class="frame"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">뮤지컬 〈캣츠〉 40주년 오리지널 내한공연（Musical CATS）</div>
+                                        <div class="text">기념비적인 40주년 내한 공연!</div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="wrap_main_concert type1 ctrlViewType">
+                                <!-- ctrlViewType덩어리 control_list + tapping -->
+
+                                <!-- 리스트 타입 -->
+                                <div class="box_ranking_list tapping">
+                                    <table summary="" class="tbl tbl_style02">
+                                        <caption class="hide"></caption>
+                                        <colgroup>
+                                            <col width="603" />
+                                            <col width="170" />
+                                            <col width="235" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>공연명</th>
+                                                <th>공연일시</th>
+                                                <th>공연장소</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="perf_list"></tbody>
+                                    </table>
+                                </div>
+                                <!-- 리스트 타입 -->
+                                <!-- 앨범 타입 -->
+                                <ul class="list_main_concert tapping on" id="perf_poster"></ul>
+                                <!-- 앨범 타입 -->
+                                <script type="text/javascript">
+                                    var controlView = {
+                                        //뷰 타입 선택(앨범,리스트)
+                                        init: function () {
+                                            var target = $(".ctrlViewType");
+                                            this.ctrlBtn = target.find(".tappingBtn");
+                                            this.ctrlCont = target.find(".tapping");
+                                            this.addEvent();
+                                        },
+                                        addEvent: function () {
+                                            var self = this;
+                                            this.ctrlBtn.on("click", function () {
+                                                self.change($(this));
+                                            });
+                                        },
+                                        change: function (btn) {
+                                            var idx = btn.index();
+                                            this.ctrlCont.eq(idx).addClass("on").siblings(".tapping").removeClass("on");
+                                            btn.addClass("on").siblings(".tappingBtn").removeClass("on");
+                                        },
+                                    };
+                                    controlView.init();
+                                </script>
+                            </div>
+                        </div>
+                        <!-- //contents -->
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    var SUCCESS_CODE = 0; //ajax call 성공시 result 키에 0이 성공으로 넘어옴.
+                    var listCnt = 0; // 노출된 티겟 수
+                    var cntNum = 20; //한번에 노출할 티겟 수
+                    var allCnt = 0; //전체 티겟 겟수
+
+                    $(document).ready(function () {
+                        if ("GENRE_ART" == "GENRE_CON") {
+                            $(".nth2").addClass("on");
+                        } else if ("GENRE_ART" == "GENRE_ART") {
+                            $(".nth3").addClass("on");
+                        } else if ("GENRE_ART" == "GENRE_CLA") {
+                            $(".nth10").addClass("on");
+                        } else if ("GENRE_ART" == "GENRE_EXH") {
+                            $(".nth11").addClass("on");
+                        }
+
+                        $("#wrap").attr("class", "region");
+                        getProdList(initPerfDataByParameter);
+
+                        $("a[name*='genreTitleViewer']").on("click", function (e) {
+                            e.preventDefault();
+                            $("a[name*='genreTitleViewer']").removeClass("on");
+                            $(this).addClass("on");
+                            $("#genre_type").val($(this).attr("id"));
+                            getProdList(initPerfDataByParameter);
+                        });
+
+                        $(".view_sort_control li").on("click", function (e) {
+                            e.preventDefault();
+                            $(".view_sort_control li").removeClass("on");
+                            $(this).addClass("on");
+                            $("#sort_type").val($(this).attr("value"));
+                            getProdList(initPerfDataByParameter);
+                        });
+
+                        if ("" != "") {
+                            $("#").click();
+                        }
+                    });
+
+                    //스크롤 하단 왔을 때에 발생 이벤트
+                    $(window).scroll(function () {
+                        if (parseInt($(window).scrollTop() + $(window).height()) >= parseInt($("#footer").offset().top)) {
+                            //리스트 추가 함수 호출
+                            if (listCnt < allCnt + 1) {
+                                getProdList(addPerfDataByParameter);
+                            } else {
+                                return;
+                            }
+                        }
+                    });
+
+                    function initPerfDataByParameter(_obj) {
+                        if (SUCCESS_CODE != _obj.result) {
+                            return;
+                        }
+                        $("#perf_poster").empty();
+                        $("#perf_list").empty();
+
+                        if (_obj.data.length == 0) {
+                            var list =
+                                '<tr><td colspan="3"><div class="wrap_region_search_null" style="margin-top: 20px;padding: 117px 0;font-size: 28px;line-height: 32px;color: #333;text-align: center;">선택하신 조건에 해당하는 공연이 없습니다.</div></td></tr>';
+                            $("#perf_list").append(list);
+                            var poster =
+                                '<div class="wrap_region_search_null" style="border: 1px solid #eee;margin-top: 20px;padding: 117px 0;font-size: 28px;line-height: 32px;color: #333;text-align: center;">선택하신 조건에 해당하는 공연이 없습니다.</div>';
+                            $("#perf_poster").append(poster);
+                            return;
+                        }
+
+                        var _dataCnt = 0;
+
+                        $.each(_obj.data, function (i, o) {
+                            listCnt = 20; //초기 셋팅
+                            allCnt = i;
+
+                            var _on = i % 4 == 0 ? ' class="first"' : "";
+                            var _iconCode = o.iconCode;
+                            var _si = drawIcon(_iconCode);
+
+                            var _stateFlg = o.stateFlg;
+                            var _ssPoster = "";
+                            var _ssList = "";
+
+                            if ("SS0100" == _stateFlg) {
+                                _ssPoster = '<span class="ico_list ico_list4">판매예정</span>';
+                                _ssList = '<span class="ico_list ico_list4">판매예정</span>';
+                            } else if ("SS0200" == _stateFlg) {
+                                _ssPoster = '<span class="ico_list ico_list4">판매중</span>';
+                                _ssList = '<span class="ico_list ico_list4">판매중</span>';
+                            }
+
+                            if (i < listCnt) {
+                                drawPerfPoster(_on, o, _si, _ssPoster);
+                                drawPerfList(o, _si, _ssList);
+
+                                _dataCnt = _dataCnt + 1;
+                            }
+                        });
+
+                        drawListBlank(_dataCnt);
+                    }
+
+                    function addPerfDataByParameter(_obj) {
+                        if (SUCCESS_CODE != _obj.result || _obj.data.length == 0) {
+                            return;
+                        }
+
+                        var _dataCnt = 0;
+
+                        $.each(_obj.data, function (i, o) {
+                            var _on = i % 4 == 0 ? ' class="first"' : "";
+                            var _iconCode = o.iconCode;
+                            var _si = drawIcon(_iconCode);
+
+                            var _stateFlg = o.stateFlg;
+                            var _ssPoster = "";
+                            var _ssList = "";
+
+                            if ("SS0100" == _stateFlg) {
+                                _ssPoster = '<span class="ico_list ico_list4">판매예정</span>';
+                                _ssList = '<span class="ico_list ico_list4">판매예정</span>';
+                            } else if ("SS0200" == _stateFlg) {
+                                _ssPoster = '<span class="ico_list ico_list4">판매중</span>';
+                                _ssList = '<span class="ico_list ico_list4">판매중</span>';
+                            }
+
+                            if (i >= listCnt && i < listCnt + cntNum) {
+                                drawPerfPoster(_on, o, _si, _ssPoster);
+                                drawPerfList(o, _si, _ssList);
+
+                                _dataCnt = _dataCnt + 1;
+                            }
+                        });
+
+                        drawListBlank(_dataCnt);
+                        listCnt = listCnt + cntNum;
+                    }
+
+                    function drawPerfPoster(_on, _o, _si, _ssPoster) {
+                        var _poster =
+                            "<li" +
+                            _on +
+                            ">" +
+                            '    <a href="/performance/index.htm?prodId=' +
+                            _o.prodId +
+                            '" class="inner">' +
+                            '        <span class="thumb">' +
+                            '           <img onerror="noImage(this, 180, 250)" src="https://cdnticket.melon.co.kr' +
+                            _o.posterImg +
+                            '/melon/resize/180x250/strip/true" alt="" />' +
+                            '            <span class="frame"></span>' +
+                            "        </span>";
+                        if (typeof _o.subTitle != "undefined") {
+                            _poster += '        <strong class="tit">' + _o.subTitle + "</strong>";
+                        } else {
+                            _poster += '        <strong class="tit">' + _o.title + "</strong>";
+                        }
+                        _poster += '        <span class="day">' + _o.periodInfo + "</span>";
+                        if (typeof _o.placeName != "undefined") {
+                            _poster += '        <span class="location">' + _o.placeName + "</span>";
+                        }
+                        _poster += '        <span class="stat">';
+                        _poster += _si;
+                        _poster += _ssPoster;
+                        _poster += "        </span>";
+                        _poster += "    </a>";
+                        _poster += "</li>";
+                        $("#perf_poster").append(_poster);
+                    }
+                </script>
+                <script type="text/javascript" src="/resource/script/web/main/melonticket_main.js"></script>
+                <script type="text/javascript" src="/resource/script/web/common/webUtils.js"></script>
+
+                <!-- footer -->
+                <div id="footer" class="my_fold">
+                    <div class="btn_top_wrap">
+                        <a href="#skip_nav" class="btn_top" title="맨 위로 가기" style=""><span>맨 위로 가기</span></a>
+                        <!-- scrollTop 1800 -->
+                    </div>
+
+                    <a href="#" class="btn_top" title="맨 위로 가기" style="display: none;">맨 위로 가기</a>
+                </div>
+                <!-- //footer -->
+                <script type="text/javascript">
+                    function openWinPop2(url, w, h, options) {
+                        if (!options) options = "resizable=no toolbar=no menubar=no location=no scrollbars=yes status=yes";
+                        var opt = "width=" + w + " height=" + h + " " + options;
+                        window.open(url, name, opt);
+                    }
+                    if (window["openNewWin"] == void 0) {
+                        //old browser's window has object check
+                        var openNewWin = function (url, options) {
+                            if (!options) options = "";
+                            window.open(url, "", options);
+                        };
+                    }
+                </script>
+            </div>
+
+            <script type="text/javascript">
+                var httpWww = DeployPhaseUtils.convertUrl("http://ticket.melon.com");
+                var httpsWww = DeployPhaseUtils.convertUrl("https://ticket.melon.com");
+                var POC_ID = "WP15";
+            </script>
+
+            <script type="text/javascript" src="/resource/script/web/common/melonweb_comm.js?t=20180626"></script>
+            <script type="text/javascript" src="/resource/script/web/common/melonweb_play.js?t=20180626"></script>
+            <script type="text/javascript" src="/resource/script/web/common/melonweb_cm.js?t=20180709"></script>
+
+            <script type="text/javascript">
+                var melon = MELON.WEBSVC.POC;
+                try {
+                    document.domain = "melon.com";
+                } catch (e) {}
+
+                //pocId 쿠키설정 실행
+                try {
+                    melon.setPocId();
+                } catch (e) {}
+            </script>
+
+            <script type="text/javascript" src="/resource/script/web/common/socket.io.js"></script>
+            <script type="text/javascript" src="https://cdnimg.melon.co.kr/static/web/resource/script/w1/fl/7/uot4m6bho9.js"></script>
+
+            <script type="text/javascript" src="/resource/script/web/common/melonweb_cmtpgn.js?t=20200115"></script>
+        </body>
+    </html>
+</head>
