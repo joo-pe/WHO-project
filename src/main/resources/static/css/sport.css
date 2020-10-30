@@ -1,0 +1,192 @@
+@charset "UTF-8";
+/*!
+ _ _  _
+| | || | ticket-desktop
+| | || | INTERPARK UI Development Team
+`___'|_| 0.14.12
+
+*/
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.eot");
+  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.otf") format("opentype");
+}
+
+.sportsBridgeWrapper {
+  width: 100%;
+  background-color: #eee;
+}
+
+.sportsBridgeWrapper * {
+  	font-size: 14px;
+  	font-family: "Noto Sans KR", "돋움", Dotum, Arial, Helvetica, sans-serif;
+  	font-weight: 300;
+  	color: #363636;
+}
+
+.sportsBridgeWrapper .bridgeTopWrapper {
+  width: 100%;
+}
+
+.sportsBridgeWrapper .bridgeTopWrapper h1 span {
+  display: block;
+  width: 100%;
+  height: 354px;
+  text-indent: -9999px;
+}
+
+.sportsBridgeWrapper .bridgeTopWrapper h1 span.valleyballTop {
+  background: url("//ticketimage.interpark.com/TicketImage/uidev/desktop/images/pages/category/sports/bridge/volley_top.jpg") no-repeat top center #ff687b;
+}
+
+.sportsBridgeWrapper .bridgeTopWrapper h1 span.footballTop {
+  background: url("//ticketimage.interpark.com/TicketImage/uidev/desktop/images/pages/category/sports/bridge/football_top.jpg") no-repeat top center #0f4200;
+}
+
+.sportsBridgeWrapper .bridgeTopWrapper h1 span.basketballTop {
+  background: url("//ticketimage.interpark.com/TicketImage/uidev/desktop/images/pages/category/sports/bridge/basket_top.jpg") no-repeat top center #000;
+}
+
+.sportsBridgeWrapper .bridgeTopWrapper h1 span.baseballTop {
+  background: url("//ticketimage.interpark.com/TicketImage/uidev/desktop/images/pages/category/sports/bridge/baseball_top.jpg") no-repeat top center #000;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper {
+  width: 1365px;
+  margin: 0 auto;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul {
+  width: 1400px;
+}
+
+li{
+	list-style-type : none;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li {
+  float: left;
+  width: 310px;
+  height: 460px;
+  background-color: #fff;
+  margin: 0 15px 15px 0;
+  box-sizing: border-box;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap {
+  position: relative;
+  height: 430px;
+  padding: 15px;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap .imgWrap {
+  width: 280px;
+  height: 260px;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap .imgWrap img {
+  width: 260px;
+  height: 260px;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap .clubInfoWrap {
+  margin-top: 13px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap .clubInfoWrap .clubName {
+  font-size: 22px;
+  color: #000;
+  letter-spacing: -1px;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap .clubInfoWrap .place {
+  font-size: 16px;
+  color: #666;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap .clubInfoWrap .engName {
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #999;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap button {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  border: 0;
+  cursor: pointer;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap button.btn_reserve {
+  width: 280px;
+  height: 68px;
+  background-color: #81F7D8;
+  text-align: center;
+}
+
+.sportsBridgeWrapper .bridgeListWrapper ul li .listWrap button.btn_reserve span {
+  font-size: 24px;
+  color: #fff;
+}
+
+.sportsBridgeWrapper .footSloganWrapper {
+  width: 100%;
+  padding: 30px 0 80px;
+}
+
+.sportsBridgeWrapper .footSloganWrapper .sloganWrap {
+  	width: 100%;
+ 	height: 51px;
+  	margin: 0 auto;
+  	text-align: center;
+ 	background: url("//ticketimage.interpark.com/TicketImage/uidev/desktop/images/pages/category/sports/bridge/baseball_dubleLine.jpg") repeat-x center;
+}
+.img-responsive {
+	max-width: 100%;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+.baseballbanner{
+	padding: 64px 0px 0px 0px;
+}
+.soccerbanner{
+	padding: 64px 0px 0px 0px;
+}
+

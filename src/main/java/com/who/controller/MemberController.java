@@ -7,14 +7,20 @@ import com.who.domain.repository.MemberRepository;
 import com.who.dto.CertifiednumberDto;
 import com.who.dto.MailDto;
 import com.who.dto.MemberDto;
+import com.who.dto.SportsDto;
+import com.who.helpers.ZXingHelper;
 import com.who.service.MemberService;
 import com.who.service.SendEmailService;
+import com.who.service.SportsService;
 
 import lombok.AllArgsConstructor;
 
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -23,6 +29,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +42,7 @@ public class MemberController {
     private MemberService memberService;
     private MemberRepository memberRepository;
     private SendEmailService sendEmailService;
+    private SportsService sportsService;
 //    private CertifiedEntity certifiedentity;
 
 
@@ -87,16 +95,49 @@ public class MemberController {
     public String dispDenied() {
         return "login/denied";
     }
+    
+    //축구 예매 페이지
+    @GetMapping("/soccer")
+    public String dispsoccer() {
+    	return "sport/soccer";
+    }
 
+  //야구 예매 페이지
+    @GetMapping("/baseball")
+    public String dispbaseball() {
+    	return "sport/baseball";
+    }
+    
     // 현재 사용자 정보 가져오기
     @GetMapping("/myinfo")
     public String dispCuurentUserInfo(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
         String email = memberDetail.getUsername();
         MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+        SportsDto sportsDto = sportsService.getSports((long) 2);
 
+        model.addAttribute("sportsList", sportsDto);
         model.addAttribute("currentUser", memberEntity);
         return "myticket/myinfo";
     }
+    
+    // 현재 사용자 정보와 스포츠 정보 qr로 가져오기
+    @GetMapping("/qr")
+    public String dispSportInfo(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+        String email = memberDetail.getUsername();
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+        SportsDto sportsDto = sportsService.getSports((long) 2);
+
+        model.addAttribute("sportsList", sportsDto);
+        model.addAttribute("currentUser", memberEntity);
+        return "myticket/Qr";
+    }
+    
+    
+//    @GetMapping("/sports")
+//    public String list(Model model) {
+//        
+//        return "admin/sports/sports";
+//    }
     
     //현재 사용자 정보변경 페이지
     @GetMapping("/resignup/{no}")
@@ -107,6 +148,7 @@ public class MemberController {
         model.addAttribute("currentUser", memberEntity);
         return "myticket/resignup";
     }
+    
     
     //현재 사용자 비밀번호변경 페이지
     @GetMapping("/repass/{no}")
@@ -228,6 +270,16 @@ public class MemberController {
 //		return new ResponseEntity<String>("complete", HttpStatus.OK);
 //		else return new ResponseEntity<String>("false", HttpStatus.OK);
 //	}
+    
+    //QR코드
+    @GetMapping("/qrcode/{id}")
+    public void qrcode(@PathVariable("id") String id, HttpServletResponse response) throws Exception{
+    	response.setContentType("image/png");
+		OutputStream outputStream = response.getOutputStream();
+		outputStream.write(ZXingHelper.getQRCodeImage(id, 200, 200));
+		outputStream.flush();
+		outputStream.close();
+    }
 
 
 }

@@ -38,6 +38,7 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time'
     implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.google.zxing:javase:3.3.0'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-context-support'
     runtimeOnly 'mysql:mysql-connector-java'
@@ -50,3 +51,5 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework:spring-context-support'
     compile 'com.sun.mail:javax.mail'
+    compile group: 'org.web3j', name: 'core', version: '4.2.0'
+    }

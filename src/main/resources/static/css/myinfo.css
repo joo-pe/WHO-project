@@ -23,3 +23,8 @@ background: #81F7D8;
 img{
 margin: 20px;
 }
+btn btn-danger{
+	color: #fff;
+    background-color: #0a9772;
+    border-color: #0a9772;
+}

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>WHO TICKET</title>
@@ -29,7 +30,7 @@
   <!-- The Grid -->
 
       <!-- Left Column -->
-    <div class="w3-third">
+    <div class="w3-third" style="padding: 80px 0 0 0">
 
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container" align="center">
@@ -66,37 +67,62 @@
 
     <!-- Right Column -->
     
-    <div class="w3-twothird">
+    <div class="w3-twothird" style="padding: 80px 0 0 20px">
+    
     	<div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>My Ticket</h2>
         <div class="w3-container" align="center">
-          <table>
-          	<tr>
-          		<th><input type="checkbox">전체선택</th>
-          		<th>예매일</th>
-          		<th>상품명</th>
-          		<th>수량</th>
-          		<th>이용날짜</th>
-          		<th>현재상태</th>
-          	</tr>
-          	<tr>
-          		<td colspan="6" height="280">
-          			최근 이용 내역이 없습니다.
-          		</td>
-          	</tr>
-          </table>
-          </div>
+	<table class="table table-cnodensed">
+    <thead>
+      <tr>
+        <th><input type="checkbox">전체선택</th>
+        <th>예매일</th>
+        <th>상품명</th>
+        <th>수량</th>
+        <th>이용날짜</th>
+       	<th>QR</th>
+        <th>현재상태</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+       <td><input type="checkbox"></td>
+        <td th:text="${#temporals.format(sportsList.dateTime, 'yyyy년 MM월 dd일')}"></td>
+        <td th:text="${sportsList.title}"></td>
+        <td th:text="${sportsList.ticketMax}"></td>
+        <td th:text="${#temporals.format(sportsList.ticketOpen, 'yyyy년MM월dd일')}"></td>
+       	<td><a th:href="@{/qr}" onclick="window.open">QR코드</a></td>
+        <td class="text-center small mt-2" id="checkMsg" style="color: red"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+        <td>Doe</td>
+        <td>Doe</td>
+        <td class="text-center small mt-2" id="checkMsg" style="color: red"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>Doe</td>
+        <td>Doe</td>
+        <td class="text-center small mt-2" id="checkMsg" style="color: red"></td>
+      </tr> 
+    </tbody>
+  </table>
+ </div>
+          
+          
 
 
     <!-- End Right Column -->
     </div>
-    
-    
-  <!-- End Grid -->
-  </div>
-  
+     
   <!-- End Page Container -->
 </div>
+
 <!-- FOOTER -->
 <div th:insert="common/footer.html" id="footer"></div>
 

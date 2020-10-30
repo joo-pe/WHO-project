@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         		.permitAll()
                 // 페이지 권한 설정
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/myinfo").hasRole("MEMBER")
+                // .antMatchers("/myinfo").hasRole("MEMBER")
                 .antMatchers("/**")
                 .permitAll()
                 .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType()) 
