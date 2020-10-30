@@ -1,3 +1,4 @@
+  
 package com.who.domain;
 
 import com.who.domain.entity.MemberEntity;

@@ -20,7 +20,7 @@
 <!-- 스킵네비게이션 : 웹접근성대응-->
 <div id="who">
     <a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;">
-    <span>본문으로 바로가기</span></a>
+    </a>
 </div>
 <!-- //스킵네비게이션 -->
 <!-- header -->
@@ -34,12 +34,14 @@
     <span class="blind">WHO_Ticket</span></a></h1>
     <div class="lang">
         
-    </div>
-</div> -->
+    
 <!-- //header -->
 <!-- container -->
 <div id="container" role="main">
     <!-- content -->
+    
+    
+    <div>
     <div id="content">
         <!-- tg-text=title -->
         <h2 class="blind">WHO_TICKET 회원가입</h2>
@@ -62,7 +64,10 @@
 									</label>
 	                        </span>
                         </p>
-                  		<ul class="terms_bx_list">
+                  		<ul class="terms_bx_list" style="border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;">
                       		<li class="terms_bx">
 								<span class="input_chk">
 								<input type="checkbox" id="termsService" name="termsService" class="chk" required="required"/>
@@ -73,9 +78,12 @@
 								</span>
 								</label>
 								</span>
-                          <div class="terms_box" tabindex="0" id="divService">
+                          <div class="terms_box" tabindex="0" id="divService" style="border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;">
  <!-- 이용약관 동의 -->
-<div class="article">
+<div class="article" >
     <h3 class="article__title">여러분을 환영합니다.</h3>
     <p class="article__text">
         WHO_TICKET 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
@@ -399,7 +407,10 @@
 		<label for="termsPrivacy" class="collect_personal">개인정보 수집 및 이용 동의<span class="terms_choice">(필수)</span></label>
         <a href="#" id="termForChild" class="easy_guide" role="button" target="_blank"><span class="txt">이용  안내</span></a>
 	</span>
-<div class="terms_box" tabindex="0" id="divPrivacy">
+<div class="terms_box" tabindex="0" id="divPrivacy" style="border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;">
  <!-- 개인정보 수집 및 이용에 대한 안내 -->
 <div class="policy_summary">
     <p class="policy_summary__text">
@@ -508,7 +519,10 @@
 										<label for="termsLocation">위치정보 이용약관 동의<span class="terms_choice terms_no">(선택)</span></label>
 									</span>
                                 <!-- tg-lang=>"ko" -->
-                                <div class="terms_box" id="divLocation">
+                                <div class="terms_box" id="divLocation" style="border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;">
                                     <!-- 위치정보 이용약관 동의 -->
 <div class="policy_summary">
 								<p class="policy_summary__text">위치정보 이용약관에 동의하시면, <strong>위치를 활용한 광고 정보 수신</strong> 등을 포함하는 WHO_TICKET 위치기반 서비스를 이용할 수 있습니다.</p><br>

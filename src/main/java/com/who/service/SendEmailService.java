@@ -21,7 +21,7 @@ public class SendEmailService {
 	CertifiedRepository certifiedRepository;
 
     private JavaMailSender mailSender;
-    private static final String FROM_ADDRESS = "kwonga3@gmail.com";
+    private static final String FROM_ADDRESS = "dmstjdwjd123@gmail.com";
     
     public Long joinCertified(CertifiednumberDto certifiednumberDto) {
     	
