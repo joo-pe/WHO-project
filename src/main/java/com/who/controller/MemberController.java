@@ -100,6 +100,14 @@ public class MemberController {
         return "myticket/resignup";
     }
     
+    //현재 사용자 정보변경 처리
+    @GetMapping("/resignup/update/{no}")
+    public String update(MemberDto memberDto) {
+        memberService.savePost(memberDto);
+
+        return "redirect:/myinfo";
+    }
+    
     //현재 사용자 비밀번호변경 페이지
     @GetMapping("/repass/{no}")
     public String repass(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
@@ -131,14 +139,6 @@ public class MemberController {
     public @ResponseBody void changePw(String newpw, String email){
       memberService.updatePassword(newpw, email);
        
-    }
-    
-    //현재 사용자 정보변경 처리
-    @GetMapping("/resignup/update/{no}")
-    public String update(MemberDto memberDto) {
-        memberService.savePost(memberDto);
-
-        return "redirect:/myinfo";
     }
         
     //Email과 name의 일치여부를 check하는 컨트롤러

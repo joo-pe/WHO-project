@@ -2,9 +2,11 @@ package com.who.config;
 
 public enum SocialType {
 
-	FACEBOOK("facebook"),
-	GOOGLE("google");
-	
+	FACEBOOK("facebook"), 
+	GOOGLE("google"), 
+	KAKAO("kakao"), 
+	NAVER("naver");
+
 	private final String ROLE_PREFIX = "ROLE_";
 	private String name;
 	
