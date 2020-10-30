@@ -1,7 +1,9 @@
 package com.who.service;
 
 import com.who.domain.MemberDetail;
+import com.who.domain.entity.CertifiedEntity;
 import com.who.domain.entity.MemberEntity;
+import com.who.domain.repository.CertifiedRepository;
 import com.who.domain.repository.MemberRepository;
 import com.who.dto.MemberDto;
 import lombok.AllArgsConstructor;
@@ -24,13 +26,14 @@ public class MemberService implements UserDetailsService {
 	
     @Autowired
 	MemberRepository memberRepository;
+    CertifiedRepository certifiedRepository;
 
     @Transactional
     public Long joinUser(MemberDto memberDto) {
         //비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
-
+        
         return memberRepository.save(memberDto.toEntity()).getId();
     }
 
@@ -124,6 +127,28 @@ public class MemberService implements UserDetailsService {
     	String password = passwordEncoder.encode(newpw);
         Long id = memberRepository.findMemberEntityByEmail(email).getId();
         memberRepository.update(id, password);
-    } 
+    }
+    
+    //회원가입 email 중복확인
+    public String idCheck(String email) {
+        System.out.println(memberRepository.findMemberEntityByEmail(email));
+
+        if (memberRepository.findMemberEntityByEmail(email) == null) {
+            return "YES";
+        } else {
+            return "NO";
+        }
+    }
+    
+    //email로 발송 된 인증번호와 입력한 인증번호가 일치하는지 확인
+    public String CertifiedCheck(String number) {
+    	CertifiedEntity certifiedEntity = certifiedRepository.findCertifiedEntityByNumber(number);
+	        if(certifiedEntity!=null && certifiedEntity.getNumber().equals(number)) {
+	            return "YES";
+	        }
+	        else {
+	            return "NO";
+	        }
+    }
  
 }
