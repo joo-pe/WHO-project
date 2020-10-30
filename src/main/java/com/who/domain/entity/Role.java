@@ -1,4 +1,4 @@
-package com.who.domain;
+package com.who.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" style="background-color: azure">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>WHO_TICKET : 회원가입</title>
-	<link rel= "stylesheet" type="text/css" href="/css/siginup2.css">
+	<link rel= "stylesheet" type="text/css" th:href="@{/css/signup.css}">
 
     <meta name="decorator" content="V2_JOIN">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -21,7 +20,7 @@
                     alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다..");
                     return;
                 }else if($("#termsLocation").is(":checked") == false){
-                    alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다...");
+                    alert("다음 단계로 진행합니다...");
                     return;
                 }else {
                     $("#join").submit(false);
@@ -39,10 +38,11 @@
     </script>
 </head>
 <body>
+<a id="batang">
 <!-- 스킵네비게이션 : 웹접근성대응-->
-<div id="who">
+<!-- <div id="who">
     <a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;"><span>본문으로 바로가기</span></a>
-</div>
+</div> -->
 <!-- //스킵네비게이션 -->
 <!-- header -->
  <div id="header">
@@ -50,12 +50,12 @@
             	<img th:src="@{/image/logo.png}" height="100" id="logo" >
             </a>
         </div>
-<div id="headers" role="banner">
+<!-- <div id="headers" role="banner">
     <h1><a href="http://localhost:8090/" class="h_logo"><span class="blind">WHO_TICKET</span></a></h1>
     <div class="lang">
         
     </div>
-</div>
+</div> -->
 <!-- //header -->
 <!-- container -->
 <div id="container" role="main">
@@ -68,12 +68,12 @@
                 <form id="join_form" method="GET" action="http://localhost:8090/signup" >
                     <input type="hidden" id="token_sjoin" name="token_sjoin">
                     <!-- 약관동의 -->
-                    <div class="terms_p">
+                    <div class="terms_p" style="border-top: 1px solid black; border-right: 1px solid black; border-left: 1px solid black;  border-bottom: 1px solid black"  >
                         <p class="terms_chk_all">
 								<span class="input_chk">
 									<input type="checkbox" id="chk_all" name="chk_all">
                                     <!-- [D] ie7/8에서 checked일때 label에 클래스 on추가해주세요.  -->
-									<label for="chk_all"><span class="chk_all_txt">WHO_TICKET 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),<br class='m_br'> 프로모션 정보 수신에 모두 동의합니다.</span></label>
+									<label for="chk_all"><span class="chk_all_txt">WHO_TICKET 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관,<br class='m_br'> 프로모션 정보 수신에 모두 동의합니다.</span></label>
 		                        </span>
                         </p>
                         <ul class="terms_bx_list">
@@ -82,8 +82,11 @@
 										<input type="checkbox" id="termsService" name="termsService" class="chk">
 										<label for="termsService">WHO_TICKET 이용약관 동의<span class="terms_necessary">(필수)</span></label>
 									</span>
-                                <div class="terms_box" tabindex="0" id="divService">
-                                    <!-- 네이버 이용약관 동의 -->
+                                <div class="terms_box" tabindex="0" id="divService"
+                                style=" border: 1px solid black;
+       border-radius: 4px;
+       height: 100px;">
+                                    <!-- 이용약관 동의 -->
 <div class="article">
     <h3 class="article__title">여러분을 환영합니다.</h3>
     <p class="article__text">
@@ -173,7 +176,7 @@
     <p class="article__text">
         WHO_TICKET은 서비스의 원활한 제공을 위하여 회원이 동의한 목적과 범위 내에서만 개인정보를 수집∙이용하며, 개인정보 보호 관련 법령에 따라 안전하게 관리합니다.
         WHO_TICKET은 이용자 및 회원에 대해 관련 개인정보를 안전하게 처리하기 위하여 기울이는 노력이나
-        기타 상세한 사항은 <a href="http://policy.WHO_TICKET.com/policy/privacy.html" target="_blank">개인정보 처리방침</a>에서 확인하실 수 있습니다.
+        기타 상세한 사항은 <a href="/" target="_blank">개인정보 처리방침</a>에서 확인하실 수 있습니다.
     </p>
     <p class="article__text">
         WHO_TICKET은 여러분이 서비스를 이용하기 위해 일정 기간 동안 로그인 혹은 접속한 기록이 없는 경우, 전자메일, 서비스 내 알림 또는 기타 적절한 전자적 수단을 통해 사전에 안내해 드린 후 여러분의 정보를 파기하거나 분리 보관할 수 있으며,
@@ -186,7 +189,7 @@
         여러분이 무심코 게재한 게시물로 인해 타인의 저작권이 침해되거나 명예훼손 등 권리 침해가 발생할 수 있습니다.
         WHO_TICKET은 이에 대한 문제 해결을 위해 ‘정보통신망 이용촉진 및 정보보호 등에 관한 법률’ 및 ‘저작권법’ 등을
         근거로 권리침해 주장자의 요청에 따른 게시물 게시중단, 원 게시자의 이의신청에 따른 해당 게시물 게시 재개 등을 내용으로 하는
-        <a href="https://inoti.WHO_TICKET.com/inoti/main.nhn" target="_blank">게시중단요청서비스</a>를 운영하고 있습니다.
+        <a href="/" target="_blank">게시중단요청서비스</a>를 운영하고 있습니다.
         보다 상세한 내용 및 절차는 FAQ 내 <a href="http://localhost:8090/faq">게시중단요청서비스 소개</a>를 참고해 주세요.
     </p>
     <p class="article__text">
@@ -400,14 +403,22 @@
         WHO_TICKET 서비스와 관련하여 궁금하신 사항이 있으시면 <a href="http://localhost:8090/faq/" target="_blank">FAQ</a>로 문의주세요
     </p>
 </div>                                </div>
+
+
+
+
+
                             </li>
                             <li class="terms_bx">
 									<span class="input_chk">
 										<input type="checkbox" id="termsPrivacy" name="termsPrivacy" class="chk">
 										<label for="termsPrivacy" class="collect_personal">개인정보 수집 및 이용 동의<span class="terms_choice">(필수)</span></label>
-                                        <a href="#" id="termForChild" class="easy_guide" role="button" target="_blank"><span class="txt">이용  안내</span></a>
+                                        <a href="http://localhost:8090/signup" id="userule" class="use_rule" role="button" target="_blank"><span class="txt">이용  안내</span></a>
 									</span>
-                                <div class="terms_box" tabindex="0" id="divPrivacy">
+                                <div class="terms_box" tabindex="0" id="divPrivacy"
+                                style=" border: 1px solid black;
+       border-radius: 4px;
+       height: 100px;">
                                     <!-- 개인정보 수집 및 이용에 대한 안내 -->
 <div class="policy_summary">
     <p class="policy_summary__text">개인정보보호법에 따라 WHO_TICKET에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.</p>
@@ -506,10 +517,12 @@
                             <li class="terms_bx">
 									<span class="input_chk">
 										<input type="checkbox" id="termsLocation" name="termsLocation" value="Y" class="chk">
-										<label for="termsLocation">위치정보 이용약관 동의<span class="terms_choice terms_no">(선택)</span></label>
+										<label for="termsLocation">위치정보 이용약관 동의<span class="terms_choice terms_no">(필수)</span></label>
 									</span>
                                 <!-- tg-lang=>"ko" -->
-                                <div class="terms_box" id="divLocation">
+                                <div class="terms_box" id="divLocation" style=" border: 1px solid black;
+       border-radius: 4px;
+       height: 100px;">
                                     <!-- 위치정보 이용약관 동의 -->
 <div class="policy_summary">
 								<p class="policy_summary__text">위치정보 이용약관에 동의하시면, <strong>위치를 활용한 광고 정보 수신</strong> 등을 포함하는 WHO_TICKET 위치기반 서비스를 이용할 수 있습니다.</p><br>
@@ -617,16 +630,17 @@
                                 <!-- tg-lang -->
                             </li>
                                                     </ul>
-                        <span class="event_message" style="display:block">WHO_TICKET에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(WHO_TICKET앱 알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 WHO_TICKET 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.</span>
+                        <span class="event_message" style="display:block">WHO_TICKET에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(WHO_TICKET 알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 WHO_TICKET 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.</span>
                         <span class="error" id="agreeMsg" style="display:none">WHO_TICKET 이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.</span>
                         <hr>
                         <a name='agreeBottom'></a>
+                    
                     <div class="btn_area double">
-                         <span>
-                            <a href="http://localhost:8090/signup" id="btnAgree" class="btn_type btn_primary"  role="button">확인</a>
+                        <span>
+                            <a th:href="@{/signup2}" id="btnAgree" class="btn_type btn_primary"  role="button">확인</a>
                         </span>
                         <span>
-
+                            <a th:href="@{/login}" id="btnCancel" class="btn_type btn_default"  role="button">취소</a>
                         </span>
                        
                     </div> 
@@ -642,8 +656,8 @@
     <!-- //content -->
 </div>
 <!-- //container -->
-
-<script type="text/javascript" src="/inc/common/js/jquery.min.js"></script>
+</a>
+<!-- <script type="text/javascript" src="/inc/common/js/jquery.min.js"></script> -->
 <script type="text/JavaScript">
     $(document).ready(function() {
         checkSupportedBorwser();
@@ -777,7 +791,7 @@
    </script>
 
 	<!-- footer -->
-	<div id="footer" role="contentinfo">
+	<!-- <div id="footer" role="contentinfo">
 		<ul>
 			<li><a href="Newmem">이용약관</a></li>
 			<li><a href="http://localhost:8090/faq" target="_blank" >FAQ </a></li>
@@ -789,7 +803,7 @@
             <em class="u_cri"></em>
 			<a href="http://localhost:8090/" target="_blank" class="u_cra">WHO_TICKET.</a>
 		</address>
-	</div>
+	</div> -->
 	<!-- //footer -->
 
 </body>

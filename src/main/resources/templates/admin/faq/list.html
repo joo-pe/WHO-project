@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 <title>FAQ</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -26,12 +26,12 @@
 	<script th:src="@{/js/board.js} " charset="utf8"></script>
 </head>
 <style>
-/* 코딩한 body에 추가 */
-body { 
-padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
-padding-top: env(safe-area-inset-top); /* iOS 11.2 */ 
-color:black;
-}
+    /* 코딩한 body에 추가 */
+    body {
+        padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+        padding-top: env(safe-area-inset-top); /* iOS 11.2 */
+        color:black;
+    }
 
 </style>
 <body>
@@ -207,51 +207,51 @@ App.Admin.BoardListInit();
 <a href="#" id="sideClose" title="닫기" style="top: 566.8px;">
 <i class="fa fa-angle-left">
 
-</i></a>
-<h2>게시판관리</h2>
-<ul>
-<li class="Active"><span>
+                    </i></a>
+                <h2>게시판관리</h2>
+                <ul>
+                    <li class="Active"><span>
 <a th:href="@{/admin/faq}">FAQ</a></span></li>
-<li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
-</ul>
-</aside>
-</div>
-</div>
-<footer id="footer">
-<div id="footer_wrap"></div>
-</footer>
+                    <li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+    <footer id="footer">
+        <div id="footer_wrap"></div>
+    </footer>
 </div>
 <script>
-$(document).ready(function(){
-if(JCM.getCookie('managerSideView') == 'no'){
-$('#wrap').addClass('sideHidden');
-}
-$('#containerWrap').append('<aside id="sideMenu"><a href="#" id="sideClose" title="닫기"><i class="fa fa-angle-left"></i></a><h2>' + ( $('#tnb ul > li.Active').length ? $('#tnb ul > li.Active a').eq(0).text() : '' ) + '</h2><ul>'+( $('#tnb ul > li.Active ol').length ? $('#tnb ul > li.Active ol').html() : '' ) +'</ul></aside>')
-$(document).on('click', '#sideClose', function(e){
-e.preventDefault();
-if($('#wrap').hasClass('sideHidden')){
-$('#wrap').removeClass('sideHidden');
-JCM.setCookie('managerSideView', 'yes');
-}else{
-$('#wrap').addClass('sideHidden');
-JCM.setCookie('managerSideView', 'no');
-}
-});
-$('#container').scroll(function(){
-sideScroll();
-});
-sideScroll();
-});
-function sideScroll(){
-var st = $('#container').scrollTop();
-if(st < 0) st = 0;
-$('#sideMenu').css({
-'padding-top' : st + 'px'
-});
-$('#sideClose').css({
-'top' : (st + 10) + 'px'
-});
-}
+    $(document).ready(function(){
+        if(JCM.getCookie('managerSideView') == 'no'){
+            $('#wrap').addClass('sideHidden');
+        }
+        $('#containerWrap').append('<aside id="sideMenu"><a href="#" id="sideClose" title="닫기"><i class="fa fa-angle-left"></i></a><h2>' + ( $('#tnb ul > li.Active').length ? $('#tnb ul > li.Active a').eq(0).text() : '' ) + '</h2><ul>'+( $('#tnb ul > li.Active ol').length ? $('#tnb ul > li.Active ol').html() : '' ) +'</ul></aside>')
+        $(document).on('click', '#sideClose', function(e){
+            e.preventDefault();
+            if($('#wrap').hasClass('sideHidden')){
+                $('#wrap').removeClass('sideHidden');
+                JCM.setCookie('managerSideView', 'yes');
+            }else{
+                $('#wrap').addClass('sideHidden');
+                JCM.setCookie('managerSideView', 'no');
+            }
+        });
+        $('#container').scroll(function(){
+            sideScroll();
+        });
+        sideScroll();
+    });
+    function sideScroll(){
+        var st = $('#container').scrollTop();
+        if(st < 0) st = 0;
+        $('#sideMenu').css({
+            'padding-top' : st + 'px'
+        });
+        $('#sideClose').css({
+            'top' : (st + 10) + 'px'
+        });
+    }
 </script>
 </body>
 </html>

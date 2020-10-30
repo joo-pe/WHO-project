@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+x<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-<title>하이웨이마트</title>
+<title>WHOTICKET ADMIN</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Chrome">
@@ -42,7 +42,7 @@ color:black;
 		<nav id="gnb">
 		<ul>
 		<li class="home"><a th:href="@{/}" target="_blank">홈으로</a></li>
-		<li class="logout"><a th:href="@{/}">로그아웃</a></li>
+		<li class="logout"><a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a></li>
 		</ul>
 		</nav>
 		<nav id="tnb">
@@ -88,17 +88,19 @@ color:black;
 		<li><span><a href="/BHAdm/Mall/Event">이벤트관리</a></span></li></ol></li> -->
 		<li><span><a th:href="@{/admin/Member}">회원관리</a></span></li>
 		
-		<li><span><a href="/admin/BoardManager">게시판관리</a></span>
-		<ol><li><span><a href="/BHAdm/BoardManager">게시판관리</a></span></li>
-		<!-- <li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
-		<li><span><a href="/BHAdm/Board/FAQ">FAQ</a></span></li>
+		<li><span><a th:href="@{/admin/faq}">게시판관리</a></span>
+		<ol>
+		<!--<li><span><a th:href="@{/admin/BoardManager}">게시판관리</a></span></li>
+		<li><span><a href="/BHAdm/Board/Entering">입점상담</a></span></li> -->
+		<li><span><a th:href="@{/admin/faq}">FAQ</a></span></li>
 		<!-- <li><span><a href="/BHAdm/Board/Inquiry">1:1 문의</a></span></li>
 		<li><span><a href="/BHAdm/Board/InquiryProduct">나의 문의내역</a></span></li> -->
-		<li><span><a href="/BHAdm/Board/notice">공지사항</a></span></li>
-		<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
-		<!-- <li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
-		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span></li>-->
+		<li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
+		<!--<li><span><a href="/BHAdm/Board/qnaboard">Q&amp;A</a></span></li>
+		<li><span><a href="/BHAdm/Board/Review">상품평</a></span></li>
+		<li><span><a href="/BHAdm/Board/winner">당첨자발표</a></span>-->
 		</ol>
+		</li>
 		<!-- </li><li><span><a href="/BHAdm/Mall/StoreArea">지점관리</a></span>
 		<ol><li><span><a href="/BHAdm/Mall/StoreArea">지점지역관리</a></span></li></ol>
 		</li><li><span><a href="/BHAdm/DashBoard">통계/엑셀</a></span></li> -->
@@ -145,30 +147,44 @@ color:black;
 </div>
 <table class="list">
 <colgroup>
-<col style="width:5%">
-<col style="width:7%">
-<col style="width:9%">
-<col style="">
-<col style="">
-<col style="width:12%">
-<col style="width:8%">
-<col style="width:8%">
-<col style="width:10%">
-<col style="width:8%">
-<col style="width:7%">
-<col style="width:5%">
+<col style="width:5%;">
+<col style="width:30%;">
+<col style="width:15%;">
+<col style="width:15%;">
+<col style="width:10%;">
+<col style="width:10%;">
 </colgroup>
 <thead>
 <tr>
 <th>번호</th>
-<th>아이디</th>
+<th>이메일</th>
 <th>이름</th>
 <th>휴대폰번호</th>
+<th>생년월일</th>
 <th>등록일</th>
 </tr>
 </thead>
-<tbody>
-
+<!-- CONTENTS !-->
+    <tr th:each="member : ${memberList}">
+        <td>
+            <span th:text="${member.id}"></span>
+        </td>
+        <td>
+             <span th:text="${member.email}"></span>
+        </td>
+        <td>
+            <span th:text="${member.name}"></span>
+        </td>
+        <td>
+            <span th:text="${member.phone}"></span>
+        </td>
+        <td>
+            <span th:text="${member.birthday}"></span>
+        </td>
+        <td>
+            <span th:text="${#temporals.format(member.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+        </td>
+    </tr>
 </tbody>
 </table>
 

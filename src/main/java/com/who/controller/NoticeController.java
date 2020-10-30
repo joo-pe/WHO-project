@@ -1,7 +1,9 @@
 package com.who.controller;
 
 import com.who.dto.NoticeDto;
+import com.who.dto.SportsDto;
 import com.who.service.NoticeService;
+import com.who.service.SportsService;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,13 +16,16 @@ import java.util.List;
 @AllArgsConstructor
 public class NoticeController {
     private NoticeService noticeService;
+    private SportsService sportsSevice;
 
     @GetMapping("/notice")
     public String list(Model model) {
-        List<NoticeDto> noticeList = noticeService.getNoticelist();
+//        List<NoticeDto> noticeList = noticeService.getNoticelist();
+        List<SportsDto> sportsList = sportsSevice.getSportsList();
 
-        model.addAttribute("noticeList", noticeList);
-        return "notice/list";
+        model.addAttribute("sportsList", sportsList);
+//        model.addAttribute("noticeList", noticeList);
+        return "/notice/list";
     }
 
     @GetMapping("/post1")
@@ -30,7 +35,7 @@ public class NoticeController {
 
     @PostMapping("/post1")
     public String write(NoticeDto noticeDto) {
-
+        noticeService.savePost(noticeDto);
 
         return "redirect:/notice";
     }
@@ -53,15 +58,15 @@ public class NoticeController {
 
     @PutMapping("/post1/edit/{no}")
     public String update(NoticeDto noticeDto) {
-
         noticeService.savePost(noticeDto);
 
-        return "redirect:/notice";
+        return "redirect:/admin/notice";
     }
     
     @DeleteMapping("/post1/{no}")
     public String delete(@PathVariable("no") Long no) {
         noticeService.deletePost(no);
+
         return "redirect:/notice";
     }
 

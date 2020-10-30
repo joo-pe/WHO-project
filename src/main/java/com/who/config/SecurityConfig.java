@@ -1,19 +1,4 @@
-
 package com.who.config;
-
-import com.who.service.MemberService;
-import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
 
 import com.who.service.MemberService;
 import lombok.AllArgsConstructor;
@@ -33,6 +18,8 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static com.who.config.SocialType.*;
+
+import javax.transaction.Transactional;
 
 @Configuration
 @EnableWebSecurity
@@ -54,9 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-        		
-        		.antMatchers("/", "/oauth2/**","/image/**","/login/**")
+    	
+        		http
+        		.authorizeRequests()
+        		.antMatchers("/", "/oauth2/**","/image/**","/login/**","/myticket/**")
         		.permitAll()
                 // 페이지 권한 설정
                 .antMatchers("/admin/**").hasRole("ADMIN")
@@ -66,7 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType()) 
                 .antMatchers("/google").hasAuthority(GOOGLE.getRoleType())
                 .anyRequest().authenticated()
-
+                .and()
+                
+                .csrf()
+    			.ignoringAntMatchers("/check/findPw/sendEmail")
+    			.ignoringAntMatchers("/check/Pw")
+    			.ignoringAntMatchers("/check/Pw/changePw")
+    			
                 .and() // 로그인 설정
                 .formLogin()
                 .loginPage("/login")
@@ -86,6 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //       		http.csrf().disable();
     }
 
+    @Transactional
     private ClientRegistration getRegistration(OAuth2ClientProperties clientproperties, String client) {
     	
     	if("google".contentEquals(client)) {

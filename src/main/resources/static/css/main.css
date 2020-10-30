@@ -18,9 +18,9 @@ h4 {
     margin-bottom: 30px;
 }
 .jumbotron {
-    background-color: #f4511e;
+    background-color: #81f7d8;
     color: #fff;
-    padding: 100px 25px;
+    /* padding: 100px 25px; */
     font-family: Montserrat, sans-serif;
 }
 .container-fluid {
@@ -30,11 +30,11 @@ h4 {
     background-color: #f6f6f6;
 }
 .logo-small {
-    color: #f4511e;
+    color: #81f7d8;
     font-size: 50px;
 }
 .logo {
-    color: #f4511e;
+    color: #81f7d8;
     font-size: 200px;
 }
 .thumbnail {
@@ -47,15 +47,16 @@ h4 {
     height: 100%;
     margin-bottom: 10px;
 }
-.carousel-control.right, .carousel-control.left {
+.carousel-control.right,
+.carousel-control.left {
     background-image: none;
-    color: #f4511e;
+    color: #81f7d8;
 }
 .carousel-indicators li {
-    border-color: #f4511e;
+    border-color: #81f7d8;
 }
 .carousel-indicators li.active {
-    background-color: #f4511e;
+    background-color: #81f7d8;
 }
 .item h4 {
     font-size: 19px;
@@ -68,21 +69,21 @@ h4 {
     font-style: normal;
 }
 .panel {
-    border: 1px solid #f4511e;
-    border-radius:0 !important;
+    border: 1px solid #81f7d8;
+    border-radius: 0 !important;
     transition: box-shadow 0.5s;
 }
 .panel:hover {
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+    box-shadow: 5px 0px 40px rgba(0, 0, 0, 0.2);
 }
 .panel-footer .btn:hover {
-    border: 1px solid #f4511e;
+    border: 1px solid #81f7d8;
     background-color: #fff !important;
-    color: #f4511e;
+    color: #81f7d8;
 }
 .panel-heading {
     color: #fff !important;
-    background-color: #f4511e !important;
+    background-color: #81f7d8 !important;
     padding: 25px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
@@ -102,26 +103,34 @@ h4 {
 }
 .panel-footer .btn {
     margin: 15px 0;
-    background-color: #f4511e;
+    background-color: #81f7d8;
     color: #fff;
 }
 .navbar {
     margin-bottom: 0;
-    background-color: #f4511e;
+    background-color: #81f7d8;
     z-index: 9999;
     border: 0;
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
-    font-family: Montserrat, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-.navbar li a, .navbar .navbar-brand {
+.navbar li a,
+.navbar .navbar-brand {
     color: #fff !important;
 }
-.navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #f4511e !important;
+.navbar-nav > .open > a {
+    background-color: #81f7d8 !important;
+}
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+    color: #81f7d8 !important;
     background-color: #fff !important;
+}
+.nav {
+    position: relative;
 }
 .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -130,9 +139,11 @@ h4 {
 footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #f4511e;
+    color: #81f7d8;
 }
-.slideanim {visibility:hidden;}
+.slideanim {
+    visibility: hidden;
+}
 .slide {
     animation-name: slide;
     -webkit-animation-name: slide;
@@ -155,15 +166,39 @@ footer .glyphicon {
         opacity: 0;
         -webkit-transform: translateY(70%);
     }
+
     100% {
         opacity: 1;
         -webkit-transform: translateY(0%);
     }
 }
+  @media screen and (max-width:100px){
+                .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+        border-top: 5px solid black; border-right:5px solid black; border-left: 5px solid black; border-bottom: 5px solid black;
+    }
+            }
+            @media screen and (min-width: 100px) and (max-width:200px){
+                .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+        border-top: 5px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 5px solid black;
+    }
+            }
+            @media screen and (min-width: 200px){
+                .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+        border-top: 5px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 5px solid black;
+    }
+            }
+            
 @media screen and (max-width: 768px) {
     .col-sm-4 {
         text-align: center;
         margin: 25px 0;
+        border-top: 5px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 5px solid black;
     }
     .btn-lg {
         width: 100%;
@@ -174,4 +209,9 @@ footer .glyphicon {
     .logo {
         font-size: 150px;
     }
+    .dropdown-toggle {
+        background-color: #81f7d8;
+    }
+    
+    
 }

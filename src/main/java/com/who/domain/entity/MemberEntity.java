@@ -6,6 +6,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,16 +37,20 @@ public class MemberEntity extends TimeEntity{
     
     @Column(length = 20, nullable = false)
     private String birthday;
+    
+    @Column
+    private boolean enabled;
 
     @Builder
-    MemberEntity(Long id, String email, String password,
-    		String name, String phone, String birthday) {
-    	
+     MemberEntity(Long id, String email, String password,
+    			String name, String phone, String birthday, LocalDateTime createdDate,
+    			boolean enabled) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.birthday = birthday;
+        this.enabled = enabled;
     }
 }
