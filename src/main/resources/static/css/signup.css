@@ -60,7 +60,7 @@ color: black;
 	margin: 0, 0, 10px;
 	font-size: x-large;
 	border: 2px solid black; 
-background-color: rgba(0,0,0,0); 
+
 color: red; 
 }
 
@@ -78,9 +78,16 @@ color: red;
 }
 .terms_p{
 	background-color: #ffffff;
-	
+	border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
+.agreeMsg{
+	font-size: x-small;
+	
+}
 
 #btn_area double{ border: 1px solid skyblue; 
 background-color: rgba(0,0,0,0); 

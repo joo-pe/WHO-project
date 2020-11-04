@@ -183,14 +183,14 @@ footer .glyphicon {
                 .col-sm-4 {
         text-align: center;
         margin: 25px 0;
-        border-top: 5px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 5px solid black;
+        border-top: 3px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 3px solid black;
     }
             }
             @media screen and (min-width: 200px){
                 .col-sm-4 {
         text-align: center;
         margin: 25px 0;
-        border-top: 5px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 5px solid black;
+        border-top: 3px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 3px solid black;
     }
             }
             
@@ -198,7 +198,7 @@ footer .glyphicon {
     .col-sm-4 {
         text-align: center;
         margin: 25px 0;
-        border-top: 5px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 5px solid black;
+        border-top: 3px solid black; border-right:3px solid black; border-left: 3px solid black; border-bottom: 3px solid black;
     }
     .btn-lg {
         width: 100%;

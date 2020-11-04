@@ -81,9 +81,14 @@
 	  <th scope="row">갯수</th>
 	                            <td>
 	                             <div class="qty">					
-	        <div class="plus"><a href="javascript:change_qty2('p')"><img src="/images/+.png" alt="+" style="width:30px"></a></div>
+	        <div class="plus">
+	        <a href="javascript:change_qty2('p')"><img src="/images/+.png" alt="+" style="width:30px"></a>
+	        <a href="javascript:change_qty2('m')"><img src="/images/-.png" alt="-"style="width:25px"></a>
+	        </div>
+	        
+	        <div class="minus"></div>
 	        <input type="text" name="ct_qty" id="ct_qty" value="1" readonly="readonly" class="form-control">
-	        <div class="minus"><a href="javascript:change_qty2('m')"><img src="/images/-.png" alt="-"style="width:30px"></a></div>
+	        
 	        <tr module="product_fileoption">
 	                            <th scope="row">총금액</th>
 	                            <td class="fileInfo">

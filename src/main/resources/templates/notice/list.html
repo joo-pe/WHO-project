@@ -39,9 +39,9 @@
         }
 
         h1 {
-            text-transform: uppercase;
+/*             text-transform: uppercase; */
             font-weight: 900;
-            border-left: 10px solid #fec500;
+            border-left: 10px solid;
             padding-left: 10px;
             margin-bottom: 30px;
         }
@@ -203,63 +203,60 @@
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
         <!-- Header -->
         <div th:insert="common/header.html" id="header"></div>
-<div class=dayday>
+        <div class="dayday">
+            <section class="container">
+                <br />
+                <br />
+                <br />
+                <br />
+               
+                
+                <div class ="taeduri" style="border-left: 8px solid green; border-bottom: 2px solid black;
+    "> 
+                <div class="menu" style="font-size: xx-large;">
+                    <a>금주의  Match List</a>
 
+<!--                     <li> -->
+<!--                         <a href="onclick = " location.href=" '/' ">  </a> -->
+<!--                     </li> -->
+                </div>
+                <br />
 
+                <h1>Sport 티켓</h1>
+                </div>
+                <br><br>
+                <div id=sangpum>
+                <div class="col-sm-6" th:each="sports : ${sportsList}">
+                    <article class="card fl-left">
+                        <section class="date">
+                            <time datetime="23th feb"> <span th:text="${#temporals.format(sports.dateTime, 'dd')}"></span><span th:text="${#temporals.format(sports.dateTime, 'MM')}"></span> </time>
+                        </section>
+                        <section class="date">
+                        <p th:text="${sports.location}"></p>
+                        </section>
+                        <section class="card-cont">
+                            <!--                    <small>dj khaled</small>-->
+                            <h3 th:text="${sports.title}"></h3>
+                            <div class="even-date">
+                                <i class="fa fa-calendar"></i>
+                                <time>
+                                    <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
+                                    <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
+                                </time>
+                            </div>
+                            <div class="even-info">
+                                <i class="fa fa-map-marker"></i>
+                                
+                            </div>
 
-        <section class="container">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div class="menu" style="font-size: xx-large;"
-            
-            
-            >
-             <a>티켓 정보</a>
-          
-            <oi>
-            <li>1번</li>
-            <li>2번</li>
-            <li>3번</li>
-            <li>4번</li>
-           
-            </oi>
+                            <a th:href="@{'/soccer/post/' + ${sports.id}}">tickets</a>
+                            
+                        </section>
+                    </article>
+                    </div>
+                </div>
+            </section>
             </div>
-            <br />
-            <br />
-            <br />
-            
-            <h1>티켓 모아보기</h1>
-            <div class="col-sm-6" th:each="sports : ${sportsList}">
-                <article class="card fl-left">
-                    <section class="date">
-                        <time datetime="23th feb"> <span th:text="${#temporals.format(sports.dateTime, 'dd')}"></span><span th:text="${#temporals.format(sports.dateTime, 'MM')}"></span> </time>
-                    </section>
-                       <section class="date">
-                           </section>
-                    <section class="card-cont">
-                        <!--                    <small>dj khaled</small>-->
-                        <h3 th:text="${sports.title}"></h3>
-                        <div class="even-date">
-                            <i class="fa fa-calendar"></i>
-                            <time>
-                                <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
-                                <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
-                            </time>
-                        </div>
-                        <div class="even-info">
-                            <i class="fa fa-map-marker"></i>
-                            <p th:text="${sports.location}"></p>
-                        </div>
-
-                        <a th:href="@{'/soccer/post/' + ${sports.id}}">tickets</a>
-                    </section>
-                </article>
-            </div>
-            </div>
-        </section>
+        
     </body>
 </html>
