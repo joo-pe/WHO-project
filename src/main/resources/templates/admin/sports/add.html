@@ -127,6 +127,29 @@
                         </td>
                     </tr>
                     <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 좌석</th>
+                        <td id="seat_list">
+                            <div>
+                                <span class="guide"> 구역 </span>
+                                <input type="text" name="area" id="MD-subject" data-displayname="구역"
+                                       data-maxlength="20" maxlength="20" required="required" class="w10p">
+                            </div>
+                            <div>
+                                <span class="guide"> 가격 </span>
+                                <input type="text" name="price" id="MD-subject" data-displayname="가격"
+                                       data-maxlength="20" maxlength="20" required="required" class="w10p">
+                            </div>
+                            <div>
+                                <span class="guide"> 총 좌석수 </span>
+                                <input type="text" name="total" id="MD-subject" data-displayname="좌석수"
+                                       data-maxlength="20" maxlength="20" required="required" class="w10p">
+                                <button id="add" onclick="add_row()" class="mBtn btn1">추가</button>
+                                <button id="delete" onclick="delete_row()" class="mBtn btn1">삭제</button>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
                         <th><i class ="requiredBullet" title="필수항목">* </i> 티켓 예매</th>
                         <td>
                             <div>
@@ -201,6 +224,7 @@
         });
         sideScroll();
     });
+
     function sideScroll(){
         var st = $('#container').scrollTop();
         if(st < 0) st = 0;
@@ -210,6 +234,25 @@
         $('#sideClose').css({
             'top' : (st + 10) + 'px'
         });
+    }
+    function add_row() {
+        $("#seat_list").append(
+            "                            <div id=\"seat_list\">\n" +
+            "                                <span class=\"guide\"> 구역 </span>\n" +
+            "                                <input type=\"text\" name=\"area\" id=\"MD-subject\" data-displayname=\"구역\"\n" +
+            "                                       data-maxlength=\"20\" maxlength=\"20\" required=\"required\" class=\"w10p\">\n" +
+            "                                <span class=\"guide\"> 가격 </span>\n" +
+            "                                <input type=\"text\" name=\"price\" id=\"MD-subject\" data-displayname=\"가격\"\n" +
+            "                                       data-maxlength=\"20\" maxlength=\"20\" required=\"required\" class=\"w10p\">\n" +
+            "                                <span class=\"guide\"> 총 좌석수 </span>\n" +
+            "                                <input type=\"text\" name=\"total\" id=\"MD-subject\" data-displayname=\"좌석수\"\n" +
+            "                                       data-maxlength=\"20\" maxlength=\"20\" required=\"required\" class=\"w10p\">\n" +
+            "                                <button id=\"add\" onclick=\"add_row()\" class=\"mBtn btn1\">추가</button>\n" +
+            "                                <button id=\"delete\" onclick=\"delete_row()\" class=\"mBtn btn1\">삭제</button>\n" +
+            "                            </div>\n");
+    }
+    function delete_row() {
+        $("#seat_list div:last").remove();
     }
 
     // // ISO 형식으로 변환

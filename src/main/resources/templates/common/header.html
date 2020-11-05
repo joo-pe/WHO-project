@@ -1,5 +1,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<style>
+button{
+	color: #fff;
+    background-color: #0a9772;
+    border-color: #0a9772;
+}
+</style>
 <header>
+   
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -16,7 +24,7 @@
             <div class="input-group" >
                 <input type="text" class="form-control" size="20" placeholder="Event, Aritst or Team" required>
                 <div class="input-group-btn">
-                    <button type="submit" class="btn btn-danger">Search</button>
+                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button>
                 </div>
             </div>
         </form>
@@ -30,16 +38,16 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">PERFORMANCE
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">MUSICAL</a></li>
-                            <li><a href="#">THEATER</a></li>
+                            <li><a href="musical">MUSICAL</a></li>
+                                <li><a href="theater">THEATER</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">SPORTS
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">SOCCER</a></li>
-                            <li><a href="#">BASEBALL</a></li>
+                            <li><a th:href="@{/soccer}">SOCCER</a></li>
+                            <li><a th:href="@{/baseball}">BASEBALL</a></li>
                         </ul>
                     </li>
                     <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/myinfo}">MY Tickets</a></li>
@@ -50,14 +58,14 @@
         </div>
     </nav>
 
-    <div class="jumbotron text-center">
+    <div class="#">
         <!-- <h1>WHO TICKET</h1>
         <p>Find your Ticket</p> -->
         <form>
             <div class="input-group">
                 <input type="text" class="form-control" size="50" placeholder="Event, Aritst or Team" required>
                 <div class="input-group-btn">
-                    <button type="submit" class="btn btn-danger">Search</button>
+                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button>
                 </div>
             </div>
         </form>
