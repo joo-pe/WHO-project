@@ -1,24 +1,24 @@
 package com.who.domain.entity;
 
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.ArrayList;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(name="sports2")
-public class SportsEntity {
+@Table(name = "performance")
+public class PerformanceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length=20, nullable = false)
+    @Column(length = 20, nullable = false)
     private String category;
 
     @Column(length = 20, nullable = false)
@@ -30,7 +30,7 @@ public class SportsEntity {
     @Column
     private Long fileId;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private LocalDateTime dateTime;
 
     @Column(length = 20, nullable = false)
@@ -48,20 +48,27 @@ public class SportsEntity {
     @Column(nullable = false)
     private String ticketMax;
 
-    @Column(nullable = false)
-    private String team1;
+    @Column(length = 20, nullable = false)
+    private String host;
 
     @Column(nullable = false)
-    private String team2;
+    private String rating;
 
-//    @OneToMany(mappedBy = "sportsEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<SeatEntity> seats= new ArrayList<>();
+    @Column(nullable = false)
+    private String duration;
+
+    @Column
+    private LocalDateTime pStart;
+
+    @Column
+    private LocalDateTime pEnd;
 
     @Builder
-    public SportsEntity(Long id, String category, String title, String  detail,
-                        Long fileId, LocalDateTime dateTime, String city, String location,
-                        LocalDateTime ticketOpen, LocalDateTime ticketClose,
-                        String ticketMax, String team1, String team2, List<SeatEntity> seats) {
+    public PerformanceEntity(Long id, String category, String title, String detail,
+                             Long fileId, LocalDateTime dateTime, String city, String location,
+                             LocalDateTime ticketOpen, LocalDateTime ticketClose, String ticketMax,
+                             String host, String rating, String duration,
+                             LocalDateTime pStart, LocalDateTime pEnd) {
         this.id = id;
         this.category = category;
         this.title = title;
@@ -73,9 +80,10 @@ public class SportsEntity {
         this.ticketOpen = ticketOpen;
         this.ticketClose = ticketClose;
         this.ticketMax = ticketMax;
-        this.team1 = team1;
-        this.team2 = team2;
-//        this.seats = seats;
+        this.host = host;
+        this.rating = rating;
+        this.duration = duration;
+        this.pStart = pStart;
+        this.pEnd = pEnd;
     }
-
 }
