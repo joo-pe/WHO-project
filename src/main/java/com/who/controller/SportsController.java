@@ -95,15 +95,6 @@ public class SportsController {
         return "admin/sports/detail";
     }
 
-    @GetMapping("/soccer/post/{no}")
-    public String soccerDetail(@PathVariable("no") Long no, Model model) {
-        SportsDto sportsDto = sportsService.getSports(no);
-        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
-
-        model.addAttribute("sportsDto", sportsDto);
-        model.addAttribute("fileDto", fileDto);
-        return "sports/detail";
-    }
 
     @GetMapping("/admin/sports/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
@@ -148,4 +139,29 @@ public class SportsController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; fileName=\""+fileDto.getOriginFileName() + "\"")
                 .body(resource);
     }
+
+    //----------------------------------일반------------------------------------------
+    @GetMapping("/soccer")
+    public String soccerList(Model model) {
+        return "sports/soccer";
+    }
+
+    @GetMapping("/soccer/ticket")
+    public String soccerTicket(Model model) {
+        List<SportsDto> sportsDtoList = sportsService.getSportsList();
+
+        model.addAttribute("sportsList", sportsDtoList);
+        return "sports/ticket";
+    }
+
+    @GetMapping("/soccer/post/{no}")
+    public String soccerDetail(@PathVariable("no") Long no, Model model) {
+        SportsDto sportsDto = sportsService.getSports(no);
+        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+
+        model.addAttribute("sportsDto", sportsDto);
+        model.addAttribute("fileDto", fileDto);
+        return "sports/detail";
+    }
+
 }

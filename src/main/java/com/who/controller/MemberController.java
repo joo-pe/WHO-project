@@ -87,12 +87,6 @@ public class MemberController {
     public String dispDenied() {
         return "login/denied";
     }
-    
-    //축구 예매 페이지
-    @GetMapping("/soccer")
-    public String dispsoccer() {
-    	return "sport/soccer";
-    }
 
     //야구 예매 페이지
     @GetMapping("/baseball")
