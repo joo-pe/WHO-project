@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(name="sports")
+@Table(name="sports2")
 public class SportsEntity {
 
     @Id
@@ -54,8 +54,8 @@ public class SportsEntity {
     @Column(nullable = false)
     private String team2;
 
-    @OneToMany(mappedBy = "sportsEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SeatEntity> seats= new ArrayList<>();
+//    @OneToMany(mappedBy = "sportsEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<SeatEntity> seats= new ArrayList<>();
 
     @Builder
     public SportsEntity(Long id, String category, String title, String  detail,
@@ -75,7 +75,7 @@ public class SportsEntity {
         this.ticketMax = ticketMax;
         this.team1 = team1;
         this.team2 = team2;
-        this.seats = seats;
+//        this.seats = seats;
     }
 
 }

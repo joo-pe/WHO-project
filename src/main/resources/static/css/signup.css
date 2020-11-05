@@ -26,7 +26,7 @@ text-align: center;
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
-	background-color :#ffffff;
+	
 }
 
 #join_form{	
@@ -38,6 +38,7 @@ text-align: center;
 	
     width: 200px;
     background-color: black;
+    
   }
   
 #container::-webkit-scrollbar {
@@ -46,14 +47,50 @@ text-align: center;
     background-color: black;
   }
 
-btnAgree{
+#btnAgree{
 	
 	margin: 0, 0, 10px;
+	font-size: x-large;
+	border: 2px solid black; 
+background-color: rgba(0,0,0,0); 
+color: black; 
+	
+}
+#btnCancel{
+	margin: 0, 0, 10px;
+	font-size: x-large;
+	border: 2px solid black; 
+
+color: red; 
 }
 
  #footer { 
- 
+
  	position: fixed; 
  	bottom: 0; 
  	width: 10%;
  }
+ .chk_all_txt{
+ font-size: small;	}
+
+.event_message{
+	font-size: small;
+}
+.terms_p{
+	background-color: #ffffff;
+	border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.agreeMsg{
+	font-size: x-small;
+	
+}
+
+#btn_area double{ border: 1px solid skyblue; 
+background-color: rgba(0,0,0,0); 
+color: skyblue; padding: 5px; 
+}
+#btn_area double button:hover{ color:white; background-color: skyblue; }

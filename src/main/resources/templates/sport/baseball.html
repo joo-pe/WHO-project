@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sport.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<!-- Header -->
+    <div th:insert="common/header.html" id="header"></div>
+    
+		<!-- 바디 시작 -->
+		<div id="container" >
+		    <div class="sportsBridgeWrapper" align="center">
+		        <div class="bridgeTopWrapper" align="center">
+		            <div align="center" class="baseballbanner">
+		                    <img alt="" src="images/야구.PNG">
+		            </div>
+		        </div>
+		        <div class="bridgeListWrapper">
+		            <ul>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap" align="center">
+		                                    <img src="images/야구기아.png" alt="대한민국 축구 국가대표팀">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">기아</div>
+		                                    <div class="place">광주 기아 챔피언스필드</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="location.href='http://ticket.interpark.com/Contents/Sports/GoodsInfo?SportsCode=07002&amp;TeamCode=PS070';">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구lg.png" alt="전북 현대 모터스">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">LG</div>
+		                                    <div class="place">잠실 야구장</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구nc.png" alt="수원삼성블루윙즈">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">NC</div>
+		                                    <div class="place">창원NC파크</div>
+		                                </div>
+		                               <button class="btn_reserve" type="button" onclick="">
+		                                   <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구sk.png" alt="제주유나이티드">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">SK</div>
+		                                    <div class="place">인천SK 행복드림구장</div>
+		                                </div>
+		                               <button class="btn_reserve" type="button" onclick="">
+		                               	<span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구kt.png" alt="강원 FC">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">KT</div>
+		                                    <div class="place">수원KT위즈파크</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구두산.png" alt="경남 FC">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">두산</div>
+		                                    <div class="place">잠실 종합운동장 잠실야구장</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구롯데.png" alt="성남 FC">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">롯데</div>
+		                                    <div class="place">부산 사직 종합 운동장 사직 야구장</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구삼성.png" alt="부산 아이파크">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">삼성</div>
+		                                    <div class="place">대구 삼성 라이온즈 파크</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구키움.png" alt="수원 FC">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">키움</div>
+		                                    <div class="place">고척스카이돔</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="images/야구한화.png" alt="부천FC 1995">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">한화</div>
+		                                    <div class="place">한화 생명 이글 스파크</div>                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <!-- <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS098.png" alt="서울이랜드 FC">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">서울이랜드 FC</div>
+		                                    <div class="place">잠실 올림픽 주경기장</div>
+		                                    <div class="engName">SEOUL ELAND FOOTBALL CLUB</div>
+		                                </div>
+		                                <button class="btn_reserve" type="button" onclick="">
+		                                    <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="listWrap">
+		                                <div class="imgWrap">
+		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS005.png" alt="대전 하나 시티즌">
+		                                </div>
+		                                <div class="clubInfoWrap">
+		                                    <div class="clubName">대전 하나 시티즌</div>
+		                                    <div class="place">대전월드컵경기장</div>
+		                                    <div class="engName">DAEJEON HANA CITIZEN FOOTBALL CLUB</div>
+		                                </div>
+		                               <button class="btn_reserve" type="button" onclick="">
+		                                   <span>예매하기</span>
+		                                </button>
+		                            </div>
+		                        </li> -->
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+</body>
+</html>

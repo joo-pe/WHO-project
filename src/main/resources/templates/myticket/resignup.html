@@ -48,8 +48,8 @@
 	<!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
 	<div class="container-login100">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30">
-			<form th:action="@{'/resignup/update/' + ${currentUser.id}}" method="post" class="login100-form validate-form">
-				<input type="hidden" name="_method" value="put"/>
+			<form th:action="@{'/resignup/update/' + ${currentUser.id}}" method="get" class="login100-form validate-form">
+				<!-- <input type="hidden" name="_method" value="put"/> -->
     			<input type="hidden" name="id" th:value="${currentUser.id}"/>
     			<input type="hidden" id="password" name="password" th:value="${currentUser.password}" readonly/>
     			
