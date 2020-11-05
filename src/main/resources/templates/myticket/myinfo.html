@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>WHO TICKET</title>
@@ -13,10 +14,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-food.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2017.css">
-	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-food.css">
+   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2017.css">
+   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style></style>
 </head>
 <body>
@@ -25,15 +26,15 @@
 
 <!-- Page Container -->
 
-	<!-- <form th:action="@{'/get/{no}' + ${memberDto.no}}" method="get"> -->
+   <!-- <form th:action="@{'/get/{no}' + ${memberDto.no}}" method="get"> -->
   <!-- The Grid -->
 
       <!-- Left Column -->
-    <div class="w3-third">
+    <div class="w3-third" style="padding: 80px 0 0 0">
 
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container" align="center">
-        	<img alt="" src="/image/logo.png" width="100px">
+           <img alt="" src="/image/logo.png" width="100px">
            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>
            <span th:text="${currentUser.name} + 님"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>
            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>
@@ -42,15 +43,15 @@
 
         <div class="w3-container" align="center">
           <hr>
-			<form th:action="@{'/resignup/' + ${currentUser.id}}" method="get" >
+         <form th:action="@{'/resignup/' + ${currentUser.id}}" method="get" >
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>회원 정보 수정</b></p>
           <div class="w3-light-grey w3-round-xlarge">
-         		 <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">회원 정보 수정</button>
+                <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">회원 정보 수정</button>
           </div>
           </form>
           <br>
 
-			<form th:action="@{'/repass/' + ${currentUser.id}}" method="get">
+         <form th:action="@{'/repass/' + ${currentUser.id}}" method="get">
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>비밀번호 설정변경</b></p>
           <div class="w3-light-grey w3-round-xlarge">
             <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">비밀번호 설정변경</button>
@@ -66,39 +67,90 @@
 
     <!-- Right Column -->
     
-    <div class="w3-twothird">
-    	<div class="w3-container w3-card w3-white w3-margin-bottom">
+    <div class="w3-twothird" style="padding: 80px 0 0 20px">
+    
+       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>My Ticket</h2>
         <div class="w3-container" align="center">
-          <table>
-          	<tr>
-          		<th><input type="checkbox">전체선택</th>
-          		<th>예매일</th>
-          		<th>상품명</th>
-          		<th>수량</th>
-          		<th>이용날짜</th>
-          		<th>현재상태</th>
-          	</tr>
-          	<tr>
-          		<td colspan="6" height="280">
-          			최근 이용 내역이 없습니다.
-          		</td>
-          	</tr>
-          </table>
+   <table class="table table-cnodensed">
+    <thead>
+      <tr>
+        <th><input type="checkbox">전체선택</th>
+        <th>예매일</th>
+        <th>상품명</th>
+        <th>수량</th>
+        <th>이용날짜</th>
+          <th>QR</th>
+        <th>현재상태</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+       <td><input type="checkbox"></td>
+        <td th:text="${#temporals.format(sportsList.dateTime, 'yyyy년 MM월 dd일')}"></td>
+        <td th:text="${sportsList.title}"></td>
+        <td th:text="${sportsList.ticketMax}"></td>
+        <td th:text="${#temporals.format(sportsList.ticketOpen, 'yyyy년MM월dd일')}"></td>
+          <td><a id="myBtn">QR코드</a></td>
+          <!-- The Modal -->
+      <td id="myModal" class="modal">
+      
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2 th:text="${sportsList.title}"></h2>
           </div>
-
+          <div class="modal-body">
+            <img th:src="@{http://localhost:8090/qrcode/}+${sportsList.title}" width="10%" height="10%" >
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      
+      </td>
+        <td class="text-center small mt-2" id="checkMsg" style="color: red"></td>
+      </tr>
+    </tbody>
+  </table>
+ </div>
 
     <!-- End Right Column -->
     </div>
-    
-    
-  <!-- End Grid -->
-  </div>
-  
+     
   <!-- End Page Container -->
 </div>
+
 <!-- FOOTER -->
 <div th:insert="common/footer.html" id="footer"></div>
 
 </body>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
 </html>

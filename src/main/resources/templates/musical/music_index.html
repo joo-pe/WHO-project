@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Chrome" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="WHOTicket" />
+        <link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.1.css}" />
+        <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/nanumgothic.css}" />
+        <!-- 	<link rel="stylesheet" th:href="@{/css/admin.css}"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="musical/css" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/musical.css}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+        <div class="container">
+            <div class="col-lg-4" style="float: right;">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="card card-profile">
+                    <div style="background-image: url(https://demo.bootstrapious.com/admin-premium/1-4-5/img/photos/paul-morris-116514-unsplash.jpg);" class="card-header"></div>
+                    <div class="card-body text-center">
+                        <img src="/images/logo.png" class="card-profile-img" style="width: 200px;" />
+                        <h3 class="mb-3">스포츠 경기 내용</h3>
+                        <p class="mb-4"></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title"></h3>
+                        <div class="media">
+                            <span style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png);" class="avatar avatar-xl mr-3"></span>
+                            <div class="media-body">
+                                <h4>경기 정보 / 뮤지컬 제목</h4>
+                                <input placeholder="제목 입력 " class="form-control" />
+                                <h4><tr module="product_option"></tr></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-auto d-flex align-items-center"><span style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png);" class="avatar avatar-lg"></span></div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">날짜</label>
+                            <!-- <textarea rows="2" class="form-control"></textarea> -->
+                            <input placeholder="날짜 입력 " class="form-control" type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">좌석</label><br />
+                            <!--     <input placeholder="좌석 " class="form-control" type="checkbox" value="A좌석"> -->
+                            <select class="form-control">
+                                <option>A구역</option>
+                                <option>B구역</option>
+                                <option>C구역</option>
+                                <option>D구역</option>
+                            </select>
+                        </div>
+
+                        <th scope="row">갯수</th>
+                        <td>
+                            <div class="qty">
+                                <div class="plus">
+                                    <a href="javascript:change_qty2('p')"><img src="/images/+.png" alt="+" style="width: 30px;" /></a>
+                                        <a href="javascript:change_qty2('m')"><img src="/images/-.png" alt="-" style="width: 20px;" /></a>
+                                
+                                </div>
+                                <input type="text" name="ct_qty" id="ct_qty" value="1" readonly="readonly" class="form-control" />
+                                <div class="minus">
+                                
+                                </div>
+                                
+                                <tr module="product_fileoption">
+                                    <th scope="row">총금액</th>
+                                    <td class="fileInfo">
+                                        WHO TICKET 구매 진행중입니다.
+                                        <ul class="infoDesc">
+                                            <li>
+                                                <dt>총 금액</dt>
+                                                <dd id="total_amount">60,000</dd>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <!-- //참고 -->
+
+                                <script type="text/javascript">
+                                    Number.prototype.format = function () {
+                                        if (this == 0) return 0;
+                                        var reg = /(^[+-]?\d+)(\d{3})/;
+                                        var n = this + "";
+                                        while (reg.test(n)) n = n.replace(reg, "$1" + "," + "$2");
+                                        return n;
+                                    };
+
+                                    String.prototype.format = function () {
+                                        var num = parseFloat(this);
+                                        if (isNaN(num)) return "0";
+                                        return num.format();
+                                    };
+
+                                    var basic_amount = parseInt("60000");
+                                    function change_qty2(t) {
+                                        //var min_qty = '수량버튼'*1;
+                                        var min_qty = 1;
+                                        var this_qty = $("#ct_qty").val() * 1;
+                                        var max_qty = "50";
+                                        // 현재 재고
+                                        if (t == "m") {
+                                            this_qty -= 1;
+                                            if (this_qty < min_qty) {
+                                                //alert("최소구매수량 이상만 구매할 수 있습니다.");
+                                                alert("티켓은 1장 이상 구매가 가능합니다.");
+                                                return;
+                                            }
+                                        } else if (t == "p") {
+                                            this_qty += 1;
+                                            if (this_qty > max_qty) {
+                                                alert("죄송합니다.다른 선택을 해주세요");
+                                                return;
+                                            }
+                                        }
+                                        var show_total_amount = basic_amount * this_qty;
+                                        //$("#ct_qty_txt").text(this_qty);
+                                        $("#ct_qty").val(this_qty);
+                                        $("#it_pay").val(show_total_amount);
+                                        $("#total_amount").html(show_total_amount.format());
+                                    }
+                                </script>
+                            </div>
+                        </td>
+                    </div>
+
+                    <div class="card-footer text-right">
+                        <button class="btn btn-primary">구매하기</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-8">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <span>
+                    <img src="/images/sport.png" style="width: 500px;" />
+                    <strong style="font-size: 2.5em;">
+                        <img src="/images/soccerseat.png" style="width: 150px;" />
+                    </strong>
+                </span>
+                <br />
+                <br />
+                <div class="list-group card-list-group">
+                    <div class="seat">
+                        <div class="list-group-item py-5">
+                            <div class="media">
+                                <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png);" class="media-object avatar avatar-md mr-3"></div>
+                                <div class="media-body">
+                                    <div class="media-heading"><small class="float-right"></small></div>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item py-5">
+                                <div class="media">
+                                    <div class="list-group-item py-5">
+                                        <div class="media">
+                                            <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png);" class="media-object avatar avatar-md mr-3"></div>
+
+                                            <div class="media-body">
+                                                <div class="media-heading">
+                                                    <small class="float-right text-muted"></small>
+                                                    <div class="title">
+                                                        <h4>경기 티켓 공지 사항</h4>
+                                                        <ul class="nav nav-pills nav-stacked">
+                                                            <li class="active"><a href="#">티켓 구매시 주의 사항 </a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="gu">
+                                                <br />
+                                                <!-- <a style="width: 150px; height: 100px;" href="#"></a> -->
+                                                <strong>
+                                                    <a>
+                                                        {티켓구입: 코로나 19 확진자 발생시 역학조사를 위해 온라인 예매만 가능하며 완전 유관중으로 전환되기 전까지는 당일 현장판매는 실시하지 않습니다.(예매권 수령만 가능). 아울러 원활한 입장을
+                                                        위해 가급적 홈페이지 에서 티켓구입를 권장 드립니다.}
+                                                    </a>
+                                                </strong>
+                                                <br />
+                                                <!--     <div class="path" style="size: 50px"> -->
+
+                                                <br />
+                                                <br />
+                                                <strong><a>{ 예매 후 경기일정 및 좌석변경은 불가합니다.}</a></strong><br />
+                                                <strong><a>{음식물이 제공되던 모든 좌석은 방역당국 지침에 따라 음식물이 제공되지 않습니다.}</a></strong><br />
+                                                <strong><a>{ 모든 좌석은 1인 1석이며 가격 또한 1인 가격입니다.}</a></strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="media-list">
+                                            <div class="media mt-4">
+                                                <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar3.png);" class="media-object avatar mr-3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <meta charset="UTF-8" />
+
+        <title>WHO TICKET</title>
+    </head>
+
+    <body>
+        <a th:insert="common/header.html"></a>
+
+        <!--@css(/css/module/product/menupackage.css)-->
+
+        <br />
+        <br />
+
+        <br />
+        <br />
+        <!-- FOOTER -->
+        <div th:insert="common/footer.html" id="footer"></div>
+    </body>
+</html>
