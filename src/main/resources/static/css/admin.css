@@ -66,7 +66,7 @@ input {
 }
 
 input[type=email], input[type=text], input[type=password], input[type=tel],
-	input[type=file], select, textarea {
+	input[type=file], select, textarea, input[type=date], input[type=time] {
 	margin: 0;
 	padding: 0;
 	border: 1px solid #ddd;
@@ -99,7 +99,7 @@ input[type=file] {
 	padding: 0;
 }
 
-input[type=button], input[type=submit], button {
+input[type=button], input[type=submit],input[type=date], input[type=time],  button {
 	padding: 0;
 	color: inherit;
 	font-family: 'Nanum Gothic';
@@ -1305,7 +1305,7 @@ input.price {
 	display: inline-block;
 }
 
-.writeField #BHCategory .optionForm input[type=text] {
+.writeField #BHCategory .optionForm input[type=text] input[type=date] input[type=time] {
 	width: 90px;
 	line-height: 18px;
 	height: 20px;
@@ -1321,7 +1321,7 @@ input.price {
 	font-style: normal;
 }
 
-.writeField #BHCategory .optionForm .ea input[type=text] {
+.writeField #BHCategory .optionForm .ea input[type=text] input[type=date] input[type=time]{
 	width: 50px;
 }
 
@@ -1899,7 +1899,7 @@ div.writeField, ul.writeField:after {
 }
 
 table.list {
-	width: 100%;
+	width: max-content;
 	font-size: 12px;
 }
 
@@ -2696,7 +2696,7 @@ label.checkboxSwitch input:checked+span:before {
 	width: 110px;
 }
 
-#goodsOptionTable div.col input[type=text] {
+#goodsOptionTable div.col input[type=text] input[type=date] input[type=time]{
 	width: 60px;
 	height: 22px;
 	line-height: 20px;
@@ -3161,7 +3161,7 @@ label.checkboxSwitch input:checked+span:before {
 	clear: both;
 }
 
-.searchField input[type=text] {
+.searchField input[type=text] input[type=date] input[type=time]{
 	width: 100%;
 	max-width: 300px;
 }
@@ -3192,7 +3192,7 @@ label.checkboxSwitch input:checked+span:before {
 	border-top: 0;
 }
 
-.searchField dl.code input[type=text] {
+.searchField dl.code input[type=text] input[type=date] input[type=time] {
 	width: 100%;
 	max-width: 150px;
 }
@@ -3216,7 +3216,7 @@ label.checkboxSwitch input:checked+span:before {
 	clear: left;
 }
 
-.searchField2 input[type=text] {
+.searchField2 input[type=text] input[type=date] input[type=time] {
 	width: 70px;
 }
 
@@ -3770,7 +3770,7 @@ table.list td.goods_name a {
 
 #optionSelect #goodsForm header {
 	padding: 15px 0;
-	border-top: 2px solid$red;
+	border-top: 2px solid red;
 	border-bottom: 1px solid #ccc;
 }
 
@@ -3831,7 +3831,7 @@ table.list td.goods_name a {
 #optionSelect #goodsForm form span.spPrice {
 	font-size: 17px;
 	line-height: 22px;
-	color: $red;
+	color: red;
 }
 
 #optionSelect #goodsForm form .selectBox, #optionSelect #goodsForm form .selectBox select
@@ -3892,7 +3892,7 @@ table.list td.goods_name a {
 }
 
 #optionSelect #goodsForm .btns #addCartBtn {
-	background: $red;
+	background: red;
 }
 
 #optionSelect #goodsForm #totalPrice {

@@ -36,12 +36,22 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time'
     implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.google.zxing:javase:3.3.0'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-context-support'
+    //implementation 'org.hyperledger.fabric:fabric-gateway-java:1.4.1'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.webjars:bootstrap:4.5.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    compile 'org.springframework.security.oauth:spring-security-oauth2'
+    compile 'org.springframework.security.oauth:spring-security-oauth2:2.3.2.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-mail")
     compile 'org.springframework.boot:spring-boot-devtools'
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    //compile 'org.springframework:spring-context-support'
+    compile 'com.sun.mail:javax.mail'
+    compile group: 'org.web3j', name: 'core', version: '4.2.0'
 }
