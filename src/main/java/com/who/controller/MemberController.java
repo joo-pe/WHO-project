@@ -87,12 +87,6 @@ public class MemberController {
     public String dispDenied() {
         return "login/denied";
     }
-    
-    //축구 예매 페이지
-    @GetMapping("/soccer")
-    public String dispsoccer() {
-    	return "sport/soccer";
-    }
 
     //야구 예매 페이지
     @GetMapping("/baseball")
@@ -201,7 +195,7 @@ public class MemberController {
        MailDto dto = sendEmailService.createMailAndChangePassword(email, name);
        sendEmailService.mailSend(dto);
     }
-    
+
     //회원가입 시 사용가능한 email인지 체크
     @GetMapping("/idCheck")
     @ResponseBody
@@ -210,16 +204,16 @@ public class MemberController {
         String str = memberService.idCheck(email);
         return str;
     }
-    
+
     //이메일로 보낸 인증번호 입력 시 일치하는지 여부확인
     @PostMapping("/CertifiedCheck")
     @ResponseBody
     public String certified_Check(String number) {
         System.out.println(number);
         return memberService.CertifiedCheck(number);
-        
+
     }
-    
+
     //등록된 이메일로 인증번호를 발송하고 인증번호를 DB에 저장
     @PostMapping("/idCheck/sendEmail")
     public @ResponseBody void sendEmail(CertifiednumberDto certifiednumberDto, String email){
@@ -229,9 +223,9 @@ public class MemberController {
     	sendEmailService.joinCertified(certifiednumberDto);
         MailDto dto = sendEmailService.createMailAndCheck(email, number);
         sendEmailService.mailSend(dto);
-        
+
     }
-    
+
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {

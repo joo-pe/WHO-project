@@ -1,7 +1,6 @@
 package com.who.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.who.domain.entity.SportsEntity;
+import com.who.domain.entity.PerformanceEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,19 +9,18 @@ import lombok.Builder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class SportsDto {
+public class PerformanceDto {
     private Long id;
     private String category;
     private String title;
     private String detail;
     private Long fileId;
-    @DateTimeFormat(pattern ="yyyy-MM-dd'T'HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateTime;
     private String city;
     private String location;
@@ -31,11 +29,16 @@ public class SportsDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime ticketClose;
     private String ticketMax;
-    private String team1;
-    private String team2;
+    private String host;
+    private String rating;
+    private String duration;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime pStart;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime pEnd;
 
-    public SportsEntity toEntity() {
-        SportsEntity sportsEntity = SportsEntity.builder()
+    public PerformanceEntity toEntity() {
+        PerformanceEntity performanceEntity = PerformanceEntity.builder()
                 .id(id)
                 .category(category)
                 .title(title)
@@ -47,30 +50,36 @@ public class SportsDto {
                 .ticketOpen(ticketOpen)
                 .ticketClose(ticketClose)
                 .ticketMax(ticketMax)
-                .team1(team1)
-                .team2(team2)
+                .host(host)
+                .rating(rating)
+                .duration(duration)
+                .pStart(pStart)
+                .pEnd(pEnd)
                 .build();
-        return sportsEntity;
+        return performanceEntity;
     }
 
     @Builder
-    public SportsDto(Long id, String category, String title, String detail,
-                     Long fileId, LocalDateTime dateTime, String city, String location,
-                     LocalDateTime ticketOpen, LocalDateTime ticketClose, String ticketMax,
-                     String team1, String team2) {
+    public PerformanceDto(Long id, String category, String title, String detail,
+                          Long fileId, LocalDateTime dateTime, String city, String location,
+                          LocalDateTime ticketOpen, LocalDateTime ticketClose, String ticketMax,
+                          String host, String rating, String duration,
+                          LocalDateTime pStart, LocalDateTime pEnd) {
         this.id = id;
         this.category = category;
         this.title = title;
         this.detail = detail;
         this.fileId = fileId;
         this.dateTime = dateTime;
-        this.city = city;
+        this. city = city;
         this.location = location;
         this.ticketOpen = ticketOpen;
         this.ticketClose = ticketClose;
         this.ticketMax = ticketMax;
-        this.team1 = team1;
-        this.team2 = team2;
+        this.host = host;
+        this.rating = rating;
+        this.duration =duration;
+        this.pStart = pStart;
+        this.pEnd = pEnd;
     }
-
 }

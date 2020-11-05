@@ -99,7 +99,7 @@
                             <span th:text="${sports.id}"></span>
                         </td>
                         <td>
-                            <img th:src="${sports.fileId}">
+                            <img th:src="@{/images/{name}(name=${sports.fileId})}">
                         </td>
                         <td>
                             <a th:href="@{'/admin/sports/post/' + ${sports.id}}">

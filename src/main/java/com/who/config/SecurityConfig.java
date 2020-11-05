@@ -61,20 +61,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/myinfo").hasRole("MEMBER")
         .antMatchers("/**")
         .permitAll()
-        
-        .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType()) 
-        .antMatchers("/google").hasAuthority(GOOGLE.getRoleType()) 
+
+        .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType())
+        .antMatchers("/google").hasAuthority(GOOGLE.getRoleType())
         .antMatchers("/kakao").hasAuthority(KAKAO.getRoleType())
         .antMatchers("/naver").hasAuthority(NAVER.getRoleType())
-        .anyRequest().authenticated()    
-        
+        .anyRequest().authenticated()
+
         .and() // 로그인 설정
         .formLogin()
         .loginPage("/login")
         .defaultSuccessUrl("/login/result")
         .loginProcessingUrl("/login/result")
         .permitAll()
-        
+
         .and()
         .csrf()
 		.ignoringAntMatchers("/check/findPw/sendEmail")
@@ -82,51 +82,51 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.ignoringAntMatchers("/check/Pw/changePw")
 		.ignoringAntMatchers("/idCheck/sendEmail")
 		.ignoringAntMatchers("/CertifiedCheck")
-		
+
         .and() // 로그아웃 설정
         .logout()
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
         .logoutSuccessUrl("/logout/result")
-        .invalidateHttpSession(true)       
-        
+        .invalidateHttpSession(true)
+
         .and()
-        .oauth2Login() 
+        .oauth2Login()
         .loginPage("/login")
         .userInfoEndpoint().userService(new CustomOAuth2UserService()); // 네이버 USER INFO의 응답을 처리하기 위한 설정
-		
+
 //        .and()
 //        .exceptionHandling()
 //        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
 
     }
 
-    @Bean 
-    public ClientRegistrationRepository clientRegistrationRepository( 
-    		OAuth2ClientProperties oAuth2ClientProperties, 
-    		@Value("${custom.oauth2.kakao.client-id}") String kakaoClientId, 
-    		@Value("${custom.oauth2.kakao.client-secret}") String kakaoClientSecret, 
-    		@Value("${custom.oauth2.naver.client-id}") String naverClientId, 
-    		@Value("${custom.oauth2.naver.client-secret}") String naverClientSecret) { 
-    	List<ClientRegistration> registrations = oAuth2ClientProperties 
-    			.getRegistration().keySet().stream() 
-    			.map(client -> getRegistration(oAuth2ClientProperties, client)) 
-    			.filter(Objects::nonNull) 
-    			.collect(Collectors.toList()); 
-    	
-    	registrations.add(CustomOAuth2Provider.KAKAO.getBuilder("kakao") 
-    			.clientId(kakaoClientId) 
-    			.clientSecret(kakaoClientSecret) 
-    			.jwkSetUri("temp") 
-    			.build()); 
-    	
-    	registrations.add(CustomOAuth2Provider.NAVER.getBuilder("naver") 
-    			.clientId(naverClientId) 
-    			.clientSecret(naverClientSecret) 
-    			.jwkSetUri("temp") 
-    			.build()); 
+    @Bean
+    public ClientRegistrationRepository clientRegistrationRepository(
+    		OAuth2ClientProperties oAuth2ClientProperties,
+    		@Value("${custom.oauth2.kakao.client-id}") String kakaoClientId,
+    		@Value("${custom.oauth2.kakao.client-secret}") String kakaoClientSecret,
+    		@Value("${custom.oauth2.naver.client-id}") String naverClientId,
+    		@Value("${custom.oauth2.naver.client-secret}") String naverClientSecret) {
+    	List<ClientRegistration> registrations = oAuth2ClientProperties
+    			.getRegistration().keySet().stream()
+    			.map(client -> getRegistration(oAuth2ClientProperties, client))
+    			.filter(Objects::nonNull)
+    			.collect(Collectors.toList());
+
+    	registrations.add(CustomOAuth2Provider.KAKAO.getBuilder("kakao")
+    			.clientId(kakaoClientId)
+    			.clientSecret(kakaoClientSecret)
+    			.jwkSetUri("temp")
+    			.build());
+
+    	registrations.add(CustomOAuth2Provider.NAVER.getBuilder("naver")
+    			.clientId(naverClientId)
+    			.clientSecret(naverClientSecret)
+    			.jwkSetUri("temp")
+    			.build());
     	return new InMemoryClientRegistrationRepository(registrations); }
 
-    
+
     private ClientRegistration getRegistration(OAuth2ClientProperties clientproperties, String client) {
     	
     	if("google".contentEquals(client)) {

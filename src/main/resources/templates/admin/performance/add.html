@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>상품관리</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="naver-site-verification" content="336a6ef09465b4b3eafd738c8b66232cb8a9b27b"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Chrome">
+    <meta name="viewport" content=" width=1030, user-scalable=yes">
+    <meta name="description" content="WHOTicket">
+    <link rel="stylesheet" th:href="@{/css/jquery-ui-1.10.1.css}">
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/nanumgothic.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <!--[if lt IE 9]>
+    <script src="/Skin/js/html5shiv.min.js"></script>
+    <script src="/Skin/js/respond.min.js"></script>
+    <script src="/Skin/js/selectivizr-min.js"></script>
+    <![endif]-->
+    <script th:src="@{/js/jquery-1.11.3.min.js}" charset="utf8"></script>
+    <script th:src="@{/js/jquery.form.min.js}" charset="utf8"></script>
+    <script th:src="@{/js/jquery-ui.min.js}" charset="utf8"></script>
+    <script th:src="@{/js/common.js} " charset="utf8"></script>
+    <script th:src="@{/js/contents.js}" charset="utf8"></script>
+    <script th:src="@{/js/admin.js}" charset="utf8"></script>
+    <script th:src="@{/js/admin.extend.js}" charset="utf8"></script>
+    <script th:src="@{/js/goods.js} " charset="utf8"></script>
+</head>
+<style>
+    /* 코딩한 body에 추가 */
+    body {
+        padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+        padding-top: env(safe-area-inset-top); /* iOS 11.2 */
+        color:black;
+    }
+
+    form {
+        margin:0;
+        display:inline;
+        height:20px;
+        float:none;
+    }
+</style>
+
+<body>
+<div id="wrap">
+    <div th:insert="common/adminHeader.html" id="header"></div>
+    <div id="container">
+        <div id="containerWrap">
+            <h2>공연 관리</h2>
+            <form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{/admin/performance/post}"
+                  enctype="multipart/form-data">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <table class="write">
+                    <tbody>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i>분류</th>
+                        <td>
+                            <select name="category" id="category" required="required">
+                                <option value="">선택</option>
+                                <option value="뮤지컬">뮤지컬</option>
+                                <option value="콘서트">콘서트</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 제목</th>
+                        <td>
+                            <input type="text" name="title" id="title" data-displayname="제목"
+                                   data-maxlength="20" maxlength="20" required="required" class="w100p">
+                            <ul class="guide">
+                                <li>20자 이하로 입력하여주세요.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 내용</th>
+                        <td>
+                            <textarea name="detail" required="required"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>이미지</th>
+                        <td>
+                            <!--                            <input type="file" name="image" id="MD_file1" data-displayname="파일#1" class="">-->
+                            <input name="file" type="file" class="custom-file-input" id="customFile">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class ="requiredBullet" title="필수항목">* </i> 날짜</th>
+                        <td>
+                            <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                            <input type="datetime-local" name="dateTime" id="Date" data-displayname="날짜"
+                                   required="required" class="dateInput">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class ="requiredBullet" title="필수항목">* </i> 공연 시간</th>
+                        <td>
+                            <input type="text" name="duration" id="duration" data-displayname="공연시간"
+                                   data-maxlength="20" maxlength="20" required="required" class="w50p">
+                            <ul class="guide">
+                                <li>0시간 0분 형태로 입력하여주세요.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>공연 일정</th>
+                        <td>
+                            <div>
+                                <span class="guide"> 시작 </span>
+                                <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                                <input type="datetime-local" name="pStart" id="Date" data-displayname="시작날짜" class="dateInput">
+                            </div>
+                            <br>
+                            <div>
+                                <span class="guide"> 종료 </span>
+                                <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                                <input type="datetime-local" name="pEnd" id="Date" data-displayname="종료날짜" class="dateInput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i>도시</th>
+                        <td>
+                            <select name="city" required="required">
+                                <option value="">선택</option>
+                                <option value='서울'>서울</option>
+                                <option value='부산'>부산</option>
+                                <option value='대구'>대구</option>
+                                <option value='인천'>인천</option>
+                                <option value='광주'>광주</option>
+                                <option value='대전'>대전</option>
+                                <option value='울산'>울산</option>
+                                <option value='강원'>강원</option>
+                                <option value='경기'>경기</option>
+                                <option value='경남'>경남</option>
+                                <option value='경북'>경북</option>
+                                <option value='전남'>전남</option>
+                                <option value='전북'>전북</option>
+                                <option value='제주'>제주</option>
+                                <option value='충남'>충남</option>
+                                <option value='충북'>충북</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 장소</th>
+                        <td>
+                            <input type="text" name="location" id="MD_subject" data-displayname="장소"
+                                   data-maxlength="20" maxlength="20" required="required" class="w100p">
+                            <ul class="guide">
+                                <li>20자 이하로 입력하여주세요.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!--                    <tr>-->
+                    <!--                        <th><i class="requiredBullet" title="필수항목">* </i> 좌석</th>-->
+                    <!--                        <td id="seat_list">-->
+                    <!--                            <div>-->
+                    <!--                                <span class="guide"> 구역 </span>-->
+                    <!--                                <input type="text" name="area" id="MD-subject" data-displayname="구역"-->
+                    <!--                                       data-maxlength="20" maxlength="20" required="required" class="w10p">-->
+                    <!--                                <span class="guide"> 가격 </span>-->
+                    <!--                                <input type="text" name="price" id="MD-subject" data-displayname="가격"-->
+                    <!--                                       data-maxlength="20" maxlength="20" required="required" class="w10p">-->
+                    <!--                                <span class="guide"> 총 좌석수 </span>-->
+                    <!--                                <input type="text" name="total" id="MD-subject" data-displayname="좌석수"-->
+                    <!--                                       data-maxlength="20" maxlength="20" required="required" class="w10p">-->
+                    <!--                                <button id="add" onclick="add_row()" class="mBtn btn1">추가</button>-->
+                    <!--                                <button id="delete" onclick="delete_row()" class="mBtn btn1">삭제</button>-->
+                    <!--                            </div>-->
+                    <!--                        </td>-->
+                    <!--                    </tr>-->
+                    <tr>
+                        <th><i class ="requiredBullet" title="필수항목">* </i> 티켓 예매</th>
+                        <td>
+                            <div>
+                                <span class="guide"> 시작 </span>
+                                <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                                <input type="datetime-local" name="ticketOpen" id="Date" data-displayname="시작날짜" required="required" class="dateInput">
+                            </div>
+                            <br>
+                            <div>
+                                <span class="guide"> 종료 </span>
+                                <input type="hidden" id="timezone" name="timezone" value="-08:00">
+                                <input type="datetime-local" name="ticketClose" id="Date" data-displayname="종료날짜"
+                                       required="required" class="dateInput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 예매 가능 티켓 수</th>
+                        <td>
+                            <input type="text" name="ticketMax" id="MD_subject" data-displayname="예매가능티켓수"
+                                   required="required" class="w6p">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 주최</th>
+                        <td>
+                            <input type="text" name="host" id="MD_subject" data-displayname="주최"
+                                   data-maxlength="20" maxlength="20" required="required" class="w50p">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i>관람등급</th>
+                        <td>
+                            <select name="rating" required="required">
+                                <option value="">선택</option>
+                                <option value='전연령'>전연령</option>
+                                <option value='12세'>12세</option>
+                                <option value='15세'>15세</option>
+                                <option value='18세'>18세</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+                <div class="bottomBtn" style="width: 1120px; margin: 0 auto;">
+                    <button type="submit" class="mBtn btn2">등록</button>
+                    <button type="reset" class="mBtn btn1">취소</button>
+                    <a th:href="@{/admin/sports}" class="backbtn mBtn btn1">뒤로</a>
+                </div>
+            </form>
+
+            <footer id="footer">
+                <div id="footer_wrap"></div>
+            </footer>
+        </div>
+        <script>
+            $(document).ready(function(){
+                if(JCM.getCookie('managerSideView') == 'no'){
+                    $('#wrap').addClass('sideHidden');
+                }
+                $('#containerWrap').append('<aside id="sideMenu"><a href="#" id="sideClose" title="닫기"><i class="fa fa-angle-left"></i></a><h2>' + ( $('#tnb ul > li.Active').length ? $('#tnb ul > li.Active a').eq(0).text() : '' ) + '</h2><ul>'+( $('#tnb ul > li.Active ol').length ? $('#tnb ul > li.Active ol').html() : '' ) +'</ul></aside>')
+                $(document).on('click', '#sideClose', function(e){
+                    e.preventDefault();
+                    if($('#wrap').hasClass('sideHidden')){
+                        $('#wrap').removeClass('sideHidden');
+                        JCM.setCookie('managerSideView', 'yes');
+                    }else{
+                        $('#wrap').addClass('sideHidden');
+                        JCM.setCookie('managerSideView', 'no');
+                    }
+                });
+                $('#container').scroll(function(){
+                    sideScroll();
+                });
+                sideScroll();
+            });
+
+            function sideScroll(){
+                var st = $('#container').scrollTop();
+                if(st < 0) st = 0;
+                $('#sideMenu').css({
+                    'padding-top' : st + 'px'
+                });
+                $('#sideClose').css({
+                    'top' : (st + 10) + 'px'
+                });
+            }
+            function add_row() {
+                $("#seat_list").append(
+                    "                            <div id=\"seat_list\">\n" +
+                    "                                <span class=\"guide\"> 구역 </span>\n" +
+                    "                                <input type=\"text\" name=\"area\" id=\"MD-subject\" data-displayname=\"구역\"\n" +
+                    "                                       data-maxlength=\"20\" maxlength=\"20\" required=\"required\" class=\"w10p\">\n" +
+                    "                                <span class=\"guide\"> 가격 </span>\n" +
+                    "                                <input type=\"text\" name=\"price\" id=\"MD-subject\" data-displayname=\"가격\"\n" +
+                    "                                       data-maxlength=\"20\" maxlength=\"20\" required=\"required\" class=\"w10p\">\n" +
+                    "                                <span class=\"guide\"> 총 좌석수 </span>\n" +
+                    "                                <input type=\"text\" name=\"total\" id=\"MD-subject\" data-displayname=\"좌석수\"\n" +
+                    "                                       data-maxlength=\"20\" maxlength=\"20\" required=\"required\" class=\"w10p\">\n" +
+                    "                                <button id=\"add\" onclick=\"add_row()\" class=\"mBtn btn1\">추가</button>\n" +
+                    "                                <button id=\"delete\" onclick=\"delete_row()\" class=\"mBtn btn1\">삭제</button>\n" +
+                    "                            </div>\n");
+            }
+            function delete_row() {
+                $("#seat_list div:last").remove();
+            }
+
+            // // ISO 형식으로 변환
+            // if(value instanceof Date){
+            //     this.value = value.toISOString();
+            // }
+            // //date format 맞춰주는 코드
+            // formatDatetime = () => {
+            //     let nodes = document.querySelectorAll('input[type="datetime-local"]');
+            //
+            //     nodes.forEach(node => {
+            //         moment.DATETIME_LOCAL = "YYYY-MM-DDThh:mm:ss";
+            //         let localDate = moment(node.getAttribute("value"));
+            //         node.value = LocalDateTime.parse(localDate,
+            //             DateTimeFormatter.ofPattern(moment.DATETIME_LOCAL));
+            //     })
+            // };
+        </script>
+</body>
+</html>
