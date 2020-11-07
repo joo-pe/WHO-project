@@ -32,7 +32,6 @@ body{
         display: block;
         font-size: 1.25em;
         padding-top: 3px;
-        margin-left: 60px;
     }
     a {
         color: #3498db;
@@ -41,8 +40,6 @@ body{
     .user-list tbody td>img {
         position: relative;
         max-width: 50px;
-        float: left;
-        margin-right: 15px;
     }
 
     .table thead tr th {

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
     <style>
+    a { text-decoration:none } 
         body {
             margin: 0;
         }
         .batang {
             width: 100vw;
             height: 135vh;
-            background: #81f7d8;
+            background: #110f1f14;
         }
     </style>
     <head>
@@ -28,7 +29,7 @@
                     } else if ($("#termsPrivacy").is(":checked") == false) {
                         alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다..");
                         return;
-                    } else if ($("#termsLocation").is(":checked") == false) {
+                    } else if ($("#termsPrivacy").is(":checked") == false) {
                         alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다...");
                         return;
                     } else {
@@ -77,7 +78,7 @@
                             <form id="join_form" method="GET" action="http://localhost:8090/signup">
                                 <input type="hidden" id="token_sjoin" name="token_sjoin" />
                                 <!-- 약관동의 -->
-                                <div class="terms_p">
+                                <div class="terms_p" style="font-size: x-small;">
                                     <p class="terms_chk_all">
                                         <span class="input_chk">
                                             <input type="checkbox" id="chk_all" name="chk_all" />
@@ -539,7 +540,7 @@
                                         <li class="terms_bx">
                                             <span class="input_chk">
                                                 <input type="checkbox" id="termsLocation" name="termsLocation" value="Y" class="chk" />
-                                                <label for="termsLocation">위치정보 이용약관 동의<span class="terms_choice terms_no">(필수)</span></label>
+                                                <label for="termsLocation">위치정보 이용약관 동의<span class="terms_choice terms_no">(선택)</span></label>
                                             </span>
                                             <!-- tg-lang=>"ko" -->
                                             <div class="terms_box" id="divLocation" style="border: 1px solid black; border-radius: 4px; height: 100px;">
