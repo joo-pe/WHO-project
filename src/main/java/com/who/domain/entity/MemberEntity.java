@@ -18,10 +18,13 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper=false, of = "email")
 @Table(name="member")
 public class MemberEntity extends TimeEntity{
-	
+   
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(length = 50, nullable = false)
+    private String privatekey;
 
     @Column(length = 50, nullable = false)
     private String email;
@@ -42,10 +45,11 @@ public class MemberEntity extends TimeEntity{
     private boolean enabled;
 
     @Builder
-    MemberEntity(Long id, String email, String password,
-    			String name, String phone, String birthday, LocalDateTime createdDate,
-    			boolean enabled) {
+    MemberEntity(Long id, String privatekey, String email, String password,
+             String name, String phone, String birthday, LocalDateTime createdDate,
+             boolean enabled) {
         this.id = id;
+        this.privatekey = privatekey;
         this.email = email;
         this.password = password;
         this.name = name;

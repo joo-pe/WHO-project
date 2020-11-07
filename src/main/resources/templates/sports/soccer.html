@@ -1,212 +1,184 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/sport.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<!-- Header -->
-    <div th:insert="common/header.html" id="header"></div>
+<body style="background-color: #eee;">
+
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+   <div th:insert="common/header.html" id="header"></div>
+  </div>
+</div>
+
+<!-- Top menu -->
+<div class="w3-top1">
+  <div class="soccerbanner" style="max-width:1200px;margin:auto;">
+   <img alt="" src="images/soccer.PNG" style="width:100%">
+  </div>
+</div>
+  
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;background-color: #eee">
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #eee;">
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS070.png" alt="대한민국 축구 국가대표팀" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">국가대표팀</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS001.png" alt="전북 현대 모터스" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">전북 현대 모터스</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS003.png" alt="수원삼성블루윙즈" style="width:100%">
+      <div class="clubInfoWrap">
+       <div class="clubName">수원삼성블루윙즈</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+   </div>
+   <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS012.png" alt="제주유나이티드" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">제주유나이티드</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+      </div>
+     </div>
+    </div>
     
-		<!-- 바디 시작 -->
-		<div id="container" >
-		    <div class="sportsBridgeWrapper" align="center">
-		        <div class="bridgeTopWrapper" align="center">
-		            <div align="center" class="soccerbanner">
-		                    <img alt="" src="images/축구.PNG">
-		            </div>
-		        </div>
-		        <div class="bridgeListWrapper">
-		            <ul>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS070.png" alt="대한민국 축구 국가대표팀">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">대한민국 축구 국가대표팀</div>
-		                                    <div class="place">파주스타디움</div>
-		                                    <div class="engName">KOREA REPUBLIC NATIONAL FOOTBALL TEAM</div>
-		                                </div>
-		                                <a class="btn_reserve" type="button" th:href="@{/soccer/ticket}">
-		                                    <span>예매하기</span>
-		                                </a>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS001.png" alt="전북 현대 모터스">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">전북 현대 모터스</div>
-		                                    <div class="place">전주월드컵경기장</div>
-		                                    <div class="engName">JEONBUK HYUNDAI MOTORS</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS003.png" alt="수원삼성블루윙즈">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">수원삼성블루윙즈</div>
-		                                    <div class="place">수원월드컵경기장</div>
-		                                    <div class="engName">SUWON SAMSUNG BLUEWINGS FOOTBALL CLUB</div>
-		                                </div>
-		                               <button class="btn_reserve" type="button" onclick="">
-		                                   <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS012.png" alt="제주유나이티드">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">제주유나이티드</div>
-		                                    <div class="place">제주월드컵경기장</div>
-		                                    <div class="engName">JEJU UNITED FOOTBALL CLUB</div>
-		                                </div>
-		                               <button class="btn_reserve" type="button" onclick="">
-		                               	<span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS014.png" alt="강원 FC">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">강원 FC</div>
-		                                    <div class="place">춘천송암스포츠타운</div>
-		                                    <div class="engName">GANGWON FOOTBALL CLUB</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS006.png" alt="경남 FC">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">경남 FC</div>
-		                                    <div class="place">창원축구센터</div>
-		                                    <div class="engName">GYEONGNAM FOOTBALL CLUB</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS093.png" alt="성남 FC">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">성남 FC</div>
-		                                    <div class="place">탄천 종합 운동장</div>
-		                                    <div class="engName">SEONGNAM FOOTBALL CLUB</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS004.png" alt="부산 아이파크">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">부산 아이파크</div>
-		                                    <div class="place">부산 구덕운동장</div>
-		                                    <div class="engName">BUSAN IPARK</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS061.png" alt="수원 FC">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">수원 FC</div>
-		                                    <div class="place">수원종합운동장</div>
-		                                    <div class="engName">SUWON FOOTBALL CLUB</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS067.png" alt="부천FC 1995">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">부천FC 1995</div>
-		                                    <div class="place">부천종합운동장</div>
-		                                    <div class="engName">BUCHEON FOOTBALL CLUB 1995</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS098.png" alt="서울이랜드 FC">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">서울이랜드 FC</div>
-		                                    <div class="place">잠실 올림픽 주경기장</div>
-		                                    <div class="engName">SEOUL ELAND FOOTBALL CLUB</div>
-		                                </div>
-		                                <button class="btn_reserve" type="button" onclick="">
-		                                    <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="listWrap">
-		                                <div class="imgWrap">
-		                                    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS005.png" alt="대전 하나 시티즌">
-		                                </div>
-		                                <div class="clubInfoWrap">
-		                                    <div class="clubName">대전 하나 시티즌</div>
-		                                    <div class="place">대전월드컵경기장</div>
-		                                    <div class="engName">DAEJEON HANA CITIZEN FOOTBALL CLUB</div>
-		                                </div>
-		                               <button class="btn_reserve" type="button" onclick="">
-		                                   <span>예매하기</span>
-		                                </button>
-		                            </div>
-		                        </li>
-		            </ul>
-		        </div>
-		    </div>
-		</div>
+  
+  <!-- Second Photo Grid-->
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS014.png" alt="강원 FC" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">강원 FC</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS006.png" alt="경남 FC" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">경남 FC</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS093.png" alt="성남 FC" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">성남 FC</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+   </div>
+   <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS004.png" alt="부산 아이파크" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">부산 아이파크</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+      </div>
+    </div>
+    </div>
+    
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+   <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS061.png" alt="수원 FC" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">수원 FC</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS067.png" alt="부천FC 1995" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">부천FC 1995</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS098.png" alt="서울이랜드 FC" style="width:100%">
+      <div class="clubInfoWrap">
+       <div class="clubName">서울이랜드 FC</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+     <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS005.png" alt="대전 하나 시티즌" style="width:100%">
+      <div class="clubInfoWrap">
+      <div class="clubName">대전 하나 시티즌</div>
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+    </div>
+  </div>
+  
+  <hr id="about">
+  
+
+
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
 
 
 </body>

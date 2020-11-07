@@ -19,7 +19,7 @@ const walletPath = path.join(process.cwd(), 'wallet');
 const wallet = new FileSystemWallet(walletPath);
 console.log('Wallet path: ${walletPath}');
  
-/* GET */
+/* GET 
 router.get('/wallet', async(req, res, next) => {
     try{
         // Check to see if we've already enrolled the admin user.
@@ -30,8 +30,9 @@ router.get('/wallet', async(req, res, next) => {
         const identity = X509WalletMixin.createIdentity('Org1MSP', enrollment.certificate, enrollment.key.toBytes());
         wallet.import('admin', identity);
         console.log('Successfully enrolled admin user "admin" and imported it into the wallet');
- 
-        }   
+ }
+
+           
  
         // Check to see if we've already enrolled the user.
         const userExists = await wallet.exists('user1');
@@ -50,18 +51,19 @@ router.get('/wallet', async(req, res, next) => {
             const userIdentity = X509WalletMixin.createIdentity('Org1MSP', enrollment.certificate, enrollment.key.toBytes());
             wallet.import('user1', userIdentity);
             console.log('Successfully registered and enrolled admin user "user1" and imported it into the wallet');
- 
+ }
         }
+
  
         res.json({"msg":"ok"});
     }catch(e){
         console.log(e);
         res.json({"msg":"connect error"});
     }
-  });
+  });*/
   
  
-/* GET */
+/* GET 
 router.get('/queryAllTickets', async (req, res, next) => {
     try{
     console.log("queryAllTickets..." );
@@ -92,9 +94,9 @@ router.get('/queryAllTickets', async (req, res, next) => {
         res.json({'msg':'query error'});
     }
     }
-);
+);*/
  
-/* POST */
+/* POST 
 router.post('/createTickets', async (req, res, next) => {
     try{
     console.log("createTickets : ", req.body.name);
@@ -125,6 +127,7 @@ router.post('/createTickets', async (req, res, next) => {
         res.json({'msg':'send error'});
     }
     }
-);
+);*/
+
  
-module.exports = router;
+//module.exports = router;

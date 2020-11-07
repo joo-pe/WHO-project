@@ -1,197 +1,235 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Login WHOTicket</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" th:href="@{/image/icons/favicon.ico}"/>
+   <title>Login WHOTicket</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->   
+   <link rel="icon" type="image/png" th:href="@{/image/icons/favicon.ico}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+<!--===============================================================================================-->   
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->   
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2017.css">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
 <!--===============================================================================================-->
-	<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
+   <script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
+   <script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
-	<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+   <script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+   <script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/select2/select2.min.js}"></script>
+   <script th:src="@{vendor/select2/select2.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
-	<script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
+   <script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
+   <script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
+   <script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{js/main.js}"></script>
+   <script th:src="@{js/main.js}"></script>
+   
 </head>
 <body>
-	
-	<!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
-	<div class="container-login100">
-		<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30">
-			<form th:action="@{/signup2}" method="post" class="login100-form validate-form">
-			
-				<span class="login100-form-title p-b-25" >
-					<a th:href="@{/}">
-						<img th:src="@{/image/logo.png}" height="60px"><br>
-					</a>
-					WHOTicket 가입
-				</span>
+   
+   <!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
+   <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30">
+         <form th:action="@{/signup2}" method="post" class="login100-form validate-form">
+         
+            <span class="login100-form-title p-b-25" >
+               <a th:href="@{/}">
+                  <img th:src="@{/image/logo.png}" height="60px"><br>
+               </a>
+               WHOTicket 가입
+            </span>
+            
+                    <p class="w3-large"><b>
+                    <a class="fa fa-asterisk w3-margin-right w3-text-teal" 
+                    href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"> 메타마스크 설치필수</a></b></p>
+                    
+                <div class="wrap-input100 validate-input m-b-20">
+               <input id="showAccount" class="input100" type="text" name="privatekey" maxlength="50">
+               <span class="focus-input100"></span>
+            </div>
+            
+            <div class="container-login100-form-btn">
+                    <button type="button" class="login100-form-btn enableEthereumButton">이더리움 연결</button>
+                </div>
 
-				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
-					<input id="email" class="input100" type="text" name="email" maxlength="50" placeholder="이메일 입력">
-					<span class="focus-input100"></span>
-				</div>
-				<div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
-				<div class="container-login100-form-btn">
-					<button type="button" id="checkEmail" class="login100-form-btn">인증번호 전송</button>
-				</div>
-				<br>
-				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
-					<input id="number" class="input100" type="text" name="number" maxlength="50" placeholder="인증번호 입력">
-					<span class="focus-input100"></span>
-				</div>
-				<div class="text-center small mt-2" id="checkMsg1" style="color: red"></div>
-				<div class="container-login100-form-btn">
-					<button type="button"  id="checksucess" class="login100-form-btn1 check">인증번호 확인</button>
-				</div>
-				<br>
-				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
-					<input id="password" class="input100" type="password" name="password" maxlength="20" placeholder="비밀번호 입력">
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
+               <input id="email" class="input100" type="text" name="email" maxlength="50" placeholder="이메일 입력">
+               <span class="focus-input100"></span>
+            </div>
+            <div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
+            <div class="container-login100-form-btn">
+               <button type="button" id="checkEmail" class="login100-form-btn">인증번호 전송</button>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
+               <input id="number" class="input100" type="text" name="number" maxlength="50" placeholder="인증번호 입력">
+               <span class="focus-input100"></span>
+            </div>
+            <div class="text-center small mt-2" id="checkMsg1" style="color: red"></div>
+            <div class="container-login100-form-btn">
+               <button type="button"  id="checksucess" class="login100-form-btn1 check">인증번호 확인</button>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+               <input id="password" class="input100" type="password" name="password" maxlength="20" placeholder="비밀번호 입력">
                     <span class="focus-input100"></span>
-				</div>
-				
-				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userName">
-					<input id="name" class="input100" type="text" name="name" maxlength="20" placeholder="이름 입력">
-					<span class="focus-input100"></span>
-				</div>
-				
-				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userBirthday">
-					<input id="birthday" class="input100" type="date" name="birthday" maxlength="20" placeholder="userBirthday">
-					<span class="focus-input100"></span>
-				</div>
-				
-				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userPhone">
-					<input id="phone" class="input100" type="tel" name="phone" maxlength="15" placeholder="연락처 입력">
-					<span class="focus-input100"></span>
-				</div>
+            </div>
+            
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter userName">
+               <input id="name" class="input100" type="text" name="name" maxlength="20" placeholder="이름 입력">
+               <span class="focus-input100"></span>
+            </div>
+            
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter userBirthday">
+               <input id="birthday" class="input100" type="date" name="birthday" maxlength="20" placeholder="userBirthday">
+               <span class="focus-input100"></span>
+            </div>
+            
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter userPhone">
+               <input id="phone" class="input100" type="tel" name="phone" maxlength="15" placeholder="연락처 입력">
+               <span class="focus-input100"></span>
+            </div>
 
-				<div class="container-login100-form-btn">
-					<button type="submit" class="login100-form-btn">
-						가입하기
-					</button>
-				</div>
+            <div class="container-login100-form-btn">
+               <button type="submit" class="login100-form-btn">
+                  가입하기
+               </button>
+            </div>
 
-				<!-- <div class="text-center p-t-57 p-b-20">
-					<span class="txt1">
-						Or login with
-					</span>
-				</div>
-				<div class="flex-c p-b-50">
-					<a href="javascript:;" class="login100-social-item" data-social="facebook">
-						<i class="fa fa-facebook-f"></i>
-					</a>
-					<a href="javascript:;" class="login100-social-item" data-social="google">
-						<img src="image/icons/icon-google.png" alt="GOOGLE">
-					</a>
-				</div>
-				
-				<script>
-				  let socials = document.getElementsByClassName("login100-social-item");
-				  for(let social of socials) {
-					  social.addEventListener('click', function(){
-						  let socialType = this.getAttribute('data-social');
-						  location.href="/oauth2/authorization/" + socialType;
-					  })
-				  }
-				</script> -->
-				<br>
-				<div class="text-center">
-					WHOTicket 계정이 있나요?<a sec:authorize="isAnonymous()" th:href="@{/login}" class="txt2 hov1">
-						로그인
-					</a>
-				</div>
-			</form>			
-		</div>
-	</div>
-	
-	<div id="dropDownSelect1"></div>
+            <!-- <div class="text-center p-t-57 p-b-20">
+               <span class="txt1">
+                  Or login with
+               </span>
+            </div>
+            <div class="flex-c p-b-50">
+               <a href="javascript:;" class="login100-social-item" data-social="facebook">
+                  <i class="fa fa-facebook-f"></i>
+               </a>
+               <a href="javascript:;" class="login100-social-item" data-social="google">
+                  <img src="image/icons/icon-google.png" alt="GOOGLE">
+               </a>
+            </div>
+            
+            <script>
+              let socials = document.getElementsByClassName("login100-social-item");
+              for(let social of socials) {
+                 social.addEventListener('click', function(){
+                    let socialType = this.getAttribute('data-social');
+                    location.href="/oauth2/authorization/" + socialType;
+                 })
+              }
+            </script> -->
+            <br>
+            <div class="text-center">
+               WHOTicket 계정이 있나요?<a sec:authorize="isAnonymous()" th:href="@{/login}" class="txt2 hov1">
+                  로그인
+               </a>
+            </div>
+         </form>         
+      </div>
+   </div>
+   
+   <div id="dropDownSelect1"></div>
 <script type="text/javascript">
+
+    // connect Ethereum and get Account
+    const ethereumButton = document.querySelector('.enableEthereumButton');
+    const showAccount = document.querySelector('.showAccount');
+
+    ethereumButton.addEventListener('click', () => {
+        //Will Start the metamask extension
+        if (typeof window.ethereum !== 'undefined') {
+            console.log('MetaMask is installed!');
+            getAccount();
+        }
+        else{
+            alert("메타마스크를 설치해주세요.")
+        }
+    });
+
+    async function getAccount() {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        document.getElementById("showAccount").value = account;
+    }
+
     $('.login100-form-btn').click(function () {
-    	
-    	$.ajax({
-    		type: "GET",
-    		url: "/idCheck",
-    		data: {
-    			email: $('#email').val()
-    		},
-    		success: function (data) {
-    			if ($.trim(data)=="YES") {
-					if ($('#email').val() !=''){
-						$('#checkMsg').html('<p style="color:blue">인증번호가 입력한 이메일로 전송되었습니다.</p>');
-						$.ajax({
-	                        type: "POST",
-	                        url: "/idCheck/sendEmail",
-	                        data: {
-	                        	email: $('#email').val()
-	                        }
-	                    })
-					}
-				}else {
-					if ($('#email').val() != '') {
+       
+       $.ajax({
+          type: "GET",
+          url: "/idCheck",
+          data: {
+             email: $('#email').val()
+          },
+          success: function (data) {
+             if ($.trim(data)=="YES") {
+               if ($('#email').val() !=''){
+                  $('#checkMsg').html('<p style="color:blue">인증번호가 입력한 이메일로 전송되었습니다.</p>');
+                  $.ajax({
+                           type: "POST",
+                           url: "/idCheck/sendEmail",
+                           data: {
+                              email: $('#email').val()
+                           }
+                       })
+               }
+            }else {
+               if ($('#email').val() != '') {
                         $('#checkMsg').html('<p style="color:red">이미 사용중인 ID 입니다.</p>');
                         $('#email').val('');
                         $('#email').focus();
                         
-					}
-				}
-    		}
-    	})
+               }
+            }
+          }
+       })
     });
     
-	$('.check').click(function () {
-	    	
-	    	$.ajax({
-	    		type: "POST",
-	    		url: "/CertifiedCheck",
-	    		data: {
-	    			number: $('#number').val()
-	    		},
-	    		success: function (data) {
-	    			if ($.trim(data)=="YES") {
-						if ($('#number').val() !=''){
-							$('#checkMsg1').html('<p style="color:blue">인증이 완료 되었습니다!</p>');
-							
-						}
-					}else {
-						if ($('#number').val() != '') {
-	                        $('#checkMsg1').html('<p style="color:red">인증번호가 틀립니다.</p>');
-	                        $('#number').val('');
-	                        $('#number').focus();
-	                        
-						}
-					}
-	    		}
-	    	})
-	    });
+   $('.check').click(function () {
+          
+          $.ajax({
+             type: "POST",
+             url: "/CertifiedCheck",
+             data: {
+                number: $('#number').val()
+             },
+             success: function (data) {
+                if ($.trim(data)=="YES") {
+                  if ($('#number').val() !=''){
+                     $('#checkMsg1').html('<p style="color:blue">인증이 완료 되었습니다!</p>');
+                     
+                  }
+               }else {
+                  if ($('#number').val() != '') {
+                           $('#checkMsg1').html('<p style="color:red">인증번호가 틀립니다.</p>');
+                           $('#number').val('');
+                           $('#number').focus();
+                           
+                  }
+               }
+             }
+          })
+       });
    
 </script>
 </body>

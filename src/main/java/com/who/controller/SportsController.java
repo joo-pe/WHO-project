@@ -145,6 +145,11 @@ public class SportsController {
     public String soccerList(Model model) {
         return "sports/soccer";
     }
+    //야구 예매 페이지
+    @GetMapping("/baseball")
+    public String dispbaseball() {
+    	return "sports/baseball";
+    }
 
     @GetMapping("/soccer/ticket")
     public String soccerTicket(Model model) {
