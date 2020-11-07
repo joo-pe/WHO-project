@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <style>
 button{
-	color: #fff;
+   color: #fff;
     background-color: #0a9772;
     border-color: #0a9772;
 }
@@ -17,7 +17,7 @@ button{
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                	<img th:src="@{/image/logo.png}" height="35px">
+                   <img th:src="@{/image/logo.png}" height="35px">
                 </a>
             </div>
             <form style="padding-top: 15px;">
@@ -30,7 +30,7 @@ button{
         </form>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                	<li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a></li>
+                   <li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a></li>
                     <li><a sec:authorize="isAnonymous()" th:href="@{/login}">SIGN IN</a></li>
                     <li><a sec:authorize="isAnonymous()" th:href="@{/signup}">SIGN UP</a></li>
                     <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
@@ -38,8 +38,8 @@ button{
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">PERFORMANCE
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="musical">MUSICAL</a></li>
-                                <li><a href="theater">THEATER</a></li>
+                            <li><a th:href="@{/musical}">MUSICAL</a></li>
+                                <li><a href="/">THEATER</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,9 +28,17 @@
                     <div class="main-box-body clearfix">
                         <div class="table-responsive">
                         <div class="container">
+					        <!-- 검색 form -->
+					        <form action="/notice/search" method="GET" class="form-search">
+					            <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+					            <button><i class="glyphicon glyphicon-search"></i></button>
+					        </form>
+					     </div>
+                        <div class="container">
                             <table class="table user-list">
                                 <thead>
                                 <tr>
+                                	<th><span>번호</span></th>
                                 	<th><span>아이콘</span></th>
                                     <th><span>User</span></th>
                                     <th><span>제목</span></th>
@@ -39,6 +48,9 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="faq : ${faqList}">
+                                <td>
+                                	<span th:text="${faq.id}"></span>
+                                </td>
                                 <td align="center">
                                  <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
                                 </td>
@@ -53,7 +65,7 @@
                                         <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd')}"></span>
                                     </td>  
                                     <td style="width: 20%;">
-                                        <a href="#" class="table-link text-warning">
+                                        <a th:href="@{'/post/'+ ${faq.id}}" data-toggle="modal" data-target="#myModal" class="table-link text-warning">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
@@ -80,6 +92,7 @@
             </div>
         </div> 
     </div>
+  </div>
      
 <!-- FOOTER -->
 <div th:insert="common/footer.html" id="footer"></div>
