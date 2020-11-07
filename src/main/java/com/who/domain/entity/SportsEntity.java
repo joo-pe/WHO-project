@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(name="sports2")
+@Table(name="sports")
 public class SportsEntity {
 
     @Id

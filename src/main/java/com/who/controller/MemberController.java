@@ -88,12 +88,6 @@ public class MemberController {
         return "login/denied";
     }
 
-    //야구 예매 페이지
-    @GetMapping("/baseball")
-    public String dispbaseball() {
-    	return "sport/baseball";
-    }
-
     // 현재 사용자 정보 가져오기
     @GetMapping("/myinfo")
     public String dispCuurentUserInfo(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {

@@ -163,5 +163,11 @@ public class SportsController {
         model.addAttribute("fileDto", fileDto);
         return "sports/detail";
     }
+    
+    //야구 예매 페이지
+    @GetMapping("/baseball")
+    public String dispbaseball() {
+    	return "sports/baseball";
+    }
 
 }
