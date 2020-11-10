@@ -16,14 +16,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!--    <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>-->
+
+
 </head>
 <body>
     <!-- HEADER -->
     <div th:insert="common/header.html" id="header"></div>
     
-    
-
-   
     <div class="container bootstrap snippets bootdey">
         <div class="row">
             <div class="col-lg-12">
@@ -31,11 +30,7 @@
                     <div class="main-box-body clearfix">
                         <div class="table-responsive" style="padding: 43px 0 0 0">
                         <div class="container">
-					        <!-- 검색 form -->
-					        <form action="/notice/search" method="GET" class="form-search">
-					            <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-					            <button><i class="glyphicon glyphicon-search"></i></button>
-					        </form>
+					       
 					     </div>
     <div class="container" >
         <table id="example" class="table table-cnodensed table user-list">
@@ -45,8 +40,7 @@
 	                <th class="subject" style="text-align: center;">아이콘</th>
 	                <th class="subject" style="text-align: center;">글제목</th>
 	                <th class="subject" style="text-align: center;">작성자</th>
-	                <th class="subject" style="text-align: center;">작성일</th>
-	                <th class="subject" style="text-align: center;">자세히보기</th>
+	                <th class="subject" style="text-align: center;">공지날짜</th>
 	            </tr>
             </thead>
             <tbody>
@@ -59,7 +53,7 @@
                                  <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
                     </td>
 	                <td class="bottom" style="text-align: center;">
-	                    <a>
+	                    <a th:href="@{'/notice/edit/'+ ${notice.id}}" data-toggle="modal" data-target="#myModal" class="table-link text-warning">
 	                        <span th:text="${notice.title}"></span>
 	                    </a>
 	                </td>
@@ -69,18 +63,11 @@
 	                <td style="text-align: center;">
 	                    <span th:text="${#temporals.format(notice.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
 	                </td>
-	                <td style="width: 20%;">
-                       <a th:href="@{'/post1/'+ ${notice.id}}" data-toggle="modal" data-target="#myModal" class="table-link text-warning">
-                          <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                          </span>
-                       </a>      
-                    </td>
 	            </tr>  
             </tbody>
          </table>
        </div>
+
        <div align="center">
          <ul class="pagination">
              <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
@@ -92,6 +79,11 @@
              <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
           </ul>
        </div>
+        <!-- 검색 form -->
+		<form action="/notice/search" method="GET" class="form-search" style="float: right;padding: 15px">
+			<input name="keyword" type="text" placeholder="검색어를 입력해주세요" style="width: 250px">
+			<button><i class="glyphicon glyphicon-search"></i></button>
+		</form>
        	</div> 
        		</div>
        			</div>
@@ -99,37 +91,35 @@
        					</div>
        						</div>
                      	<!-- Modal --> 
-                     	<form action="">
 						<div 
 						class="modal fade" 
-						id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 64px 0 0 0"> 
-						        <div class="modal-dialog modal-lg"> 
-						                <div class="modal-content">  
+						id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 100px 0 0 0"> 
+						        
+						        <div class="modal-dialog modal-lg">
+						        
+						                <div class="modal-content">
+						            
 						                        <div class="modal-body">  
-						                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                        
-						         <h4 class="modal-title" id="myModalLabel" align="center">상세정보</h4> 
-						         <br>
-						         <table>
-						          <tr>
-						            <th scope="row">성명 </th>
-						            <td><span></span></td>
-						          </tr>
-						
-						          </table> 
+						                        
+						                       
 						           
                         			</div> 
                 				</div>               				
                 			</div>                			
                 		</div> 
-                		</form>              	
+              	
                
     
 
 <!-- FOOTER -->
 <div th:insert="common/footer.html" id="footer"></div>
 
-<script>
 
-</script>
 </body>
+
+<script>
+       $(document.body).on('hidden.bs.modal', function () {
+    	    $('#myModal').removeData('bs.modal')
+    	});
+</script>
 </html>
