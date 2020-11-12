@@ -31,12 +31,13 @@
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;background-color: #eee">
 
   <!-- First Photo Grid-->
+  <form th:action="@{/soccer/ticket}">
   <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #eee;">
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
     <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS070.png" alt="대한민국 축구 국가대표팀" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">국가대표팀</div>
-      <button class="btn_reserve" type="button" onclick="">
+      <button class="btn_reserve" type="submit" >
         <span>예매하기</span>
       </button>
    </div>
@@ -69,7 +70,7 @@
       </div>
      </div>
     </div>
-    
+    </form>
   
   <!-- Second Photo Grid-->
   <!-- First Photo Grid-->
