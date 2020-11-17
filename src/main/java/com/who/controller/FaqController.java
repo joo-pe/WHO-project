@@ -96,4 +96,6 @@ public class FaqController {
     model.addAttribute("faqDto", faqDto);  
     return "faq/detail";
     }
+
+
 }

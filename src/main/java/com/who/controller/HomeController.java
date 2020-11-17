@@ -19,22 +19,20 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class HomeController {
-   private FaqService faqService;
+    private FaqService faqService;
     private SportsService sportsService;
     private FileService fileService;
     private NoticeService noticeService;
-  
+
     @GetMapping("/")
     public String home(Model model) {
        List<FaqDto> faqList = faqService.getFaqlist();
-        model.addAttribute("faqList", faqList); 
+        model.addAttribute("faqList", faqList);
         List<NoticeDto> noticeList = noticeService.getNoticelist();
         model.addAttribute("noticeList", noticeList);
         return "index2.html";
     }
-    
 
-  
     @GetMapping("/productdetail")
     public String productDetail() {
         return "sports/detail";
@@ -44,5 +42,4 @@ public class HomeController {
     public String pay() {
         return "pay";
     }
-
 }

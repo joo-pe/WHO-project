@@ -12,7 +12,7 @@ public class SeatDto {
     private Long id;
     private String area;
     private Integer price;
-    private Integer total;
+    private boolean allocated;
     private SportsDto sportsDto;
 
     public SeatEntity toEntity() {
@@ -20,16 +20,19 @@ public class SeatDto {
                 .id(id)
                 .area(area)
                 .price(price)
-                .total(total)
+                .allocated(allocated)
+                .sportsEntity(sportsDto.toEntity())
                 .build();
         return seatEntity;
     }
 
     @Builder
-    public SeatDto(Long id, String area, Integer price, Integer total, Integer available) {
+    public SeatDto(Long id, String area, Integer price, Integer total,
+                   boolean allocated, SportsDto sportsDto ) {
         this.id = id;
         this.area = area;
         this.price = price;
-        this.total = total;
+        this.allocated = allocated;
+        this.sportsDto = SportsDto.builder().build();
     }
 }

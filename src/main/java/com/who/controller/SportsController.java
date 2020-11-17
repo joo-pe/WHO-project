@@ -1,16 +1,21 @@
 package com.who.controller;
 
 import com.who.MD5Generator;
-import com.who.dto.FileDto;
-import com.who.dto.SportsDto;
-import com.who.service.FileService;
-import com.who.service.SportsService;
+import com.who.domain.MemberDetail;
+import com.who.domain.entity.BookingEntity;
+import com.who.domain.entity.MemberEntity;
+import com.who.domain.entity.SportsEntity;
+import com.who.domain.repository.MemberRepository;
+import com.who.dto.*;
+import com.who.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.util.Pair;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +34,10 @@ import java.util.List;
 public class SportsController {
     private SportsService sportsService;
     private FileService fileService;
+    private SeatService seatService;
+    private MemberRepository memberRepository;
+    private MemberService memberService;
+    private BookingService bookingService;
 
     @GetMapping("/admin/sports")
     public String list(Model model) {
@@ -159,13 +168,15 @@ public class SportsController {
 //        return "sports/ticket";
 //    }
 
-    @GetMapping("/soccer/post/{no}")
+    @GetMapping("/soccer/ticket/{no}")
     public String soccerDetail(@PathVariable("no") Long no, Model model) {
         SportsDto sportsDto = sportsService.getSports(no);
         FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+        List<Object[]> availableSeats = seatService.countAvailableSeat();
 
         model.addAttribute("sportsDto", sportsDto);
         model.addAttribute("fileDto", fileDto);
+        model.addAttribute("availableSeats", availableSeats);
         return "sports/detail";
     }
     @GetMapping("/soccer/ticket")
@@ -175,5 +186,27 @@ public class SportsController {
         model.addAttribute("sportsList", sportsDtoList);
         return "sports/ticket";
     }
+
+    @PostMapping("/soccer/ticket/{no}")
+    public String saveBooking(@PathVariable("no") Long no, @AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+//        String email = memberDetail.getUsername();
+//        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+////        MemberDto memberDto = memberService.convertEntityToDto(memberEntity);
+//        MemberDto memberDto = memberService.getMember(memberEntity.getId());
+
+        SportsDto sportsDto = sportsService.getSports(no);
+
+//        BookingDto bookingDto = new BookingDto(null, memberDto, sportsDto, false);
+//        Long bookNo = bookingService.saveBooking(bookingDto);
+//
+//        BookingDto bookingDto2 = bookingService.getBooking(bookNo);
+
+//        model.addAttribute("bookingDto", bookingDto);
+
+//        return "sports/pay" + bookNo;
+        return "redirect:/pay/1";
+    }
+
+
 
 }
