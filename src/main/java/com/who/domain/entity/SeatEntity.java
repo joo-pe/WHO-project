@@ -1,6 +1,5 @@
 package com.who.domain.entity;
 
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "seat")
+@Table(name = "KFAseat")
 public class SeatEntity {
     @Id
     @GeneratedValue
@@ -23,18 +22,19 @@ public class SeatEntity {
     private int price;
 
     @Column(nullable = false)
-    private int total;
+    private boolean allocated;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = SportsEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "sports_id")
     private SportsEntity sportsEntity;
 
     @Builder
-    public SeatEntity(Long id, String area, Integer price, Integer total, SportsEntity sportsEntity) {
+    public SeatEntity(Long id, String area, Integer price,
+                      boolean allocated, SportsEntity sportsEntity) {
         this.id = id;
         this.area = area;
         this.price = price;
-        this.total = total;
+        this.allocated = allocated;
         this.sportsEntity = sportsEntity;
     }
 }

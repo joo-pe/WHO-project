@@ -4,24 +4,33 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+button.close {
+   padding : 0 7px 0 0;
+   cursor: pointer;
+   background: 0 0;
+   border: 0;
+   appearance: none;
+}
+.close{
+   float: right;
+   font-size: 40px;
+   font-weight: 700;
+   line-height: 1;
+   color: #000;
+   text-shadow: 0 1px 0 #fff;
+   opacity: .2;
+}
+</style>
 <body>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h1 align="center">안내사항</h1> 
+<br>
+<h2 th:text="${faqDto.title}" align="center"></h2>
+<p th:inline="text" align="center">작성일 : [[${#temporals.format(faqDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
 
-<h2 th:text="${faqDto.title}"></h2>
-<p th:inline="text">작성일 : [[${#temporals.format(faqDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
-
-<p th:text="${faqDto.content}"></p>
-
-<!-- 수정/삭제 -->
-<div>
-    <a th:href="@{'/post/edit/' + ${faqDto.id}}">
-        <button>수정</button>
-    </a>
-
-    <form id="delete-form" th:action="@{'/post/' + ${faqDto.id}}" method="post">
-        <input type="hidden" name="_method" value="delete"/>
-        <button id="delete-btn">삭제</button>
-    </form>
-</div>
+<p th:text="${faqDto.content}" style="margin: 5px"></p>
+<br>
 
 <!-- 변수 셋팅 -->
 <script th:inline="javascript">

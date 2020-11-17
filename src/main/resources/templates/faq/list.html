@@ -9,84 +9,19 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}"/>-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}"/>
+   <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
 </head>
-<style>
-    body{
-        background:#eee;
-    }
-    .main-box.no-header {
-        padding-top: 20px;
-    }
-    .main-box {
-        background: #FFFFFF;
-        -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
-        -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
-        -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
-        -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
-        box-shadow: 1px 1px 2px 0 #CCCCCC;
-        margin-bottom: 16px;
-        -webikt-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-    }
-    .table a.table-link.danger {
-        color: #e74c3c;
-    }
-    .label {
-        border-radius: 3px;
-        font-size: 0.875em;
-        font-weight: 600;
-    }
-    .user-list tbody td .user-subhead {
-        font-size: 0.875em;
-        font-style: italic;
-    }
-    .user-list tbody td .user-link {
-        display: block;
-        font-size: 1.25em;
-        padding-top: 3px;
-        margin-left: 60px;
-    }
-    a {
-        color: #3498db;
-        outline: none!important;
-    }
-    .user-list tbody td>img {
-        position: relative;
-        max-width: 50px;
-        float: left;
-        margin-right: 15px;
-    }
-
-    .table thead tr th {
-        text-transform: uppercase;
-        font-size: 0.875em;
-    }
-    .table thead tr th {
-        border-bottom: 2px solid #e7ebee;
-    }
-    .table tbody tr td:first-child {
-        font-size: 1.125em;
-        font-weight: 300;
-    }
-    .table tbody tr td {
-        font-size: 0.875em;
-        vertical-align: middle;
-        border-top: 1px solid #e7ebee;
-        padding: 12px 8px;
-    }
-    a:hover{
-        text-decoration:none;
-    }
-</style>
 <body>
     <!-- HEADER -->
     <div th:insert="common/header.html" id="header"></div>
 
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    
     <hr>
     <div class="container bootstrap snippets bootdey">
         <div class="row">
@@ -94,127 +29,81 @@
                 <div class="main-box no-header clearfix">
                     <div class="main-box-body clearfix">
                         <div class="table-responsive">
+                        <div class="container">
+                    </div>
+                        <div class="container">
                             <table class="table user-list">
                                 <thead>
                                 <tr>
-                                    <th><span>User</span></th>
-                                    <th><span>Created</span></th>
-                                    <th><span>Email</span></th>
-                                    <th>&nbsp;</th>
+                                   <th><span>번호</span></th>
+                                   <th><span>아이콘</span></th>
+                                    <th><span>작성자</span></th>
+                                    <th><span>제목</span></th>
+                                    <th><span>작성일</span></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="faq : ${faqList}">
-                                    <td>
-                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-                                        <a href="#" class="user-link">Full name 1</a>
-                                        <span class="user-subhead">Member</span>
+                                <td>
+                                   <span th:text="${faq.id}"></span>
+                                </td>
+                                <td align="center">
+                                 <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+                                </td>
+                                    <td align="center">
+                                         
+                                        <span class="user-link" th:text="${faq.writer}"></span>
                                     </td>
                                     <td>
-                                        <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd')}"></span>
+                                       <a th:href="@{'/faq/edit/'+ ${faq.id}}" data-toggle="modal" data-target="#myModal" class="table-link text-warning">
+                                          <span th:text="${faq.title}"></span>
+                                       </a>
                                     </td>
                                     <td>
-                                        <a href="#">marlon@brando.com</a>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <a href="#" class="table-link text-warning">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="table-link text-info">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="table-link danger">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                    </td>
+                                        <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                                    </td>  
                                 </tr>
                                 </tbody>
                             </table>
+                            <div align="center">
+         <ul class="pagination">
+             <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+             <li><a href="#">1</a></li>
+             <li><a href="#">2</a></li>
+             <li><a href="#">3</a></li>
+             <li><a href="#">4</a></li>
+             <li><a href="#">5</a></li>
+             <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+          </ul>
+        </div> 
+        <!-- 검색 form -->
+      <form action="/faq/search" method="GET" class="form-search" style="float: right;padding: 15px">
+         <input name="keyword" type="text" placeholder="검색어를 입력해주세요" style="width: 250px">
+         <button><i class="glyphicon glyphicon-search"></i></button>
+      </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
-
-
-                        <tbody>
-                            <tr th:each="faq : ${faqList}">
-                                <td>
-                                    <a th:href="@{'/post1/'+ ${faq.id}}">
-                                        <span th:text="${faq.title}"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <span class="user-link" th:text="${faq.writer}"></span>
-                                    <span class="user-subhead">Admin</span>
-                                </td>
-                                <td>
-                                    <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd')}"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--<div class="container">-->
-<!--    &lt;!&ndash; 검색 form &ndash;&gt;-->
-<!--    <form action="/notice/search" method="GET" class="form-search">-->
-<!--        <input name="keyword" type="text" placeholder="검색어를 입력해주세요">-->
-<!--        <button><i class="glyphicon glyphicon-search"></i></button>-->
-<!--    </form>-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--    <table id="example" class="table table-cnodensed">-->
-<!--        <thead>-->
-<!--        <tr class="header">-->
-<!--            <th>번호</th>-->
-<!--            <th>글제목</th>-->
-<!--            <th>작성자</th>-->
-<!--            <th>작성일</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-
-<!--        <tbody>-->
-<!--        &lt;!&ndash; CONTENTS !&ndash;&gt;-->
-<!--        <tr th:each="faq : ${faqList}">-->
-<!--            <td>-->
-<!--                <span th:text="${faq.id}"></span>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <a th:href="@{'/post1/'+ ${notice.id}}">-->
-<!--                    <span th:text="${faq.title}"></span>-->
-<!--                </a>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <span th:text="${faq.writer}"></span>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd HH:mm')}"></span>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-
+  </div>
+    <!-- Modal --> 
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 100px 0 0 0"> 
+      <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+            <div class="modal-body">  
+            </div> 
+            </div>                           
+        </div>                         
+    </div> 
+     
 <!-- FOOTER -->
-<div th:insert="common/footer.html" id="footer"></div>
-
+<div th:insert="common/footer.html" id="footer"></div> 
 <script>
-
+       $(document.body).on('hidden.bs.modal', function () {
+           $('#myModal').removeData('bs.modal')
+       });
 </script>
 </body>
 </html>

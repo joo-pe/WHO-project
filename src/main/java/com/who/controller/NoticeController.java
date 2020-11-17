@@ -72,12 +72,20 @@ public class NoticeController {
         model.addAttribute("noticeList", noticeDtoList);
         return "admin/notice/list";
     }
-
+    
     @GetMapping("/notice")
-    public String list2(Model model) {
+    public String list1(Model model) {
         List<NoticeDto> noticeList = noticeService.getNoticelist();
-
+        
         model.addAttribute("noticeList", noticeList);
         return "notice/list";
+    }
+    
+    @GetMapping("/notice/edit/{no}")
+    public String list(@PathVariable("no") Long no, Model model) {
+    NoticeDto noticeDto = noticeService.getPost(no);
+
+    model.addAttribute("noticeDto", noticeDto);  
+    return "notice/detail";
     }
 }

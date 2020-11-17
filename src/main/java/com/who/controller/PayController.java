@@ -1,7 +1,7 @@
 package com.who.controller;
 
-import com.who.dto.SportsDto;
-import com.who.service.SportsService;
+import com.who.dto.*;
+import com.who.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,22 +12,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 @AllArgsConstructor
 public class PayController {
     private SportsService sportsService;
+    private BookingService bookingService;
+    private TicketService ticketService;
+    private SeatService seatService;
+    private MemberService memberService;
 
-    @GetMapping("/soccer/post/{no}/pay")
-    public String soccerPay(@PathVariable("no") Long no, Model model) {
-        SportsDto sportsDto = sportsService.getSports(no);
+    @GetMapping("/pay/{no}")
+    public String Pay(@PathVariable("no") Long no, Model model) {
+        BookingDto bookingDto = bookingService.getBooking(no);
 
+        Long sportsNo = bookingService.getSportsByBooking(no);
+        SportsDto sportsDto = sportsService.getSports(sportsNo);
+
+        Long seatNo = ticketService.getSeatByBooking(no);
+        SeatDto seatDto = seatService.getSeat(seatNo);
+
+        Long memberNo = bookingService.getMemberByBooking(no);
+        MemberDto memberDto = memberService.getMember(memberNo);
+
+        model.addAttribute("bookingDto", bookingDto);
         model.addAttribute("sportsDto", sportsDto);
-        return "sports/pay";
+        model.addAttribute("seatDto", seatDto);
+        model.addAttribute("memberDto", memberDto);
+        return "payment/pay";
     }
 
-    @GetMapping("/pay/paySuccess")
-    public String paySuccess(Model model) {
-        return "pay/paySuccess";
-    }
-
-    @GetMapping("/pay/payFail")
-    public String payFail(Model model) {
-        return "pay/payFail";
-    }
+//
+//
+//    @GetMapping("/pay/paySuccess")
+//    public String paySuccess(Model model) {
+//        return "pay/paySuccess";
+//    }
+//
+//    @GetMapping("/pay/payFail")
+//    public String payFail(Model model) {
+//        return "pay/payFail";
+//    }
 }

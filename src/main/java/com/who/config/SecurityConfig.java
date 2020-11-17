@@ -1,5 +1,6 @@
 package com.who.config;
 
+import com.who.domain.entity.Role;
 import com.who.service.CustomOAuth2UserService;
 import com.who.service.MemberService;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static com.who.config.SocialType.*;
@@ -28,13 +28,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
-
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private MemberService memberService;
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -53,12 +52,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	
 		http
 //		.csrf().disable()
-		.authorizeRequests()
+		.authorizeRequests() //URL별 권한 관리를 설정하는 옵션의 시작점, 선언되야만 antMatcher를 사용할 수 있다.
 		.antMatchers("/", "/oauth2/**","/image/**","/login/**","/myticket/**")
-		.permitAll()
+		.permitAll() //전체 권한 부여
         // 페이지 권한 설정
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/myinfo").hasRole("MEMBER")
+        .antMatchers("/api/v1/**").hasRole(Role.MEMBER.name())
         .antMatchers("/**")
         .permitAll()
 
@@ -92,7 +92,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .oauth2Login()
         .loginPage("/login")
-        .userInfoEndpoint().userService(new CustomOAuth2UserService()); // 네이버 USER INFO의 응답을 처리하기 위한 설정
+        .userInfoEndpoint()
+        .userService(customOAuth2UserService); // 네이버 USER INFO의 응답을 처리하기 위한 설정
 
 //        .and()
 //        .exceptionHandling()

@@ -23,9 +23,9 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class MemberService implements UserDetailsService {
-	
+
     @Autowired
-	MemberRepository memberRepository;
+    MemberRepository memberRepository;
     CertifiedRepository certifiedRepository;
 
     @Transactional
@@ -33,7 +33,7 @@ public class MemberService implements UserDetailsService {
         //비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
-        
+
         return memberRepository.save(memberDto.toEntity()).getId();
     }
 
@@ -43,7 +43,7 @@ public class MemberService implements UserDetailsService {
         if(memberEntity == null) {
             throw  new UsernameNotFoundException("Could not find user with that email");
         }
-        
+
         return new MemberDetail(memberEntity);
 
 //        Optional<MemberEntity> userEntityWrapper = memberRepository.findByEmail(email);
@@ -75,6 +75,7 @@ public class MemberService implements UserDetailsService {
         for (MemberEntity memberEntity : memberEntities) {
             MemberDto memberDto = MemberDto.builder()
                     .id(memberEntity.getId())
+                    .privatekey(memberEntity.getPrivatekey())
                     .email(memberEntity.getEmail())
                     .name(memberEntity.getName())
                     .phone(memberEntity.getPhone())
@@ -85,18 +86,19 @@ public class MemberService implements UserDetailsService {
                     .build();
 
             memberDtoList.add(memberDto);
-        
+
         }
         return memberDtoList;
     }
-    
+
     @Transactional
     public MemberDto getMember(Long id) {
         Optional<MemberEntity> memberEntityWraper = memberRepository.findById(id);
         MemberEntity memberEntity = memberEntityWraper.get();
 
         MemberDto memberDto = MemberDto.builder()
-        		.id(memberEntity.getId())
+                .id(memberEntity.getId())
+                .privatekey(memberEntity.getPrivatekey())
                 .email(memberEntity.getEmail())
                 .name(memberEntity.getName())
                 .phone(memberEntity.getPhone())
@@ -108,9 +110,9 @@ public class MemberService implements UserDetailsService {
 
         return memberDto;
     }
-    
+
     //입력한 email과 name이 일치하는 값을 찾는 요청
-	public boolean userEmailCheck(String email, String name) {
+    public boolean userEmailCheck(String email, String name) {
 
         MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
         if(memberEntity!=null && memberEntity.getName().equals(name)) {
@@ -123,12 +125,12 @@ public class MemberService implements UserDetailsService {
 
     //해당 유저의 패스워드 변경
     public void updatePassword(String newpw, String email){
-    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    	String password = passwordEncoder.encode(newpw);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String password = passwordEncoder.encode(newpw);
         Long id = memberRepository.findMemberEntityByEmail(email).getId();
         memberRepository.update(id, password);
     }
-    
+
     //회원가입 email 중복확인
     public String idCheck(String email) {
         System.out.println(memberRepository.findMemberEntityByEmail(email));
@@ -139,16 +141,32 @@ public class MemberService implements UserDetailsService {
             return "NO";
         }
     }
-    
+
     //email로 발송 된 인증번호와 입력한 인증번호가 일치하는지 확인
     public String CertifiedCheck(String number) {
-    	CertifiedEntity certifiedEntity = certifiedRepository.findCertifiedEntityByNumber(number);
-	        if(certifiedEntity!=null && certifiedEntity.getNumber().equals(number)) {
-	            return "YES";
-	        }
-	        else {
-	            return "NO";
-	        }
+        CertifiedEntity certifiedEntity = certifiedRepository.findCertifiedEntityByNumber(number);
+        if(certifiedEntity!=null && certifiedEntity.getNumber().equals(number)) {
+            return "YES";
+        }
+        else {
+            return "NO";
+        }
     }
- 
+
+    public MemberDto convertEntityToDto(MemberEntity memberEntity) {
+        MemberDto memberDto = MemberDto.builder()
+                .id(memberEntity.getId())
+                .privatekey(memberEntity.getPrivatekey())
+                .email(memberEntity.getEmail())
+                .name(memberEntity.getName())
+                .phone(memberEntity.getPhone())
+                .birthday(memberEntity.getBirthday())
+                .createdDate(memberEntity.getCreatedDate())
+                .enabled(memberEntity.isEnabled())
+//                .roles(memberEntity.getRoles())
+                .build();
+
+        return memberDto;
+    }
+
 }

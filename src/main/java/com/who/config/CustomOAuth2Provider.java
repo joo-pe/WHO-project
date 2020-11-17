@@ -11,12 +11,12 @@ public enum CustomOAuth2Provider {
 		public ClientRegistration.Builder getBuilder(String registrationId) { 
 			ClientRegistration.Builder builder = getBuilder(registrationId, 
 				ClientAuthenticationMethod.POST, DEFAULT_LOGIN_REDIRECT_URL); 
-			builder.scope("profile"); 
-			builder.authorizationUri("https://kauth.kakao.com/oauth/authorize"); 
-			builder.tokenUri("https://kauth.kakao.com/oauth/token"); 
-			builder.userInfoUri("https://kapi.kakao.com/v2/user/me"); 
-			builder.userNameAttributeName("id"); 
-			builder.clientName("Kakao"); 
+			builder.scope("profile"); // 요청할 권한
+			builder.authorizationUri("https://kauth.kakao.com/oauth/authorize"); // authorization code 얻는 API
+			builder.tokenUri("https://kauth.kakao.com/oauth/token"); // access Token 얻는 API
+			builder.userInfoUri("https://kapi.kakao.com/v2/user/me"); // 유저 정보 조회 API
+			builder.userNameAttributeName("id"); // userInfo API Response에서 얻어올 ID 프로퍼티
+			builder.clientName("Kakao"); // spring 내에서 인식할 OAuth2 Provider Name
 			return builder; 
 		} 
 	},

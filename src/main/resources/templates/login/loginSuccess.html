@@ -16,168 +16,515 @@
     <div th:insert="common/header.html" id="header"></div>
 
     <!-- Container (Slide) -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="padding: 64px 0 0 0">
-    
-    
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active" align="center">
-                <img th:src="@{/images/뮤지컬4.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>The atmosphere in New York is lorem ipsum.</p>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="text-align: -webkit-center;/* padding: 40px 0 0 0; */">
+            <!-- Indicators -->
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active" align="center">
+                    <img th:src="@{/images/musical1.png}" alt="New York" />
+                    <div class="carousel-caption">
+                        <h3>New York</h3>
+                        <p>The atmosphere in New York is lorem ipsum.</p>
+                    </div>
                 </div>
+
+                <div class="item" align="center">
+                    <img th:src="@{/images/musical2.png}" alt="New York"/>
+                    <div class="carousel-caption">
+                        <h3>Chicago</h3>
+                        <p>Thank you, Chicago - A night we won't forget.</p>
+                    </div>
+                </div>
+
+                <div class="item" align="center">
+                    <img th:src="@{/images/musical3.png}" alt="New York"/>
+                    <div class="carousel-caption">
+                        <h3>LA</h3>
+                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+                    </div>
+                </div>
+
+                <div class="item" align="center">
+                    <img th:src="@{/images/musical1.png}" alt="New York"/>
+                    <div class="carousel-caption">
+                        <h3>LA</h3>
+                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+                    </div>
+                </div>
+
+                <div class="item" align="center">
+                    <img th:src="@{/images/musical2.png}" alt="New York" width="1200" height="400" />
+                    <div class="carousel-caption">
+                        <h3>LA</h3>
+                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+                    </div>
+                </div>
+
+                <div class="item" align="center">
+                    <img th:src="@{/images/musical1.png}" alt="New York" width="1200" height="400" />
+                    <div class="carousel-caption">
+                        <h3>LA</h3>
+                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+                    </div>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    <li data-target="#myCarousel" data-slide-to="5"></li>
+                </ol>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
 
-            <div class="item" align="center">
-                <img th:src="@{/images/뮤지컬5.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago - A night we won't forget.</p>
-                </div>
-            </div>
+            <br />
+            <br />
+        </div>
 
-            <div class="item" align="center">
-                <img th:src="@{/images/뮤지컬6.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                </div>
+        
+        <div class="element" style="background-color: aliceblue;">
+            <div class="names"></div>
+    <h2 style="text-align: center;">category</h2>
+            <div style="text-align: center;">
+                <a href="#" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/15653254008291epwarn.jpg" data-original=".png" class="spot" alt="뮤지컬" style="display: inline;" /></a>
+                <a href="#" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565330039453o9ckix2.jpg" data-original=".png" class="spot" alt="콘서트" style="display: inline;" /></a>
+				<br>
+                <a href="#" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565327367990mpr29aq.jpg" data-original=".png" class="spot" alt="연극" style="display: inline;" /></a>
+                <a href="http://localhost:8090/notice" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565330079597kbgqgg9.jpg" data-original=".png" class="spot" alt="스포츠" style="display: inline;" /></a>
             </div>
+        </div>
+        <div id="services" class="container-fluid text-center">
+            <div class="container">
+            <div class="best">
+                        <div class="catae" style="font-size: x-large; text-align: left;">
+                            <h2>금주의 스포츠 BEST 3</h2>
+                        </div>
+                      
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="card card-small">
+                                    <div class="thumbnail" >
+                                        <img alt="Opt alp thumbnail" th:src="@{/images/musical1.png}" />
+                                        <a href="#">
+                                            <div class="thumb-cover"></div>
+                                        </a>
+                                    </div>
+                                    <div class="card-info">
+                                        <div class="moving">
+                                            <a href="#/product/awesome-landing-page">
+                                                <h3>날짜</h3>
+                                                <p>경기장 정보</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="card card-small">
+                                    <div class="thumbnail">
+                                        <img alt="Opt alp thumbnail" th:src="@{/images/musical2.png}" />
+                                        <a href="#">
+                                            <div class="thumb-cover"></div>
+                                        </a>
+                                    </div>
+                                    <div class="card-info">
+                                        <div class="moving">
+                                            <a href="#/product/awesome-landing-page">
+                                                <h3>날짜</h3>
+                                                <p>경기장 정보</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="card card-small">
+                                    <div class="thumbnail">
+                                        <img alt="Opt alp thumbnail" th:src="@{/images/musical3.png}" />
+                                        <a href="#">
+                                            <div class="thumb-cover"></div>
+                                        </a>
+                                    </div>
+                                    <div class="card-info">
+                                        <div class="moving">
+                                            <a href="#/product/awesome-landing-page">
+                                                <h3>날짜</h3>
+                                                <p>경기장 정보</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<div class="best">
+                        <div class="catae" style="font-size: x-large; text-align: left;">
+                            <h2>금주의  공연  BEST 3</h2>
+                        </div>
+                       
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="card card-small">
+                                    <div class="thumbnail">
+                                        <img alt="Opt alp thumbnail" th:src="@{/images/musical1.png}" />
+                                        <a href="#">
+                                            <div class="thumb-cover"></div>
+                                        </a>
+                                    </div>
+                                    <div class="card-info">
+                                        <div class="moving">
+                                            <a href="#/product/awesome-landing-page">
+                                                <h3>날짜</h3>
+                                                <p>경기장 정보</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="card card-small">
+                                    <div class="thumbnail">
+                                        <img alt="Opt alp thumbnail" th:src="@{/images/musical2.png}" />
+                                        <a href="#">
+                                            <div class="thumb-cover"></div>
+                                        </a>
+                                    </div>
+                                    <div class="card-info">
+                                        <div class="moving">
+                                            <a href="#/product/awesome-landing-page">
+                                                <h3>날짜</h3>
+                                                <p>경기장 정보</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="card card-small">
+                                    <div class="thumbnail">
+                                        <img alt="Opt alp thumbnail" th:src="@{/	images/musical3.png}" />
+                                        <a href="#">
+                                            <div class="thumb-cover"></div>
+                                        </a>
+                                    </div>
+                                    <div class="card-info">
+                                        <div class="moving">
+                                            <a href="#/product/awesome-landing-page">
+                                                <h3>날짜</h3>
+                                                <p>경기장 정보</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
             
-            <div class="item" align="center">
-                <img th:src="@{/images/축구4.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+              <div class="hoihoi">
+              <div class="thumbnail" style="width: fit-content;float: left; ">
+                
+                    <div class="thumbnail name" style="font-size: 2.5em"> Who project issue</div>
+                   
+                        <div class="TabContainer_tabList__1TS8l">
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/">
+                                    <article>
+                                           <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">1</div>
+                                            <h1 class="commons_title__1yGWm">[글로벌 26억펀딩] </h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">321%</span>테크·가전</p>
+                                        </div>
+                                        
+                                    </article>
+                                </a>
+                            </div>
+                            
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/88445">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">2</div>
+                                            <h1 class="commons_title__1yGWm">[2만원대/괴물스펙] </h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">9,572%</span>테크·가전</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                            <span
+                                                class="commons_img__2UTCA commons_visible__1xTJh"
+                                                style="
+                                                    background-image: -webkit-image-set(
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
+                                                    );
+                                                "
+                                            ></span>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/85069">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">3</div>
+                                            <h1 class="commons_title__1yGWm">[주름고민 원킬] </h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">178%</span>뷰티</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                            <span
+                                                class="commons_img__2UTCA commons_visible__1xTJh"
+                                                style="
+                                                    background-image: -webkit-image-set(
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
+                                                    );
+                                                "
+                                            ></span>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/77178">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">4</div>
+                                            <h1 class="commons_title__1yGWm">[5억 | 마지막 앵콜]</h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">8,972%</span>뷰티</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                            <span
+                                                class="commons_img__2UTCA commons_visible__1xTJh"
+                                                style="
+                                                    background-image: -webkit-image-set(
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
+                                                    );
+                                                "
+                                            ></span>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                            
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/86572">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">5</div>
+                                            <h1 class="commons_title__1yGWm"> &lt;출근 빼고 다 입으세요!&gt;</h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">1,793%</span>패션·잡화</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                           
+                                        </div>
+                                        
+                                    </article>
+                                    
+                                </a>
+                          
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                
+              
+              </div>
+                <div class="thumbnail" style="width: fit-content;float: right; ">
+                
+                    <div class="thumbnail name" style="font-size: 2.5em"> Who project issue</div>
+                   
+                        <div class="TabContainer_tabList__1TS8l">
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/">
+                                    <article>
+                                           <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">1</div>
+                                            <h1 class="commons_title__1yGWm">[글로벌 26억펀딩] </h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">321%</span>테크·가전</p>
+                                        </div>
+                                        
+                                    </article>
+                                </a>
+                            </div>
+                            
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/88445">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">2</div>
+                                            <h1 class="commons_title__1yGWm">[2만원대/괴물스펙] </h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">9,572%</span>테크·가전</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                            <span
+                                                class="commons_img__2UTCA commons_visible__1xTJh"
+                                                style="
+                                                    background-image: -webkit-image-set(
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
+                                                    );
+                                                "
+                                            ></span>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/85069">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">3</div>
+                                            <h1 class="commons_title__1yGWm">[주름고민 원킬] </h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">178%</span>뷰티</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                            <span
+                                                class="commons_img__2UTCA commons_visible__1xTJh"
+                                                style="
+                                                    background-image: -webkit-image-set(
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
+                                                    );
+                                                "
+                                            ></span>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/77178">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">4</div>
+                                            <h1 class="commons_title__1yGWm">[5억 | 마지막 앵콜]</h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">8,972%</span>뷰티</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                            <span
+                                                class="commons_img__2UTCA commons_visible__1xTJh"
+                                                style="
+                                                    background-image: -webkit-image-set(
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
+                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
+                                                    );
+                                                "
+                                            ></span>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                            
+                            <div class="TabContainer_listItem__2XDgU">
+                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/86572">
+                                    <article>
+                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+                                            <div class="commons_orderText__3B9S_">5</div>
+                                            <h1 class="commons_title__1yGWm"> &lt;출근 빼고 다 입으세요!&gt;</h1>
+                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">1,793%</span>패션·잡화</p>
+                                        </div>
+                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+                                           
+                                        </div>
+                                        
+                                    </article>
+                                    
+                                </a>
+                          
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                  
+            </div>
+           
+            <div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" th:each="sports : ${sportsList}">
+                    <div class="card card-small">
+                        <div class="thumbnail">
+                            <img alt="Opt alp thumbnail" src="https://via.placeholder.com/300x230/20B2AA/000000" />
+                            <a href="#/product/awesome-landing-page">
+                                <div class="thumb-cover"></div>
+                            </a>
+                        </div>
+                        <div class="card-info">
+                            <div class="moving">
+                                <a href="#/product/awesome-landing-page">
+                                    <h3>날짜</h3>
+                                    <p>경기장 정보</p>
+                                </a>
+                                <b class="actions">
+                                    <a href="#/product/awesome-landing-page">Details</a>
+                                    <b class="separator">|</b>
+                                    <a class="blue-text" href="#/live/awesome-landing-page" target="_blank">Live Preview</a>
+                                </b>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="item" align="center">
-                <img th:src="@{/images/축구5.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                </div>
-            </div>
-            
-            <div class="item" align="center">
-                <img th:src="@{/images/축구6.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                </div>
-            </div>
-             <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-            <li data-target="#myCarousel" data-slide-to="5"></li>
-        </ol>
+        </div>
+        
+        <!-- FOOTER -->
 
-		
+        <div th:insert="common/footer.html" id="footer"></div>
 
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>   
-    </div>
-    <br><br>
-       
-       <a>    오늘의 공연 정보  </a>
-         <div class="row text-center slideanim">
-         
-       <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/뮤지컬1.png" alt="Paris" width="400" height="300">
-               <p><strong>Paris</strong></p>
-               <p>Yes, we built Paris</p>
-           </div>
-       </div>
-       <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/뮤지컬2.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-       <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/뮤지컬3.png" alt="San Francisco" width="400" height="300">
-               <p><strong>San Francisco</strong></p>
-               <p>Yes, San Fran is ours</p> 
-           </div>
-       </div>
-        <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/축구1.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-        <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/축구2.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-        <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/축구3.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-   </div><br>
-    </div>
+        <script>
+            $(document).ready(function () {
+                // Add smooth scrolling to all links in navbar + footer link
+                $(".navbar a, footer a[href='#myPage']").on("click", function (event) {
+                    // Make sure this.hash has a value before overriding default behavior
+                    if (this.hash !== "") {
+                        // Prevent default anchor click behavior
+                        event.preventDefault();
 
-<!-- FOOTER -->
-<div th:insert="common/footer.html" id="footer"></div>
+                        // Store hash
+                        var hash = this.hash;
 
-<script>
-    $(document).ready(function(){
-        // Add smooth scrolling to all links in navbar + footer link
-        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-            // Make sure this.hash has a value before overriding default behavior
-            if (this.hash !== "") {
-                // Prevent default anchor click behavior
-                event.preventDefault();
-
-                // Store hash
-                var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 900, function(){
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
+                        // Using jQuery's animate() method to add smooth page scroll
+                        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                        $("html, body").animate(
+                            {
+                                scrollTop: $(hash).offset().top,
+                            },
+                            900,
+                            function () {
+                                // Add hash (#) to URL when done scrolling (default click behavior)
+                                window.location.hash = hash;
+                            }
+                        );
+                    } // End if
                 });
-            } // End if
-        });
 
-        $(window).scroll(function() {
-            $(".slideanim").each(function(){
-                var pos = $(this).offset().top;
+                $(window).scroll(function () {
+                    $(".slideanim").each(function () {
+                        var pos = $(this).offset().top;
 
-                var winTop = $(window).scrollTop();
-                if (pos < winTop + 600) {
-                    $(this).addClass("slide");
-                }
+                        var winTop = $(window).scrollTop();
+                        if (pos < winTop + 600) {
+                            $(this).addClass("slide");
+                        }
+                    });
+                });
             });
-        });
-    })
-</script>
-
-</body>
+        </script>
+    </body>
 </html>
