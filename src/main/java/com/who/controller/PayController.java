@@ -37,6 +37,13 @@ public class PayController {
         model.addAttribute("memberDto", memberDto);
         return "payment/pay";
     }
+    @GetMapping("/musical/post/{no}/pay")
+    public String musicalPay(@PathVariable("no") Long no, Model model) {
+        PerformanceDto performanceDto = performanceService.getPerformance(no);
+
+        model.addAttribute("performanceDto", performanceDto);
+        return "peformance/pay";
+    }
 
     @GetMapping("/pay/Success")
     public String PaySuccess(Model model) {
@@ -47,16 +54,4 @@ public class PayController {
     public String PayFail(Model model) {
         return "payment/payFail";
     }
-
-//
-//
-//    @GetMapping("/pay/paySuccess")
-//    public String paySuccess(Model model) {
-//        return "pay/paySuccess";
-//    }
-//
-//    @GetMapping("/pay/payFail")
-//    public String payFail(Model model) {
-//        return "pay/payFail";
-//    }
 }

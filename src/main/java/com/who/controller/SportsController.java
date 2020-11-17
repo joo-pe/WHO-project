@@ -160,13 +160,13 @@ public class SportsController {
     	return "sports/baseball";
     }
 
-    @GetMapping("/soccer/ticket")
-    public String soccerTicket(Model model) {
-        List<SportsDto> sportsDtoList = sportsService.getSportsList();
-
-        model.addAttribute("sportsList", sportsDtoList);
-        return "sports/ticket";
-    }
+//    @GetMapping("/soccer/ticket")
+//    public String soccerTicket(Model model) {
+//        List<SportsDto> sportsDtoList = sportsService.getSportsList();
+//
+//        model.addAttribute("sportsList", sportsDtoList);
+//        return "sports/ticket";
+//    }
 
     @GetMapping("/soccer/ticket/{no}")
     public String soccerDetail(@PathVariable("no") Long no, Model model) {
@@ -178,6 +178,13 @@ public class SportsController {
         model.addAttribute("fileDto", fileDto);
         model.addAttribute("availableSeats", availableSeats);
         return "sports/detail";
+    }
+    @GetMapping("/soccer/ticket")
+    public String soccerTicket(Model model) {
+        List<SportsDto> sportsDtoList = sportsService.getSportsList();
+
+        model.addAttribute("sportsList", sportsDtoList);
+        return "sports/ticket";
     }
 
     @PostMapping("/soccer/ticket/{no}")
