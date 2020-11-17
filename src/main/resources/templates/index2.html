@@ -1,548 +1,732 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
-    <title>WHO TICKET</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<style>
-    .card {
-        overflow: hidden;
-        border-radius: 6px;
-        position: relative;
-        background-color: #FFFFFF;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-        margin-bottom: 30px;
-    }
-    .card-small .thumbnail {
-        min-height: 200px;
-    }
+    <head>
+        <title>WHO TICKET</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    </head>
+    <style>
+     body {
+    background:#ffffff;    
+}
+.box-info.full {
+    padding: 0px;
+}
+.box-info:hover {
+    color: #393E48;
+}
+.box-info {
+    position: relative;
+    padding: 15px;
+    background: #fff;
+    color: #5b5b5b;
+    margin-bottom: 20px;
+/*     -webkit-transition: All 0.4s ease; */
+/*     -moz-transition: All 0.4s ease; */
+/*     -o-transition: All 0.4s ease; */
+    background:#FFFFFF;
+    margin-top:20px;
+}
+.box-info .nav-tabs {
+    background: #1B1E24;
+}
 
-    .card .thumbnail {
-        border: 0 none;
-        padding: 0;
-        margin: 0;
-        min-height: 270px;
-        position: relative;
-    }
+.box-info .nav-tabs  li.active  a, .box-info .nav-tabs  li.active  a:hover, .box-info .nav-tabs  li.active  a:focus {
+    cursor: default;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    background-color: #ffffff;
+    color: #1B1E24;
+}
 
-    .card .thumbnail img {
-        width: 100%;
-    }
+.box-info .nav-tabs  li.active  a i, .box-info .nav-tabs  li.active  a:hover i, .box-info .nav-tabs  li.active  a:focus i {
+    color: #212121;
+}
+.box-info .nav-tabs  li  a i {
+    color: #fff;
+}
 
-    .card .thumb-cover {
-        padding: 15px 20px;
-        height: 100%;
-        top: 0;
-        position: absolute;
-        bottom: 0;
-        opacity: 0;
-        width: 100%;
-        background-color: rgba(255,255,255,0.95);
-    }
-    .thumb-cover{
-        transition: all 0.2s ease 0s;
-        -webkit-transition: all 0.2s ease 0s;
-    }
+.box-info.full .box-footer {
+    padding: 20px 20px 15px 20px;
+}
 
-    .card .details {
-        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-        background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(62%, rgba(0,0,0,0.36)), color-stop(100%, rgba(0,0,0,0)));
-        background: -webkit-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
-        background: -o-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
-        background: -ms-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
-        background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5e000000', endColorstr='#00000000',GradientType=0 );
-        top: 0;
-        display: block;
-        height: 60px;
-        padding: 10px 15px 0;
-        position: absolute;
-        width: 100%;
-    }
+.box-info .media-list {
+    margin-top: 30px;
+}
 
-    .card .user {
-        font-weight: 400;
-        color: #FFFFFF;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.23);
-        line-height: 20px;
-        display: block;
-    }
+.box-info .media-list .media {
+    padding: 5px 20px;
+    border-bottom: 1px solid #eaeaea;
+}
 
-    .hidden {
-        display: none !important;
-        visibility: hidden !important;
-    }
+.box-info .media-list .media .media-object {
+    width: 50px;
+}
 
-    .card .user .user-photo {
-        width: 35px;
-        height: 35px;
-        border: 2px solid #FFFFFF;
-        border-radius: 50%;
-        overflow: hidden;
-        float: left;
-    }
+.scroll-widget{
+    overflow: hidden;
+    width: auto;
+    height: 325px;
+    border: 2px solid #ddd;
+}
+        img {
+            vertical-align: baseline;
+        }
+        .card {
+            overflow: hidden;
+            border-radius: 6px;
+            position: relative;
+            background-color: #ffffff;
+        }
+        .card-small .thumbnail {
+            min-height: 100px;
+        }
 
-    .card .user .name {
-        line-height: 35px;
-        margin-left: 10px;
-        font-size: 16px;
-        float: left;
-    }
+        .card .thumbnail {
+            min-height: 100px;
+            position: relative;
+        }
 
-    .card .numbers {
-        color: #FFFFFF;
-        float: right;
-        margin-top: 6px;
-    }
+        .card .thumbnail img {
+            width: 100%;
+        }
 
-    .card .numbers .downloads, .card .numbers .comments-icon {
-        margin-left: 6px;
-        font-size: 15px;
-        font-weight: 500;
-    }
+        .card .thumb-cover {
+            padding: 15px 20px;
+            height: 100%;
+            top: 0;
+            position: absolute;
+            bottom: 0;
+            opacity: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .thumb-cover {
+            transition: all 0.2s ease 0s;
+            -webkit-transition: all 0.2s ease 0s;
+        }
 
-    .card .numbers .fa {
-        font-size: 18px;
-    }
+        .card .details {
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.36) 62%, rgba(0, 0, 0, 0) 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.75)), color-stop(62%, rgba(0, 0, 0, 0.36)), color-stop(100%, rgba(0, 0, 0, 0)));
+            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.36) 62%, rgba(0, 0, 0, 0) 100%);
+            background: -o-linear-gradient(top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.36) 62%, rgba(0, 0, 0, 0) 100%);
+            background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.36) 62%, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.36) 62%, rgba(0, 0, 0, 0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5e000000', endColorstr='#00000000',GradientType=0 );
+            top: 0;
+            display: block;
+            height: 60px;
+            padding: 10px 15px 0;
+            position: absolute;
+            width: 100%;
+        }
 
-    .card .numbers .downloads, .card .numbers .comments-icon {
-        margin-left: 6px;
-        font-size: 15px;
-        font-weight: 500;
-    }
+        .card .user {
+            font-weight: 400;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.23);
+            line-height: 20px;
+            display: block;
+        }
 
-    .card-info {
-        background-color: #FFFFFF;
-        position: relative;
-        height: 120px;
-    }
-    .card-info {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-    }
+        .hidden {
+            display: none !important;
+            visibility: hidden !important;
+        }
 
-    .card-info .moving {
-        padding: 15px;
-        background-color: #FFFFFF;
-        position: relative;
-        -webkit-animation-duration: 1s;
-        -moz-animation-duration: 1s;
-        -o-animation-duration: 1s;
-        animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-        -moz-animation-fill-mode: both;
-        -o-animation-fill-mode: both;
-        animation-fill-mode: both;
-        -webkit-animation-name: returnBounce;
-        -moz-animation-name: returnBounce;
-        -ms-animation-name: returnBounce;
-        -o-animation-name: returnBounce;
-        animation-name: returnBounce;
-    }
+        .card .user .user-photo {
+            width: 35px;
+            height: 35px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            overflow: hidden;
+            float: left;
+        }
 
-    .card-info a {
-        color: #434343;
-    }
+        .card .user .name {
+            line-height: 35px;
+            margin-left: 10px;
+            font-size: 16px;
+            float: left;
+        }
 
-    .card-small .card-info h3 {
-        font-size: 18px;
-    }
-    .card-info h3 {
-        margin-top: 0;
-        font-size: 22px;
-    }
+        .card .numbers {
+            color: #ffffff;
+            float: right;
+            margin-top: 6px;
+        }
 
-    .card-info h3 {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-    }
+        .card .numbers .downloads,
+        .card .numbers .comments-icon {
+            margin-left: 6px;
+            font-size: 15px;
+            font-weight: 500;
+        }
 
-    .card-info p {
-        font-size: 14px;
-        font-style: italic;
-        margin: 0;
-        color: #666666;
-        height: 60px;
-    }
+        .card .numbers .fa {
+            font-size: 18px;
+        }
 
-    .card-small .actions {
-        height: 55px;
-        font-size: 14px;
-    }
+        .card .numbers .downloads,
+        .card .numbers .comments-icon {
+            margin-left: 6px;
+            font-size: 15px;
+            font-weight: 500;
+        }
 
-    .card .actions {
-        background-color: #FFFFFF;
-        bottom: -80px;
-        color: rgba(33,33,33,0.79);
-        display: block;
-        height: 80px;
-        left: 0;
-        opacity: 1;
-        position: absolute;
-        text-align: center;
-        width: 100%;
-        font-size: 18px;
-    }
+        .card-info {
+            background-color: #ffffff;
+            position: relative;
+            height: 100px;
+        }
+        .card-info {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .card-info .actions a {
-        color: #777777;
-    }
+        .card-info .moving {
+            padding: 3px;
+            background-color: #ffffff;
+            position: relative;
+            -webkit-animation-duration: 1s;
+            -moz-animation-duration: 1s;
+            -o-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            -moz-animation-fill-mode: both;
+            -o-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-name: returnBounce;
+            -moz-animation-name: returnBounce;
+            -ms-animation-name: returnBounce;
+            -o-animation-name: returnBounce;
+            animation-name: returnBounce;
+        }
 
-    .card .actions a {
-        font-weight: 400;
-    }
+        .card-info a {
+            color: #434343;
+        }
 
-    .card .separator {
-        padding: 0 7px;
-        font-weight: 400;
-        color: #CCCCCC;
-    }
+        .card-small .card-info h3 {
+            font-size: 18px;
+        }
+        .card-info h3 {
+            margin-top: 0;
+            font-size: 22px;
+        }
 
-    .card-info .actions .blue-text {
-        color: #00bbff;
-    }
-    a, a:hover, a:focus, .btn:focus, .btn:hover, .btn:active, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-        text-decoration: none;
-        outline: 0;
-        outline-color: transparent;
-        outline-style: none;
-    }
-</style>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-    <!-- Header -->
-    <div th:insert="common/header.html" id="header"></div>
+        .card-info h3 {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    <!-- Container (Slide) -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="padding: 64px 0 0 0">
-        <!-- Indicators -->
+        .card-info p {
+            font-size: 14px;
+            font-style: italic;
+            margin: 0;
+            color: #666666;
+            height: 60px;
+        }
 
+        .card-small .actions {
+            height: 55px;
+            font-size: 14px;
+        }
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active" align="center">
-                <img th:src="@{/images/뮤지컬4.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>The atmosphere in New York is lorem ipsum.</p>
+        .card .actions {
+            background-color: #ffffff;
+            bottom: -80px;
+            color: rgba(33, 33, 33, 0.79);
+            display: block;
+            height: 80px;
+            left: 0;
+            opacity: 1;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .card-info .actions a {
+            color: #777777;
+        }
+
+        .card .actions a {
+            font-weight: 400;
+        }
+
+        .card .separator {
+            padding: 0 7px;
+            font-weight: 400;
+            color: #cccccc;
+        }
+
+        .card-info .actions .blue-text {
+            color: #00bbff;
+        }
+        a,
+        a:hover,
+        a:focus,
+        .btn:focus,
+        .btn:hover,
+        .btn:active,
+        .btn:active:focus,
+        .btn:active.focus,
+        .btn.active:focus,
+        .btn.active.focus {
+            text-decoration: none;
+            outline: 0;
+            outline-color: transparent;
+            outline-style: none;
+        }
+        .carousel-inner {
+            width: 100vw;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+        <!-- Header -->
+        <div th:insert="common/header.html" id="header"></div>
+
+        <!-- Container (Slide) -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="text-align: -webkit-center; padding: 37px 0 0 0;">
+            <!-- Indicators -->
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/images/main1.png"/>
+                </div>
+
+                <div class="item" align="center">
+                    <img src="/images/main2.png"/>
+                </div>
+
+                <div class="item" align="center">
+                    <img src="/images/main3.png"/>
+                </div>
+
+                <div class="item" align="center">
+                    <img src="/images/main4.png"/>
+                </div>
+
+<!--                 <div class="item" align="center"> -->
+<!--                     <img -->
+<!--                         src="https://media.stubhubstatic.com/stubhub-product/d_defaultBlank.jpg/q_auto:low,f_auto,c_fill,w_1190,h_396,g_face/homepage/jumbotron/defaults/football-cfl-D5J-8445-e-w-1560x520.jpg" -->
+<!--                         alt="New York" -->
+<!--                         width="1200" -->
+<!--                         height="400" -->
+<!--                     /> -->
+<!--                 </div> -->
+
+<!--                 <div class="item" align="center"> -->
+<!--                     <img -->
+<!--                         src="https://media.stubhubstatic.com/stubhub-product/d_defaultBlank.jpg/q_auto:low,f_auto,c_fill,w_1190,h_396,g_face/homepage/jumbotron/defaults/football-cfl-D5J-8445-e-w-1560x520.jpg" -->
+<!--                         alt="New York" -->
+<!--                         width="1200" -->
+<!--                         height="400" -->
+<!--                     /> -->
+<!--                 </div> -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+<!--                     <li data-target="#myCarousel" data-slide-to="4"></li> -->
+<!--                     <li data-target="#myCarousel" data-slide-to="5"></li> -->
+                </ol>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="left: 105px;">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="right: 105px;">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="services" class="container-fluid text-center">
+            <div class="container">
+                <div class="sprotbest">
+                    <div class="catae" style="font-size: x-large; text-align: left;">
+                        <h2>금주의 스포츠 BEST 3</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <img alt="Opt alp thumbnail" src="images/mu1.png" />
+                                    
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <a href="#/product/awesome-landing-page">
+                                        <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <img alt="Opt alp thumbnail" src="images/mu2.png" />
+                                    <a href="#">
+                                       
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <a href="#/product/awesome-landing-page">
+                                          
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <img alt="Opt alp thumbnail" src="images/mu3.png" />
+                                    <a href="#">
+                                      
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <a href="#/product/awesome-landing-page">
+                                          
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="peformencebest">
+                    <div class="catae" style="font-size: x-large; text-align: left;">
+                        <h2>금주의 공연 BEST 3</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <img alt="Opt alp thumbnail" src="images/mu1.png" />
+                                    <a href="#">
+                                      
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <a href="#/product/awesome-landing-page">
+                                         
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <img alt="Opt alp thumbnail" src="images/mu2.png" />
+                                   
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <a href="#/product/awesome-landing-page">
+                                           
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <img alt="Opt alp thumbnail" src="images/mu3.png" />
+                                    <a href="#">
+                                     
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <a href="#/product/awesome-landing-page">
+                                          
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
+           
 
-            <div class="item" align="center">
-                <img th:src="@{/images/뮤지컬5.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago - A night we won't forget.</p>
+
+
+<div class="container bootstrap snippets bootdey">
+<div class="col-sm-6">
+    <!-- Begin tab comment and popular posts -->
+    <div class="box-info full">
+    	<!-- Tab comments and popular posts -->
+    	<ul class="nav nav-tabs nav-justified">
+    	  <li class="active"><a href="#comments" data-toggle="tab"><i class="fa fa-comments"></i> FAQ</a></li>
+    	  <li><a href="#popular" data-toggle="tab"><i class="fa fa-star"></i>NOTICE</a></li>
+    	</ul>
+    
+    	<!-- Tab panes -->
+    	<div class="tab-content">
+    	  <!-- Pane comments -->
+    	  <div class="tab-pane active animated fadeInRight" id="comments">
+    		<!-- Begin scroll wrappper -->
+    		<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;"><div class="scroll-widget">
+    			<div class="thumbnail" style="overflow: hidden; width: auto; height: 325px;">
+                    
+                    <div th:each="faq : ${faqList}" class="TabContainer">
+                        <div class="TabContainer_listItem__2XDgU">
+                           
+                                <article>
+                                    <div class="commons">
+                                        <h1 class="commons" th:text="${faq.id}">[f a q 1]</h1>
+                                        <div class="commons" th:text="${faq.title}"></div>
+                                        <!--                                         <p class="commons"><span class="commons" th:text="${faq.writer}"></span></p> -->
+                                    </div>
+                                </article>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
+    			
+    			
+    			
+    			
+    			
+    		</div><div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; height: 209.5734126984127px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
+    		<div class="box-footer">
+    		<p><a href="http://localhost:8090/faq"><i class="fa fa-share"></i> See all faq</a></p>
+    		</div>
+    	  </div><!-- End div .tab-pane -->
+    	  
+    	  <!-- Pane popular posts -->
+    	  <div class="tab-pane animated fadeInRight" id="popular">
+    		<!-- Begin scroll wrappper -->
+    		<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;"><div class="scroll-widget" style="overflow: hidden; width: auto; height: 325px;">
+    			<div th:each="notice : ${noticeList}" class="TabContainer_tabList__1TS8l">
+                        <div class="TabContainer">
+                       
+                                <div>
+                                    <div class="commons">
+                                        <h1 class="commons" th:text="${notice.id}">[notice 1]</h1>
+                                        <div class="commons" th:text="${notice.title}"></div>
 
-            <div class="item" align="center">
-                <img th:src="@{/images/뮤지컬6.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                </div>
+                                        <!--                                             <p class="commons"><span class="commons" th:text="${notice.writer}"></span></p> -->
+                                    </div>
+                              
+                           </div>
+                        </div>
+                    </div>
+    		</div><div class="slimScrollBar" style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
+    		<div class="box-footer">
+    			  <p><a href="#fakelink"><i class="fa fa-share"></i> See all notice</a></p>
+    		</div>
+    	  </div><!-- End div .tab-pane -->
+    	</div><!-- End div .tab-content -->
+    </div><!-- End div .box-info .full -->
+    <!-- End tab comment and popular posts -->
+    </div>    
+    <div class="top_rank" style="padding-top: 90px; ">
+                <strong class="screen_out" style="font-size: 2.5em;">이번주 스포츠 뉴스</strong>
+                <ul class="tab_rank" role="tablist">
+                   
+                    <!-- 		<li style="padding-right: 85px;"></li> -->
+                </ul>
+                <ol class="list_rank" data-type="ranking">
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank">
+                            <a href="https://v.daum.net/v/20201112140013582" class="link_txt" data-tiara-layer="rankingnews popular news_list">'이용규 영입한' 키움, 이택근·신재영·김규민 등 8명 방출..나이트 코치 등 3명도 떠난다 </a>
+                        </strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112130517199" class="link_txt" data-tiara-layer="rankingnews popular news_list">프로야구 LG 새 감독 후보 5명 면접 종료..최고위층 결정만 남아</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143529540" class="link_txt" data-tiara-layer="rankingnews popular news_list">"이런 스핀 서브 보셨나요?" 이토 미마의 특이한 서브 화제</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143804710" class="link_txt" data-tiara-layer="rankingnews popular news_list">터커, 1루수 변신 유력..KIA 2021 포지션 지각변동 예고 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank">
+                            <a href="https://v.daum.net/v/20201112111605829" class="link_txt" data-tiara-layer="rankingnews popular news_list">결혼 앞둔 정순주 아나운서 "이동국 선수가 롤모델..될 때까지 축구 일하고 싶어"</a>
+                        </strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112100425151" class="link_txt" data-tiara-layer="rankingnews popular news_list">아픔 겪은 손흥민, "멕시코-카타르, 모두 이기고 싶다"</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112122309579" class="link_txt" data-tiara-layer="rankingnews popular news_list">"3차전에서 끝내겠다" 두산, 준PO 이어 PO도 유희관 실종 사건?</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112055813618" class="link_txt" data-tiara-layer="rankingnews popular news_list">"아시아 역대 최고 1위 혼다-2위 손흥민.. 박지성 9위" 더 선</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112130909277" class="link_txt" data-tiara-layer="rankingnews popular news_list"> 초대형 삼각 트레이드, 구체적으로 3팀은 어떤 이득을 얻을까</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112092238115" class="link_txt" data-tiara-layer="rankingnews popular news_list">"정말 대단한 첫 시즌" 토론토 SNS, 류현진 사이영상 3위 축하</a></strong>
+                    </li>
+                </ol>
+                <ol class="list_rank" data-type="dri" style="display: none;">
+                    <li>
+                        <em class="num_rank">1</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112114822440" class="link_txt" data-tiara-layer="rankingnews dri news_list">타이거 우즈 "코스공략은 내가 유리하지만, 비거리가 준 것은 약점" </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">2</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143804710" class="link_txt" data-tiara-layer="rankingnews dri news_list">터커, 1루수 변신 유력..KIA 2021 포지션 지각변동 예고 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">3</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112060140842" class="link_txt" data-tiara-layer="rankingnews dri news_list">가을 야구는 분석이 아니라 싸움이다..김태형의 돌격</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">4</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112082128936" class="link_txt" data-tiara-layer="rankingnews dri news_list">투수 3관왕보다 타격 3관왕이 어려운 이유</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">5</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112141254253" class="link_txt" data-tiara-layer="rankingnews dri news_list">11월 11일 GS칼텍스 흥국생명 혈투가 남긴 얘기들 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">6</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112054504543" class="link_txt" data-tiara-layer="rankingnews dri news_list">새 얼굴로 무장한 불펜진, 프런트 힘으로 만든 두산 마운드</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">7</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112102700333" class="link_txt" data-tiara-layer="rankingnews dri news_list"> 올해는 11월 "오거스타내셔널 가을 공략법은?"</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">8</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112053103443" class="link_txt" data-tiara-layer="rankingnews dri news_list">현대모비스-오리온-KCC 대형 삼각트레이드 어느 팀이 이득일까</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">9</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112110228163" class="link_txt" data-tiara-layer="rankingnews dri news_list">"기둥 있어야 하는데.." 돌아온 심동섭이 던진 KIA 마운드 숙제 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">10</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112053000415" class="link_txt" data-tiara-layer="rankingnews dri news_list">코로나19가 만든 지형 변화, KBO 외인 시장 대격변?</a></strong>
+                    </li>
+                </ol>
             </div>
+            
+</div>				              
+           
+            
+            
 
-            <div class="item" align="center">
-                <img th:src="@{/images/축구4.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                </div>
-            </div>
-
-            <div class="item" align="center">
-                <img th:src="@{/images/축구5.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                </div>
-            </div>
-
-            <div class="item" align="center">
-                <img th:src="@{/images/축구6.png}" alt="New York" width="1200" height="400">
-                <div class="carousel-caption">
-                    <h3>LA</h3>
-                    <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                </div>
-            </div>
-             <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-            <li data-target="#myCarousel" data-slide-to="5"></li>
-        </ol>
-         <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-           <span class="sr-only">Next</span>
-       </a>
+            
         </div>
 
 
-       <br><br>
 
-       <a>    오늘의 공연 정보  </a>
-         <div class="row text-center slideanim">
+        <div class="element" style="background-color: #f9faed;">
+            <h2 style="text-align: center;">category</h2>
+            <div class="img" style="text-align: center;">
+                <a href="http://localhost:8090/soccer" class="imgwrap"><img src="/images/mainsoccer.png" data-original=".png" class="spot" alt="축구" style="display: inline-block; width: 330px;" /></a>
+                <a href="http://localhost:8090/pefomence" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565330039453o9ckix2.jpg" data-original=".png" class="spot" alt="콘서트" style="display: inline-block; width: 330px;" /></a>
+                
+                <a href="http://localhost:8090/baseball" class="imgwrap"><img src="/images/mainbaseball.png" data-original=".png" class="spot" alt="야구" style="display: inline-block;; width: 330px;" /></a>
+                <a href="http://localhost:8090/musical" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/15653254008291epwarn.jpg" data-original=".png" class="spot" alt="뮤지컬" style="display: inline-block; width: 330px;" /></a>
 
-       <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/뮤지컬1.png" alt="Paris" width="400" height="300">
-               <p><strong>Paris</strong></p>
-               <p>Yes, we built Paris</p>
-           </div>
-       </div>
-       <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/뮤지컬2.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-       <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/뮤지컬3.png" alt="San Francisco" width="400" height="300">
-               <p><strong>San Francisco</strong></p>
-               <p>Yes, San Fran is ours</p>
-           </div>
-       </div>
-        <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/축구1.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-        <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/축구2.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-        <div class="col-sm-4">
-           <div class="thumbnail">
-               <img src="/images/축구3.png" alt="New York" width="400" height="300">
-               <p><strong>New York</strong></p>
-               <p>We built New York</p>
-           </div>
-       </div>
-   </div><br>
-    </div>
-
-    <div id="services" class="container-fluid text-center">
-        <h2>Sports</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" th:each="sports : ${sportsList}">
-                    <div class="card card-small">
-                        <div class="thumbnail">
-                            <img alt="Opt alp thumbnail" src="https://via.placeholder.com/300x230/20B2AA/000000">
-                            <a href="#/product/awesome-landing-page">
-                                <div class="thumb-cover"></div>
-                            </a>
-                            <div class="details">
-                                <div class="user">
-                                    <div class="user-photo">
-                                        <img alt="Thumb" src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                                    </div>
-                                    <div class="name">User </div>
-                                </div>
-                                <div class="numbers">
-                                    <b class="downloads"><i class="fa fa-arrow-circle-o-down"></i> 1124</b>
-                                    <b class="comments-icon"><i class="fa fa-comment"></i> 10</b>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <div class="moving">
-                                <a href="#/product/awesome-landing-page">
-                                    <h3>Awesome Product 1</h3>
-                                    <p>Be happy with this awesome product, bootstrap rules, hit the ground with the power.</p>
-                                </a>
-                                <b class="actions">
-                                    <a href="#/product/awesome-landing-page">Details</a>
-                                    <b class="separator">|</b>
-                                    <a class="blue-text" href="#/live/awesome-landing-page" target="_blank">Live Preview</a>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <br />
             </div>
         </div>
-        <h2>Performance</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="card card-small">
-                        <div class="thumbnail">
-                            <img alt="Opt alp thumbnail" src="https://via.placeholder.com/300x230/20B2AA/000000">
-                            <a href="#/product/awesome-landing-page">
-                                <div class="thumb-cover"></div>
-                            </a>
-                            <div class="details">
-                                <div class="user">
-                                    <div class="user-photo">
-                                        <img alt="Thumb" src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                                    </div>
-                                    <div class="name">User </div>
-                                </div>
-                                <div class="numbers">
-                                    <b class="downloads"><i class="fa fa-arrow-circle-o-down"></i> 1124</b>
-                                    <b class="comments-icon"><i class="fa fa-comment"></i> 10</b>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <div class="moving">
-                                <a href="#/product/awesome-landing-page">
-                                    <h3>Awesome Product 1</h3>
-                                    <p>Be happy with this awesome product, bootstrap rules, hit the ground with the power.</p>
-                                </a>
-                                <b class="actions">
-                                    <a href="#/product/awesome-landing-page">Details</a>
-                                    <b class="separator">|</b>
-                                    <a class="blue-text" href="#/live/awesome-landing-page" target="_blank">Live Preview</a>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="card card-small">
-                        <div class="thumbnail">
-                            <img alt="Opt gsdp thumbnail" src="https://via.placeholder.com/300x230/87CEFA/000000">
-                            <a href="#/product/get-shit-done-pro">
-                                <div class="thumb-cover"></div>
-                            </a>
-                            <div class="details">
-                                <div class="user">
-                                    <div class="user-photo">
-                                        <img alt="Thumb" src="https://bootdey.com/img/Content/avatar/avatar2.png">
-                                    </div>
-                                    <div class="name">User 2 </div>
-                                </div>
-                                <div class="numbers">
-                                    <b class="downloads"><i class="fa fa-arrow-circle-o-down"></i> 169</b>
-                                    <b class="comments-icon"><i class="fa fa-comment"></i> 18</b>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <div class="moving">
-                                <a href="#/product/get-shit-done-pro">
-                                    <h3>Awesome product 2</h3>
-                                    <p>get this awesome and customisable product on your heands, stay strong with this</p>
-                                </a>
-                                <b class="actions">
-                                    <a href="#/product/get-shit-done-pro">Details</a>
-                                    <b class="separator">|</b>
-                                    <a class="blue-text" href="#/live/get-shit-done-pro" target="_blank">Live Preview</a>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="card card-small">
-                        <div class="thumbnail">
-                            <img alt="Coming sssoon thumbnail" src="https://via.placeholder.com/300x230/FFA07A/000000">
-                            <a href="#/product/coming-sssoon-page">
-                                <div class="thumb-cover"></div>
-                            </a>
-                            <div class="details">
-                                <div class="user">
-                                    <div class="user-photo">
-                                        <img alt="Thumb" src="https://bootdey.com/img/Content/avatar/avatar3.png">
-                                    </div>
-                                    <div class="name">User </div>
-                                </div>
-                                <div class="numbers">
-                                    <b class="downloads"><i class="fa fa-arrow-circle-o-down"></i> 8998</b>
-                                    <b class="comments-icon"><i class="fa fa-comment"></i> 46</b>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="card-info">
-                            <div class="moving">
-                                <a href="#/product/coming-sssoon-page">
-                                    <h3>Awesome product</h3>
-                                    <p>Free awesome product, the force is on it, the dark side of the force</p>
-                                </a>
-                                <b class="actions">
-                                    <a href="#/product/coming-sssoon-page">Details</a>
-                                    <b class="separator">|</b>
-                                    <a class="blue-text" href="#/live/coming-sssoon-page" target="_blank">Live Preview</a>
-                                </b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- FOOTER -->
 
+        <div th:insert="common/footer.html" id="footer"></div>
 
-<!-- FOOTER -->
-<div th:insert="common/footer.html" id="footer"></div>
+        <script>
+            $(document).ready(function () {
+                // Add smooth scrolling to all links in navbar + footer link
+                $(".navbar a, footer a[href='#myPage']").on("click", function (event) {
+                    // Make sure this.hash has a value before overriding default behavior
+                    if (this.hash !== "") {
+                        // Prevent default anchor click behavior
+                        event.preventDefault();
 
-<script>
-    $(document).ready(function(){
-        // Add smooth scrolling to all links in navbar + footer link
-        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-            // Make sure this.hash has a value before overriding default behavior
-            if (this.hash !== "") {
-                // Prevent default anchor click behavior
-                event.preventDefault();
+                        // Store hash
+                        var hash = this.hash;
 
-                // Store hash
-                var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 900, function(){
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
+                        // Using jQuery's animate() method to add smooth page scroll
+                        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                        $("html, body").animate(
+                            {
+                                scrollTop: $(hash).offset().top,
+                            },
+                            900,
+                            function () {
+                                // Add hash (#) to URL when done scrolling (default click behavior)
+                                window.location.hash = hash;
+                            }
+                        );
+                    } // End if
                 });
-            } // End if
-        });
 
-        $(window).scroll(function() {
-            $(".slideanim").each(function(){
-                var pos = $(this).offset().top;
+                $(window).scroll(function () {
+                    $(".slideanim").each(function () {
+                        var pos = $(this).offset().top;
 
-                var winTop = $(window).scrollTop();
-                if (pos < winTop + 600) {
-                    $(this).addClass("slide");
-                }
+                        var winTop = $(window).scrollTop();
+                        if (pos < winTop + 600) {
+                            $(this).addClass("slide");
+                        }
+                    });
+                });
             });
-        });
-    })
-</script>
-
-</body>
+        </script>
+    </body>
 </html>

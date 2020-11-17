@@ -111,4 +111,17 @@ public class PerformanceController {
         model.addAttribute("performanceList", performanceDtoList);
         return "admin/performance/performance";
     }
+    
+     @GetMapping("/musical")
+     public String performace() {
+     return "peformance/musical";
+    }
+     
+     
+     
+    @GetMapping("/concert")
+    public String concert() {
+    	return "peformance/concert";
+     }
+
 }

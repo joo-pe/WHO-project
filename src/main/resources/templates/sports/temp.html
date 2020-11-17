@@ -1,0 +1,30 @@
+ ${faq.title}
+ ${faq.id}
+${faq.writer}
+${#temporals.format(faq.createdDate, 'yyyy-MM-dd')}
+<div th:each="faq : ${faqList} class="TabContainer_tabList__1TS8l">
+
+  <div class="TabContainer_listItem__2XDgU">
+    <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/88445">
+      <article>
+        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
+          <div class="commons_orderText__3B9S" th:text=${faq.title}></div>
+          <h1 class="commons_title__1yGWm" th:text=${faq.id}>[f a q 2]</h1>
+          <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL" th:text=${faq.writer}></span></p>
+        </div>
+        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
+          <span
+            class="commons_img__2UTCA commons_visible__1xTJh"
+            style="
+              background-image: -webkit-image-set(
+                url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
+                url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
+              );
+            "
+          ></span>
+        </div>
+      </article>
+    </a>
+  </div>
+  
+</div>

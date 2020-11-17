@@ -1,34 +1,58 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<style>
-button{
-	color: #fff;
-    background-color: #0a9772;
-    border-color: #0a9772;
-}
-</style>
+ 
+ <style>
+ .input-group .form-control, .input-group-addon, .input-group-btn{
+ display: revert;
+ }
+ .btn{
+ font-size: 14px; 
+ visibility: inherit;
+ }
+ 
+ </style>
+ 
+<!--  <style> -->
+<!-- /* /* button{ */ */ -->
+<!-- /* /* 	color: #fff; */ */ -->
+<!-- /* /*     background-color: #0a9772; */ */ -->
+<!-- /* /*     border-color: #0a9772; */ */ -->
+<!-- /* /* } */ */ -->
+<!--  </style> -->
 <header>
 
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <form style="padding-right: 100px;float: right;padding-top: 20px;">
+            <div class="input-group" >
+                <input type="text" class="form-control" size="10" placeholder="WHO-ticket:검색" required style="width: 170px;">
+                <div class="input-group-btn">
+                <i class="fa fa-search"></i>
+                    <button type="submit" class="btn">
+                    <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </form>
+        <div class="container" style="margin: 0px auto">
+            <div class="navbar-header"style="
+    margin-bottom: 9px;
+">
+                <a class="navbar-brand" href="/">
+                	<img th:src="@{/image/logo.png}" style="width: 55px;position: absolute;">
+                </a>
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"
+                 aria-expanded="false" style="
+    position: absolute;
+    right: 1px;
+    top: 10px;
+">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">
-                	<img th:src="@{/image/logo.png}" height="35px">
-                </a>
             </div>
-            <form style="padding-top: 15px;">
-            <div class="input-group" >
-                <input type="text" class="form-control" size="20" placeholder="Event, Aritst or Team" required>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button>
-                </div>
-            </div>
-        </form>
-            <div class="collapse navbar-collapse" id="myNavbar">
+            
+            <div class="collapse navbar-collapse" id="myNavbar" style="padding-right: 290px;margin-bottom: 3px;padding-top: 10px;margin-right: -100px;margin-left: 0px;">
                 <ul class="nav navbar-nav navbar-right">
                 	<li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a></li>
                     <li><a sec:authorize="isAnonymous()" th:href="@{/login}">SIGN IN</a></li>
@@ -38,8 +62,8 @@ button{
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">PERFORMANCE
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="musical">MUSICAL</a></li>
-                                <li><a href="theater">THEATER</a></li>
+                            <li><a th:href="@{/musical}">MUSICAL</a></li>
+                                <li><a th:href="@{/concert}">CONCERT</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -53,21 +77,78 @@ button{
                     <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/myinfo}">MY Tickets</a></li>
                     <li><a th:href="@{/faq}">FAQ</a></li>
                     <li><a th:href="@{/notice}">NOTICE</a></li>
+                    
+                    
                 </ul>
+                
             </div>
+            
         </div>
+        
     </nav>
 
-    <div class="#">
-        <!-- <h1>WHO TICKET</h1>
-        <p>Find your Ticket</p> -->
-        <form>
-            <div class="input-group">
-                <input type="text" class="form-control" size="50" placeholder="Event, Aritst or Team" required>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<!--     <div class="#"> -->
+<!--         <h1>WHO TICKET</h1> -->
+<!--         <p>Find your Ticket</p> -->
+<!--         <form> -->
+<!--             <div class="input-group"> -->
+<!--                 <input type="text" class="form-control" size="50" placeholder="Event, Aritst or Team" required> -->
+<!--                 <div class="input-group-btn"> -->
+<!--                     <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button> -->
+      
 </header>
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/header/header.css}" /> -->
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/header/header2.css}" /> -->
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/header/header3.css}" /> -->
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/header/header4.css}" /> -->
+
+<!-- <div class="web-header"> -->
+
+<!--     <div class="web-header-large"> -->
+<!--         <header class="header-wrapper"> -->
+<!--             <div class="header-container"> -->
+<!--                 <h1 class="wadiz-go"> -->	
+<!--                     <span class="label">와디즈</span> -->
+<!--                     <a href="/"> -->
+<!--                         <svg xmlns="http://www.w3.org/2000/svg" width="85" height="25" viewBox="0 0 85 25"> -->
+<!--                             <path --> -->
+<!--                                 fill="#1D2129" --> -->
+<!--                                 fill-rule="nonzero" --> -->
+<!--                                 d="M58.49 2.23h2.11v21.29H59a1.73 1.73 0 0 1-1.62-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29 7.65 7.65 0 0 1 12.79-5.07V4.23a2 2 0 0 1 2-2zm-6.3 18.62a4.36 4.36 0 0 0 4.16-4.52 4.19 4.19 0 1 0-8.35 0 4.36 4.36 0 0 0 4.19 4.52zM42 23.52h-1.52a1.73 1.73 0 0 1-1.64-1.16 9 9 0 0 1-10.93-.28 7.48 7.48 0 0 1-2.75-6.29A7.65 7.65 0 0 1 38 10.72a2 2 0 0 1 1.9-1.79H42v14.59zm-8.41-2.67h.02a4.35 4.35 0 0 0 4.15-4.52 4.35 4.35 0 0 0-4.17-4.51 4.35 4.35 0 0 0-4.17 4.51 4.36 4.36 0 0 0 4.17 4.52zM83.47 8.94v2.11l-7.07 9.06h7.06v3.47h-13v-2.1l7.08-9.07h-6.62v-1.47a2 2 0 0 1 2-2h10.55zM65.86 7.3a2.48 2.48 0 1 1 0-4.96 2.48 2.48 0 0 1 0 4.96zM21.21 8.94h4.14l-4.86 14.59h-4.15l-3.21-9.36-3.21 9.36H5.77L.92 8.94h4.13L8 18l2.5-7.74a2 2 0 0 1 1.86-1.34h2.9l3 9.08 2.95-9.06zm42.65 14.59l-.04-12.59a2 2 0 0 1 2-2h2.11v14.59h-4.07z" --> -->
+<!--                             ></path> --> -->
+<!--                         </svg> -->
+<!--                     </a> -->
+<!--                 </h1> -->
+<!--                 <ul class="gnb-large"> -->
+<!--                     <li> -->
+<!--                         <a class="item" href="/web/wreward/main"><span>축구</span></a> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!--                         <a class="item" href="/web/winvest/main"><span>야구</span></a> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!--                         <a class="item" href="/web/wstartup/main"><span>뮤지컬</span></a> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!--                         <a class="item" href="/web/wstartup/main"><span>콘서트</span></a> -->
+<!--                     </li> -->
+<!--                         <div> -->
+<!--                             <button class="more">더 보기<i class="icon chevron-right"></i></button> -->
+                            	
+<!--                             <div class="Backdrop_backDrop__3v5kD Backdrop_dimmed__23l4b GNBDesktop_backdrop__3h5Cq"></div> -->
+<!--                         </div> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--                 <div class="web-header-utils"> -->
+<!--                     <div class="SearchInput_container__gZaY5 HeaderDesktop_search__3TGkY HeaderDesktop_iconButton__3kwGA"> -->
+<!--                         <button type="button" class="SearchButton_search__JF4Op"><i class="icon search SearchButton_icon__2pNKt" aria-hidden="true"></i></button> -->
+<!--                     </div> -->
+<!--                     <div class="HeaderDesktop_user__3zGmM"> -->
+<!--                         <div class="User_container__bqVd2"><button type="button" class="User_btnSign__1URTs">로그인</button><button class="User_btnSign__1URTs">회원가입</button></div> -->
+<!--                     </div> -->
+                    
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </header> -->
+<!--     </div> -->
+<!-- </div> -->

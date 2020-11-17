@@ -147,28 +147,7 @@
     </div>
 
 
-                        <tbody>
-                            <tr th:each="faq : ${faqList}">
-                                <td>
-                                    <a th:href="@{'/post1/'+ ${faq.id}}">
-                                        <span th:text="${faq.title}"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <span class="user-link" th:text="${faq.writer}"></span>
-                                    <span class="user-subhead">Admin</span>
-                                </td>
-                                <td>
-                                    <span th:text="${#temporals.format(faq.createdDate, 'yyyy-MM-dd')}"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                
 
 <!--<div class="container">-->
 <!--    &lt;!&ndash; 검색 form &ndash;&gt;-->

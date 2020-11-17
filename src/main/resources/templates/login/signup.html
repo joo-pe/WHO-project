@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
     <style>
+    a { text-decoration:none } 
         body {
             margin: 0;
         }
         .batang {
             width: 100vw;
             height: 135vh;
-            background: #81f7d8;
+            background: #110f1f14;
         }
     </style>
     <head>
@@ -28,7 +29,7 @@
                     } else if ($("#termsPrivacy").is(":checked") == false) {
                         alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다..");
                         return;
-                    } else if ($("#termsLocation").is(":checked") == false) {
+                    } else if ($("#termsPrivacy").is(":checked") == false) {
                         alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다...");
                         return;
                     } else {
@@ -53,7 +54,9 @@
 </div> -->
             <!-- //스킵네비게이션 -->
             <!-- header -->
-            <div id="header">
+            <div id="header" style="
+    text-align: center;
+">
                 <a href="/" target="_blank" title="WHOTicket HOME">
                 <span class="txt" onClick="location.href='http://localhost:8090'">
                     <img th:src="@{/image/logo.png}" height="100" id="logo" />
@@ -77,14 +80,14 @@
                             <form id="join_form" method="GET" action="http://localhost:8090/signup">
                                 <input type="hidden" id="token_sjoin" name="token_sjoin" />
                                 <!-- 약관동의 -->
-                                <div class="terms_p">
+                                <div class="terms_p" style="font-size: x-small;">
                                     <p class="terms_chk_all">
                                         <span class="input_chk">
                                             <input type="checkbox" id="chk_all" name="chk_all" />
                                             <!-- [D] ie7/8에서 checked일때 label에 클래스 on추가해주세요.  -->
                                             <label for="chk_all">
-                                                <span class="chk_all_txt">
-                                                    WHO_TICKET 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(필수),<br class="m_br" />
+                                                <span class="chk_all_txt" style="font-size:xx-small;">
+                                                    WHO_TICKET 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),<br class="m_br" />
                                                     프로모션 정보 수신에 모두 동의합니다.
                                                 </span>
                                             </label>
@@ -94,7 +97,7 @@
                                         <li class="terms_bx">
                                             <span class="input_chk">
                                                 <input type="checkbox" id="termsService" name="termsService" class="chk" />
-                                                <label for="termsService">WHO_TICKET 이용약관 동의<span class="terms_necessary">(필수)</span></label>
+                                                <label for="termsService">WHO_TICKET 이용약관 동의<span class="terms_necessary" style="color: crimson">(필수)</span></label>
                                             </span>
                                             <div class="terms_box" tabindex="0" id="divService" style="border: 1px solid black; border-radius: 4px; height: 100px;">
                                                 <!-- 이용약관 동의 -->
@@ -401,8 +404,8 @@
                                         <li class="terms_bx">
                                             <span class="input_chk">
                                                 <input type="checkbox" id="termsPrivacy" name="termsPrivacy" class="chk" />
-                                                <label for="termsPrivacy" class="collect_personal">개인정보 수집 및 이용 동의<span class="terms_choice">(필수)</span></label>
-                                                <a href="http://localhost:8090/signup" id="term" class="easy" role="button"><span class="txt" onClick="location.href='http://localhost:8090/signup'" >이용 안내</span></a>
+                                                <label for="termsPrivacy" class="collect_personal">개인정보 수집 및 이용 동의<span class="terms_choice" style="color: crimson ">(필수)</span></label>
+                                                <a href="http://localhost:8090/signup" id="term" class="easy" role="button"><span class="txt" onClick="location.href='http://localhost:8090/signup'" ></span></a>
                                             </span>
                                             <div class="terms_box" tabindex="0" id="divPrivacy" style="border: 1px solid black; border-radius: 4px; height: 100px;">
                                                 <!-- 개인정보 수집 및 이용에 대한 안내 -->
@@ -539,7 +542,7 @@
                                         <li class="terms_bx">
                                             <span class="input_chk">
                                                 <input type="checkbox" id="termsLocation" name="termsLocation" value="Y" class="chk" />
-                                                <label for="termsLocation">위치정보 이용약관 동의<span class="terms_choice terms_no">(필수)</span></label>
+                                                <label for="termsLocation">위치정보 이용약관 동의<span class="terms_choice terms_no">(선택)</span></label>
                                             </span>
                                             <!-- tg-lang=>"ko" -->
                                             <div class="terms_box" id="divLocation" style="border: 1px solid black; border-radius: 4px; height: 100px;">
@@ -710,7 +713,7 @@
                                         </li>
                                     </ul>
                                     <span class="event_message" style="display: block;">
-                                        WHO_TICKET에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(WHO_TICKET앱 알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 WHO_TICKET 가입 이후 추가 가입하여
+                                        WHO_TICKET에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(WHO_TICKET 알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 WHO_TICKET 가입 이후 추가 가입하여
                                         이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
                                     </span>
                                     <span class="error" id="agreeMsg" style="display: none;">WHO_TICKET 이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.</span>
@@ -721,7 +724,7 @@
                                             <a th:href="@{/signup2}" id="btnAgree" class="btn_type btn_primary" role="button">확인</a>
                                         </span>
                                         <span>
-                                            <a th:href="@{/login}" id="btnCancel" class="btn_type btn_default" role="button">취소</a>
+                                            <a th:href="@{/login}" id="btnCancel" class="btn_type btn_default" role="button">취소	</a>
                                         </span>
                                     </div>
                                 </div>
