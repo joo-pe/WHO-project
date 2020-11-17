@@ -6,10 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

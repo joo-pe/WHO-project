@@ -1,41 +1,35 @@
 /* /* @charset "utf-8";
  
 #who{
-   
 text-align: center;
 }
 
 #header {
-
    text-align: center;
     columns:auto;
 }
 #headers{
-
    text-align: center;
     columns:auto;
 }
 .terms_box {
-   
    overflow: auto;
    height:150px;
 }
 
 #content{
-   
    width: 50%;
    margin-left: auto;
    margin-right: auto;
-   
+
 }
 
-#join_form{   
-    
+#join_form{
     height: 100px;   
-  }
+}
   
 #article::-webkit-scrollbar {
-   
+
     width: 200px;
     background-color: black;
     
@@ -48,30 +42,28 @@ text-align: center;
   }
 
 #btnAgree{
-   
-   margin: 0, 0, 10px;
-   font-size: x-large;
-   border: 2px solid black; 
-background-color: rgba(0,0,0,0); 
-color: black; 
-   
+   	margin: 0, 0, 10px;
+   	font-size: x-large;
+   	border: 2px solid black;
+	background-color: rgba(0,0,0,0);
+	color: black;
 }
 #btnCancel{
-   margin: 0, 0, 10px;
-   font-size: x-large;
-   border: 2px solid black; 
-
-color: red; 
+   	margin: 0, 0, 10px;
+   	font-size: x-large;
+   	border: 2px solid black;
+	color: red;
 }
 
- #footer { 
-
-    position: fixed; 
-    bottom: 0; 
+ #footer {
+    position: fixed;
+    bottom: 0;
     width: 10%;
  }
- .chk_all_txt{
- font-size: xx-small;   }
+.chk_all_txt{
+ font-size: xx-small;
+}
+ */
 
 .event_message{
    font-size:xx-small;
@@ -86,7 +78,6 @@ color: red;
 
 .agreeMsg{
    font-size: xx-small;
-   
 }
 
 #btn_area double{ border: 1px solid skyblue; 

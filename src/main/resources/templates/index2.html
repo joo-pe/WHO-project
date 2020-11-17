@@ -82,7 +82,7 @@
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="card card-small">
-                                <div class="thumbnail">  
+                                <div class="thumbnail">
                                     <a th:href="@{/soccer/ticket}">
                                     <img alt="Opt alp thumbnail" src="images/soccer3.png" />
                                     </a>
@@ -98,7 +98,7 @@
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="card card-small">
-                                <div class="thumbnail">  
+                                <div class="thumbnail">
                                     <a th:href="@{/soccer/ticket}">
                                     	<img alt="Opt alp thumbnail" src="images/soccer1.png" />
                                     </a>
@@ -123,7 +123,7 @@
                             <div class="card card-small">
                                 <div class="thumbnail">
                                 <a th:href="@{/musical/ticket}">
-                                    <img alt="Opt alp thumbnail" src="images/mu1.png" /> 
+                                    <img alt="Opt alp thumbnail" src="images/mu1.png" />
                                 </a>
                                 </div>
                                 <div class="card-info">
@@ -153,7 +153,7 @@
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="card card-small">
-                                <div class="thumbnail">    
+                                <div class="thumbnail">
                                     <a th:href="@{/musical/ticket}">
                                     	<img alt="Opt alp thumbnail" src="images/mu3.png" />
                                     </a>
@@ -173,7 +173,7 @@
                 </div>
             </div>
             </div>
-            
+
       		<div class="container bootstrap snippets bootdey">
 <div class="col-sm-6">
     <!-- Begin tab comment and popular posts -->
@@ -183,7 +183,7 @@
          <li class="active"><a href="#comments" data-toggle="tab"><i class="fa fa-comments"></i> FAQ</a></li>
          <li><a href="#popular" data-toggle="tab"><i class="fa fa-star"></i>NOTICE</a></li>
        </ul>
-    
+
        <!-- Tab panes -->
        <div class="tab-content">
          <!-- Pane comments -->
@@ -191,10 +191,10 @@
           <!-- Begin scroll wrappper -->
           <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;"><div class="scroll-widget">
              <div class="thumbnail" style="overflow: hidden; width: auto; height: 325px;">
-                    
+
                     <div th:each="faq : ${faqList}" class="TabContainer" align="center">
                         <div class="TabContainer_listItem__2XDgU">
-                           
+
                                 <article>
                                     <div class="commons">
                                         <h1 class="commons" th:text="${faq.id}">[f a q 1]</h1>
@@ -202,24 +202,24 @@
                                         <!--                                         <p class="commons"><span class="commons" th:text="${faq.writer}"></span></p> -->
                                     </div>
                                 </article>
-                            
+
                         </div>
-                        
+
                     </div>
                     <br>
                     <div class="box-footer" align="center">
           				<p><a href="http://localhost:8090/faq"><i class="fa fa-share"></i> See all faq</a></p>
           			</div>
                 </div>
-             
-             
-             
-             
-             
+
+
+
+
+
           </div><div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; height: 209.5734126984127px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
-          
+
          </div><!-- End div .tab-pane -->
-         
+
          <!-- Pane popular posts -->
          <div class="tab-pane animated fadeInRight" id="popular">
           <!-- Begin scroll wrappper -->
@@ -227,7 +227,7 @@
           <div class="thumbnail" style="overflow: hidden; width: auto; height: 325px;">
              <div th:each="notice : ${noticeList}" class="TabContainer_tabList__1TS8l" align="center">
                         <div class="TabContainer">
-                       
+
                                 <div>
                                     <div class="commons">
                                         <h1 class="commons" th:text="${notice.id}">[notice 1]</h1>
@@ -235,10 +235,10 @@
 
                                         <!--                                             <p class="commons"><span class="commons" th:text="${notice.writer}"></span></p> -->
                                     </div>
-                              
+
                            </div>
                         </div>
-                        
+
                     </div>
                     	<br>
                     	<div class="box-footer" align="center">
@@ -246,17 +246,17 @@
          			 	</div>
           </div>
           <div class="slimScrollBar" style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
-          
+
          </div><!-- End div .tab-pane -->
        </div><!-- End div .tab-content -->
     </div><!-- End div .box-info .full -->
     <!-- End tab comment and popular posts -->
-    </div>  
-    <div>  
+    </div>
+    <div>
     <div class="top_rank" style="float: right;line-height: 2.1; font-size: 13px" align="center">
                 <strong class="screen_out" style="font-size: 2.5em;">이번주 스포츠 뉴스</strong>
                 <ul class="tab_rank" role="tablist">
-                   
+
                     <!--       <li style="padding-right: 85px;"></li> -->
                 </ul>
                 <ol class="list_rank" data-type="ranking">
@@ -348,11 +348,11 @@
                     </li>
                 </ol>
             </div>
-            
-</div>                          
-           
 
-            
+</div>
+
+
+
    </div>
 
         <div class="element" style="background-color: #f9faed;width: 100%;" >

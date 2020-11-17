@@ -1,6 +1,5 @@
 package com.who.dto;
 
-import com.who.domain.entity.FileEntity;
 import com.who.domain.entity.SeatEntity;
 import lombok.*;
 

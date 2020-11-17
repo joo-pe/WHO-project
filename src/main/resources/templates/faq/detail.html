@@ -24,7 +24,7 @@ button.close {
 </style>
 <body>
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<h1 align="center">안내사항</h1> 
+<h1 align="center">안내사항</h1>
 <br>
 <h2 th:text="${faqDto.title}" align="center"></h2>
 <p th:inline="text" align="center">작성일 : [[${#temporals.format(faqDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
