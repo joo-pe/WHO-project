@@ -4,7 +4,6 @@ import com.who.domain.entity.SportsEntity;
 import com.who.domain.repository.SportsRepository;
 import com.who.dto.SportsDto;
 import lombok.AllArgsConstructor;
-import lombok.ToString;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

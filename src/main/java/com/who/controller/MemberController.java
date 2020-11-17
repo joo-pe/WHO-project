@@ -8,6 +8,7 @@ import com.who.dto.FaqDto;
 import com.who.dto.MailDto;
 import com.who.dto.MemberDto;
 import com.who.dto.NoticeDto;
+import com.who.dto.SessionUser;
 import com.who.dto.SportsDto;
 import com.who.helpers.ZXingHelper;
 import com.who.service.FaqService;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,6 +47,7 @@ public class MemberController {
     private FaqService faqService;
     private FileService fileService;
     private NoticeService noticeService;
+    private final HttpSession httpSession;
 
     //회원가입 동의페이지
     @GetMapping("/signup")
@@ -57,7 +60,7 @@ public class MemberController {
     public String dispSignup2() {
         return "login/signup2";
     }
-    
+
     //회원가입 처리
     @PostMapping("/signup2")
     public String execSignup(MemberDto memberDto) {
@@ -68,7 +71,17 @@ public class MemberController {
 
     // 로그인 페이지
     @GetMapping("/login") 
-    public String dispLogin() {
+    public String dispLogin(Model model) {
+
+    	//CustomOAuth2UserService에서 로그인 성공시 세션에 SessionUser를 저장
+    	//즉, 로그인 성공 시 httpSession.getAttribute("user")에서 값을 가져올 수 있다
+    	SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
+    	//세션에 값이 있을때만 model에 userName 등록
+    	if(user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
         return "login/login";
     }
 
@@ -76,7 +89,7 @@ public class MemberController {
     @GetMapping("/login/result")
     public String dispLoginResult(Model model) {
     	 List<FaqDto> faqList = faqService.getFaqlist();
-         model.addAttribute("faqList", faqList); 
+         model.addAttribute("faqList", faqList);
          List<NoticeDto> noticeList = noticeService.getNoticelist();
          model.addAttribute("noticeList", noticeList);
         return "login/loginSuccess";
@@ -100,9 +113,7 @@ public class MemberController {
         return "login/denied";
     }
 
-  
-
- // 현재 사용자 정보 가져오기
+    // 현재 사용자 정보 가져오기
     @GetMapping("/myinfo")
     public String dispCuurentUserInfo(@AuthenticationPrincipal MemberDetail memberDetail, Model model) {
         String email = memberDetail.getUsername();

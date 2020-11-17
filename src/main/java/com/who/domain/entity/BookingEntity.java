@@ -40,7 +40,4 @@ public class BookingEntity {
         this.sportsEntity = sportsEntity;
         this.canceled = canceled;
     }
-
-
-
 }

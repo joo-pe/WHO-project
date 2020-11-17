@@ -72,7 +72,7 @@ public class NoticeController {
         model.addAttribute("noticeList", noticeDtoList);
         return "admin/notice/list";
     }
-
+    
     @GetMapping("/notice")
     public String list1(Model model) {
         List<NoticeDto> noticeList = noticeService.getNoticelist();
