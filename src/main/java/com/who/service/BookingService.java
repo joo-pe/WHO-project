@@ -45,6 +45,16 @@ public class BookingService {
         return this.convertEntityToDto(bookingEntity);
     }
 
+    @Transactional
+    public Long getSportsByBooking(Long id) {
+        return bookingRepository.getSportsByBooking(id);
+    }
+
+    @Transactional
+    public Long getMemberByBooking(Long id) {
+        return bookingRepository.getMemberByBooking(id);
+    }
+
     public BookingDto convertEntityToDto(BookingEntity bookingEntity) {
         MemberEntity memberEntity = bookingEntity.getMemberEntity();
         MemberDto memberDto = MemberDto.builder()

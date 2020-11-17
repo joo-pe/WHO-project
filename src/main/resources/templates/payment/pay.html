@@ -178,7 +178,7 @@
     }
     p.price span:before {
         position: absolute;
-        content: "$";
+        content: "₩";
         font-size: 16px;
         top: 25px;
         font-weight: 300;
@@ -199,6 +199,9 @@
         line-height: 40px;
         padding: 0 20px;
     }
+    .hide {
+        display: none;
+    }
 </style>
 <body>
 <!-- Header -->
@@ -213,24 +216,24 @@
         </div>
         <div class="col-md-6 align-items-center">
             <div class="price-card featured">
-                <h2>Student</h2>
-                <p class="price"><span>69</span></p>
+                <h2 th:text="${sportsDto.title}"></h2>
+                <p class="price"><span id="price" th:text="${seatDto.price}"></span></p>
                 <ul class="pricing-offers">
                     <li><i class="mdi mdi-check"></i> 시간 :  <span class="font-weight-bold" th:text="${#temporals.format(sportsDto.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span></li>
                     <li><i class="mdi mdi-check"></i> 장소 : <span class="font-weight-bold" th:text="${sportsDto.location}"></span></li>
                     <li><i class="mdi mdi-check"></i> 티켓 : <span class="font-weight-bold">1장</span></li>
                     <li><i class="mdi mdi-check"></i> 구역 : <span class="font-weight-bold" th:text="${seatDto.area}"></span></li>
+                    <li class="hide"><i class="mdi mdi-check"></i> 구매자 : <span class="font-weight-bold" id="buyer_name" th:text="${memberDto.name}"></span></li>
+                    <li class="hide"><i class="mdi mdi-check"></i> 이메일 : <span class="font-weight-bold" id="buyer_email" th:text="${memberDto.email}"></span></li>
+                    <li class="hide"><i class="mdi mdi-check"></i> 핸드폰 : <span class="font-weight-bold" id="buyer_phone" th:text="${memberDto.phone}"></span></li>
+
 
                 </ul>
+<!--                <div>-->
+<!--                    <button class="btn btn-primary btn-mid" id="charge_eth" type="button">이더리움</button>-->
+<!--                </div>-->
                 <div>
-                    <button class="btn btn-primary btn-mid" id="charge_eth" type="button">이더리움</button>
-                </div>
-                <div>
-                    <button class="btn btn-primary btn-mid" id="kakao" type="button">카카오페이</button>
-                </div>
-
-                <div>
-                    <button class="btn btn-primary btn-mid" id="inicis" type="button">일반 결제</button>
+                    <button class="btn btn-mid" id="inicis" type="button">결제하기</button>
                 </div>
 
             </div>
@@ -347,7 +350,7 @@
             const transactionParameters = {
                 nonce: '0x00', // ignored by MetaMask
                 to: '0xe3EC1A79fAD5ecC332Ee8744F1E5f4AA6014635a', // Required except during contract publications.
-                from: account, // must match user's active address.
+                from: 'a0xCeF4Ab8103EDa9A35bd1Ee54C4039EF890a0AB29', // must match user's active address.
                 value: window.web3.toHex(SendEth), // Only required to send ether to the recipient from the initiating external account.
                 data:data
             };
@@ -362,23 +365,26 @@
         else{
             alert("메타마스크를 설치해주세요.")
         }
-
-
     });
+
     $("#inicis").click(function () {
         var IMP = window.IMP;
         IMP.init("imp96244254") //가맹점 식별
 
+        var name = $("#buyer_name").val();
+        var email = $("#buyer_email").val();
+        var phone = $("#buyer_phone").val();
+        var price = parseInt($("#price").val(), 10);
         // 결제창 호출 : 지정한 pg사의 결제모듈 창 나타나거나 pg사의 웹사이트로 리다이렉트
         IMP.request_pay({ //parameter
             pg: 'html5_inicis',
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
-            name: '주문명 : 결제테스트',
+            name: 'Who Ticket',
             amount: 100,
-            buyer_email: 'ellendusrud@naver.com',
-            buyer_name: '김연경',
-            buyer_tel: '010-1234-5678'
+            buyer_email: email,
+            buyer_name: name,
+            buyer_tel: phone
         }, function (rsp) { //calback
             console.log(rsp);
             if (rsp.success) { //결제 성공 시 로직
@@ -387,11 +393,14 @@
                 msg += '상점 거래ID : ' + rsp.merchant_uid;
                 msg += '결제 금액 : ' + rsp.paid_amount;
                 msg += '카드 승인번호 : ' + rsp.apply_num;
+                // alert(msg);
+                window.location.href = 'Success';
             } else { //결제 실패 시 로직
                 var msg = '결제에 실패하였습니다 : ';
                 msg += rsp.error_msg;
+                // alert(msg);
+                window.location.href = 'Fail';
             }
-            alert(msg);
         });
     });
 
