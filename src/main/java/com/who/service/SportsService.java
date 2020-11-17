@@ -28,23 +28,7 @@ public class SportsService {
         List<SportsDto> sportsDtoList = new ArrayList<>();
 
         for (SportsEntity sportsEntity : sportsEntities) {
-            SportsDto sportsDto = SportsDto.builder()
-                    .id(sportsEntity.getId())
-                    .category(sportsEntity.getCategory())
-                    .title(sportsEntity.getTitle())
-                    .detail(sportsEntity.getDetail())
-                    .fileId(sportsEntity.getFileId())
-                    .dateTime(sportsEntity.getDateTime())
-                    .city(sportsEntity.getCity())
-                    .location(sportsEntity.getLocation())
-                    .ticketOpen(sportsEntity.getTicketOpen())
-                    .ticketClose(sportsEntity.getTicketClose())
-                    .ticketMax(sportsEntity.getTicketMax())
-                    .team1(sportsEntity.getTeam1())
-                    .team2(sportsEntity.getTeam2())
-                    .build();
-
-            sportsDtoList.add(sportsDto);
+            sportsDtoList.add(this.convertEntityToDto(sportsEntity));
         }
         return sportsDtoList;
     }
@@ -54,23 +38,7 @@ public class SportsService {
         Optional<SportsEntity> sportsEntityWraper = sportsRepository.findById(id);
         SportsEntity sportsEntity = sportsEntityWraper.get();
 
-        SportsDto sportsDto = SportsDto.builder()
-                .id(sportsEntity.getId())
-                .category(sportsEntity.getCategory())
-                .title(sportsEntity.getTitle())
-                .detail(sportsEntity.getDetail())
-                .fileId(sportsEntity.getFileId())
-                .dateTime(sportsEntity.getDateTime())
-                .city(sportsEntity.getCity())
-                .location(sportsEntity.getLocation())
-                .ticketOpen(sportsEntity.getTicketOpen())
-                .ticketClose(sportsEntity.getTicketClose())
-                .ticketMax(sportsEntity.getTicketMax())
-                .team1(sportsEntity.getTeam1())
-                .team2(sportsEntity.getTeam2())
-                .build();
-
-        return sportsDto;
+        return this.convertEntityToDto(sportsEntity);
     }
 
     @Transactional

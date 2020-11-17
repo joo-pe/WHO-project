@@ -23,16 +23,4 @@ public class HomeController {
     public String home() {
         return "index2.html";
     }
-
-
-    @GetMapping("/productdetail")
-    public String productDetail() {
-        return "sports/detail";
-    }
-
-    @GetMapping("/productdetail/pay")
-    public String pay() {
-        return "pay";
-    }
-
 }

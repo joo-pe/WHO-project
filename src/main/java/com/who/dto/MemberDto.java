@@ -18,7 +18,7 @@ public class MemberDto {
     private String birthday;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
-    private boolean enabled = true;
+    private boolean enabled;
 
     public MemberEntity toEntity() {
        
@@ -40,8 +40,8 @@ public class MemberDto {
                 String name, String phone, String birthday, 
                 LocalDateTime createdDate, LocalDateTime modifiedDate,
                 Boolean enabled) {
-       this.id = id;
-       this.privatekey = privatekey;
+        this.id = id;
+        this.privatekey = privatekey;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -49,6 +49,6 @@ public class MemberDto {
         this.birthday = birthday;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
-        this.enabled = enabled;
+        this.enabled = true;
     }
 }

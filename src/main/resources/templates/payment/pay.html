@@ -205,21 +205,21 @@
 <div th:insert="common/header.html" id="header"></div>
 
 <section class="pricing-section">
-    <div class="container" style="padding: 80px 0 0 0">
+    <div class="container">
         <div class="row justify-content-md-center">
             <div class="section-title text-center title-ex1">
                 <h2>구매정보 확인</h2>
             </div>
         </div>
-        <div class="col-md-6 center">
+        <div class="col-md-6 align-items-center">
             <div class="price-card featured">
                 <h2>Student</h2>
                 <p class="price"><span>69</span></p>
                 <ul class="pricing-offers">
                     <li><i class="mdi mdi-check"></i> 시간 :  <span class="font-weight-bold" th:text="${#temporals.format(sportsDto.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span></li>
                     <li><i class="mdi mdi-check"></i> 장소 : <span class="font-weight-bold" th:text="${sportsDto.location}"></span></li>
-                    <li><i class="mdi mdi-check"></i> 티켓 : <span class="font-weight-bold">3장</span></li>
-                    <li><i class="mdi mdi-check"></i> 구역 : <span class="font-weight-bold">A구역</span></li>
+                    <li><i class="mdi mdi-check"></i> 티켓 : <span class="font-weight-bold">1장</span></li>
+                    <li><i class="mdi mdi-check"></i> 구역 : <span class="font-weight-bold" th:text="${seatDto.area}"></span></li>
 
                 </ul>
                 <div>

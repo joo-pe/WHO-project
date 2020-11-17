@@ -51,6 +51,7 @@
 			<form th:action="@{'/resignup/update/' + ${currentUser.id}}" method="get" class="login100-form validate-form">
 				<!-- <input type="hidden" name="_method" value="put"/> -->
     			<input type="hidden" name="id" th:value="${currentUser.id}"/>
+				<input type="hidden" name="privatekey" th:value="${currentUser.privatekey}"/>
     			<input type="hidden" id="password" name="password" th:value="${currentUser.password}" readonly/>
     			
 				<span class="login100-form-title p-b-25" >
