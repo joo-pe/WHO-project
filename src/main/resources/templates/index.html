@@ -1,569 +1,414 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Theme Made By www.w3schools.com -->
-    <title>WHO TICKET</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            font: 400 15px Lato, sans-serif;
-            line-height: 1.8;
-            color: #818181;
-        }
-        h2 {
-            font-size: 24px;
-            text-transform: uppercase;
-            color: #303030;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-        h4 {
-            font-size: 19px;
-            line-height: 1.375em;
-            color: #303030;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-        .jumbotron {
-            background-color: #f4511e;
-            color: #fff;
-            padding: 100px 25px;
-            font-family: Montserrat, sans-serif;
-        }
-        .container-fluid {
-            padding: 60px 50px;
-        }
-        .bg-grey {
-            background-color: #f6f6f6;
-        }
-        .logo-small {
-            color: #f4511e;
-            font-size: 50px;
-        }
-        .logo {
-            color: #f4511e;
-            font-size: 200px;
-        }
-        .thumbnail {
-            padding: 0 0 15px 0;
-            border: none;
-            border-radius: 0;
-        }
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            margin-bottom: 10px;
-        }
-        .carousel-control.right, .carousel-control.left {
-            background-image: none;
-            color: #f4511e;
-        }
-        .carousel-indicators li {
-            border-color: #f4511e;
-        }
-        .carousel-indicators li.active {
-            background-color: #f4511e;
-        }
-        .item h4 {
-            font-size: 19px;
-            line-height: 1.375em;
-            font-weight: 400;
-            font-style: italic;
-            margin: 70px 0;
-        }
-        .item span {
-            font-style: normal;
-        }
-        .panel {
-            border: 1px solid #f4511e;
-            border-radius:0 !important;
-            transition: box-shadow 0.5s;
-        }
-        .panel:hover {
-            box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-        }
-        .panel-footer .btn:hover {
-            border: 1px solid #f4511e;
-            background-color: #fff !important;
-            color: #f4511e;
-        }
-        .panel-heading {
-            color: #fff !important;
-            background-color: #f4511e !important;
-            padding: 25px;
-            border-bottom: 1px solid transparent;
-            border-top-left-radius: 0px;
-            border-top-right-radius: 0px;
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
-        }
-        .panel-footer {
-            background-color: white !important;
-        }
-        .panel-footer h3 {
-            font-size: 32px;
-        }
-        .panel-footer h4 {
-            color: #aaa;
-            font-size: 14px;
-        }
-        .panel-footer .btn {
-            margin: 15px 0;
-            background-color: #f4511e;
-            color: #fff;
-        }
-        .navbar {
-            margin-bottom: 0;
-            background-color: #f4511e;
-            z-index: 9999;
-            border: 0;
-            font-size: 12px !important;
-            line-height: 1.42857143 !important;
-            letter-spacing: 4px;
-            border-radius: 0;
-            font-family: Montserrat, sans-serif;
-        }
-        .navbar li a, .navbar .navbar-brand {
-            color: #fff !important;
-        }
-        .navbar-nav li a:hover, .navbar-nav li.active a {
-            color: #f4511e !important;
-            background-color: #fff !important;
-        }
-        .navbar-default .navbar-toggle {
-            border-color: transparent;
-            color: #fff !important;
-        }
-        footer .glyphicon {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #f4511e;
-        }
-        .slideanim {visibility:hidden;}
-        .slide {
-            animation-name: slide;
-            -webkit-animation-name: slide;
-            animation-duration: 1s;
-            -webkit-animation-duration: 1s;
-            visibility: visible;
-        }
-        @keyframes slide {
-            0% {
-                opacity: 0;
-                transform: translateY(70%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0%);
-            }
-        }
-        @-webkit-keyframes slide {
-            0% {
-                opacity: 0;
-                -webkit-transform: translateY(70%);
-            }
-            100% {
-                opacity: 1;
-                -webkit-transform: translateY(0%);
-            }
-        }
-        @media screen and (max-width: 768px) {
-            .col-sm-4 {
-                text-align: center;
-                margin: 25px 0;
-            }
-            .btn-lg {
-                width: 100%;
-                margin-bottom: 35px;
-            }
-        }
-        @media screen and (max-width: 480px) {
-            .logo {
-                font-size: 150px;
-            }
-        }
-    </style>
-</head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>WHO TICKET</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+        <!-- Header -->
+        <div th:insert="common/header.html" id="header"></div>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#myPage">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#band">SIGN IN</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">PERFORMANCE
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">MUSICAL</a></li>
-                        <li><a href="#">THEATER</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">SPORTS
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">SOCCER</a></li>
-                        <li><a href="#">BASEBALL</a></li>
-                    </ul>
-                </li>
-                <li><a href="#band">SELL</a></li>
-                <li><a href="#tour">FAQ</a></li>
-                <li><a href="#tour">NOTICE</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+        <!-- Container (Slide) -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="text-align: -webkit-center; padding: 96px 0 0 0;">
+            <!-- Indicators -->
 
-<div class="jumbotron text-center">
-    <h1>WHO TICKET</h1>
-    <p>Find your Ticket</p>
-    <form>
-        <div class="input-group">
-            <input type="text" class="form-control" size="50" placeholder="Event, Aritst or Team" required>
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-danger">Search</button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<!-- Container (Slide) -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="images/4.png" alt="New York" width="1200" height="700">
-            <div class="carousel-caption">
-                <h3>New York</h3>
-                <p>The atmosphere in New York is lorem ipsum.</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="images/5.png" alt="Chicago" width="1200" height="700">
-            <div class="carousel-caption">
-                <h3>Chicago</h3>
-                <p>Thank you, Chicago - A night we won't forget.</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="images/6.png" alt="Los Angeles" width="1200" height="700">
-            <div class="carousel-caption">
-                <h3>LA</h3>
-                <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-<!-- Container (About Section) -->
-<div id="about" class="container-fluid">
-    <div class="row">
-        <div class="col-sm-8">
-            <h2>About Company Page</h2><br>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <br><button class="btn btn-default btn-lg">Get in Touch</button>
-        </div>
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-signal logo"></span>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid bg-grey">
-    <div class="row">
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-globe logo slideanim"></span>
-        </div>
-        <div class="col-sm-8">
-            <h2>Our Values</h2><br>
-            <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Container (Services Section) -->
-<div id="services" class="container-fluid text-center">
-    <h2>SERVICES</h2>
-    <h4>What we offer</h4>
-    <br>
-    <div class="row slideanim">
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-off logo-small"></span>
-            <h4>POWER</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-heart logo-small"></span>
-            <h4>LOVE</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-lock logo-small"></span>
-            <h4>JOB DONE</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-    </div>
-    <br><br>
-    <div class="row slideanim">
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-leaf logo-small"></span>
-            <h4>GREEN</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-certificate logo-small"></span>
-            <h4>CERTIFIED</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-        <div class="col-sm-4">
-            <span class="glyphicon glyphicon-wrench logo-small"></span>
-            <h4 style="color:#303030;">HARD WORK</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-        </div>
-    </div>
-</div>
-
-<!-- Container (Portfolio Section) -->
-<div id="portfolio" class="container-fluid text-center bg-grey">
-    <h2>Portfolio</h2><br>
-    <h4>What we have created</h4>
-    <div class="row text-center slideanim">
-        <div class="col-sm-4">
-            <div class="thumbnail">
-                <img src="paris.jpg" alt="Paris" width="400" height="300">
-                <p><strong>Paris</strong></p>
-                <p>Yes, we built Paris</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="thumbnail">
-                <img src="newyork.jpg" alt="New York" width="400" height="300">
-                <p><strong>New York</strong></p>
-                <p>We built New York</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="thumbnail">
-                <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-                <p><strong>San Francisco</strong></p>
-                <p>Yes, San Fran is ours</p>
-            </div>
-        </div>
-    </div><br>
-
-    <h2>What our customers say</h2>
-    <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
-            </div>
-            <div class="item">
-                <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
-            </div>
-            <div class="item">
-                <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
-            </div>
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
-
-<!-- Container (Pricing Section) -->
-<div id="pricing" class="container-fluid">
-    <div class="text-center">
-        <h2>Pricing</h2>
-        <h4>Choose a payment plan that works for you</h4>
-    </div>
-    <div class="row slideanim">
-        <div class="col-sm-4 col-xs-12">
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
-                    <h1>Basic</h1>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox" style="padding: 0px 0 0 0">
+                <div class="item active">
+                    <img src="https://media.stubhubstatic.com/stubhub-product/d_defaultBlank.jpg/q_auto:low,f_auto,c_fill,w_1190,h_396,g_face/homepage/jumbotron/defaults/football-cfl-D5J-8445-e-w-1560x520.jpg" alt="New York" />
                 </div>
-                <div class="panel-body">
-                    <p><strong>20</strong> Lorem</p>
-                    <p><strong>15</strong> Ipsum</p>
-                    <p><strong>5</strong> Dolor</p>
-                    <p><strong>2</strong> Sit</p>
-                    <p><strong>Endless</strong> Amet</p>
+
+                <div class="item" align="center">
+                    <img src="https://media.stubhubstatic.com/stubhub-product/d_defaultBlank.jpg/q_auto:low,f_auto,c_fill,w_1190,h_396,g_face/homepage/jumbotron/defaults/edm-1-GettyImages-611607148-1560x520.jpg" alt="New York" />
                 </div>
-                <div class="panel-footer">
-                    <h3>$19</h3>
-                    <h4>per month</h4>
-                    <button class="btn btn-lg">Sign Up</button>
+
+                <div class="item" align="center">
+                    <img src="https://media.stubhubstatic.com/stubhub-product/d_defaultBlank.jpg/q_auto:low,f_auto,c_fill,w_1190,h_396,g_face/homepage/jumbotron/defaults/theater-AdobeStock_180269562-1560x520.jpg" alt="New York" />
+                </div>
+
+                <div class="item" align="center">
+                    <img src="https://media.stubhubstatic.com/stubhub-product/d_defaultBlank.jpg/q_auto:low,f_auto,c_fill,w_1190,h_396,g_face/homepage/jumbotron/Value%20Props/plans-changed-1560x520.jpg" alt="New York" />
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="left: 105px;">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="right: 105px;">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="services" class="container-fluid text-center">
+            <div class="container">
+                <div class="sprotbest">
+                    <div class="catae" style="font-size: x-large;" align="center">
+                        <h2>금주의 스포츠 BEST 3</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                <a th:href="@{/soccer/ticket}">
+                                    <img alt="Opt alp thumbnail" src="images/soccer2.png" />
+                                </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">  
+                                    <a th:href="@{/soccer/ticket}">
+                                    <img alt="Opt alp thumbnail" src="images/soccer3.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">  
+                                    <a th:href="@{/soccer/ticket}">
+                                    	<img alt="Opt alp thumbnail" src="images/soccer1.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="peformencebest">
+                    <div class="catae" style="font-size: x-large;" align="center">
+                        <h2>금주의 뮤지컬 BEST 3</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                <a href="#">
+                                    <img alt="Opt alp thumbnail" src="images/mu1.png" /> 
+                                </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                            <h3>날짜</h3>
+                                            <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <a href="#">
+                                      <img alt="Opt alp thumbnail" src="images/mu2.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">    
+                                    <a href="#">
+                                    	<img alt="Opt alp thumbnail" src="images/mu3.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4 col-xs-12">
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
-                    <h1>Pro</h1>
+            </div>
+            
+      		<div class="container bootstrap snippets bootdey">
+<div class="col-sm-6">
+    <!-- Begin tab comment and popular posts -->
+    <div class="box-info full">
+       <!-- Tab comments and popular posts -->
+       <ul class="nav nav-tabs nav-justified">
+         <li class="active"><a href="#comments" data-toggle="tab"><i class="fa fa-comments"></i> FAQ</a></li>
+         <li><a href="#popular" data-toggle="tab"><i class="fa fa-star"></i>NOTICE</a></li>
+       </ul>
+    
+       <!-- Tab panes -->
+       <div class="tab-content">
+         <!-- Pane comments -->
+         <div class="tab-pane active animated fadeInRight" id="comments">
+          <!-- Begin scroll wrappper -->
+          <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;"><div class="scroll-widget">
+             <div class="thumbnail" style="overflow: hidden; width: auto; height: 325px;">
+                    
+                    <div th:each="faq : ${faqList}" class="TabContainer" align="center">
+                        <div class="TabContainer_listItem__2XDgU">
+                           
+                                <article>
+                                    <div class="commons">
+                                        <h1 class="commons" th:text="${faq.id}">[f a q 1]</h1>
+                                        <div class="commons" th:text="${faq.title}"></div>
+                                        <!--                                         <p class="commons"><span class="commons" th:text="${faq.writer}"></span></p> -->
+                                    </div>
+                                </article>
+                            
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div class="box-footer" align="center">
+          				<p><a href="http://localhost:8090/faq"><i class="fa fa-share"></i> See all faq</a></p>
+          			</div>
                 </div>
-                <div class="panel-body">
-                    <p><strong>50</strong> Lorem</p>
-                    <p><strong>25</strong> Ipsum</p>
-                    <p><strong>10</strong> Dolor</p>
-                    <p><strong>5</strong> Sit</p>
-                    <p><strong>Endless</strong> Amet</p>
-                </div>
-                <div class="panel-footer">
-                    <h3>$29</h3>
-                    <h4>per month</h4>
-                    <button class="btn btn-lg">Sign Up</button>
-                </div>
+             
+             
+             
+             
+             
+          </div><div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; height: 209.5734126984127px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
+          
+         </div><!-- End div .tab-pane -->
+         
+         <!-- Pane popular posts -->
+         <div class="tab-pane animated fadeInRight" id="popular">
+          <!-- Begin scroll wrappper -->
+          <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;">
+          <div class="thumbnail" style="overflow: hidden; width: auto; height: 325px;">
+             <div th:each="notice : ${noticeList}" class="TabContainer_tabList__1TS8l" align="center">
+                        <div class="TabContainer">
+                       
+                                <div>
+                                    <div class="commons">
+                                        <h1 class="commons" th:text="${notice.id}">[notice 1]</h1>
+                                        <div class="commons" th:text="${notice.title}"></div>
+
+                                        <!--                                             <p class="commons"><span class="commons" th:text="${notice.writer}"></span></p> -->
+                                    </div>
+                              
+                           </div>
+                        </div>
+                        
+                    </div>
+                    	<br>
+                    	<div class="box-footer" align="center">
+               				<p><a href="#fakelink"><i class="fa fa-share"></i> See all notice</a></p>
+         			 	</div>
+          </div>
+          <div class="slimScrollBar" style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
+          
+         </div><!-- End div .tab-pane -->
+       </div><!-- End div .tab-content -->
+    </div><!-- End div .box-info .full -->
+    <!-- End tab comment and popular posts -->
+    </div>  
+    <div>  
+    <div class="top_rank" style="float: right;line-height: 2.1; font-size: 13px" align="center">
+                <strong class="screen_out" style="font-size: 2.5em;">이번주 스포츠 뉴스</strong>
+                <ul class="tab_rank" role="tablist">
+                   
+                    <!--       <li style="padding-right: 85px;"></li> -->
+                </ul>
+                <ol class="list_rank" data-type="ranking">
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank">
+                            <a href="https://v.daum.net/v/20201112140013582" class="link_txt" data-tiara-layer="rankingnews popular news_list">'이용규 영입한' 키움, 이택근·신재영·김규민 등 8명 방출..나이트 코치 등 3명도 떠난다 </a>
+                        </strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112130517199" class="link_txt" data-tiara-layer="rankingnews popular news_list">프로야구 LG 새 감독 후보 5명 면접 종료..최고위층 결정만 남아</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143529540" class="link_txt" data-tiara-layer="rankingnews popular news_list">"이런 스핀 서브 보셨나요?" 이토 미마의 특이한 서브 화제</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143804710" class="link_txt" data-tiara-layer="rankingnews popular news_list">터커, 1루수 변신 유력..KIA 2021 포지션 지각변동 예고 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank">
+                            <a href="https://v.daum.net/v/20201112111605829" class="link_txt" data-tiara-layer="rankingnews popular news_list">결혼 앞둔 정순주 아나운서 "이동국 선수가 롤모델..될 때까지 축구 일하고 싶어"</a>
+                        </strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112100425151" class="link_txt" data-tiara-layer="rankingnews popular news_list">아픔 겪은 손흥민, "멕시코-카타르, 모두 이기고 싶다"</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112122309579" class="link_txt" data-tiara-layer="rankingnews popular news_list">"3차전에서 끝내겠다" 두산, 준PO 이어 PO도 유희관 실종 사건?</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112055813618" class="link_txt" data-tiara-layer="rankingnews popular news_list">"아시아 역대 최고 1위 혼다-2위 손흥민.. 박지성 9위" 더 선</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112130909277" class="link_txt" data-tiara-layer="rankingnews popular news_list"> 초대형 삼각 트레이드, 구체적으로 3팀은 어떤 이득을 얻을까</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112092238115" class="link_txt" data-tiara-layer="rankingnews popular news_list">"정말 대단한 첫 시즌" 토론토 SNS, 류현진 사이영상 3위 축하</a></strong>
+                    </li>
+                </ol>
+                <ol class="list_rank" data-type="dri" style="display: none;">
+                    <li>
+                        <em class="num_rank">1</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112114822440" class="link_txt" data-tiara-layer="rankingnews dri news_list">타이거 우즈 "코스공략은 내가 유리하지만, 비거리가 준 것은 약점" </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">2</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143804710" class="link_txt" data-tiara-layer="rankingnews dri news_list">터커, 1루수 변신 유력..KIA 2021 포지션 지각변동 예고 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">3</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112060140842" class="link_txt" data-tiara-layer="rankingnews dri news_list">가을 야구는 분석이 아니라 싸움이다..김태형의 돌격</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">4</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112082128936" class="link_txt" data-tiara-layer="rankingnews dri news_list">투수 3관왕보다 타격 3관왕이 어려운 이유</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">5</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112141254253" class="link_txt" data-tiara-layer="rankingnews dri news_list">11월 11일 GS칼텍스 흥국생명 혈투가 남긴 얘기들 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">6</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112054504543" class="link_txt" data-tiara-layer="rankingnews dri news_list">새 얼굴로 무장한 불펜진, 프런트 힘으로 만든 두산 마운드</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">7</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112102700333" class="link_txt" data-tiara-layer="rankingnews dri news_list"> 올해는 11월 "오거스타내셔널 가을 공략법은?"</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">8</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112053103443" class="link_txt" data-tiara-layer="rankingnews dri news_list">현대모비스-오리온-KCC 대형 삼각트레이드 어느 팀이 이득일까</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">9</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112110228163" class="link_txt" data-tiara-layer="rankingnews dri news_list">"기둥 있어야 하는데.." 돌아온 심동섭이 던진 KIA 마운드 숙제 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">10</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112053000415" class="link_txt" data-tiara-layer="rankingnews dri news_list">코로나19가 만든 지형 변화, KBO 외인 시장 대격변?</a></strong>
+                    </li>
+                </ol>
+            </div>
+            
+</div>                          
+           
+
+            
+   </div>
+
+        <div class="element" style="background-color: #f9faed;width: 100%;" >
+            <h2 style="text-align: center;">category</h2>
+            <div class="img" style="text-align: center;" >
+                <a href="http://localhost:8090/soccer" class="imgwrap"><img src="/images/mainsoccer.png" data-original=".png" class="spot" alt="축구" style="display: inline-block;width: 330px;padding: 2px;" /></a>
+                <a href="http://localhost:8090/pefomence" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565330039453o9ckix2.jpg" data-original=".png" class="spot" alt="콘서트" style="display: inline-block;width: 330px;padding: 2px;"/></a>
+                <a href="http://localhost:8090/baseball" class="imgwrap"><img src="/images/mainbaseball.png" data-original=".png" class="spot" alt="야구" style="display: inline-block;width: 330px;padding: 2px;" /></a>
+                <a href="http://localhost:8090/musical" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/15653254008291epwarn.jpg" data-original=".png" class="spot" alt="뮤지컬" style="display: inline-block;width: 330px;padding: 2px;"/></a>
+
+                <br />
             </div>
         </div>
-        <div class="col-sm-4 col-xs-12">
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
-                    <h1>Premium</h1>
-                </div>
-                <div class="panel-body">
-                    <p><strong>100</strong> Lorem</p>
-                    <p><strong>50</strong> Ipsum</p>
-                    <p><strong>25</strong> Dolor</p>
-                    <p><strong>10</strong> Sit</p>
-                    <p><strong>Endless</strong> Amet</p>
-                </div>
-                <div class="panel-footer">
-                    <h3>$49</h3>
-                    <h4>per month</h4>
-                    <button class="btn btn-lg">Sign Up</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+		<br>
+        <!-- FOOTER -->
 
-<!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid bg-grey">
-    <h2 class="text-center">CONTACT</h2>
-    <div class="row">
-        <div class="col-sm-5">
-            <p>Contact us and we'll get back to you within 24 hours.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
-        </div>
-        <div class="col-sm-7 slideanim">
-            <div class="row">
-                <div class="col-sm-6 form-group">
-                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-                </div>
-                <div class="col-sm-6 form-group">
-                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-                </div>
-            </div>
-            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <button class="btn btn-default pull-right" type="submit">Send</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <div th:insert="common/footer.html" id="footer"></div>
 
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
+        <script>
+            $(document).ready(function () {
+                // Add smooth scrolling to all links in navbar + footer link
+                $(".navbar a, footer a[href='#myPage']").on("click", function (event) {
+                    // Make sure this.hash has a value before overriding default behavior
+                    if (this.hash !== "") {
+                        // Prevent default anchor click behavior
+                        event.preventDefault();
 
-<footer class="container-fluid text-center">
-    <a href="#myPage" title="To Top">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-    <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
-</footer>
+                        // Store hash
+                        var hash = this.hash;
 
-<script>
-    $(document).ready(function(){
-        // Add smooth scrolling to all links in navbar + footer link
-        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-            // Make sure this.hash has a value before overriding default behavior
-            if (this.hash !== "") {
-                // Prevent default anchor click behavior
-                event.preventDefault();
-
-                // Store hash
-                var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 900, function(){
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
+                        // Using jQuery's animate() method to add smooth page scroll
+                        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                        $("html, body").animate(
+                            {
+                                scrollTop: $(hash).offset().top,
+                            },
+                            900,
+                            function () {
+                                // Add hash (#) to URL when done scrolling (default click behavior)
+                                window.location.hash = hash;
+                            }
+                        );
+                    } // End if
                 });
-            } // End if
-        });
 
-        $(window).scroll(function() {
-            $(".slideanim").each(function(){
-                var pos = $(this).offset().top;
+                $(window).scroll(function () {
+                    $(".slideanim").each(function () {
+                        var pos = $(this).offset().top;
 
-                var winTop = $(window).scrollTop();
-                if (pos < winTop + 600) {
-                    $(this).addClass("slide");
-                }
+                        var winTop = $(window).scrollTop();
+                        if (pos < winTop + 600) {
+                            $(this).addClass("slide");
+                        }
+                    });
+                });
             });
-        });
-    })
-</script>
-
-</body>
+        </script>
+    </body>
 </html>

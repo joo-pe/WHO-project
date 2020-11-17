@@ -1,34 +1,58 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<style>
-button{
-   color: #fff;
-    background-color: #0a9772;
-    border-color: #0a9772;
-}
-</style>
+ 
+ <style>
+ .input-group .form-control, .input-group-addon, .input-group-btn{
+ display: revert;
+ }
+ .btn{
+ font-size: 14px; 
+ visibility: inherit;
+ }
+ 
+ </style>
+ 
+<!--  <style> -->
+<!-- /* /* button{ */ */ -->
+<!-- /* /*    color: #fff; */ */ -->
+<!-- /* /*     background-color: #0a9772; */ */ -->
+<!-- /* /*     border-color: #0a9772; */ */ -->
+<!-- /* /* } */ */ -->
+<!--  </style> -->
 <header>
 
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <form style="padding-right: 100px;float: right;padding-top: 20px;">
+            <div class="input-group" >
+                <input type="text" class="form-control" size="10" placeholder="WHO-ticket:검색" required style="width: 170px;">
+                <div class="input-group-btn">
+                <i class="fa fa-search"></i>
+                    <button type="submit" class="btn">
+                    <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </form>
+        <div class="container" style="margin: 0px auto">
+            <div class="navbar-header"style="
+    margin-bottom: 9px;
+">
+                <a class="navbar-brand" href="/">
+                   <img th:src="@{/image/logo.png}" style="width: 55px;position: absolute;">
+                </a>
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"
+                 aria-expanded="false" style="
+    position: absolute;
+    right: 1px;
+    top: 10px;
+">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">
-                   <img th:src="@{/image/logo.png}" height="35px">
-                </a>
             </div>
-            <form style="padding-top: 15px;">
-            <div class="input-group" >
-                <input type="text" class="form-control" size="20" placeholder="Event, Aritst or Team" required>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button>
-                </div>
-            </div>
-        </form>
-            <div class="collapse navbar-collapse" id="myNavbar">
+            
+            <div class="collapse navbar-collapse" id="myNavbar" style="padding-right: 290px;margin-bottom: 3px;padding-top: 10px;margin-right: -100px;margin-left: 0px;">
                 <ul class="nav navbar-nav navbar-right">
                    <li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a></li>
                     <li><a sec:authorize="isAnonymous()" th:href="@{/login}">SIGN IN</a></li>
@@ -39,7 +63,7 @@ button{
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a th:href="@{/musical}">MUSICAL</a></li>
-                                <li><a href="/">THEATER</a></li>
+                                <li><a th:href="@{/concert}">CONCERT</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -53,21 +77,12 @@ button{
                     <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/myinfo}">MY Tickets</a></li>
                     <li><a th:href="@{/faq}">FAQ</a></li>
                     <li><a th:href="@{/notice}">NOTICE</a></li>
+                    
+                    
                 </ul>
+                
             </div>
+            
         </div>
-    </nav>
-
-    <div class="#">
-        <!-- <h1>WHO TICKET</h1>
-        <p>Find your Ticket</p> -->
-        <form>
-            <div class="input-group">
-                <input type="text" class="form-control" size="50" placeholder="Event, Aritst or Team" required>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
+    </nav>   
 </header>

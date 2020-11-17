@@ -44,7 +44,7 @@ float:none;
 	<div th:insert="common/adminHeader.html" id="header"></div>
 <div id="container">
 <div id="containerWrap">
-<h2>FAQ 게시물관리</h2>
+<h2 align="center">FAQ 게시물관리</h2>
 <form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{'/admin/post/edit/' + ${faqDto.id}}" enctype="multipart/form-data">
 
 <input type="hidden" name="_method" value="put"/>
@@ -196,16 +196,7 @@ $('#category2_real').hide();
 App.Board.Write.FAQInit();
 App.Board.Write.Init(true);
 </script> -->
-<aside id="sideMenu" style="padding-top: 0px;">
-<a href="#" id="sideClose" title="닫기" style="top: 10px;">
-<i class="fa fa-angle-left"></i></a>
-<h2>게시판관리</h2>
-<ul>
-<li class="Active"><span>
-<a th:href="@{/faq}">FAQ</a></span></li>
-<li><span>
-<a th:href="@{/admin/notice}">공지사항</a></span></li>
-</ul></aside></div></div><footer id="footer">
+</div></div><footer id="footer">
 <div id="footer_wrap"></div>
 </footer>
 </div>

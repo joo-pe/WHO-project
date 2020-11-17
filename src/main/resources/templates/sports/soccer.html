@@ -3,25 +3,26 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/sport.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    
 </head>
 <body style="background-color: #eee;">
 
 <!-- Top menu -->
 <div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+  <div class="w3-top" style="max-width:1200px;margin:auto">
    <div th:insert="common/header.html" id="header"></div>
   </div>
 </div>
 
 <!-- Top menu -->
-<div class="w3-top1">
+<div class="w3-top1" style="padding: 67px 0 0 0">
   <div class="soccerbanner" style="max-width:1200px;margin:auto;">
    <img alt="" src="images/soccer.PNG" style="width:100%">
   </div>
@@ -31,12 +32,13 @@
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;background-color: #eee">
 
   <!-- First Photo Grid-->
+  <form th:action="@{/soccer/ticket}">
   <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #eee;">
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
     <img src="http://ticketimage.interpark.com/TicketImage/sports/web/large/PS070.png" alt="대한민국 축구 국가대표팀" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">국가대표팀</div>
-      <button class="btn_reserve" type="button" onclick="">
+      <button class="btn_reserve" type="submit" >
         <span>예매하기</span>
       </button>
    </div>
@@ -69,7 +71,7 @@
       </div>
      </div>
     </div>
-    
+    </form>
   
   <!-- Second Photo Grid-->
   <!-- First Photo Grid-->
@@ -163,7 +165,8 @@
       <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
     </div>
   </div>
-  
+  <!-- FOOTER -->
+    <div th:insert="common/footer.html" id="footer"></div>
   <hr id="about">
   
 

@@ -38,7 +38,7 @@
 <div id="wrap">
     <div th:insert="common/adminHeader.html" id="header"></div>
     <div id="container">
-        <div id="containerWrap">
+        <div id="containerWrap" align="center">
             <h2>FAQ 게시물관리</h2>
             <table class="list">
                 <colgroup>
@@ -86,18 +86,19 @@
                     <option value="snc" selected="selected">제목+내용</option><option value="s">제목</option><option value="c">내용</option></select>
                 <input type="text" name="searchKeyword" value="">
                 <button type="submit" class="mBtn btn2">검색</button>
+                
             </form>
-            <div class="right_btn"><a th:href="@{/admin/post}" class="mBtn btn2">글쓰기</a></div>
+            <div class="right_btn" style="padding: 0 370px 0 0"><a th:href="@{/admin/post}" class="mBtn btn2">글쓰기</a></div>
             <div class="paging">
                 <div class="paging">
-                    <span class="first" href="/BHAdm/FAQ/?searchType=snc&amp;page=1" data-page="1">First</span>
-                    <span class="prev" href="/BHAdm/FAQ/?searchType=snc&amp;page=0" data-page="0">Prev</span>
-                    <span class="prevp" href="/BHAdm/FAQ/?searchType=snc&amp;page=0" data-page="0">Back</span>
+                    <span class="first" data-page="1">First</span>
+                    <span class="prev" data-page="0">Prev</span>
+                    <span class="prevp" data-page="0">Back</span>
                     <strong>1</strong>
                     <a href="/BHAdm/FAQ/?searchType=snc&amp;page=2" data-page="2">2</a>
                     <a href="/BHAdm/FAQ/?searchType=snc&amp;page=3" data-page="3">3</a>
                     <a class="nextp" href="/BHAdm/FAQ/?searchType=snc&amp;page=2" data-page="2">Forward</a>
-                    <span class="next" href="/BHAdm/FAQ/?searchType=snc&amp;page=4" data-page="4">Next</span>
+                    <span class="next" data-page="4">Next</span>
                     <a class="last" href="/BHAdm/FAQ/?searchType=snc&amp;page=3" data-page="3">Last</a>
                 </div></div>
             <div id="secretViewForm" class="hidden boardPassword modalConfirm">
@@ -131,18 +132,7 @@
             <script>
                 App.Admin.BoardListInit();
             </script>
-            <aside id="sideMenu" style="padding-top: 556.8px;">
-                <a href="#" id="sideClose" title="닫기" style="top: 566.8px;">
-                    <i class="fa fa-angle-left">
-
-                    </i></a>
-                <h2>게시판관리</h2>
-                <ul>
-                    <li class="Active"><span>
-<a th:href="@{/admin/faq}">FAQ</a></span></li>
-                    <li><span><a th:href="@{/admin/notice}">공지사항</a></span></li>
-                </ul>
-            </aside>
+         
         </div>
     </div>
     <footer id="footer">

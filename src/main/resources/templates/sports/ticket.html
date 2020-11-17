@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -215,142 +215,63 @@
 </style>
 <body>
 <!-- Header -->
-<div th:insert="common/header.html" id="header"></div>
-<section class="container" style="padding: 150px 0 0 0">
+<div th:insert="common/header.html" id="header" ></div>
+<section class="container" style="padding: 0 0 0 0">
     <h1>Events</h1>
-    <div class="row" >
+    <div class="row" th:each="sports : ${sportsList}">
         <article class="card fl-left">
             <section class="date">
                 <time datetime="23th feb">
-                    <span>23</span><span>feb</span>
+                    <span th:text="${#temporals.format(sports.dateTime, 'dd')}"></span>
+                    <span th:text="${#temporals.format(sports.dateTime, 'MM')}"></span>
                 </time>
             </section>
             <section class="card-cont">
-                <small>dj khaled</small>
-                <h3>live in sydney</h3>
+                <h3 th:text="${sports.title}"></h3>
                 <div class="even-date">
                     <i class="fa fa-calendar"></i>
                     <time>
-                        <span>wednesday 28 december 2014</span>
-                        <span>08:55pm to 12:00 am</span>
+                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
+                        <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
                     </time>
                 </div>
                 <div class="even-info">
                     <i class="fa fa-map-marker"></i>
                     <p>
-                        nexen square for people australia, sydney
+                    <span th:text="${sports.location}"></span>
                     </p>
                 </div>
-                <a href="#">tickets</a>
+                <a th:href="@{'/soccer/post/' + ${sports.id}}">tickets</a>
             </section>
         </article>
         <article class="card fl-left">
             <section class="date">
                 <time datetime="23th feb">
-                    <span>23</span><span>feb</span>
+                    <span th:text="${#temporals.format(sports.dateTime, 'dd')}"></span>
+                    <span th:text="${#temporals.format(sports.dateTime, 'MM')}"></span>
                 </time>
             </section>
             <section class="card-cont">
-                <small>dj khaled</small>
-                <h3>corner obsest program</h3>
+                <h3 th:text="${sports.title}"></h3>
                 <div class="even-date">
                     <i class="fa fa-calendar"></i>
                     <time>
-                        <span>wednesday 28 december 2014</span>
-                        <span>08:55pm to 12:00 am</span>
+                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
+                        <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
                     </time>
                 </div>
                 <div class="even-info">
                     <i class="fa fa-map-marker"></i>
                     <p>
-                        nexen square for people australia, sydney
+                    <span th:text="${sports.location}"></span>
                     </p>
                 </div>
-                <a href="#">tickets</a>
-            </section>
-        </article>
-    </div>
-    <div class="row">
-        <article class="card fl-left">
-            <section class="date">
-                <time datetime="23th feb">
-                    <span>23</span><span>feb</span>
-                </time>
-            </section>
-            <section class="card-cont">
-                <small>dj khaled</small>
-                <h3>music kaboom festivel</h3>
-                <div class="even-date">
-                    <i class="fa fa-calendar"></i>
-                    <time>
-                        <span>wednesday 28 december 2014</span>
-                        <span>08:55pm to 12:00 am</span>
-                    </time>
-                </div>
-                <div class="even-info">
-                    <i class="fa fa-map-marker"></i>
-                    <p>
-                        nexen square for people australia, sydney
-                    </p>
-                </div>
-                <a href="#">booked</a>
-            </section>
-        </article>
-        <article class="card fl-left">
-            <section class="date">
-                <time datetime="23th feb">
-                    <span>23</span><span>feb</span>
-                </time>
-            </section>
-            <section class="card-cont">
-                <small>dj khaled</small>
-                <h3>hello dubai festivel</h3>
-                <div class="even-date">
-                    <i class="fa fa-calendar"></i>
-                    <time>
-                        <span>wednesday 28 december 2014</span>
-                        <span>08:55pm to 12:00 am</span>
-                    </time>
-                </div>
-                <div class="even-info">
-                    <i class="fa fa-map-marker"></i>
-                    <p>
-                        nexen square for people australia, sydney
-                    </p>
-                </div>
-                <a href="#">cancel</a>
+                <a th:href="@{'/soccer/post/' + ${sports.id}}">tickets</a>
             </section>
         </article>
     </div>
-    </div>
-<!--<section class="container" style="padding: 64px 0 0 0">-->
-<!--    <h1>Events</h1>-->
-<!--    <div class="col-sm-6" th:each="sports : ${sportsList}">-->
-<!--        <article class="card fl-left">-->
-<!--            <section class="date">-->
-<!--                <time datetime="23th feb">-->
-<!--                    <span th:text="${#temporals.format(sports.dateTime, 'dd')}"></span>-->
-<!--                    <span th:text="${#temporals.format(sports.dateTime, 'MM')}"></span>-->
-<!--                </time>-->
-<!--            </section>-->
-<!--            <section class="card-cont">-->
-<!--                &lt;!&ndash;                    <small>dj khaled</small>&ndash;&gt;-->
-<!--                <h3 th:text="${sports.title}"></h3>-->
-<!--                <div class="even-date">-->
-<!--                    <i class="fa fa-calendar"></i>-->
-<!--                    <time>-->
-<!--                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>-->
-<!--                        <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>-->
-<!--                    </time>-->
-<!--                </div>-->
-<!--                <div class="even-info">-->
-<!--                    <i class="fa fa-map-marker"></i>-->
-<!--                    <p th:text="${sports.location}" ></p>-->
-<!--                </div>-->
-<!--                <a th:href="@{'/soccer/post/' + ${sports.id}}">tickets</a>-->
-<!--            </section>-->
-<!--        </article>-->
-<!--    </div>-->
-<!--</section>-->
+    
+</section>
+
 </body>
 </html>

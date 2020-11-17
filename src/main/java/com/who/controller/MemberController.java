@@ -4,11 +4,16 @@ import com.who.domain.MemberDetail;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.repository.MemberRepository;
 import com.who.dto.CertifiednumberDto;
+import com.who.dto.FaqDto;
 import com.who.dto.MailDto;
 import com.who.dto.MemberDto;
+import com.who.dto.NoticeDto;
 import com.who.dto.SportsDto;
 import com.who.helpers.ZXingHelper;
+import com.who.service.FaqService;
+import com.who.service.FileService;
 import com.who.service.MemberService;
+import com.who.service.NoticeService;
 import com.who.service.SendEmailService;
 import com.who.service.SportsService;
 
@@ -37,6 +42,9 @@ public class MemberController {
     private MemberRepository memberRepository;
     private SendEmailService sendEmailService;
     private SportsService sportsService;
+    private FaqService faqService;
+    private FileService fileService;
+    private NoticeService noticeService;
 
     //회원가입 동의페이지
     @GetMapping("/signup")
@@ -49,7 +57,7 @@ public class MemberController {
     public String dispSignup2() {
         return "login/signup2";
     }
-
+    
     //회원가입 처리
     @PostMapping("/signup2")
     public String execSignup(MemberDto memberDto) {
@@ -66,7 +74,11 @@ public class MemberController {
 
     // 로그인 결과 페이지
     @GetMapping("/login/result")
-    public String dispLoginResult() {
+    public String dispLoginResult(Model model) {
+    	 List<FaqDto> faqList = faqService.getFaqlist();
+         model.addAttribute("faqList", faqList); 
+         List<NoticeDto> noticeList = noticeService.getNoticelist();
+         model.addAttribute("noticeList", noticeList);
         return "login/loginSuccess";
     }
     

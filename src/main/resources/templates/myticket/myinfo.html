@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/myinfo.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,7 +23,7 @@
     <div th:insert="common/header.html" id="header"></div>
 
     <!-- Left Column -->
-    <div class="w3-third" style="padding: 80px 0 0 0">
+    <div class="w3-third" style="padding: 110px 0 0 0">
         <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container" align="center">
             <img alt="" src="/image/logo.png" width="100px">
@@ -67,7 +66,7 @@
     </div>
 
     <!-- Right Column -->
-    <div class="w3-twothird" style="padding: 80px 0 0 20px">
+    <div class="w3-twothird" style="padding: 110px 0 0 20px">
         <div class="w3-container w3-card w3-white w3-margin-bottom">
             <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>My Ticket</h2>
             <div class="w3-container" align="center">
@@ -113,13 +112,14 @@
                     </tbody>
                 </table>
             </div>
+            
         </div>
+    
     </div>
 
-    <!-- FOOTER -->
-    <div th:insert="common/footer.html" id="footer"></div>
 
 </body>
+
 <script>
     // Get the modal
     var modal = document.getElementById("myModal");

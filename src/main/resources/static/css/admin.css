@@ -1642,8 +1642,7 @@ input.price {
 #wrap #containerWrap {
 	position: relative;
 	min-height: 100%;
-	width: 1400px;
-	padding: 40px 30px 40px 250px;
+	width: 100%;
 	background: #f8f8f8;
 	background: -webkit-radial-gradient(rgb(255, 255, 255),
 		rgb(245, 245, 245), rgb(240, 240, 240), rgb(230, 230, 230));
@@ -1710,9 +1709,6 @@ input.price {
 	margin: 0;
 }
 
-#sideMenu ul {
-	padding-top: 10px;
-}
 
 #sideMenu li {
 	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -2041,9 +2037,8 @@ table.view td {
 }
 
 .leftBoardSearch, .left_btn {
-	float: left;
 	margin-top: 20px;
-	padding: 0;
+	padding: 0 640px 0 0;
 	padding-bottom: 20px;
 }
 
@@ -2054,7 +2049,6 @@ table.view td {
 }
 
 .bottomBtn {
-	float: left;
 	margin-top: 20px;
 	text-align: center;
 }
