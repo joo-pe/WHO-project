@@ -17,6 +17,7 @@ public class PayController {
     private TicketService ticketService;
     private SeatService seatService;
     private MemberService memberService;
+    private PerformanceService performanceService;
 
     @GetMapping("/pay/{no}")
     public String Pay(@PathVariable("no") Long no, Model model) {

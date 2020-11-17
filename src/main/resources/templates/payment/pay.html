@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WHO TICKET</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.9.95/css/materialdesignicons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--    iamport 관련-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+</head>
+<style>
+    body{margin-top:20px;}
+    .section-title {
+        position: relative;
+    }
+    .section-title h2 {
+        color: #1d2025;
+        position: relative;
+        margin: 0;
+        font-size: 24px;
+    }
+    @media (min-width: 768px) {
+        .section-title h2 {
+            font-size: 28px;
+        }
+    }
+    @media (min-width: 992px) {
+        .section-title h2 {
+            font-size: 34px;
+        }
+    }
+    .section-title.title-ex1 h2 {
+        padding-bottom: 20px;
+    }
+    @media (min-width: 768px) {
+        .section-title.title-ex1 h2 {
+            padding-bottom: 30px;
+        }
+    }
+    @media (min-width: 992px) {
+        .section-title.title-ex1 h2 {
+            padding-bottom: 40px;
+        }
+    }
+    .section-title.title-ex1 h2:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 12px;
+        width: 110px;
+        height: 1px;
+        background-color: #d6dbe2;
+    }
+    @media (min-width: 768px) {
+        .section-title.title-ex1 h2:before {
+            bottom: 17px;
+        }
+    }
+    @media (min-width: 992px) {
+        .section-title.title-ex1 h2:before {
+            bottom: 25px;
+        }
+    }
+    .section-title.title-ex1 h2:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 12px;
+        width: 40px;
+        height: 1px;
+        background-color: #0cc652;
+    }
+    @media (min-width: 768px) {
+        .section-title.title-ex1 h2:after {
+            bottom: 17px;
+        }
+    }
+    @media (min-width: 992px) {
+        .section-title.title-ex1 h2:after {
+            bottom: 25px;
+        }
+    }
+    .section-title.title-ex1.text-center h2:before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .section-title.title-ex1.text-center h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .section-title.title-ex1.text-right h2:before {
+        left: auto;
+        right: 0;
+    }
+    .section-title.title-ex1.text-right h2:after {
+        left: auto;
+        right: 0;
+    }
+    .section-title.title-ex1 p {
+        font-family: "Montserrat", sans-serif;
+        color: #8b8e93;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+
+    .price-card {
+        background: #f5f5f6;
+        padding: 40px 35px;
+        position: relative;
+        border-radius: 2px;
+        overflow: hidden;
+    }
+    .price-card:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: -35px;
+        width: 88px;
+        height: 88px;
+        background: #0cc652;
+        opacity: 0.2;
+        border-radius: 8px;
+        transform: rotate(45deg);
+    }
+    .price-card:after {
+        position: absolute;
+        content: "";
+        top: 30px;
+        right: -35px;
+        width: 88px;
+        height: 88px;
+        background: #0cc652;
+        opacity: 0.2;
+        border-radius: 8px;
+        transform: rotate(45deg);
+    }
+    .price-card h2 {
+        font-size: 26px;
+        font-weight: 600;
+    }
+    .price-card .btn {
+        font-size: 11px;
+        border-radius: 100px;
+        padding: 0 25px;
+        border: 0;
+        color: #fff;
+        float: right;
+    }
+    .price-card .btn.btn-primary {
+        border: 0 !important;
+        background: #0cc652;
+    }
+    .price-card.featured {
+        background: #fff;
+        border: 1px solid #ebebeb;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    .price-card:hover .btn {
+        background: #0cc652;
+        border-color: #0cc652;
+    }
+    p.price span {
+        display: inline-block;
+        padding: 45px 15px 50px;
+        padding-right: 0;
+        font-size: 50px;
+        font-weight: 600;
+        color: #0cc652;
+        position: relative;
+    }
+    p.price span:before {
+        position: absolute;
+        content: "₩";
+        font-size: 16px;
+        top: 25px;
+        font-weight: 300;
+        left: 0;
+    }
+    .pricing-offers {
+        padding: 0 0 10px;
+    }
+    .pricing-offers li {
+        padding: 0 0 16px;
+        line-height: 18px;
+    }
+    ul li {
+        list-style-type: none;
+    }
+    .btn.btn-mid {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
+    }
+    .hide {
+        display: none;
+    }
+</style>
+<body>
+<!-- Header -->
+<div th:insert="common/header.html" id="header"></div>
+
+<section class="pricing-section">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="section-title text-center title-ex1">
+                <h2>구매정보 확인</h2>
+            </div>
+        </div>
+        <div class="col-md-6 align-items-center">
+            <div class="price-card featured">
+                <h2 th:text="${sportsDto.title}"></h2>
+                <p class="price"><span id="price" th:text="${seatDto.price}"></span></p>
+                <ul class="pricing-offers">
+                    <li><i class="mdi mdi-check"></i> 시간 :  <span class="font-weight-bold" th:text="${#temporals.format(sportsDto.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span></li>
+                    <li><i class="mdi mdi-check"></i> 장소 : <span class="font-weight-bold" th:text="${sportsDto.location}"></span></li>
+                    <li><i class="mdi mdi-check"></i> 티켓 : <span class="font-weight-bold">1장</span></li>
+                    <li><i class="mdi mdi-check"></i> 구역 : <span class="font-weight-bold" th:text="${seatDto.area}"></span></li>
+                    <li class="hide"><i class="mdi mdi-check"></i> 구매자 : <span class="font-weight-bold" id="buyer_name" th:text="${memberDto.name}"></span></li>
+                    <li class="hide"><i class="mdi mdi-check"></i> 이메일 : <span class="font-weight-bold" id="buyer_email" th:text="${memberDto.email}"></span></li>
+                    <li class="hide"><i class="mdi mdi-check"></i> 핸드폰 : <span class="font-weight-bold" id="buyer_phone" th:text="${memberDto.phone}"></span></li>
+
+
+                </ul>
+<!--                <div>-->
+<!--                    <button class="btn btn-primary btn-mid" id="charge_eth" type="button">이더리움</button>-->
+<!--                </div>-->
+                <div>
+                    <button class="btn btn-mid btn-primary" id="inicis" type="button">결제하기</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+<script>
+    $('#charge_eth').click(async function () {
+        if (typeof window.ethereum !== 'undefined') {
+            console.log('MetaMask is installed!');
+            const abi = [
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "newOwner",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "ticketId",
+                            "type": "uint256"
+                        }
+                    ],
+                    "name": "changeOwner",
+                    "outputs": [
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "ticketId",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "ticketname",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "createTicket",
+                    "outputs": [
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "email",
+                    "outputs": [
+                        {
+                            "internalType": "string",
+                            "name": "",
+                            "type": "string"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "ticketId",
+                            "type": "uint256"
+                        }
+                    ],
+                    "name": "payment",
+                    "outputs": [
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "payable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "ticket",
+                    "outputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+            ];
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+            const account = accounts[0];
+
+            const SendEth = window.web3.toWei(1,'ether');
+            const data = (new window.web3.eth.contract(abi,'0xe3EC1A79fAD5ecC332Ee8744F1E5f4AA6014635a')).methods.payment("ticketId").encodeABI();
+            const transactionParameters = {
+                nonce: '0x00', // ignored by MetaMask
+                to: '0xe3EC1A79fAD5ecC332Ee8744F1E5f4AA6014635a', // Required except during contract publications.
+                from: account, // must match user's active address.
+                value: window.web3.toHex(SendEth), // Only required to send ether to the recipient from the initiating external account.
+                data:data
+            };
+
+            const txHash = await ethereum.request({
+                method: 'eth_sendTransaction',
+                params: [transactionParameters],
+            });
+
+
+        }
+        else{
+            alert("메타마스크를 설치해주세요.")
+        }
+
+
+    });
+    $("#inicis").click(function () {
+        var IMP = window.IMP;
+        IMP.init("imp96244254") //가맹점 식별
+
+        var name = $("#buyer_name").val();
+        var email = $("#buyer_email").val();
+        var phone = $("#buyer_phone").val();
+        var price = parseInt($("#price").val(), 10);
+        // 결제창 호출 : 지정한 pg사의 결제모듈 창 나타나거나 pg사의 웹사이트로 리다이렉트
+        IMP.request_pay({ //parameter
+            pg: 'html5_inicis',
+            pay_method: 'card',
+            merchant_uid: 'merchant_' + new Date().getTime(),
+            name: 'Who Ticket',
+            amount: 100,
+            buyer_email: email,
+            buyer_name: name,
+            buyer_tel: phone
+        }, function (rsp) { //calback
+            console.log(rsp);
+            if (rsp.success) { //결제 성공 시 로직
+                var msg = '결제가 완료되었습니다.';
+                msg += '고유ID : ' + rsp.imp_uid;
+                msg += '상점 거래ID : ' + rsp.merchant_uid;
+                msg += '결제 금액 : ' + rsp.paid_amount;
+                msg += '카드 승인번호 : ' + rsp.apply_num;
+                // alert(msg);
+                location.href = "Success";
+
+            } else { //결제 실패 시 로직
+                var msg = '결제에 실패하였습니다 : ';
+                msg += rsp.error_msg;
+                // alert(msg);
+                location.href = "Fail";
+
+            }
+        });
+    });
+
+    $("#kako").click(function () {
+        var IMP = window.IMP;
+        IMP.init("imp96244254") //가맹점 식별
+
+        // 결제창 호출 : 지정한 pg사의 결제모듈 창 나타나거나 pg사의 웹사이트로 리다이렉트
+        IMP.request_pay({ //parameter
+            pg: 'kakaopay',
+            pay_method: 'card',
+            merchant_uid: 'merchant_' + new Date().getTime(),
+            name: '주문명 : 결제테스트',
+            amount: 100,
+            buyer_email: 'ellendusrud@naver.com',
+            buyer_name: '김연경',
+            buyer_tel: '010-1234-5678'
+        }, function (rsp) { //calback
+            console.log(rsp);
+            if (rsp.success) { //결제 성공 시 로직
+                var msg = '결제가 완료되었습니다.';
+                msg += '고유ID : ' + rsp.imp_uid;
+                msg += '상점 거래ID : ' + rsp.merchant_uid;
+                msg += '결제 금액 : ' + rsp.paid_amount;
+                msg += '카드 승인번호 : ' + rsp.apply_num;
+                alert(msg);
+
+            } else { //결제 실패 시 로직
+                var msg = '결제에 실패하였습니다 : ';
+                msg += rsp.error_msg;
+                alert(msg);
+
+            }
+        });
+    });
+</script>
