@@ -21,14 +21,6 @@ public class FaqController {
         model.addAttribute("faqList", faqList);
         return "admin/faq/list";
     }
-    
-    @GetMapping("/faq")
-    public String faq(Model model) {
-        List<FaqDto> faqList = faqService.getFaqlist();
-
-        model.addAttribute("faqList", faqList);
-        return "faq/list";
-    }
 
     @GetMapping("/admin/post")
     public String write() {
@@ -78,5 +70,29 @@ public class FaqController {
 
         model.addAttribute("faqList", faqDtoList);
         return "admin/faq/list";
+    }
+    
+    @GetMapping("/faq")
+    public String faq(Model model) {
+        List<FaqDto> faqList = faqService.getFaqlist();
+
+        model.addAttribute("faqList", faqList);
+        return "faq/list";
+    }
+    
+//    @GetMapping("/faq/search")
+//    public String search1(@RequestParam(value = "keyword") String keyword, Model model) {
+//        List<FaqDto> faqDtoList = faqService.searchPosts(keyword);
+//
+//        model.addAttribute("faqList", faqDtoList);
+//        return "faq/list";
+//    }
+    
+    @GetMapping("/faq/edit/{no}")
+    public String list(@PathVariable("no") Long no, Model model) {
+    FaqDto faqDto = faqService.getPost(no);
+
+    model.addAttribute("faqDto", faqDto);  
+    return "faq/detail";
     }
 }

@@ -22,6 +22,8 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2017.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
@@ -41,6 +43,7 @@
 	<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
 <!--===============================================================================================-->
 	<script th:src="@{js/main.js}"></script>
+	
 </head>
 <body>
 	
@@ -55,6 +58,19 @@
 					</a>
 					WHOTicket 가입
 				</span>
+				
+                    <p class="w3-large"><b>
+                    <a class="fa fa-asterisk w3-margin-right w3-text-teal" 
+                    href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"> 메타마스크 설치필수</a></b></p>
+                    
+                <div class="wrap-input100 validate-input m-b-20">
+					<input id="showAccount" class="input100" type="text" name="privatekey" maxlength="50">
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="container-login100-form-btn">
+                    <button type="button" class="login100-form-btn enableEthereumButton">이더리움 연결</button>
+                </div>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter userEmail">
 					<input id="email" class="input100" type="text" name="email" maxlength="50" placeholder="이메일 입력">
@@ -135,6 +151,28 @@
 	
 	<div id="dropDownSelect1"></div>
 <script type="text/javascript">
+
+	 // connect Ethereum and get Account
+    const ethereumButton = document.querySelector('.enableEthereumButton');
+    const showAccount = document.querySelector('.showAccount');
+
+    ethereumButton.addEventListener('click', () => {
+        //Will Start the metamask extension
+        if (typeof window.ethereum !== 'undefined') {
+            console.log('MetaMask is installed!');
+            getAccount();
+        }
+        else{
+            alert("메타마스크를 설치해주세요.")
+        }
+    });
+
+    async function getAccount() {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        document.getElementById("showAccount").value = account;
+    }
+
     $('.login100-form-btn').click(function () {
     	
     	$.ajax({

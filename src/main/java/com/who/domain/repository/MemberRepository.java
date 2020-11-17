@@ -7,16 +7,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 	
     //Optional<MemberEntity> findById(String email);
     
-    MemberEntity findByEmail(String email);
-    
+//    MemberEntity findByEmail(String email);
+
     MemberEntity findMemberEntityById(Long id);
 	
     MemberEntity findMemberEntityByEmail(Long id);

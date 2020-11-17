@@ -24,13 +24,6 @@ public class HomeController {
         return "index2.html";
     }
 
-    @GetMapping("/soccer")
-    public String soccerList(Model model) {
-        List<SportsDto> sportsDtoList = sportsService.getSportsList();
-
-        model.addAttribute("sportsList", sportsDtoList);
-        return "sports/soccer";
-    }
 
     @GetMapping("/productdetail")
     public String productDetail() {

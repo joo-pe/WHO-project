@@ -1,16 +1,18 @@
 package com.who.controller;
 
 import com.who.MD5Generator;
-import com.who.dto.FileDto;
-import com.who.dto.SportsDto;
-import com.who.service.FileService;
-import com.who.service.SportsService;
+import com.who.domain.MemberDetail;
+import com.who.domain.entity.MemberEntity;
+import com.who.domain.repository.MemberRepository;
+import com.who.dto.*;
+import com.who.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,8 @@ import java.util.List;
 public class SportsController {
     private SportsService sportsService;
     private FileService fileService;
+    private SeatService seatService;
+    private MemberRepository memberRepository;
 
     @GetMapping("/admin/sports")
     public String list(Model model) {
@@ -95,15 +99,6 @@ public class SportsController {
         return "admin/sports/detail";
     }
 
-    @GetMapping("/soccer/post/{no}")
-    public String soccerDetail(@PathVariable("no") Long no, Model model) {
-        SportsDto sportsDto = sportsService.getSports(no);
-        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
-
-        model.addAttribute("sportsDto", sportsDto);
-        model.addAttribute("fileDto", fileDto);
-        return "sports/detail";
-    }
 
     @GetMapping("/admin/sports/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
@@ -148,4 +143,60 @@ public class SportsController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; fileName=\""+fileDto.getOriginFileName() + "\"")
                 .body(resource);
     }
+
+    //----------------------------------일반------------------------------------------
+    @GetMapping("/soccer")
+    public String soccerList(Model model) {
+        return "sports/soccer";
+    }
+    //야구 예매 페이지
+    @GetMapping("/baseball")
+    public String dispbaseball() {
+    	return "sports/baseball";
+    }
+
+    @GetMapping("/soccer/ticket")
+    public String soccerTicket(Model model) {
+        List<SportsDto> sportsDtoList = sportsService.getSportsList();
+
+        model.addAttribute("sportsList", sportsDtoList);
+        return "sports/ticket";
+    }
+
+    @GetMapping("/soccer/ticket/{no}")
+    public String soccerDetail(@PathVariable("no") Long no, @AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+        String email = memberDetail.getUsername();
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+
+        SportsDto sportsDto = sportsService.getSports(no);
+        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+        List<Object[]> availableSeats = seatService.countAvailableSeat();
+
+        model.addAttribute("currentUser", memberEntity);
+        model.addAttribute("sportsDto", sportsDto);
+        model.addAttribute("fileDto", fileDto);
+        model.addAttribute("availableSeats", availableSeats);
+        return "sports/detail";
+    }
+
+    @PostMapping("/soccer/ticket/{no}")
+    public String saveBooking(@PathVariable("no") Long no, @AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+//        String email = memberDetail.getUsername();
+//        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+////        MemberDto memberDto = memberService.convertEntityToDto(memberEntity);
+//        MemberDto memberDto = memberService.getMember(memberEntity.getId());
+//
+//        SportsDto sportsDto = sportsService.getSports(no);
+//
+//        BookingDto bookingDto = new BookingDto(null, memberDto, sportsDto, false);
+//        Long bookNo = bookingService.saveBooking(bookingDto);
+//
+////        BookingDto bookingDto2 = bookingService.getBooking(bookNo);
+//
+////        model.addAttribute("bookingDto", bookingDto);
+//
+////        return "sports/pay" + bookNo;
+        return "redirect:/pay/1";
+    }
+
 }

@@ -6,6 +6,7 @@ import com.who.domain.repository.MemberRepository;
 import com.who.dto.CertifiednumberDto;
 import com.who.dto.MailDto;
 import com.who.dto.MemberDto;
+import com.who.dto.SessionUser;
 import com.who.dto.SportsDto;
 import com.who.helpers.ZXingHelper;
 import com.who.service.MemberService;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,6 +39,7 @@ public class MemberController {
     private MemberRepository memberRepository;
     private SendEmailService sendEmailService;
     private SportsService sportsService;
+    private final HttpSession httpSession;
 
     //회원가입 동의페이지
     @GetMapping("/signup")
@@ -60,7 +63,17 @@ public class MemberController {
 
     // 로그인 페이지
     @GetMapping("/login") 
-    public String dispLogin() {
+    public String dispLogin(Model model) {
+    	
+    	//CustomOAuth2UserService에서 로그인 성공시 세션에 SessionUser를 저장
+    	//즉, 로그인 성공 시 httpSession.getAttribute("user")에서 값을 가져올 수 있다
+    	SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    	
+    	//세션에 값이 있을때만 model에 userName 등록
+    	if(user != null) {  
+            model.addAttribute("userName", user.getName());
+        }
+
         return "login/login";
     }
 
@@ -86,18 +99,6 @@ public class MemberController {
     @GetMapping("/denied")
     public String dispDenied() {
         return "login/denied";
-    }
-    
-    //축구 예매 페이지
-    @GetMapping("/soccer")
-    public String dispsoccer() {
-    	return "sport/soccer";
-    }
-
-    //야구 예매 페이지
-    @GetMapping("/baseball")
-    public String dispbaseball() {
-    	return "sport/baseball";
     }
 
     // 현재 사용자 정보 가져오기
