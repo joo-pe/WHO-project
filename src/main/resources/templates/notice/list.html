@@ -8,67 +8,62 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!--    <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>-->
-
-
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
 </head>
 <body>
     <!-- HEADER -->
     <div th:insert="common/header.html" id="header"></div>
+
     
-    <div class="container bootstrap snippets bootdey">
+    <hr>
+    <div class="container bootstrap snippets bootdey" style="padding: 64px 0 0 0">
         <div class="row">
             <div class="col-lg-12">
                 <div class="main-box no-header clearfix">
                     <div class="main-box-body clearfix">
-                        <div class="table-responsive" style="padding: 125px 0 0 0">
+                        <div class="table-responsive">
                         <div class="container">
-					       
 					     </div>
-    <div class="container" >
-        <table id="example" class="table table-cnodensed table user-list">
-            <thead>
-	            <tr class="header">
-	                <th class="subject" style="text-align: center;">번호</th>
-	                <th class="subject" style="text-align: center;">아이콘</th>
-	                <th class="subject" style="text-align: center;">글제목</th>
-	                <th class="subject" style="text-align: center;">작성자</th>
-	                <th class="subject" style="text-align: center;">공지날짜</th>
-	            </tr>
-            </thead>
-            <tbody>
-	            <!-- CONTENTS !-->
-	            <tr th:each="notice : ${noticeList}">
-	                <td style="text-align: center;">
-	                    <span th:text="${notice.id}"></span>
-	                </td>
-	                <td align="center">
+                        <div class="container">
+                            <table class="table user-list">
+                                <thead>
+                                <tr>
+                                	<th><span>번호</span></th>
+                                	<th><span>아이콘</span></th>
+                                    <th><span>글제목</span></th>
+                                    <th><span>작성자</span></th>
+                                    <th><span>공지날짜</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="notice : ${noticeList}">
+                                <td style="text-align: center;">
+	                   				<span th:text="${notice.id}"></span>
+	                			</td>
+                                <td align="center">
                                  <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-                    </td>
-	                <td class="bottom" style="text-align: center;">
-	                    <a th:href="@{'/notice/edit/'+ ${notice.id}}" data-toggle="modal" data-target="#myModal" class="table-link text-warning">
-	                        <span th:text="${notice.title}"></span>
-	                    </a>
-	                </td>
-	                <td style="text-align: center;">
-	                    <span th:text="${notice.writer}"></span>
-	                </td>
-	                <td style="text-align: center;">
-	                    <span th:text="${#temporals.format(notice.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
-	                </td>
-	            </tr>  
-            </tbody>
-         </table>
-       </div>
-
-       <div align="center">
+                                </td>
+                                    <td>
+                                    	<a th:href="@{'/notice/edit/'+ ${notice.id}}" data-toggle="modal" data-target="#myModal" class="table-link text-warning">
+                                    		<span th:text="${notice.title}"></span>
+                                    	</a>
+                                    </td>
+                                    <td style="text-align: center;">
+	                    				<span th:text="${notice.writer}"></span>
+	                				</td>
+                                    <td>
+                                        <span th:text="${#temporals.format(notice.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                                    </td>  
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div align="center">
          <ul class="pagination">
              <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
              <li><a href="#">1</a></li>
@@ -78,48 +73,35 @@
              <li><a href="#">5</a></li>
              <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
           </ul>
-       </div>
+        </div> 
         <!-- 검색 form -->
 		<form action="/notice/search" method="GET" class="form-search" style="float: right;padding: 15px">
 			<input name="keyword" type="text" placeholder="검색어를 입력해주세요" style="width: 250px">
 			<button><i class="glyphicon glyphicon-search"></i></button>
 		</form>
-       	</div> 
-       		</div>
-       			</div>
-       				</div>
-       					</div>
-       						</div>
-                     	<!-- Modal --> 
-						<div 
-						class="modal fade" 
-						id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 100px 0 0 0"> 
-						        
-						        <div class="modal-dialog modal-lg">
-						        
-						                <div class="modal-content">
-						            
-						                        <div class="modal-body">  
-						                        
-						                       
-						           
-                        			</div> 
-                				</div>               				
-                			</div>                			
-                		</div> 
-              	
-               
-    
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+  </div>
+ 	<!-- Modal --> 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 100px 0 0 0"> 
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-body">  
+				</div> 
+            </div>               				
+        </div>                			
+    </div> 
+     
 <!-- FOOTER -->
-<div th:insert="common/footer.html" id="footer"></div>
-
-
-</body>
-
+<div th:insert="common/footer.html" id="footer"></div> 
 <script>
        $(document.body).on('hidden.bs.modal', function () {
     	    $('#myModal').removeData('bs.modal')
     	});
 </script>
+</body>
 </html>

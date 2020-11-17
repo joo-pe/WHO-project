@@ -1,6 +1,8 @@
 package com.who.controller;
 
+import com.who.dto.PerformanceDto;
 import com.who.dto.SportsDto;
+import com.who.service.PerformanceService;
 import com.who.service.SportsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @AllArgsConstructor
 public class PayController {
     private SportsService sportsService;
+    private PerformanceService performanceService;
 
     @GetMapping("/soccer/post/{no}/pay")
     public String soccerPay(@PathVariable("no") Long no, Model model) {
@@ -19,6 +22,13 @@ public class PayController {
 
         model.addAttribute("sportsDto", sportsDto);
         return "sports/pay";
+    }
+    @GetMapping("/musical/post/{no}/pay")
+    public String musicalPay(@PathVariable("no") Long no, Model model) {
+        PerformanceDto performanceDto = performanceService.getPerformance(no);
+
+        model.addAttribute("performanceDto", performanceDto);
+        return "peformance/pay";
     }
 
     @GetMapping("/pay/paySuccess")

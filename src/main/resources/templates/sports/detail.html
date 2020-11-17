@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="musical/css" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/css/musical.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -28,7 +27,7 @@
                 <div class="card card-profile">
                     <div style="background-image: url(https://demo.bootstrapious.com/admin-premium/1-4-5/img/photos/paul-morris-116514-unsplash.jpg);" class="card-header"></div>
                     <div class="card-body text-center" align="center">
-                        <img th:src="@{/images/39f6855d839d6a1fe475194fd48332b7.png}" alt="cover" class="cover" style="width: 520px">
+                        <img th:src="@{'/images/'+${fileDto.fileName}}" alt="cover" class="cover" style="width: 520px">
                     </div>
                 </div>
                 <br>

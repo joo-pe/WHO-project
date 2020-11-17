@@ -97,7 +97,7 @@
                             <div th:if="${sportsDto.fileId != null}">
                                 <a class="card-text" th:href="@{'/download/' + ${sportsDto.fileId}}" th:text="${fileDto.fileName}"></a>
                                 <br>
-                                <img th:src="@{/images/{name}(name=${fileDto.fileName})}">
+                                <img th:src="@{'/images/'+${fileDto.fileName}}">
 
                             </div>
                         </td>

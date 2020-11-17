@@ -10,7 +10,7 @@ button{
 <header>
 
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container" style="margin-bottom:10px">
+        <div class="container" style="margin: 0px auto">
             <div class="navbar-header" style="padding: 15px 15px;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="top: 6px;">
                     <span class="icon-bar"></span>
@@ -23,13 +23,13 @@ button{
                 <div class="input-group" style="top: 15px">
                 <input type="text" class="form-control" size="20" placeholder="Event, Aritst or Team" required> 
                 <div class="input-group-btn" style="padding-right: 13px">
-                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;">Search</button>
+                    <button type="submit" class="btn" style="color: #fff; background-color: #0a9772; border-color: #0a9772;"><i class="fa fa-search"></i></button>
                 </div>
             </div>
             </div>
             <form style="padding-top: 15px;">
             
-            <div class="collapse navbar-collapse" id="myNavbar" >
+            <div class="collapse navbar-collapse" id="myNavbar" style="font-family:Verdana,sans-serif;font-size:15px;line-height:1.5;">
             
                 <ul class="nav navbar-nav navbar-right">
                    <li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a></li>
@@ -41,7 +41,7 @@ button{
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a th:href="@{/musical}">MUSICAL</a></li>
-                                <li><a href="/">THEATER</a></li>
+                                <li><a th:href="@{/concert}">CONCERT</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

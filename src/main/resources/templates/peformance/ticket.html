@@ -218,55 +218,55 @@
 <div th:insert="common/header.html" id="header" ></div>
 <section class="container" style="padding: 0 0 0 0">
     <h1>Events</h1>
-    <div class="row" th:each="sports : ${sportsList}">
+    <div class="row" th:each="performance : ${performanceList}">
         <article class="card fl-left">
             <section class="date">
                 <time datetime="23th feb">
-                    <span th:text="${#temporals.format(sports.dateTime, 'dd')}"></span>
-                    <span th:text="${#temporals.format(sports.dateTime, 'MM')}"></span>
+                    <span th:text="${#temporals.format(performance.dateTime, 'dd')}"></span>
+                    <span th:text="${#temporals.format(performance.dateTime, 'MM')}"></span>
                 </time>
             </section>
             <section class="card-cont">
-                <h3 th:text="${sports.title}"></h3>
+                <h3 th:text="${performance.title}"></h3>
                 <div class="even-date">
                     <i class="fa fa-calendar"></i>
                     <time>
-                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
-                        <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
+                        <span th:text="${#temporals.format(performance.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
+                        <span th:text="${#temporals.format(performance.dateTime, 'HH:mm a')}"></span>
                     </time>
                 </div>
                 <div class="even-info">
                     <i class="fa fa-map-marker"></i>
                     <p>
-                    <span th:text="${sports.location}"></span>
+                    <span th:text="${performance.location}"></span>
                     </p>
                 </div>
-                <a th:href="@{'/soccer/post/' + ${sports.id}}">tickets</a>
+                <a th:href="@{'/musical/post/' + ${performance.id}}">tickets</a>
             </section>
         </article>
         <article class="card fl-left">
             <section class="date">
                 <time datetime="23th feb">
-                    <span th:text="${#temporals.format(sports.dateTime, 'dd')}"></span>
-                    <span th:text="${#temporals.format(sports.dateTime, 'MM')}"></span>
+                    <span th:text="${#temporals.format(performance.dateTime, 'dd')}"></span>
+                    <span th:text="${#temporals.format(performance.dateTime, 'MM')}"></span>
                 </time>
             </section>
             <section class="card-cont">
-                <h3 th:text="${sports.title}"></h3>
+                <h3 th:text="${performance.title}"></h3>
                 <div class="even-date">
                     <i class="fa fa-calendar"></i>
                     <time>
-                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
-                        <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
+                        <span th:text="${#temporals.format(performance.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
+                        <span th:text="${#temporals.format(performance.dateTime, 'HH:mm a')}"></span>
                     </time>
                 </div>
                 <div class="even-info">
                     <i class="fa fa-map-marker"></i>
                     <p>
-                    <span th:text="${sports.location}"></span>
+                    <span th:text="${performance.location}"></span>
                     </p>
                 </div>
-                <a th:href="@{'/soccer/post/' + ${sports.id}}">tickets</a>
+                <a th:href="@{'/musical/post/' + ${performance.id}}">tickets</a>
             </section>
         </article>
     </div>
