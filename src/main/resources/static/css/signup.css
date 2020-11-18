@@ -562,13 +562,7 @@ html[lang="zh-hans"] .sel {
 }
 .terms_bx {
     display: block;
-    padding-top: 30px;
-}.terms_p{
-   background-color: #ffffff;
-   border-top: 1px solid black;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+/*     padding-top: 30px; */
 }
 .terms_box {
     position: relative;

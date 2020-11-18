@@ -2,6 +2,7 @@ package com.who.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.who.domain.entity.SportsEntity;
+import com.who.domain.entity.Sports2Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -52,6 +53,25 @@ public class SportsDto {
                 .build();
         return sportsEntity;
     }
+    
+    public Sports2Entity to2Entity() {
+        Sports2Entity sports2Entity = Sports2Entity.builder()
+                .id(id)
+                .category(category)
+                .title(title)
+                .detail(detail)
+                .fileId(fileId)
+                .dateTime(dateTime)
+                .city(city)
+                .location(location)
+                .ticketOpen(ticketOpen)
+                .ticketClose(ticketClose)
+                .ticketMax(ticketMax)
+                .team1(team1)
+                .team2(team2)
+                .build();
+        return sports2Entity;
+    }
 
     @Builder
     public SportsDto(Long id, String category, String title, String detail,
@@ -73,4 +93,5 @@ public class SportsDto {
         this.team2 = team2;
     }
 
+    
 }
