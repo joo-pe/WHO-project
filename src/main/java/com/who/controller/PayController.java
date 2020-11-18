@@ -38,6 +38,12 @@ public class PayController {
         model.addAttribute("memberDto", memberDto);
         return "payment/pay";
     }
+    
+    @GetMapping("/pay")
+    public String Pay() {
+    	return "sports/pay";
+    }
+    
     @GetMapping("/musical/post/{no}/pay")
     public String musicalPay(@PathVariable("no") Long no, Model model) {
         PerformanceDto performanceDto = performanceService.getPerformance(no);

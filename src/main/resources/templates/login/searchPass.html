@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Login WHOTicket</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" th:href="@{/image/icons/favicon.ico}"/>
+   <title>Login WHOTicket</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->   
+   <link rel="icon" type="image/png" th:href="@{/image/icons/favicon.ico}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+<!--===============================================================================================-->   
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->   
+   <link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+<!--===============================================================================================-->   
+   <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+   <link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
 <!--===============================================================================================-->
-	<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
+   <script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
+   <script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
-	<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+   <script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+   <script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/select2/select2.min.js}"></script>
+   <script th:src="@{vendor/select2/select2.min.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
-	<script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
+   <script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
+   <script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
+   <script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{js/main.js}"></script>
+   <script th:src="@{js/main.js}"></script>
 <!--===============================================================================================-->
-	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js}"></script>
+   <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js}"></script>
 </head>
-<body>
-	
-	<!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
-	<div class="container-login100">
-		<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30">
-			<form th:action="@{/login/result}" method="post" class="login100-form validate-form">
-			
-				<span class="login100-form-title p-b-37" >
-					<a th:href="@{/}">
-						<img th:src="@{/image/logo.png}" height="60px">
-					</a><br>
-					Forget password
-				</span>
-				<div style="color: #ac2925">
-                      <div style="text-align: center;">Send temporary password by email</div>
+<body style="background-color: #dadde6;">
+   
+   <!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
+   <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30">
+         <form th:action="@{/login/result}" method="post" class="login100-form validate-form">
+         
+            <span class="login100-form-title p-b-37" >
+               <a th:href="@{/}">
+                  <img th:src="@{/image/logo.png}" height="60px">
+               </a><br>
+               비밀 번호 찾기
+            </span>
+            <div style="color: #ac2925">
+                      <div style="text-align: center;">임시 비밀번호를 이메일로 발송하기</div>
                     </div><br>
 
-				<div class="wrap-input100 validate-input m-b-20">
-					<input id="email" class="input100" type="text" name="email" placeholder="Please enter your email">
-					<span class="focus-input100"></span>
-				</div>
-				<div class="wrap-input100 validate-input m-b-25">
-					<input id="name" class="input100" type="text" name="name" placeholder="Please enter your name">
-					<span class="focus-input100"></span>
-				</div>
-				
-				<br>
-				<div class="container-login100-form-btn">
-					<button type="button" class="login100-form-btn" id="checkEmail">
-						Send Email
-					</button>
-				</div>
-				<div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
+            <div class="wrap-input100 validate-input m-b-20">
+               <input id="email" class="input100" type="text" name="email" placeholder="Email을 입력해주세요">
+               <span class="focus-input100"></span>
+            </div>
+            <div class="wrap-input100 validate-input m-b-25">
+               <input id="name" class="input100" type="text" name="name" placeholder="성함을 입력해주세요">
+               <span class="focus-input100"></span>
+            </div>
+            
+            <br>
+            <div class="container-login100-form-btn">
+               <button type="button" class="login100-form-btn" id="checkEmail">
+                  이메일 보내기
+               </button>
+            </div>
+            <div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
 
-				<div class="text-center">
-					<a sec:authorize="isAnonymous()" th:href="@{/login}" class="txt2 hov1">
-						Cancel
-					</a>
-				</div>
-			</form>			
-		</div>
-	</div>
-	<script>
+            <div class="text-center">
+               <a sec:authorize="isAnonymous()" th:href="@{/login}" class="txt2 hov1">
+                  취소하기
+               </a>
+            </div>
+         </form>         
+      </div>
+   </div>
+   <script>
 
     $('.modal').on('hidden.bs.modal', function (e) {
         console.log('modal close');
@@ -120,10 +120,10 @@
                                     "name": name
                                 },
                                 
-								success: function (res) {
-									window.location = "/login";
-								}
-								
+                        success: function (res) {
+                           window.location = "/login";
+                        }
+                        
                             })
                             
                         }
@@ -138,8 +138,8 @@
         })
     })
 </script>
-	
-	<div id="dropDownSelect1"></div>
-	
+   
+   <div id="dropDownSelect1"></div>
+   
 </body>
 </html>

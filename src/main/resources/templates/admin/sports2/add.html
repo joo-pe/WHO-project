@@ -46,7 +46,7 @@
     <div id="container">
         <div id="containerWrap">
             <h2>스포츠 관리</h2>
-            <form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{/admin/sports/post}"
+            <form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{/admin/sports2/post1}"
                   enctype="multipart/form-data">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <table class="write">
@@ -56,7 +56,7 @@
                         <td>
                             <select name="category" id="category" required="required">
                                 <option value="">선택</option>
-                                <option value="축구">축구</option>
+                                <option value="야구">야구</option>
                             </select>
                         </td>
                     </tr>
@@ -148,29 +148,29 @@
 <!--                            </div>-->
 <!--                        </td>-->
 <!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <th><i class="requiredBullet" title="필수항목">* </i> 좌석</th>-->
-<!--                        <td id="seat_list">-->
-<!--                            <div>-->
-<!--                                <span class="guide"> 구역 </span>-->
-<!--                                <input type="text" name="area" id="MD-subject" data-displayname="구역"-->
-<!--                                       data-maxlength="20" maxlength="20" required="required" class="w10p">-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <span class="guide"> 가격 </span>-->
-<!--                                <input type="text" name="price" id="MD-subject" data-displayname="가격"-->
-<!--                                       data-maxlength="20" maxlength="20" required="required" class="w10p">-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <span class="guide"> 총 좌석수 </span>-->
-<!--                                <input type="text" name="total" id="MD-subject" data-displayname="좌석수"-->
-<!--                                       data-maxlength="20" maxlength="20" required="required" class="w10p">-->
-<!--                                <button id="add" onclick="add_row()" class="mBtn btn1">추가</button>-->
-<!--                                <button id="delete" onclick="delete_row()" class="mBtn btn1">삭제</button>-->
-<!--                            </div>-->
-<!--                            </div>-->
-<!--                        </td>-->
-<!--                    </tr>-->
+                    <tr>
+                        <th><i class="requiredBullet" title="필수항목">* </i> 좌석</th>
+                        <td id="seat_list">
+                            <div>
+                                <span class="guide"> 구역 </span>
+                                <input type="text" name="area" id="MD-subject" data-displayname="구역"
+                                       data-maxlength="20" maxlength="20" required="required" class="w10p">
+                            </div>
+                            <div>
+                                <span class="guide"> 가격 </span>
+                                <input type="text" name="price" id="MD-subject" data-displayname="가격"
+                                       data-maxlength="20" maxlength="20" required="required" class="w10p">
+                            </div>
+                            <div>
+                                <span class="guide"> 총 좌석수 </span>
+                                <input type="text" name="total" id="MD-subject" data-displayname="좌석수"
+                                       data-maxlength="20" maxlength="20" required="required" class="w10p">
+                                <button id="add" onclick="add_row()" class="mBtn btn1">추가</button>
+                                <button id="delete" onclick="delete_row()" class="mBtn btn1">삭제</button>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
                     <tr>
                         <th><i class ="requiredBullet" title="필수항목">* </i> 티켓 예매</th>
                         <td>
@@ -217,7 +217,7 @@
     <div class="bottomBtn" style="width: 1120px; margin: 0 auto;">
         <button type="submit" class="mBtn btn2">등록</button>
         <button type="reset" class="mBtn btn1">취소</button>
-        <a th:href="@{/admin/sports}" class="backbtn mBtn btn1">뒤로</a>
+        <a th:href="@{/admin/sports2}" class="backbtn mBtn btn1">뒤로</a>
     </div>
     </form>
 

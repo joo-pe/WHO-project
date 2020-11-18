@@ -1,16 +1,16 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-
+ 
  <style>
  .input-group .form-control, .input-group-addon, .input-group-btn{
  display: revert;
  }
  .btn{
- font-size: 14px;
+ font-size: 14px; 
  visibility: inherit;
  }
-
+ 
  </style>
-
+ 
 <!--  <style> -->
 <!-- /* /* button{ */ */ -->
 <!-- /* /*    color: #fff; */ */ -->
@@ -31,7 +31,7 @@
                     </button>
                 </div>
             </div>
-
+            
         </form>
         <div class="container" style="margin: 0px auto">
             <div class="navbar-header"style="
@@ -51,34 +51,38 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-
+            
             <div class="collapse navbar-collapse" id="myNavbar" style="padding-right: 290px;margin-bottom: 3px;padding-top: 10px;margin-right: -100px;margin-left: 0px;">
                 <ul class="nav navbar-nav navbar-right">
-                   <li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a></li>
-                    <li><a sec:authorize="isAnonymous()" th:href="@{/login}">SIGN IN</a></li>
-                    <li><a sec:authorize="isAnonymous()" th:href="@{/signup}">SIGN UP</a></li>
-                    <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
+                   <li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">관리자</a></li>
+                    <li><a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a></li>
+                    <li><a sec:authorize="isAnonymous()" th:href="@{/signup}">회원가입</a></li>
+                    <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">PERFORMANCE
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">공연
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/musical}">MUSICAL</a></li>
-                                <li><a th:href="@{/concert}">CONCERT</a></li>
+                            <li><a th:href="@{/musical}">뮤지컬</a></li>
+                                <li><a th:href="@{/concert}">콘서트</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">SPORTS
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">스포츠
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/soccer}">SOCCER</a></li>
-                            <li><a th:href="@{/baseball}">BASEBALL</a></li>
+                            <li><a th:href="@{/soccer}">축구</a></li>
+                            <li><a th:href="@{/baseball}">야구</a></li>
                         </ul>
                     </li>
-                    <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/myinfo}">MY Tickets</a></li>
+                    <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/myinfo}">마이티켓</a></li>
                     <li><a th:href="@{/faq}">FAQ</a></li>
-                    <li><a th:href="@{/notice}">NOTICE</a></li>
+                    <li><a th:href="@{/notice}">공지사항</a></li>
+                    
+                    
                 </ul>
+                
             </div>
+            
         </div>
-    </nav>
+    </nav>   
 </header>

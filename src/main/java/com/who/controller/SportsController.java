@@ -11,7 +11,6 @@ import com.who.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
-import org.springframework.data.util.Pair;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +33,6 @@ import java.util.List;
 public class SportsController {
     private SportsService sportsService;
     private FileService fileService;
-    private SeatService seatService;
-    private MemberRepository memberRepository;
-    private MemberService memberService;
-    private BookingService bookingService;
 
     @GetMapping("/admin/sports")
     public String list(Model model) {
@@ -46,12 +41,31 @@ public class SportsController {
         model.addAttribute("sportsList", sportsDtoList);
         return "admin/sports/sports";
     }
+    //야구 관리자
+    @GetMapping("/admin/sports2")
+    public String list2(Model model) {
+        List<SportsDto> sportsDtoList = sportsService.getSportsList2();
+        List<FileDto> fileDtoList = new ArrayList<>();
+        for(SportsDto sportsDto: sportsDtoList) {
+            FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+            fileDtoList.add(fileDto);
+        }
 
+        model.addAttribute("sportsList2", sportsDtoList);
+        model.addAttribute("fileList2", fileDtoList);
+        return "admin/sports2/sports2";
+    }
+    //축구 상품등록으로 가는 컨트롤러
     @GetMapping("/admin/sports/post")
     public String addSports() {
         return "admin/sports/add";
     }
-
+    //야구 상품등록으로 가는 컨트롤러
+    @GetMapping("/admin/sports2/post1")
+    public String addSports2() {
+        return "admin/sports2/add";
+    }
+    //축구 상품등록시 사진파일들을 파일DB저장 그리고 상품등록
     @PostMapping("/admin/sports/post")
     public String addSports(@RequestParam("file") MultipartFile files,
                             SportsDto sportsDto) {
@@ -87,7 +101,43 @@ public class SportsController {
 
         return "redirect:/admin/sports";
     }
+    //야구 상품등록시 사진파일들을 파일DB저장 그리고 상품등록
+    @PostMapping("/admin/sports2/post1")
+    public String addSports2(@RequestParam("file") MultipartFile files,
+                            SportsDto sportsDto) {
+        try {
+            String originFileName = files.getOriginalFilename();
+            int idx = originFileName.indexOf(".");
+            String fileExtension = originFileName.substring(idx+1);
+            String fileName = new MD5Generator(originFileName.substring(0, idx)).toString() + "." + fileExtension;
+            // 실행되는 위치의 'files' 폴더에 파일 저장
+            String savePath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\images";
+            // 파일이 저장되는 폴더가 없으면 폴더 생성
+            if(!new File(savePath).exists()) {
+                try {
+                    new File(savePath).mkdir();
+                } catch (Exception e) {
+                    e.getStackTrace();
+                }
+            }
+            String filePath = savePath + "\\" + fileName;
+            files.transferTo(new File(filePath));
 
+            FileDto fileDto = new FileDto();
+            fileDto.setOriginFileName(originFileName);
+            fileDto.setFileName(fileName);
+            fileDto.setFilePath(filePath);
+
+            Long fileId = fileService.saveFile(fileDto);
+            sportsDto.setFileId(fileId);
+            sportsService.saveProduct2(sportsDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:/admin/sports2";
+    }
+    //축구 디테일한 정보로
     @GetMapping("/admin/sports/post/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         SportsDto sportsDto = sportsService.getSports(no);
@@ -99,7 +149,16 @@ public class SportsController {
         model.addAttribute("fileDto", fileDto);
         return "admin/sports/detail";
     }
+    //야구 디테일한 정보로
+    @GetMapping("/admin/sports2/post/{no}")
+    public String detail2(@PathVariable("no") Long no, Model model) {
+        SportsDto sportsDto = sportsService.getSports2(no);
+        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
 
+        model.addAttribute("sportsDto", sportsDto);
+        model.addAttribute("fileDto", fileDto);
+        return "admin/sports2/detail";
+    }
 
     @GetMapping("/admin/sports/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
@@ -111,13 +170,31 @@ public class SportsController {
         return "admin/sports/update";
     }
 
+    //야구 수정폼으로 들어가는 컨트롤러
+    @GetMapping("/admin/sports2/post/edit/{no}")
+    public String edit2(@PathVariable("no") Long no, Model model) {
+        SportsDto sportsDto = sportsService.getSports2(no);
+        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+
+        model.addAttribute("sportsDto", sportsDto);
+        model.addAttribute("fileDto", fileDto);
+        return "admin/sports2/update";
+    }
+    //축구 수정(수정할 내용 : 파일 id를 안가져옴)
     @PutMapping("/admin/sports/post/edit/{no}")
     public String update(SportsDto sportsDto) {
         sportsService.saveProduct(sportsDto);
 
         return "redirect:/admin/sports";
     }
+    //야구 수정(수정할 내용 : 파일 id를 안가져옴)
+    @PutMapping("/admin/sports2/post/edit/{no}")
+    public String update2(SportsDto sportsDto) {
+        sportsService.saveProduct2(sportsDto);
 
+        return "redirect:/admin/sports2";
+    }
+    //축구 삭제
     @DeleteMapping("/admin/sports/post/{no}")
     public String delete(@PathVariable("no") Long no) {
         sportsService.deleteSports(no);
