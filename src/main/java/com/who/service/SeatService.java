@@ -18,6 +18,7 @@ import java.util.Optional;
 @Service
 public class SeatService {
     private SeatRepository seatRepository;
+    private SportsService sportsService;
 
     @Transactional
     public List<SeatDto> getSeatList() {
@@ -50,21 +51,7 @@ public class SeatService {
 
     public SeatDto convertEntityToDto(SeatEntity seatEntity) {
         SportsEntity sportsEntity= seatEntity.getSportsEntity();
-        SportsDto sportsDto = SportsDto.builder()
-                .id(sportsEntity.getId())
-                .category(sportsEntity.getCategory())
-                .title(sportsEntity.getTitle())
-                .detail(sportsEntity.getDetail())
-                .fileId(sportsEntity.getFileId())
-                .dateTime(sportsEntity.getDateTime())
-                .city(sportsEntity.getCity())
-                .location(sportsEntity.getLocation())
-                .ticketOpen(sportsEntity.getTicketOpen())
-                .ticketClose(sportsEntity.getTicketClose())
-                .ticketMax(sportsEntity.getTicketMax())
-                .team1(sportsEntity.getTeam1())
-                .team2(sportsEntity.getTeam2())
-                .build();
+        SportsDto sportsDto = sportsService.convertEntityToDto(sportsEntity);
 
         SeatDto seatDto = SeatDto.builder()
                 .id(seatEntity.getId())

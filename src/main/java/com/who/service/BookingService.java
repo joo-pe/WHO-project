@@ -4,6 +4,7 @@ import com.who.domain.entity.BookingEntity;
 import com.who.domain.entity.MemberEntity;
 import com.who.domain.entity.SportsEntity;
 import com.who.domain.repository.BookingRepository;
+import com.who.domain.repository.SportsRepository;
 import com.who.dto.BookingDto;
 import com.who.dto.FaqDto;
 import com.who.dto.MemberDto;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @Service
 public class BookingService {
     private BookingRepository bookingRepository;
+    private SportsService sportsService;
 
     public Long saveBooking(BookingDto bookingDto) {
         return bookingRepository.save(bookingDto.toEntity()).getId();
@@ -69,21 +71,7 @@ public class BookingService {
                 .build();
 
         SportsEntity sportsEntity= bookingEntity.getSportsEntity();
-        SportsDto sportsDto = SportsDto.builder()
-                .id(sportsEntity.getId())
-                .category(sportsEntity.getCategory())
-                .title(sportsEntity.getTitle())
-                .detail(sportsEntity.getDetail())
-                .fileId(sportsEntity.getFileId())
-                .dateTime(sportsEntity.getDateTime())
-                .city(sportsEntity.getCity())
-                .location(sportsEntity.getLocation())
-                .ticketOpen(sportsEntity.getTicketOpen())
-                .ticketClose(sportsEntity.getTicketClose())
-                .ticketMax(sportsEntity.getTicketMax())
-                .team1(sportsEntity.getTeam1())
-                .team2(sportsEntity.getTeam2())
-                .build();
+        SportsDto sportsDto = sportsService.convertEntityToDto(sportsEntity);
 
         BookingDto bookingDto = BookingDto.builder()
                 .id(bookingEntity.getId())

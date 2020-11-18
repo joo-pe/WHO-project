@@ -42,14 +42,8 @@ public class SportsController {
     @GetMapping("/admin/sports")
     public String list(Model model) {
         List<SportsDto> sportsDtoList = sportsService.getSportsList();
-        List<FileDto> fileDtoList = new ArrayList<>();
-        for(SportsDto sportsDto: sportsDtoList) {
-            FileDto fileDto = fileService.getFile(sportsDto.getFileId());
-            fileDtoList.add(fileDto);
-        }
 
         model.addAttribute("sportsList", sportsDtoList);
-        model.addAttribute("fileList", fileDtoList);
         return "admin/sports/sports";
     }
 
@@ -84,8 +78,8 @@ public class SportsController {
             fileDto.setFileName(fileName);
             fileDto.setFilePath(filePath);
 
-            Long fileId = fileService.saveFile(fileDto);
-            sportsDto.setFileId(fileId);
+            Long fileNo = fileService.saveFile(fileDto);
+            sportsDto.setFileDto(fileService.getFile(fileNo));
             sportsService.saveProduct(sportsDto);
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +91,9 @@ public class SportsController {
     @GetMapping("/admin/sports/post/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         SportsDto sportsDto = sportsService.getSports(no);
-        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+
+        Long fileNo = sportsService.getFileBySports(no);
+        FileDto fileDto = fileService.getFile(fileNo);
 
         model.addAttribute("sportsDto", sportsDto);
         model.addAttribute("fileDto", fileDto);
@@ -108,7 +104,7 @@ public class SportsController {
     @GetMapping("/admin/sports/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
         SportsDto sportsDto = sportsService.getSports(no);
-        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+        FileDto fileDto = sportsDto.getFileDto();
 
         model.addAttribute("sportsDto", sportsDto);
         model.addAttribute("fileDto", fileDto);
@@ -171,7 +167,7 @@ public class SportsController {
     @GetMapping("/soccer/ticket/{no}")
     public String soccerDetail(@PathVariable("no") Long no, Model model) {
         SportsDto sportsDto = sportsService.getSports(no);
-        FileDto fileDto = fileService.getFile(sportsDto.getFileId());
+        FileDto fileDto = sportsDto.getFileDto();
         List<Object[]> availableSeats = seatService.countAvailableSeat();
 
         model.addAttribute("sportsDto", sportsDto);
@@ -189,8 +185,8 @@ public class SportsController {
 
     @PostMapping("/soccer/ticket/{no}")
     public String saveBooking(@PathVariable("no") Long no, @AuthenticationPrincipal MemberDetail memberDetail, Model model) {
-//        String email = memberDetail.getUsername();
-//        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+        String email = memberDetail.getUsername();
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
 ////        MemberDto memberDto = memberService.convertEntityToDto(memberEntity);
 //        MemberDto memberDto = memberService.getMember(memberEntity.getId());
 
@@ -202,6 +198,7 @@ public class SportsController {
 //        BookingDto bookingDto2 = bookingService.getBooking(bookNo);
 
 //        model.addAttribute("bookingDto", bookingDto);
+//        model.addAttribute("memberEntity", memberEntity);
 
 //        return "sports/pay" + bookNo;
         return "redirect:/pay/1";

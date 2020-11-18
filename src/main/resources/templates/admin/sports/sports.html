@@ -57,7 +57,7 @@
                     <thead>
                     <tr>
                         <th class="one wide">번호</th>
-                        <th class="two wide">작은이미지</th>
+<!--                        <th class="two wide">작은이미지</th>-->
                         <th class="two wide">상품명</th>
                         <th class="two wide">분류</th>
 <!--                        <th class="two wide">가격</th>-->
@@ -78,9 +78,9 @@
                         <td>
                             <span th:text="${sports.id}"></span>
                         </td>
-                        <td>
-                            <img th:src="@{/images/{name}(name=${sports.fileId})}">
-                        </td>
+<!--                        <td>-->
+<!--                            <img th:src="@{'/images/'+${sports.fileDto.getFileName()}}">-->
+<!--                        </td>-->
                         <td>
                             <a th:href="@{'/admin/sports/post/' + ${sports.id}}">
                             <span th:text="${sports.title}"></span>

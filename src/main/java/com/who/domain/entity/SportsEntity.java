@@ -27,8 +27,9 @@ public class SportsEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String detail;
 
-    @Column
-    private Long fileId;
+    @OneToOne
+    @JoinColumn(name = "file_id")
+    private FileEntity fileEntity;
 
     @Column (nullable = false)
     private LocalDateTime dateTime;
@@ -59,14 +60,14 @@ public class SportsEntity {
 
     @Builder
     public SportsEntity(Long id, String category, String title, String  detail,
-                        Long fileId, LocalDateTime dateTime, String city, String location,
+                        FileEntity fileEntity, LocalDateTime dateTime, String city, String location,
                         LocalDateTime ticketOpen, LocalDateTime ticketClose,
                         String ticketMax, String team1, String team2, List<SeatEntity> seats) {
         this.id = id;
         this.category = category;
         this.title = title;
         this.detail = detail;
-        this.fileId = fileId;
+        this.fileEntity = fileEntity;
         this.dateTime = dateTime;
         this.city = city;
         this.location = location;

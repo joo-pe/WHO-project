@@ -21,7 +21,7 @@ public class SportsDto {
     private String category;
     private String title;
     private String detail;
-    private Long fileId;
+    private FileDto fileDto;
     @DateTimeFormat(pattern ="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateTime;
     private String city;
@@ -40,7 +40,7 @@ public class SportsDto {
                 .category(category)
                 .title(title)
                 .detail(detail)
-                .fileId(fileId)
+                .fileEntity(fileDto.toEntity())
                 .dateTime(dateTime)
                 .city(city)
                 .location(location)
@@ -55,14 +55,14 @@ public class SportsDto {
 
     @Builder
     public SportsDto(Long id, String category, String title, String detail,
-                     Long fileId, LocalDateTime dateTime, String city, String location,
+                     FileDto fileDto, LocalDateTime dateTime, String city, String location,
                      LocalDateTime ticketOpen, LocalDateTime ticketClose, String ticketMax,
                      String team1, String team2) {
         this.id = id;
         this.category = category;
         this.title = title;
         this.detail = detail;
-        this.fileId = fileId;
+        this.fileDto = FileDto.builder().build();
         this.dateTime = dateTime;
         this.city = city;
         this.location = location;

@@ -1,7 +1,9 @@
 package com.who.service;
 
+import com.who.domain.entity.FileEntity;
 import com.who.domain.entity.SportsEntity;
 import com.who.domain.repository.SportsRepository;
+import com.who.dto.FileDto;
 import com.who.dto.SportsDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.util.Optional;
 @Service
 public class SportsService {
     private SportsRepository sportsRepository;
+    private FileService fileService;
 
     @Transactional
     public Long saveProduct(SportsDto sportsDto) {
@@ -59,13 +62,21 @@ public class SportsService {
         return sportsDtoList;
     }
 
-    private SportsDto convertEntityToDto(SportsEntity sportsEntity) {
+    @Transactional
+    public Long getFileBySports(Long id) {
+        return sportsRepository.getFileBySports(id);
+    }
+
+    public SportsDto convertEntityToDto(SportsEntity sportsEntity) {
+        FileEntity fileEntity = sportsEntity.getFileEntity();
+        FileDto fileDto = fileService.convertEntityToDto(fileEntity);
+
         return SportsDto.builder()
                 .id(sportsEntity.getId())
                 .category(sportsEntity.getCategory())
                 .title(sportsEntity.getTitle())
                 .detail(sportsEntity.getDetail())
-                .fileId(sportsEntity.getFileId())
+                .fileDto(fileDto)
                 .dateTime(sportsEntity.getDateTime())
                 .city(sportsEntity.getCity())
                 .location(sportsEntity.getLocation())

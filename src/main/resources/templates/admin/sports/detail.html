@@ -43,6 +43,9 @@
         height: auto;
         max-width: 30%;
     }
+    #containerWrap {
+        padding: 2% 10% 2% 10%;
+    }
 </style>
 <body>
 <div id="wrap">
@@ -94,8 +97,8 @@
                         <th>이미지</th>
                         <td>
                             <!--                            <img src="http://C:/Users/ellen/git/WHO-project2/files/0fbd2278ffc4b9cac260a538234ea853/sheffieldfc.png">-->
-                            <div th:if="${sportsDto.fileId != null}">
-                                <a class="card-text" th:href="@{'/download/' + ${sportsDto.fileId}}" th:text="${fileDto.fileName}"></a>
+                            <div th:if="${sportsDto.fileDto != null}">
+                                <a class="card-text" th:href="@{'/download/' + ${fileDto.id}}" th:text="${fileDto.fileName}"></a>
                                 <br>
                                 <img th:src="@{'/images/'+${fileDto.fileName}}">
 

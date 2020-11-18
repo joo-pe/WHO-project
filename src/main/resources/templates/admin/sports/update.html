@@ -43,6 +43,9 @@
         height: auto;
         max-width: 30%;
     }
+    #containerWrap {
+        padding: 2% 10% 2% 10%;
+    }
 </style>
 <body>
 <div id="wrap">
@@ -235,18 +238,11 @@
             App.Board.Write.FAQInit();
             App.Board.Write.Init(true);
             </script> -->
-            <aside id="sideMenu" style="padding-top: 0px;">
-                <a href="#" id="sideClose" title="닫기" style="top: 10px;">
-                    <i class="fa fa-angle-left"></i></a>
-                <h2>게시판관리</h2>
-                <ul>
-                    <li class="Active"><span>
-<a th:href="@{/faq}">FAQ</a></span></li>
-                    <li><span>
-<a th:href="@{/admin/notice}">공지사항</a></span></li>
-                </ul></aside></div></div><footer id="footer">
-    <div id="footer_wrap"></div>
-</footer>
+        </div>
+    </div>
+    <footer id="footer">
+        <div id="footer_wrap"></div>
+    </footer>
 </div>
 <!-- 변수 셋팅 -->
 <script th:inline="javascript">
