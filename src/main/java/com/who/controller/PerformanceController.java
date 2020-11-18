@@ -6,13 +6,13 @@ import com.who.dto.PerformanceDto;
 import com.who.service.FileService;
 import com.who.service.PerformanceService;
 import lombok.AllArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,11 +20,17 @@ import java.util.List;
 public class PerformanceController {
     private PerformanceService performanceService;
     private FileService fileService;
-
+    
     @GetMapping("/admin/performance")
     public String list(Model model) {
         List<PerformanceDto> performanceDtoList = performanceService.getPerformaneList();
+            List<FileDto> fileDtoList = new ArrayList<>();
+            for(PerformanceDto performanceDto: performanceDtoList) {
+                FileDto fileDto = fileService.getFile(performanceDto.getFileId());
+                fileDtoList.add(fileDto);
+            }
 
+            model.addAttribute("fileList", fileDtoList);
         model.addAttribute("performanceList", performanceDtoList);
         return "admin/performance/performance";
     }
@@ -76,7 +82,7 @@ public class PerformanceController {
         FileDto fileDto = fileService.getFile(performanceDto.getFileId());
 
         model.addAttribute("performanceDto", performanceDto);
-        model.addAttribute("fileDto", fileDto);
+        model.addAttribute("file", fileDto);
         return "admin/performance/detail";
     }
 
@@ -104,11 +110,36 @@ public class PerformanceController {
         return "redirect:/admin/performance";
     }
 
-    @GetMapping("admin/performance/search")
+    @GetMapping("/admin/performance/search")
     public String search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<PerformanceDto> performanceDtoList = performanceService.searchPerformance(keyword);
 
         model.addAttribute("performanceList", performanceDtoList);
         return "admin/performance/performance";
+    }
+    
+    @GetMapping("/musical")
+    public String dispmusical() {
+    	return "peformance/musical";
+    }
+    @GetMapping("/musical/ticket")
+    public String musicalTicket(Model model) {
+    	List<PerformanceDto> performanceDtoList = performanceService.getPerformaneList();
+
+        model.addAttribute("performanceList", performanceDtoList);
+        return "peformance/ticket";
+    }
+    @GetMapping("/musical/post/{no}")
+    public String soccerDetail(@PathVariable("no") Long no, Model model) {
+    	PerformanceDto performanceDto = performanceService.getPerformance(no);
+        FileDto fileDto = fileService.getFile(performanceDto.getFileId());
+
+        model.addAttribute("performanceDto", performanceDto);
+        model.addAttribute("fileDto", fileDto);
+        return "peformance/detail";
+    }
+    @GetMapping("/concert")
+    public String concert() {
+    	return "peformance/concert";
     }
 }

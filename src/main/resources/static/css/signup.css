@@ -4,14 +4,11 @@
    
 text-align: center;
 }
-
 #header {
-
    text-align: center;
     columns:auto;
 }
 #headers{
-
    text-align: center;
     columns:auto;
 }
@@ -20,7 +17,6 @@ text-align: center;
    overflow: auto;
    height:150px;
 }
-
 #content{
    
    width: 50%;
@@ -28,7 +24,6 @@ text-align: center;
    margin-right: auto;
    
 }
-
 #join_form{   
     
     height: 100px;   
@@ -42,11 +37,9 @@ text-align: center;
   }
   
 #container::-webkit-scrollbar {
-
     width: 150px;
     background-color: black;
   }
-
 #btnAgree{
    
    margin: 0, 0, 10px;
@@ -60,19 +53,15 @@ color: black;
    margin: 0, 0, 10px;
    font-size: x-large;
    border: 2px solid black; 
-
 color: red; 
 }
-
  #footer { 
-
     position: fixed; 
     bottom: 0; 
     width: 10%;
  }
  .chk_all_txt{
  font-size: xx-small;   }
-
 .event_message{
    font-size:xx-small;
 }
@@ -83,12 +72,10 @@ color: red;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
 }
-
 .agreeMsg{
    font-size: xx-small;
    
 }
-
 #btn_area double{ border: 1px solid skyblue; 
 background-color: rgba(0,0,0,0); 
 color: skyblue; padding: 5px; 
@@ -2280,6 +2267,3 @@ html[lang="zh-Hant"] .btn_global {
         height: 70px;
     }
 }
-
-
- 

@@ -34,7 +34,7 @@ public class NoticeController {
 
         return "redirect:/admin/notice";
     }
-
+    
     @GetMapping("/admin/post1/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         NoticeDto noticeDto = noticeService.getPost(no);
@@ -72,7 +72,7 @@ public class NoticeController {
         model.addAttribute("noticeList", noticeDtoList);
         return "admin/notice/list";
     }
-    
+
     @GetMapping("/notice")
     public String list1(Model model) {
         List<NoticeDto> noticeList = noticeService.getNoticelist();

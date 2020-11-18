@@ -3,10 +3,10 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/sport.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -15,15 +15,15 @@
 
 <!-- Top menu -->
 <div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+  <div class="w3-top" style="max-width:1200px;margin:auto">
    <div th:insert="common/header.html" id="header"></div>
   </div>
 </div>
 
 <!-- Top menu -->
-<div class="w3-top1">
+<div class="w3-top1" style="padding: 67px 0 0 0">
   <div class="soccerbanner" style="max-width:1200px;margin:auto;">
-   <img alt="" th:src="@{/images/baseball.png}" style="width:100%">
+   <img alt="" src="images/baseball.PNG" style="width:100%">
   </div>
 </div>
   
@@ -33,7 +33,7 @@
   <!-- First Photo Grid-->
   <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #eee;">
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{/images/kia.png}" alt="야구기아" style="width:100%">
+    <img src="images/kia.png" alt="야구기아" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">기아</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -42,7 +42,7 @@
    </div>
     </div>
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{/images/lg.png}" alt="LG" style="width:100%">
+    <img src="images/lg.png" alt="LG" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">LG</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -51,7 +51,7 @@
    </div>
     </div>
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{/images/nc.png}" alt="NC" style="width:100%">
+    <img src="images/nc.png" alt="NC" style="width:100%">
       <div class="clubInfoWrap">
        <div class="clubName">NC</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -60,7 +60,7 @@
    </div>
    </div>
    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{/images/sk.png}" alt="SK" style="width:100%">
+    <img src="images/sk.png" alt="SK" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">SK</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -75,7 +75,7 @@
   <!-- First Photo Grid-->
   <div class="w3-row-padding w3-padding-16 w3-center" id="food">
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{/images/kt.png}" alt="KT" style="width:100%">
+    <img src="images/kt.png" alt="KT" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">KT</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -84,7 +84,7 @@
    </div>
     </div>
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{/images/dusan.png}" alt="두산" style="width:100%">
+    <img src="images/dusan.png" alt="두산" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">두산</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -93,7 +93,7 @@
    </div>
     </div>
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{images/lotte.png}" alt="롯데" style="width:100%">
+    <img src="images/lotde.png" alt="롯데" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">롯데</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -102,7 +102,7 @@
    </div>
    </div>
    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-   <img th:src="@{/images/samsung.png}" alt="삼성" style="width:100%">
+   <img src="images/samsung.png" alt="삼성" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">삼성</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -114,7 +114,7 @@
     
   <div class="w3-row-padding w3-padding-16 w3-center" id="food">
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-   <img th:src="@{/images/kium.png}" alt="키움" style="width:100%">
+   <img src="images/kium.png" alt="키움" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">키움</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -123,7 +123,7 @@
    </div>
     </div>
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img th:src="@{/images/hanhwa.png}" alt="한화" style="width:100%">
+    <img src="images/hanhwa.png" alt="한화" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">한화</div>
       <button class="btn_reserve" type="button" onclick="">
@@ -145,7 +145,8 @@
       <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
     </div>
   </div>
-  
+  <!-- FOOTER -->
+    <div th:insert="common/footer.html" id="footer"></div>
   <hr id="about">
   
 

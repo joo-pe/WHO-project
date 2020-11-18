@@ -44,10 +44,10 @@ float:none;
 	<div th:insert="common/adminHeader.html" id="header"></div>
 <div id="container">
 <div id="containerWrap">
-<h2>FAQ 게시물관리</h2>
+<h2 align="center">NOTICE 게시물관리</h2>
 <div class="BoardView">
 <header>
-<div>
+<div align="center">
 <b th:text="${noticeDto.title}"></b></div>
 <ul>
 <li class="mname"><b>이름</b> : <b th:text="${noticeDto.writer}"></b></li>
@@ -89,16 +89,7 @@ float:none;
 <script>
 App.Admin.BoardViewInit();
 </script>
-<aside id="sideMenu" style="padding-top: 0px;">
-<a href="#" id="sideClose" title="닫기" style="top: 10px;">
-<i class="fa fa-angle-left"></i></a>
-<h2>게시판관리</h2>
-<ul>
-<li class="Active"><span>
-<a th:href="@{/admin/faq}">FAQ</a></span></li>
-<li><span>
-<a th:href="@{/admin/notice}">공지사항</a></span></li>
-</ul></aside></div>
+</div>
 </div><footer id="footer">
 <div id="footer_wrap"></div>
 </footer>

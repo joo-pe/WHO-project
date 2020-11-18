@@ -1,488 +1,372 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
-    <title>WHO TICKET</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <head>
+        <title>WHO TICKET</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/faq.css}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
         <!-- Header -->
         <div th:insert="common/header.html" id="header"></div>
 
         <!-- Container (Slide) -->
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="text-align: -webkit-center;/* padding: 40px 0 0 0; */">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="text-align: -webkit-center; padding: 64px 0 0 0;">
             <!-- Indicators -->
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active" align="center">
-                    <img th:src="@{/images/musical1.png}" alt="New York" />
-                    <div class="carousel-caption">
-                        <h3>New York</h3>
-                        <p>The atmosphere in New York is lorem ipsum.</p>
-                    </div>
+            <div class="carousel-inner" role="listbox" style="padding: 0px 0 0 0">
+                <div class="item active">
+                    <img src="/images/main1.png"/>
                 </div>
 
                 <div class="item" align="center">
-                    <img th:src="@{/images/musical2.png}" alt="New York"/>
-                    <div class="carousel-caption">
-                        <h3>Chicago</h3>
-                        <p>Thank you, Chicago - A night we won't forget.</p>
-                    </div>
+                    <img src="/images/main2.png"/>
                 </div>
 
                 <div class="item" align="center">
-                    <img th:src="@{/images/musical3.png}" alt="New York"/>
-                    <div class="carousel-caption">
-                        <h3>LA</h3>
-                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                    </div>
+                    <img src="/images/main3.png"/>
                 </div>
 
                 <div class="item" align="center">
-                    <img th:src="@{/images/musical1.png}" alt="New York"/>
-                    <div class="carousel-caption">
-                        <h3>LA</h3>
-                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                    </div>
-                </div>
-
-                <div class="item" align="center">
-                    <img th:src="@{/images/musical2.png}" alt="New York" width="1200" height="400" />
-                    <div class="carousel-caption">
-                        <h3>LA</h3>
-                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                    </div>
-                </div>
-
-                <div class="item" align="center">
-                    <img th:src="@{/images/musical1.png}" alt="New York" width="1200" height="400" />
-                    <div class="carousel-caption">
-                        <h3>LA</h3>
-                        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
-                    </div>
+                    <img src="/images/main4.png"/>
                 </div>
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                     <li data-target="#myCarousel" data-slide-to="3"></li>
-                    <li data-target="#myCarousel" data-slide-to="4"></li>
-                    <li data-target="#myCarousel" data-slide-to="5"></li>
                 </ol>
                 <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="left: 105px;">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
 
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="right: 105px;">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
-            <br />
-            <br />
         </div>
 
-        
-        <div class="element" style="background-color: aliceblue;">
-            <div class="names"></div>
-    <h2 style="text-align: center;">category</h2>
-            <div style="text-align: center;">
-                <a href="#" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/15653254008291epwarn.jpg" data-original=".png" class="spot" alt="뮤지컬" style="display: inline;" /></a>
-                <a href="#" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565330039453o9ckix2.jpg" data-original=".png" class="spot" alt="콘서트" style="display: inline;" /></a>
-				<br>
-                <a href="#" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565327367990mpr29aq.jpg" data-original=".png" class="spot" alt="연극" style="display: inline;" /></a>
-                <a href="http://localhost:8090/notice" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565330079597kbgqgg9.jpg" data-original=".png" class="spot" alt="스포츠" style="display: inline;" /></a>
-            </div>
-        </div>
         <div id="services" class="container-fluid text-center">
             <div class="container">
-            <div class="best">
-                        <div class="catae" style="font-size: x-large; text-align: left;">
-                            <h2>금주의 스포츠 BEST 3</h2>
-                        </div>
-                      
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="card card-small">
-                                    <div class="thumbnail" >
-                                        <img alt="Opt alp thumbnail" src="images/musical1.png" />
-                                        <a href="#">
-                                            <div class="thumb-cover"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card-info">
-                                        <div class="moving">
-                                            <a href="#/product/awesome-landing-page">
-                                                <h3>날짜</h3>
-                                                <p>경기장 정보</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="card card-small">
-                                    <div class="thumbnail">
-                                        <img alt="Opt alp thumbnail" src="images/musical2.png" />
-                                        <a href="#">
-                                            <div class="thumb-cover"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card-info">
-                                        <div class="moving">
-                                            <a href="#/product/awesome-landing-page">
-                                                <h3>날짜</h3>
-                                                <p>경기장 정보</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="card card-small">
-                                    <div class="thumbnail">
-                                        <img alt="Opt alp thumbnail" src="images/musical3.png" />
-                                        <a href="#">
-                                            <div class="thumb-cover"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card-info">
-                                        <div class="moving">
-                                            <a href="#/product/awesome-landing-page">
-                                                <h3>날짜</h3>
-                                                <p>경기장 정보</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="sprotbest">
+                    <div class="catae" style="font-size: x-large;" align="center">
+                        <h2>금주의 스포츠 BEST 3</h2>
                     </div>
-<div class="best">
-                        <div class="catae" style="font-size: x-large; text-align: left;">
-                            <h2>금주의  공연  BEST 3</h2>
-                        </div>
-                       
 
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="card card-small">
-                                    <div class="thumbnail">
-                                        <img alt="Opt alp thumbnail" src="images/musical1.png" />
-                                        <a href="#">
-                                            <div class="thumb-cover"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card-info">
-                                        <div class="moving">
-                                            <a href="#/product/awesome-landing-page">
-                                                <h3>날짜</h3>
-                                                <p>경기장 정보</p>
-                                            </a>
-                                        </div>
-                                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                <a th:href="@{/soccer/ticket}">
+                                    <img alt="Opt alp thumbnail" src="images/soccer2.png" />
+                                </a>
                                 </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="card card-small">
-                                    <div class="thumbnail">
-                                        <img alt="Opt alp thumbnail" src="images/musical2.png" />
-                                        <a href="#">
-                                            <div class="thumb-cover"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card-info">
-                                        <div class="moving">
-                                            <a href="#/product/awesome-landing-page">
-                                                <h3>날짜</h3>
-                                                <p>경기장 정보</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="card card-small">
-                                    <div class="thumbnail">
-                                        <img alt="Opt alp thumbnail" src="images/musical3.png" />
-                                        <a href="#">
-                                            <div class="thumb-cover"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card-info">
-                                        <div class="moving">
-                                            <a href="#/product/awesome-landing-page">
-                                                <h3>날짜</h3>
-                                                <p>경기장 정보</p>
-                                            </a>
-                                        </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
-            
-              <div class="hoihoi">
-              <div class="thumbnail" style="width: fit-content;float: left; ">
-                
-                    <div class="thumbnail name" style="font-size: 2.5em"> Who project issue</div>
-                   
-                        <div class="TabContainer_tabList__1TS8l">
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/">
-                                    <article>
-                                           <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">1</div>
-                                            <h1 class="commons_title__1yGWm">[글로벌 26억펀딩] </h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">321%</span>테크·가전</p>
-                                        </div>
-                                        
-                                    </article>
-                                </a>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">  
+                                    <a th:href="@{/soccer/ticket}">
+                                    <img alt="Opt alp thumbnail" src="images/soccer3.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/88445">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">2</div>
-                                            <h1 class="commons_title__1yGWm">[2만원대/괴물스펙] </h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">9,572%</span>테크·가전</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                            <span
-                                                class="commons_img__2UTCA commons_visible__1xTJh"
-                                                style="
-                                                    background-image: -webkit-image-set(
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
-                                                    );
-                                                "
-                                            ></span>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/85069">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">3</div>
-                                            <h1 class="commons_title__1yGWm">[주름고민 원킬] </h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">178%</span>뷰티</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                            <span
-                                                class="commons_img__2UTCA commons_visible__1xTJh"
-                                                style="
-                                                    background-image: -webkit-image-set(
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
-                                                    );
-                                                "
-                                            ></span>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/77178">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">4</div>
-                                            <h1 class="commons_title__1yGWm">[5억 | 마지막 앵콜]</h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">8,972%</span>뷰티</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                            <span
-                                                class="commons_img__2UTCA commons_visible__1xTJh"
-                                                style="
-                                                    background-image: -webkit-image-set(
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
-                                                    );
-                                                "
-                                            ></span>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/86572">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">5</div>
-                                            <h1 class="commons_title__1yGWm"> &lt;출근 빼고 다 입으세요!&gt;</h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">1,793%</span>패션·잡화</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                           
-                                        </div>
-                                        
-                                    </article>
-                                    
-                                </a>
-                          
-                            </div>
-                            
                         </div>
-                        
-                    </div>
-                
-              
-              </div>
-                <div class="thumbnail" style="width: fit-content;float: right; ">
-                
-                    <div class="thumbnail name" style="font-size: 2.5em"> Who project issue</div>
-                   
-                        <div class="TabContainer_tabList__1TS8l">
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/">
-                                    <article>
-                                           <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">1</div>
-                                            <h1 class="commons_title__1yGWm">[글로벌 26억펀딩] </h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">321%</span>테크·가전</p>
-                                        </div>
-                                        
-                                    </article>
-                                </a>
-                            </div>
-                            
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/88445">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">2</div>
-                                            <h1 class="commons_title__1yGWm">[2만원대/괴물스펙] </h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">9,572%</span>테크·가전</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                            <span
-                                                class="commons_img__2UTCA commons_visible__1xTJh"
-                                                style="
-                                                    background-image: -webkit-image-set(
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1009/20201009191821590_88445.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
-                                                    );
-                                                "
-                                            ></span>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/85069">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">3</div>
-                                            <h1 class="commons_title__1yGWm">[주름고민 원킬] </h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">178%</span>뷰티</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                            <span
-                                                class="commons_img__2UTCA commons_visible__1xTJh"
-                                                style="
-                                                    background-image: -webkit-image-set(
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/1008/20201008200305190_85069.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
-                                                    );
-                                                "
-                                            ></span>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/77178">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">4</div>
-                                            <h1 class="commons_title__1yGWm">[5억 | 마지막 앵콜]</h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">8,972%</span>뷰티</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                            <span
-                                                class="commons_img__2UTCA commons_visible__1xTJh"
-                                                style="
-                                                    background-image: -webkit-image-set(
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/91/format/jpg/quality/95/optimize/') 1x,
-                                                        url('https://cdn.wadiz.kr/wwwwadiz/green001/2020/0928/20200928132758110_77178.jpg/wadiz/thumbnail/182/format/jpg/quality/95/optimize/') 2x
-                                                    );
-                                                "
-                                            ></span>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            
-                            <div class="TabContainer_listItem__2XDgU">
-                                <a class="CardType_projectCard__3xhjb CardType_projectCardA__33rbP" href="/web/campaign/detail/86572">
-                                    <article>
-                                        <div class="commons_content__2K1SH commons_order__3AewF CardType_content__1Pavj">
-                                            <div class="commons_orderText__3B9S_">5</div>
-                                            <h1 class="commons_title__1yGWm"> &lt;출근 빼고 다 입으세요!&gt;</h1>
-                                            <p class="commons_summary__2Ynez"><span class="commons_achievementRate__2J-KL">1,793%</span>패션·잡화</p>
-                                        </div>
-                                        <div class="commons_thumbnail__3wYGv CardType_thumbnail__2dtTe commons_active__1tjD5">
-                                           
-                                        </div>
-                                        
-                                    </article>
-                                    
-                                </a>
-                          
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                  
-            </div>
-           
-            <div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" th:each="sports : ${sportsList}">
-                    <div class="card card-small">
-                        <div class="thumbnail">
-                            <img alt="Opt alp thumbnail" src="https://via.placeholder.com/300x230/20B2AA/000000" />
-                            <a href="#/product/awesome-landing-page">
-                                <div class="thumb-cover"></div>
-                            </a>
-                        </div>
-                        <div class="card-info">
-                            <div class="moving">
-                                <a href="#/product/awesome-landing-page">
-                                    <h3>날짜</h3>
-                                    <p>경기장 정보</p>
-                                </a>
-                                <b class="actions">
-                                    <a href="#/product/awesome-landing-page">Details</a>
-                                    <b class="separator">|</b>
-                                    <a class="blue-text" href="#/live/awesome-landing-page" target="_blank">Live Preview</a>
-                                </b>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">  
+                                    <a th:href="@{/soccer/ticket}">
+                                    	<img alt="Opt alp thumbnail" src="images/soccer1.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="peformencebest">
+                    <div class="catae" style="font-size: x-large;" align="center">
+                        <h2>금주의 뮤지컬 BEST 3</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                <a th:href="@{/musical/ticket}">
+                                    <img alt="Opt alp thumbnail" src="images/mu1.png" /> 
+                                </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                            <h3>날짜</h3>
+                                            <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">
+                                    <a th:href="@{/musical/ticket}">
+                                      <img alt="Opt alp thumbnail" src="images/mu2.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="card card-small">
+                                <div class="thumbnail">    
+                                    <a th:href="@{/musical/ticket}">
+                                    	<img alt="Opt alp thumbnail" src="images/mu3.png" />
+                                    </a>
+                                </div>
+                                <div class="card-info">
+                                    <div class="moving">
+                                        <h3>날짜</h3>
+                                        <p>경기장 정보</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+            </div>
+            
+      		<div class="container bootstrap snippets bootdey">
+<div class="col-sm-6">
+    <!-- Begin tab comment and popular posts -->
+    <div class="box-info full">
+       <!-- Tab comments and popular posts -->
+       <ul class="nav nav-tabs nav-justified">
+         <li class="active"><a href="#comments" data-toggle="tab"><i class="fa fa-comments"></i> FAQ</a></li>
+         <li><a href="#popular" data-toggle="tab"><i class="fa fa-star"></i>NOTICE</a></li>
+       </ul>
+    
+       <!-- Tab panes -->
+       <div class="tab-content">
+         <!-- Pane comments -->
+         <div class="tab-pane active animated fadeInRight" id="comments">
+          <!-- Begin scroll wrappper -->
+          <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;"><div class="scroll-widget">
+             <div class="thumbnail" style="overflow: hidden; width: auto; height: 325px;">
+                    
+                    <div th:each="faq : ${faqList}" class="TabContainer" align="center">
+                        <div class="TabContainer_listItem__2XDgU">
+                           
+                                <article>
+                                    <div class="commons">
+                                        <h1 class="commons" th:text="${faq.id}">[f a q 1]</h1>
+                                        <div class="commons" th:text="${faq.title}"></div>
+                                        <!--                                         <p class="commons"><span class="commons" th:text="${faq.writer}"></span></p> -->
+                                    </div>
+                                </article>
+                            
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div class="box-footer" align="center">
+          				<p><a href="http://localhost:8090/faq"><i class="fa fa-share"></i> See all faq</a></p>
+          			</div>
+                </div>
+             
+             
+             
+             
+             
+          </div><div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; height: 209.5734126984127px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
+          
+         </div><!-- End div .tab-pane -->
+         
+         <!-- Pane popular posts -->
+         <div class="tab-pane animated fadeInRight" id="popular">
+          <!-- Begin scroll wrappper -->
+          <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;">
+          <div class="thumbnail" style="overflow: hidden; width: auto; height: 325px;">
+             <div th:each="notice : ${noticeList}" class="TabContainer_tabList__1TS8l" align="center">
+                        <div class="TabContainer">
+                       
+                                <div>
+                                    <div class="commons">
+                                        <h1 class="commons" th:text="${notice.id}">[notice 1]</h1>
+                                        <div class="commons" th:text="${notice.title}"></div>
+
+                                        <!--                                             <p class="commons"><span class="commons" th:text="${notice.writer}"></span></p> -->
+                                    </div>
+                              
+                           </div>
+                        </div>
+                        
+                    </div>
+                    	<br>
+                    	<div class="box-footer" align="center">
+               				<p><a href="#fakelink"><i class="fa fa-share"></i> See all notice</a></p>
+         			 	</div>
+          </div>
+          <div class="slimScrollBar" style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
+          
+         </div><!-- End div .tab-pane -->
+       </div><!-- End div .tab-content -->
+    </div><!-- End div .box-info .full -->
+    <!-- End tab comment and popular posts -->
+    </div>  
+    <div>  
+    <div class="top_rank" style="float: right;line-height: 2.1; font-size: 13px" align="center">
+                <strong class="screen_out" style="font-size: 2.5em;">이번주 스포츠 뉴스</strong>
+                <ul class="tab_rank" role="tablist">
+                   
+                    <!--       <li style="padding-right: 85px;"></li> -->
+                </ul>
+                <ol class="list_rank" data-type="ranking">
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank">
+                            <a href="https://v.daum.net/v/20201112140013582" class="link_txt" data-tiara-layer="rankingnews popular news_list">'이용규 영입한' 키움, 이택근·신재영·김규민 등 8명 방출..나이트 코치 등 3명도 떠난다 </a>
+                        </strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112130517199" class="link_txt" data-tiara-layer="rankingnews popular news_list">프로야구 LG 새 감독 후보 5명 면접 종료..최고위층 결정만 남아</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143529540" class="link_txt" data-tiara-layer="rankingnews popular news_list">"이런 스핀 서브 보셨나요?" 이토 미마의 특이한 서브 화제</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143804710" class="link_txt" data-tiara-layer="rankingnews popular news_list">터커, 1루수 변신 유력..KIA 2021 포지션 지각변동 예고 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank">
+                            <a href="https://v.daum.net/v/20201112111605829" class="link_txt" data-tiara-layer="rankingnews popular news_list">결혼 앞둔 정순주 아나운서 "이동국 선수가 롤모델..될 때까지 축구 일하고 싶어"</a>
+                        </strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112100425151" class="link_txt" data-tiara-layer="rankingnews popular news_list">아픔 겪은 손흥민, "멕시코-카타르, 모두 이기고 싶다"</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112122309579" class="link_txt" data-tiara-layer="rankingnews popular news_list">"3차전에서 끝내겠다" 두산, 준PO 이어 PO도 유희관 실종 사건?</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112055813618" class="link_txt" data-tiara-layer="rankingnews popular news_list">"아시아 역대 최고 1위 혼다-2위 손흥민.. 박지성 9위" 더 선</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112130909277" class="link_txt" data-tiara-layer="rankingnews popular news_list"> 초대형 삼각 트레이드, 구체적으로 3팀은 어떤 이득을 얻을까</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank"></em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112092238115" class="link_txt" data-tiara-layer="rankingnews popular news_list">"정말 대단한 첫 시즌" 토론토 SNS, 류현진 사이영상 3위 축하</a></strong>
+                    </li>
+                </ol>
+                <ol class="list_rank" data-type="dri" style="display: none;">
+                    <li>
+                        <em class="num_rank">1</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112114822440" class="link_txt" data-tiara-layer="rankingnews dri news_list">타이거 우즈 "코스공략은 내가 유리하지만, 비거리가 준 것은 약점" </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">2</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112143804710" class="link_txt" data-tiara-layer="rankingnews dri news_list">터커, 1루수 변신 유력..KIA 2021 포지션 지각변동 예고 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">3</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112060140842" class="link_txt" data-tiara-layer="rankingnews dri news_list">가을 야구는 분석이 아니라 싸움이다..김태형의 돌격</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">4</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112082128936" class="link_txt" data-tiara-layer="rankingnews dri news_list">투수 3관왕보다 타격 3관왕이 어려운 이유</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">5</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112141254253" class="link_txt" data-tiara-layer="rankingnews dri news_list">11월 11일 GS칼텍스 흥국생명 혈투가 남긴 얘기들 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">6</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112054504543" class="link_txt" data-tiara-layer="rankingnews dri news_list">새 얼굴로 무장한 불펜진, 프런트 힘으로 만든 두산 마운드</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">7</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112102700333" class="link_txt" data-tiara-layer="rankingnews dri news_list"> 올해는 11월 "오거스타내셔널 가을 공략법은?"</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">8</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112053103443" class="link_txt" data-tiara-layer="rankingnews dri news_list">현대모비스-오리온-KCC 대형 삼각트레이드 어느 팀이 이득일까</a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">9</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112110228163" class="link_txt" data-tiara-layer="rankingnews dri news_list">"기둥 있어야 하는데.." 돌아온 심동섭이 던진 KIA 마운드 숙제 </a></strong>
+                    </li>
+                    <li>
+                        <em class="num_rank">10</em>
+                        <strong class="tit_rank"><a href="https://v.daum.net/v/20201112053000415" class="link_txt" data-tiara-layer="rankingnews dri news_list">코로나19가 만든 지형 변화, KBO 외인 시장 대격변?</a></strong>
+                    </li>
+                </ol>
+            </div>
+            
+</div>                          
+           
+
+            
+   </div>
+
+        <div class="element" style="background-color: #f9faed;width: 100%;" >
+            <h2 style="text-align: center;">category</h2>
+            <div class="img" style="text-align: center;" >
+                <a href="http://localhost:8090/soccer" class="imgwrap"><img src="/images/mainsoccer.png" data-original=".png" class="spot" alt="축구" style="display: inline-block;width: 330px;padding: 2px;" /></a>
+                <a href="http://localhost:8090/pefomence" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/1565330039453o9ckix2.jpg" data-original=".png" class="spot" alt="콘서트" style="display: inline-block;width: 330px;padding: 2px;"/></a>
+                <a href="http://localhost:8090/baseball" class="imgwrap"><img src="/images/mainbaseball.png" data-original=".png" class="spot" alt="야구" style="display: inline-block;width: 330px;padding: 2px;" /></a>
+                <a href="http://localhost:8090/musical" class="imgwrap"><img src="//hi.esmplus.com/b/2019/08/09/15653254008291epwarn.jpg" data-original=".png" class="spot" alt="뮤지컬" style="display: inline-block;width: 330px;padding: 2px;"/></a>
+
+                <br />
             </div>
         </div>
-        
+		<br>
         <!-- FOOTER -->
 
         <div th:insert="common/footer.html" id="footer"></div>

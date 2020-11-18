@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--검색 이미지 안뜰때 부트스트랩 링크 -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #eee;">
+
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-top" style="max-width:1200px;margin:auto;font-size: 14px;">
+   <div th:insert="common/header.html" id="header"></div>
+  </div>
+</div>
+
+<!-- Top menu -->
+<div class="w3-top1">
+  <div class="concertbanner" style="max-width:1200px;margin:auto;padding: 27px 0 0 0;">
+   <img alt="" src="images/concertban.png" style="width:100%; height: auto;padding-top: 40px;">
+  </div>
+</div>
+  
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;background-color: #eee">
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #eee;">
+    <div class="w3-quarter" style="background-color: #eee;background-clip: content-box;">
+    <img src="images/con1.png" style="width:100%">
+      <div class="clubInfoWrap">
+      
+      <button class="" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #eee;background-clip: content-box;">
+    <img src="images/con2.png" style="width:100%">
+      <div class="clubInfoWrap">
+     
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+    <div class="w3-quarter" style="background-color: #eee;background-clip: content-box;">
+    <img src="images/con3.png" style="width:100%">
+      <div class="clubInfoWrap">
+
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+   </div>
+   <div class="w3-quarter" style="background-color: #eee;background-clip: content-box;">
+    <img src="images/con4.png" style="width:100%">
+      <div class="clubInfoWrap">
+     
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+      </div>
+     </div>
+    </div>
+    
+  
+  <!-- Second Photo Grid-->
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter" style="background-color: #eee;background-clip: content-box;">
+    <img src="images/con5.png" style="width:100%">
+      <div class="clubInfoWrap">
+    
+      <button class="btn_reserve" type="button" onclick="">
+        <span>예매하기</span>
+      </button>
+   </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+    </div>
+  </div>
+  
+  <hr id="about">
+  </div>
+
+
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+<div th:insert="common/footer.html" id="footer"></div>
+</body>
+</html>

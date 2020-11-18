@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" th:href="@{/css/sport.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <style></style>
+</head>
+<body style="background-color: #eee;">
+
+<!-- Top menu -->
+<div class="w3-top">
+   <div th:insert="common/header.html" id="header"></div>
+</div>
+
+<!-- Top menu -->
+<div class="w3-top1">
+  <img alt="" src="images/musicalban.png" style="width:100%;"> 
+  </div>
+
+  <div class="batang" style="text-align: center;">
+  <br></div>
+  <a style="font-size: 2.5em">musical</a>
+<div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #eee;">
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu1.PNG" style="width:100%">
+     <div class="clubInfoWra">
+      
+     
+   </div>
+     
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu2.PNG"  style="width:100%">
+      
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu3.PNG"  style="width:100%"  onclick="" >
+      <div class="clubInfoWrap">
+   </div>
+   </div>
+   <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu2.PNG" style="width:100%"  onclick="">
+      <div class="clubInfoWrap">
+   
+      </div>
+     </div>
+    </div>
+   
+    <a style="font-size: 2.5em">theater</a>
+    <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #eee;">
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu1.PNG" style="width:100%">
+     
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu2.PNG"  style="width:100%">
+      
+    </div>
+    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu3.PNG"  style="width:100%"  onclick="" type="button">
+      <div class="clubInfoWrap">
+   </div>
+   </div>
+   <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+    <img src="images/mu2.PNG" alt="" style="width:100%"  onclick="">
+      <div class="clubInfoWrap">
+   
+      </div>
+     </div>
+    </div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+<div th:insert="common/footer.html" id="footer"></div>
+
+</body>
+</html>
