@@ -43,9 +43,6 @@
         height: auto;
         max-width: 30%;
     }
-    #containerWrap {
-        padding: 2% 10% 2% 10%;
-    }
 </style>
 <body>
 <div id="wrap">
@@ -53,7 +50,7 @@
     <div id="container">
         <div id="containerWrap">
             <h2>스포츠 관리</h2>
-            <form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{'/admin/sports/post/edit/' + ${sportsDto.id}}" enctype="multipart/form-data">
+            <form name="BoardWriteForm" id="BoardWriteForm" method="post" th:action="@{'/admin/sports2/post/edit/' + ${sportsDto.id}}" enctype="multipart/form-data">
 
                 <input type="hidden" name="_method" value="put"/>
                 <input type="hidden" name="id" th:value="${sportsDto.id}"/>
@@ -64,7 +61,6 @@
                         <td>
                             <select name="category" id="category" required="required">
                                 <option value="" th:selected="${sportsDto.category}">선택</option>
-                                <option value="축구" th:selected="${sportsDto.category}">축구</option>
                                 <option value="야구" th:selected="${sportsDto.category}">야구</option>
                             </select>
                         </td>
@@ -238,11 +234,9 @@
             App.Board.Write.FAQInit();
             App.Board.Write.Init(true);
             </script> -->
-        </div>
-    </div>
-    <footer id="footer">
-        <div id="footer_wrap"></div>
-    </footer>
+            </div></div><footer id="footer">
+    <div id="footer_wrap"></div>
+</footer>
 </div>
 <!-- 변수 셋팅 -->
 <script th:inline="javascript">

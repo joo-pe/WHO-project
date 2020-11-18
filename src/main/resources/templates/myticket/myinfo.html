@@ -18,7 +18,7 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body style="background-color: #dadde6;">
     <!-- HEADER -->
     <div th:insert="common/header.html" id="header"></div>
 
@@ -26,6 +26,7 @@
     <div class="w3-third" style="padding: 110px 0 0 0">
         <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container" align="center">
+        <br>
             <img alt="" src="/image/logo.png" width="100px">
             <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>
             <span th:text="${currentUser.name} + 님"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>

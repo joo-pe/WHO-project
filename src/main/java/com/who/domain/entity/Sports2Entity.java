@@ -11,8 +11,8 @@ import java.util.ArrayList;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(name="sports")
-public class SportsEntity {
+@Table(name="sports2")
+public class Sports2Entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +27,8 @@ public class SportsEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String detail;
 
-    @OneToOne
-    @JoinColumn(name = "file_id")
-    private FileEntity fileEntity;
+    @Column
+    private Long fileId;
 
     @Column (nullable = false)
     private LocalDateTime dateTime;
@@ -59,15 +58,15 @@ public class SportsEntity {
 //    private List<SeatEntity> seats= new ArrayList<>();
 
     @Builder
-    public SportsEntity(Long id, String category, String title, String  detail,
-                        FileEntity fileEntity, LocalDateTime dateTime, String city, String location,
+    public Sports2Entity(Long id, String category, String title, String  detail,
+                        Long fileId, LocalDateTime dateTime, String city, String location,
                         LocalDateTime ticketOpen, LocalDateTime ticketClose,
                         String ticketMax, String team1, String team2, List<SeatEntity> seats) {
         this.id = id;
         this.category = category;
         this.title = title;
         this.detail = detail;
-        this.fileEntity = fileEntity;
+        this.fileId = fileId;
         this.dateTime = dateTime;
         this.city = city;
         this.location = location;

@@ -159,7 +159,6 @@ iframe {
   background-position: center;
   position: relative;
   z-index: 1;
-  background-color: #f6f8f9;
 }
 
 .container-login100::before {

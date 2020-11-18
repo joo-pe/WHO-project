@@ -48,20 +48,67 @@
     </head>
     <body>
         <div class="batang">
-            <!-- 스킵네비게이션 : 웹접근성대응-->
-            <!-- <div id="who">
-    <a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;"><span>본문으로 바로가기</span></a>
-</div> -->
-            <!-- //스킵네비게이션 -->
-            <!-- header -->
-            <div id="header" style="
-    text-align: center;
-">
-                <a href="/" target="_blank" title="WHOTicket HOME">
-                <span class="txt" onClick="location.href='http://localhost:8090'">
-                    <img th:src="@{/image/logo.png}" height="100" id="logo" />
-                </a>
-            </div>
+        <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Login WHOTicket</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" th:href="@{/image/icons/favicon.ico}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/loginmain.css}">
+<!--===============================================================================================-->
+	<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{vendor/select2/select2.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{js/main.js}"></script>
+
+</head>
+<body style="background-color: #dadde6;">
+	
+	<!-- <div class="container-login100" style="background-image: url('image/bg-01.png');"> -->
+	<div class="container-login100">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-30" style="width: auto;">
+			<form th:action="@{/login/result}" method="post" class="login100-form validate-form">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+			
+				<span class="login100-form-title p-b-37" >
+					<a th:href="@{/}">
+						<img th:src="@{/image/logo.png}" height="60px"><br>
+					</a>
+					WHOTicket 이용약관
+				</span>
+				<div class="container-login100-form-btn">
+					
             <!-- <div id="headers" role="banner">
     <h1><a href="http://localhost:8090/" class="h_logo"><span class="blind">WHO_TICKET</span></a></h1>
     <div class="lang">
@@ -86,7 +133,7 @@
                                             <input type="checkbox" id="chk_all" name="chk_all" />
                                             <!-- [D] ie7/8에서 checked일때 label에 클래스 on추가해주세요.  -->
                                             <label for="chk_all">
-                                                <span class="chk_all_txt" style="font-size:xx-small;">
+                                                <span class="chk_all_txt" style="font-size:inherit;">
                                                     WHO_TICKET 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),<br class="m_br" />
                                                     프로모션 정보 수신에 모두 동의합니다.
                                                 </span>
@@ -884,6 +931,34 @@
                 <!-- //footer -->
             </div>
         </div>
+					
+					
+				</div>
+
+				
+
+				<script>
+				  let socials = document.getElementsByClassName("login100-social-item");
+				  for(let social of socials) {
+					  social.addEventListener('click', function(){
+						  let socialType = this.getAttribute('data-social');
+						  location.href="/oauth2/authorization/" + socialType;
+					  })
+				  }
+				</script>
+
+				
+		</div>
+	</div>	
+</body>
+</html>
+            <!-- 스킵네비게이션 : 웹접근성대응-->
+            <!-- <div id="who">
+    <a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;"><span>본문으로 바로가기</span></a>
+</div> -->
+            <!-- //스킵네비게이션 -->
+            <!-- header -->
+            
         <!-- //container -->
     </body>
 </html>

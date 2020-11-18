@@ -2,6 +2,7 @@ package com.who.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.who.domain.entity.SportsEntity;
+import com.who.domain.entity.Sports2Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +22,7 @@ public class SportsDto {
     private String category;
     private String title;
     private String detail;
-    private Long fileId;
+    private FileDto fileDto;
     @DateTimeFormat(pattern ="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateTime;
     private String city;
@@ -40,7 +41,7 @@ public class SportsDto {
                 .category(category)
                 .title(title)
                 .detail(detail)
-                .fileId(fileId)
+                .fileEntity(fileDto.toEntity())
                 .dateTime(dateTime)
                 .city(city)
                 .location(location)
@@ -52,17 +53,36 @@ public class SportsDto {
                 .build();
         return sportsEntity;
     }
+    
+//    public Sports2Entity to2Entity() {
+//        Sports2Entity sports2Entity = Sports2Entity.builder()
+//                .id(id)
+//                .category(category)
+//                .title(title)
+//                .detail(detail)
+//                .fileId(fileId)
+//                .dateTime(dateTime)
+//                .city(city)
+//                .location(location)
+//                .ticketOpen(ticketOpen)
+//                .ticketClose(ticketClose)
+//                .ticketMax(ticketMax)
+//                .team1(team1)
+//                .team2(team2)
+//                .build();
+//        return sports2Entity;
+//    }
 
     @Builder
     public SportsDto(Long id, String category, String title, String detail,
-                     Long fileId, LocalDateTime dateTime, String city, String location,
+                     FileDto fileDto, LocalDateTime dateTime, String city, String location,
                      LocalDateTime ticketOpen, LocalDateTime ticketClose, String ticketMax,
                      String team1, String team2) {
         this.id = id;
         this.category = category;
         this.title = title;
         this.detail = detail;
-        this.fileId = fileId;
+        this.fileDto = FileDto.builder().build();
         this.dateTime = dateTime;
         this.city = city;
         this.location = location;
@@ -73,4 +93,5 @@ public class SportsDto {
         this.team2 = team2;
     }
 
+    
 }
