@@ -41,13 +41,13 @@
         <div id="containerWrap">
             <meta name="viewport" content="width=1500, user-scalable=yes">
             <div id="contents" class="GoodsList" align="center">
-                <h2>스포츠 관리</h2>
-                <form id="idxSchForm" name="idxSchForm" method="get" action="/admin/sports/search" class="searchForm">
+                <h2>주문 관리</h2>
+                <form id="idxSchForm" name="idxSchForm" method="get" action="/admin/paid/search" class="searchForm">
                     <section class="searchField">
                         <input type="hidden" name="slide" value="up">
                         <div class="default" align="center">
-                                <span>상품명</span>
-                                <input type="text" name="keyword" value="">                          
+                            <span>결제자</span>
+                            <input type="text" name="keyword" value="">
                         </div>
                     </section>
                     <footer>
@@ -57,76 +57,29 @@
                     <thead>
                     <tr>
                         <th class="one wide">번호</th>
-<!--                        <th class="two wide">작은이미지</th>-->
-                        <th class="two wide">상품명</th>
-                        <th class="two wide">분류</th>
-<!--                        <th class="two wide">가격</th>-->
-                        <th class="two wide">날짜</th>
-                        <th class="two wide">도시</th>
-                        <th class="two wide">장소</th>
-                        <th class="two wide">예매 시작 시간</th>
-                        <th class="two wide">예매 종료 시간</th>
-                        <th class="one wide">티켓 제한</th>
-                        <th class="two wide">팀1</th>
-                        <th class="two wide">팀2</th>
-                        <th>상품설명</th>
+<!--                        <th class="two wide">결제자</th>-->
+                        <th class="two wide">결제가격</th>
+                        <th class="two wide">결제일시</th>
+                        <th class="two wide">예약번호</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- CONTENTS !-->
-                    <tr th:each="sports : ${sportsList}">
+                    <tr th:each="paid : ${paidList}">
                         <td>
-                            <span th:text="${sports.id}"></span>
-                        </td>
-<!--                        <td>-->
-<!--                            <img th:src="@{'/images/'+${sports.fileDto.getFileName()}}">-->
-<!--                        </td>-->
-                        <td>
-                            <a th:href="@{'/admin/sports/post/' + ${sports.id}}">
-                            <span th:text="${sports.title}"></span>
-                            </a>
-                        </td>
-
-                        <td>
-                            <span th:text="${sports.category}"></span>
-                        </td>
-<!--                        <td>-->
-<!--                            가격 연결해야 함-->
-<!--                        </td>-->
-                        <td>
-                            <span th:text="${#temporals.format(sports.dateTime, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span th:text="${paid.totalPrice}"></span>
                         </td>
                         <td>
-                            <span th:text="${sports.city}"></span>
+                            <span th:text="${#temporals.format(paid.payDate, 'yyyy-MM-dd HH:mm')}"></span>
                         </td>
                         <td>
-                            <span th:text="${sports.location}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${#temporals.format(sports.ticketOpen, 'yyyy-MM-dd HH:mm')}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${#temporals.format(sports.ticketClose, 'yyyy-MM-dd HH:mm')}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${sports.ticketMax}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${sports.team1}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${sports.team2}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${sports.detail}"></span>
+                            <span th:text="${paid.bookingId}"></span>
                         </td>
                     </tr>
                     </tbody>
                 </table>
                 <br>
-                <div class="center_btn"><a href="/admin/sports/post" class="mBtn">상품등록</a></div>
-<!--                <div class="paging"><div class="paging"> <span class="first" data-page="1">First</span>  <span class="prev" href="/BHAdm/Mall/Goods/?page=0" data-page="0">Prev</span>  <span class="prevp" href="/BHAdm/Mall/Goods/?page=0" data-page="0">Back</span>  <strong>1</strong>  <a href="/BHAdm/Mall/Goods/Performance.html?page=2" data-page="2">2</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=3" data-page="3">3</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=4" data-page="4">4</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=5" data-page="5">5</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=6" data-page="6">6</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=7" data-page="7">7</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=8" data-page="8">8</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=9" data-page="9">9</a>  <a href="/BHAdm/Mall/Goods/Performance.html?page=10" data-page="10">10</a>  <a class="nextp" href="/BHAdm/Mall/Goods/Performance.html?page=2" data-page="2">Forward</a>  <a class="next" href="/BHAdm/Mall/Goods/Performance.html?page=11" data-page="11">Next</a>  <a class="last" href="/BHAdm/Mall/Goods/Performance.html?page=1306" data-page="1306">Last</a> </div></div>-->
-            </div>
+\            </div>
         </div>
     </div>
     <footer id="footer">

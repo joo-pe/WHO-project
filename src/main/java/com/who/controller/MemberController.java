@@ -146,15 +146,25 @@ public class MemberController {
         model.addAttribute("currentUser", memberEntity);
         return "myticket/Qr";
     }
-    
+
     //QR코드
     @GetMapping("/qrcode/{id}")
-    public void qrcode(@PathVariable("id") String id, HttpServletResponse response) throws Exception{
-    	response.setContentType("image/png");
-		OutputStream outputStream = response.getOutputStream();
-		outputStream.write(ZXingHelper.getQRCodeImage(id, 200, 200));
-		outputStream.flush();
-		outputStream.close();
+    public void qrcode(@PathVariable("id") long id, @AuthenticationPrincipal MemberDetail memberDetail, HttpServletResponse response) throws Exception{
+        //"기생충이진호19860909"
+        // TITLE NAME BIRTHDAY =ID
+        //ID = TITLE NAME BIRTHDAY
+        //id = title + "\n" + name +"\n" +birthday;
+        //id = 1101
+        String email = memberDetail.getUsername();
+        SportsDto sportInfo= sportsService.getSports(id);
+        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+        String QRContents ="공연제목:"+sportInfo.getTitle() + "\n" + "고객이름:" + memberEntity.getName() + "\n" + "고객생년월일:" + memberEntity.getBirthday();
+        response.setContentType("image/png");
+        OutputStream outputStream = response.getOutputStream();
+        String encoded_QRContents = new String(QRContents.getBytes("UTF-8"), "ISO-8859-1");
+        outputStream.write(ZXingHelper.getQRCodeImage(encoded_QRContents, 200, 200));
+        outputStream.flush();
+        outputStream.close();
     }
     
     //현재 사용자 정보변경 처리

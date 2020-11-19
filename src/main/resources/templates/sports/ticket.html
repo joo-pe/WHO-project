@@ -231,7 +231,7 @@
                 <div class="even-date">
                     <i class="fa fa-calendar"></i>
                     <time>
-                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
+                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEE')}"></span>
                         <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
                     </time>
                 </div>
@@ -241,7 +241,7 @@
                     <span th:text="${sports.location}"></span>
                     </p>
                 </div>
-                <a th:href="@{'/soccer/ticket/' + ${sports.id}}">tickets</a>
+                <a th:href="@{'/baseball/ticket/' + ${sports.id}}">tickets</a>
             </section>
         </article>
         <article class="card fl-left">
@@ -256,7 +256,7 @@
                 <div class="even-date">
                     <i class="fa fa-calendar"></i>
                     <time>
-                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEEE')}"></span>
+                        <span th:text="${#temporals.format(sports.dateTime, 'yyyy년 MM월 dd일 EEE')}"></span>
                         <span th:text="${#temporals.format(sports.dateTime, 'HH:mm a')}"></span>
                     </time>
                 </div>

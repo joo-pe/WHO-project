@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 @Controller
 @AllArgsConstructor
 public class PayController {
@@ -18,6 +20,21 @@ public class PayController {
     private SeatService seatService;
     private MemberService memberService;
     private PerformanceService performanceService;
+    private PaymentService paymentService;
+
+//    @GetMapping("/admin/paid")
+//    public String list(Model model) {
+//        List<PaymentDto> paymentDtoList = paymentService.getPaymentList();
+//
+//        for(PaymentDto paymentDto : paymentDtoList) {
+//
+//            Long bookingNo = paymentService.getBookingByPayment(paymentDto.getId());
+//
+//        }
+//        model.addAttribute("paidList", paymentDtoList);
+//        return "admin/order/paid";
+//    }
+//    -----------------------------------------------------------------------
 
     @GetMapping("/pay/{no}")
     public String Pay(@PathVariable("no") Long no, Model model) {

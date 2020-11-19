@@ -38,6 +38,11 @@ public class PaymentService {
         return this.convertEntityToDto(paymentEntity);
     }
 
+    @Transactional
+    public Long getBookingByPayment(Long id) {
+        return paymentRepository.getBookingByPayment(id);
+    }
+
     public PaymentDto convertEntityToDto(PaymentEntity paymentEntity) {
         BookingEntity bookingEntity = paymentEntity.getBookingEntity();
         BookingDto bookingDto = bookingService.convertEntityToDto(bookingEntity);

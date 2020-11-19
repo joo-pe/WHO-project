@@ -34,6 +34,7 @@ public class SportsController {
     private SportsService sportsService;
     private FileService fileService;
     private MemberRepository memberRepository;
+    private SeatService seatService;
 
     @GetMapping("/admin/sports")
     public String list(Model model) {
@@ -61,11 +62,11 @@ public class SportsController {
     public String addSports() {
         return "admin/sports/add";
     }
-    //야구 상품등록으로 가는 컨트롤러
-    @GetMapping("/admin/sports2/post1")
-    public String addSports2() {
-        return "admin/sports2/add";
-    }
+//    //야구 상품등록으로 가는 컨트롤러
+//    @GetMapping("/admin/sports2/post1")
+//    public String addSports2() {
+//        return "admin/sports2/add";
+//    }
     //축구 상품등록시 사진파일들을 파일DB저장 그리고 상품등록
     @PostMapping("/admin/sports/post")
     public String addSports(@RequestParam("file") MultipartFile files,
@@ -242,17 +243,7 @@ public class SportsController {
 //        return "sports/ticket";
 //    }
 
-//    @GetMapping("/soccer/ticket/{no}")
-//    public String soccerDetail(@PathVariable("no") Long no, Model model) {
-//        SportsDto sportsDto = sportsService.getSports(no);
-//        FileDto fileDto = sportsDto.getFileDto();
-//        List<Object[]> availableSeats = seatService.countAvailableSeat();
-//
-//        model.addAttribute("sportsDto", sportsDto);
-//        model.addAttribute("fileDto", fileDto);
-//        model.addAttribute("availableSeats", availableSeats);
-//        return "sports/detail";
-//    }
+
     @GetMapping("/soccer/ticket")
     public String soccerTicket(Model model) {
         List<SportsDto> sportsDtoList = sportsService.getSportsList();
@@ -261,14 +252,35 @@ public class SportsController {
         return "sports/ticket";
     }
 
-    @PostMapping("/soccer/ticket/{no}")
-    public String saveBooking(@PathVariable("no") Long no, @AuthenticationPrincipal MemberDetail memberDetail, Model model) {
-        String email = memberDetail.getUsername();
-        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
-////        MemberDto memberDto = memberService.convertEntityToDto(memberEntity);
-//        MemberDto memberDto = memberService.getMember(memberEntity.getId());
+    @GetMapping("/baseball/ticket")
+    public String baseballTicket(Model model) {
+        List<SportsDto> sportsDtoList = sportsService.getSportsList();
 
+        model.addAttribute("sportsList", sportsDtoList);
+        return "sports/ticket";
+    }
+
+    @GetMapping("/baseball/ticket/{no}")
+    public String baseballDetail(@PathVariable("no") Long no, Model model) {
         SportsDto sportsDto = sportsService.getSports(no);
+        Long fileNo = sportsService.getFileBySports(no);
+        FileDto fileDto = fileService.getFile(fileNo);
+        List<Object[]> availableSeats = seatService.countAvailableSeat();
+
+        model.addAttribute("sportsDto", sportsDto);
+        model.addAttribute("fileDto", fileDto);
+        model.addAttribute("availableSeats", availableSeats);
+        return "sports/detail";
+    }
+
+    @PostMapping("/baseball/ticket/{no}")
+    public String saveBooking(@PathVariable("no") Long no, @AuthenticationPrincipal MemberDetail memberDetail, Model model) {
+//        String email = memberDetail.getUsername();
+//        MemberEntity memberEntity = memberRepository.findMemberEntityByEmail(email);
+//////        MemberDto memberDto = memberService.convertEntityToDto(memberEntity);
+////        MemberDto memberDto = memberService.getMember(memberEntity.getId());
+//
+//        SportsDto sportsDto = sportsService.getSports(no);
 
 //        BookingDto bookingDto = new BookingDto(null, memberDto, sportsDto, false);
 //        Long bookNo = bookingService.saveBooking(bookingDto);
@@ -281,7 +293,4 @@ public class SportsController {
 //        return "sports/pay" + bookNo;
         return "redirect:/pay/1";
     }
-
-
-
 }

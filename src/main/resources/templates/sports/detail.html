@@ -40,9 +40,9 @@
                             </div>
                         </div>
                         <br>
-                        <div class="list-group-item py-5">
+                        <div>
                             <div class="media">
-                                <div class="list-group-item py-5">
+                                <div>
                                     <div class="media">
                                         <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png);" class="media-object avatar avatar-md mr-3"></div>
 
@@ -50,7 +50,6 @@
                                             <div class="media-heading">
                                                 <small class="float-right text-muted"></small>
                                                 <div class="title">
-                                                    <h4>경기 티켓 공지 사항</h4>
                                                     <ul class="nav nav-pills nav-stacked">
                                                         <li class="active"><a href="#">티켓 구매시 주의 사항 </a></li>
                                                     </ul>
@@ -91,7 +90,7 @@
         </div>
         <div class="col-lg-5">
                     <span>
-                        <img src="/images/sport1.png" style="width: 100%;" />
+                        <img src="/images/baseball1.png" style="width: 100%;" />
                     </span>
             <br />
             <br />
@@ -101,15 +100,14 @@
                     <div class="media">
                         <span style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png);" class="avatar avatar-xl mr-3"></span>
                         <div class="media-body">
-                            <h4 align="center">경기 정보 / 뮤지컬 제목</h4>
-                            <span class="form-control" th:text=${sportsDto.title}>
-                                    </span>
+                            <h3 align="center" th:text=${sportsDto.title}></h3>
+<!--                            <span class="form-control" th:text=${sportsDto.title}></span>-->
                             <br>
                         </div>
                     </div>
                 </div>
             </div>
-            <form class="card" th:action="@{'/soccer/ticket/' + ${sportsDto.id}}" method="post">
+            <form class="card" th:action="@{'/baseball/ticket/' + ${sportsDto.id}}" method="post">
                 <div class="card-header"></div>
                 <div class="card-body">
                     <div class="row mb-3">
@@ -136,32 +134,20 @@
                         </select>
 
                     </div>
-
-                    <th scope="row">갯수</th>
-                    <div class="qty">
-                        <div class="plus">
-                            <a href="javascript:change_qty2('p')"><img src="/images/+.png" alt="+" style="width: 30px;" /></a>
+                    <div class="form-group">
+                        <label class="form-label">티켓</label><br />
+                        <div class="qty">
                             <a href="javascript:change_qty2('m')"><img src="/images/-.png" alt="-" style="width: 30px;" /></a>
-
-                        </div>
-                        <input type="text" name="ct_qty" id="ct_qty" value="1" readonly="readonly" class="form-control" />
-                        <div class="minus">
-
+                            <input type="text"name="ct_qty" id="ct_qty" value="1" readonly="readonly" class="form-control" style="width: 20%; display: inline; text-align: center"/>
+                            <a href="javascript:change_qty2('p')"><img src="/images/+.png" alt="+" style="width: 30px;" /></a>
                         </div>
 
-                        <tr module="product_fileoption">
-                            <th scope="row">총금액</th>
-
-                            <ul class="infoDesc">
-                                <li>
-                                    <dd id="total_amount"></dd>
-                                </li>
-                            </ul>
-                        </tr>
+                    </div>
+                    <div class="form-group" module="product_fileoption" align="right">
+                        <h4>총금액 : <span id="total_amount"></span></h4>
                     </div>
                 </div>
-
-                <div class="card-footer" align="center">
+                <div class="card-footer" align="right">
                     <button class="btn btn-primary" type="submit">구매하기</button>
                 </div>
                 <br>

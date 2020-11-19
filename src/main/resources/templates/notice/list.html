@@ -35,7 +35,7 @@
                                 <thead>
                                 <tr>
                                 	<th><span>번호</span></th>
-                                	<th><span>아이콘</span></th>
+                                	<th><span>프로필</span></th>
                                     <th><span>글제목</span></th>
                                     <th><span>작성자</span></th>
                                     <th><span>공지날짜</span></th>
@@ -63,22 +63,22 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <div align="center">
-         <ul class="pagination">
-             <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-             <li><a href="#">1</a></li>
-             <li><a href="#">2</a></li>
-             <li><a href="#">3</a></li>
-             <li><a href="#">4</a></li>
-             <li><a href="#">5</a></li>
-             <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-          </ul>
-        </div>
-        <!-- 검색 form -->
-		<form action="/notice/search" method="GET" class="form-search" style="float: right;padding: 15px">
-			<input name="keyword" type="text" placeholder="검색어를 입력해주세요" style="width: 250px">
-			<button><i class="glyphicon glyphicon-search"></i></button>
-		</form>
+<!--                            <div align="center">-->
+<!--                                 <ul class="pagination">-->
+<!--                                     <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>-->
+<!--                                     <li><a href="#">1</a></li>-->
+<!--                                     <li><a href="#">2</a></li>-->
+<!--                                     <li><a href="#">3</a></li>-->
+<!--                                     <li><a href="#">4</a></li>-->
+<!--                                     <li><a href="#">5</a></li>-->
+<!--                                     <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>-->
+<!--                                 </ul>-->
+<!--                            </div>-->
+                            <!-- 검색 form -->
+                            <form action="/notice/search" method="GET" class="form-search" style="float: right;padding: 15px">
+                                <input name="keyword" type="text" placeholder="검색어를 입력해주세요" style="width: 250px">
+                                <button><i class="glyphicon glyphicon-search"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -96,8 +96,8 @@
         </div>
     </div>
 
-<!-- FOOTER -->
-<div th:insert="common/footer.html" id="footer"></div>
+<!--&lt;!&ndash; FOOTER &ndash;&gt;-->
+<!--<div th:insert="common/footer.html" id="footer"></div>-->
 <script>
        $(document.body).on('hidden.bs.modal', function () {
     	    $('#myModal').removeData('bs.modal')
