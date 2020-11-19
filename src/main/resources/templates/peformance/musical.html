@@ -1,99 +1,140 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" th:href="@{/css/sport.css}"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sport.css}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    
-    <style></style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <style>
+        .clubInfoWrap {
+            padding-top: 3px;
+        }
+    </style>
 </head>
 <body style="background-color: #dadde6;">
-
 <!-- Top menu -->
 <div class="w3-top">
-   <div th:insert="common/header.html" id="header"></div>
+    <div class="w3-top" style="max-width: 1200px; margin: auto; font-size: 14px;">
+        <div th:insert="common/header.html" id="header"></div>
+    </div>
 </div>
 
 <!-- Top menu -->
 <div class="w3-top1">
-  <img alt="" src="images/musicalban.png" style="width:100%;"> 
-  </div>
+    <div class="musicalbanner" style="max-width: 1200px; margin: auto; padding: 27px 0 0 0;">
+        <img alt="" src="images/musicalban.png" style="width: 100%; height: auto; padding-top: 40px;" />
+    </div>
+</div>
 
-  <div class="batang" style="text-align: center;">
-  <br></div>
-  <a style="font-size: 2.5em">musical</a>
-<div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #dadde6;">
-    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu1.PNG" style="width:100%">
-     <div class="clubInfoWra">
-      
-     
-   </div>
-     
-    </div>
-    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu2.PNG"  style="width:100%">
-      
-    </div>
-    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu3.PNG"  style="width:100%"  onclick="" >
-      <div class="clubInfoWrap">
-   </div>
-   </div>
-   <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu2.PNG" style="width:100%"  onclick="">
-      <div class="clubInfoWrap">
-   
-      </div>
-     </div>
-    </div>
-   
-    <a style="font-size: 2.5em">theater</a>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content" style="max-width: 1200px; background-color: #dadde6;">
+    <!-- First Photo Grid-->
     <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #dadde6;">
-    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu1.PNG" style="width:100%">
-     
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box; padding-bottom: 10px;">
+            <img src="images/music1.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 5%;">
+                <button class="" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box; padding-bottom: 10px;">
+            <img src="images/music2.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 4.5%;">
+                <button class="btn_reserve" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box; padding-bottom: 10px;">
+            <img src="images/music3.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 5%;">
+                <button class="btn_reserve" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box;">
+            <img src="images/music4.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 5%;">
+                <button class="btn_reserve" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu2.PNG"  style="width:100%">
-      
-    </div>
-    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu3.PNG"  style="width:100%"  onclick="" type="button">
-      <div class="clubInfoWrap">
-   </div>
-   </div>
-   <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/mu2.PNG" alt="" style="width:100%"  onclick="">
-      <div class="clubInfoWrap">
-   
-      </div>
-     </div>
-    </div>
-    
-  
-  
 
+    <!-- Second Photo Grid-->
+    <!-- First Photo Grid-->
+    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+        <a style="font-size: 2.5em;"></a>
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box; padding-bottom: 10px;">
+            <img src="images/music5.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 4%;">
+                <button class="btn_reserve" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box; padding-bottom: 10px;">
+            <img src="images/music6.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 5%;">
+                <button class="btn_reserve" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box; padding-bottom: 10px;">
+            <img src="images/music7.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 5%;">
+                <button class="btn_reserve" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
+        <div class="w3-quarter" style="background-color: white; background-clip: content-box; padding-bottom: 10px;">
+            <img src="images/music8.png" style="width: 100%; padding: 5%;" />
+            <div class="clubInfoWrap" style="padding-bottom: 5%;">
+                <button class="btn_reserve" type="button" onclick="">
+                    <span>예매하기</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <!--  &lt;!&ndash; Pagination &ndash;&gt;-->
+    <!--  <div class="w3-center w3-padding-32">-->
+    <!--    <div class="w3-bar">-->
+    <!--      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>-->
+    <!--      <a href="#" class="w3-bar-item w3-black w3-button">1</a>-->
+    <!--      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>-->
+    <!--      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>-->
+    <!--      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>-->
+    <!--      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>-->
+    <!--    </div>-->
+    <!--  </div>-->
+
+    <hr id="about" />
+</div>
 
 <script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
 </script>
 
 <div th:insert="common/footer.html" id="footer"></div>
-
 </body>
 </html>

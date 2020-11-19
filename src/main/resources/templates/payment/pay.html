@@ -216,7 +216,7 @@
                 <h2>구매정보 확인</h2>
             </div>
         </div>
-        <div class="col-md-6 align-items-center">
+        <div>
             <div class="price-card featured">
                 <h2 th:text="${sportsDto.title}"></h2>
                 <p class="price"><span id="price" th:text="${seatDto.price}"></span></p>
@@ -390,7 +390,7 @@
             pay_method: 'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: 'Who Ticket',
-            amount: 100,
+            amount: 60000,
             buyer_email: email,
             buyer_name: name,
             buyer_tel: phone

@@ -31,21 +31,22 @@
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;background-color: #dadde6;">
 
   <!-- First Photo Grid-->
+    <form th:action="@{/baseball/ticket}">
   <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="background-color: #dadde6;">
-    <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
-    <img src="images/kia.png" alt="야구기아" style="width:100%">
-      <div class="clubInfoWrap">
-      <div class="clubName">기아</div>
-      <button class="btn_reserve" type="button" onclick="">
-        <span>예매하기</span>
-      </button>
-   </div>
-    </div>
+      <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
+          <img src="images/kia.png" alt="야구기아" style="width:100%">
+          <div class="clubInfoWrap">
+              <div class="clubName">기아</div>
+              <button class="btn_reserve" type="button" onclick="">
+                  <span>예매하기</span>
+              </button>
+          </div>
+      </div>
     <div class="w3-quarter" style="background-color: #fff;background-clip: content-box;">
     <img src="images/lg.png" alt="LG" style="width:100%">
       <div class="clubInfoWrap">
       <div class="clubName">LG</div>
-      <button class="btn_reserve" type="button" onclick="">
+      <button class="btn_reserve" type="button">
         <span>예매하기</span>
       </button>
    </div>
@@ -54,7 +55,7 @@
     <img src="images/nc.png" alt="NC" style="width:100%">
       <div class="clubInfoWrap">
        <div class="clubName">NC</div>
-      <button class="btn_reserve" type="button" onclick="">
+      <button class="btn_reserve" type="submit" onclick="">
         <span>예매하기</span>
       </button>
    </div>
@@ -69,6 +70,7 @@
       </div>
      </div>
     </div>
+    </form>
     
   
   <!-- Second Photo Grid-->

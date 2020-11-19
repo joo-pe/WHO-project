@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/", "/oauth2/**","/image/**","/login/**","/myticket/**")
 		.permitAll() //전체 권한 부여
         // 페이지 권한 설정
-        .antMatchers("/admin/**").hasRole("ADMIN")
+//        .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/myinfo").hasRole("MEMBER")
         .antMatchers("/api/v1/**").hasRole(Role.MEMBER.name())
         .antMatchers("/**")

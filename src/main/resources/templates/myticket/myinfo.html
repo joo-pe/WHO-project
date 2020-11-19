@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>WHO TICKET</title>
     <meta charset="utf-8">
@@ -19,105 +19,109 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="background-color: #dadde6;">
-    <!-- HEADER -->
-    <div th:insert="common/header.html" id="header"></div>
+<!-- HEADER -->
+<div th:insert="common/header.html" id="header"></div>
 
-    <!-- Left Column -->
-    <div class="w3-third" style="padding: 110px 0 0 0">
-        <div class="w3-white w3-text-grey w3-card-4">
+<!-- Left Column -->
+<div class="w3-third" style="padding: 110px 0 0 0">
+    <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container" align="center">
-        <br>
+            <br>
             <img alt="" src="/image/logo.png" width="100px">
             <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>
-            <span th:text="${currentUser.name} + 님"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>
+                <span th:text="${currentUser.name} + 님"></span><br>WHOTicket에 오신걸 환영합니다.</b></p>
             <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>
-            <span th:text="${currentUser.email}"></span></p>
+                <span th:text="${currentUser.email}"></span></p>
         </div>
 
         <div class="w3-container" align="center">
             <hr>
-                <form th:action="@{'/resignup/' + ${currentUser.id}}" method="get" >
-                    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>회원 정보 수정</b></p>
-                    <div class="w3-light-grey w3-round-xlarge">
-                        <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">회원 정보 수정</button>
-                    </div>
-                </form>
-                <br>
-
-                <form th:action="@{'/repass/' + ${currentUser.id}}" method="get">
-                    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>비밀번호 설정변경</b></p>
-                    <div class="w3-light-grey w3-round-xlarge">
-                        <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">비밀번호 설정변경</button>
-                    </div>
-                </form>
-                <br>
-
-                <div>
-                    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>개인키 확인</b></p>
-                    <div class="w3-light-grey w3-round-xlarge">
-                        <button class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal enableEthereumButton">개인키 확인</button>
-                        <span id="showAccount"></span>
-                    </div>
+            <form th:action="@{'/resignup/' + ${currentUser.id}}" method="get" >
+                <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>회원 정보 수정</b></p>
+                <div class="w3-light-grey w3-round-xlarge">
+                    <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">회원 정보 수정</button>
                 </div>
+            </form>
+            <br>
 
-                <br>
+            <form th:action="@{'/repass/' + ${currentUser.id}}" method="get">
+                <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>비밀번호 설정변경</b></p>
+                <div class="w3-light-grey w3-round-xlarge">
+                    <button type="submit" class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal">비밀번호 설정변경</button>
+                </div>
+            </form>
+            <br>
+
+            <div>
+                <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>개인키 확인</b></p>
+                <div class="w3-light-grey w3-round-xlarge">
+                    <button class="w3-2017-island-paradise w3-round-xlarge w3-hover-teal enableEthereumButton">개인키 확인</button>
+                    <span id="showAccount"></span>
+                </div>
             </div>
-        </div>
-        <br>
-    </div>
 
-    <!-- Right Column -->
-    <div class="w3-twothird" style="padding: 110px 0 0 20px">
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>My Ticket</h2>
-            <div class="w3-container" align="center">
-                <table class="table table-cnodensed">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox">전체선택</th>
-                            <th>예매일</th>
-                            <th>상품명</th>
-                            <th>수량</th>
-                            <th>이용날짜</th>
-                            <th>QR</th>
-                            <th>현재상태</th>
-                        </tr>
-                    </thead>
+            <br>
+        </div>
+    </div>
+    <br>
+</div>
+
+<!-- Right Column -->
+<div class="w3-twothird" style="padding: 110px 0 0 20px">
+    <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>My Ticket</h2>
+        <div class="w3-container" align="center">
+            <table class="table table-cnodensed">
+                <thead>
+                <tr>
+                    <th><input type="checkbox">전체선택</th>
+                    <th>예매일</th>
+                    <th>상품명</th>
+                    <th>수량</th>
+                    <th>이용날짜</th>
+                    <th>QR</th>
+<!--                    <th>현재상태</th>-->
+                </tr>
+                </thead>
                 <tbody>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td th:text="${#temporals.format(sportsList.dateTime, 'yyyy년 MM월 dd일')}"></td>
-                        <td th:text="${sportsList.title}"></td>
-                        <td th:text="${sportsList.ticketMax}"></td>
-                        <td th:text="${#temporals.format(sportsList.ticketOpen, 'yyyy년MM월dd일')}"></td>
-                        <td><a id="myBtn">QR코드</a></td>
-                        <!-- The Modal -->
-                        <td id="myModal" class="modal">
-      
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <span class="close">&times;</span>
-                                    <h2 th:text="${sportsList.title}"></h2>
-                                </div>
-                                <div class="modal-body">
-                                    <img th:src="@{http://localhost:8090/qrcode/}+${sportsList.title}" width="10%" height="10%" >
-                                </div>
-                                <div class="modal-footer">
-                                </div>
-                            </div>
+                <tr>
+                    <td><input type="checkbox"></td>
+<!--                    <td th:text="${#temporals.format(sportsList.dateTime, 'yyyy년 MM월 dd일')}"></td>-->
+                    <td>2020년 11월 18일</td>
+                    <td th:text="${sportsList.title}"></td>
+<!--                    <td th:text="${sportsList.ticketMax}"></td>-->
+                    <td>1</td>
+<!--                    <td th:text="${#temporals.format(sportsList.ticketOpen, 'yyyy년MM월dd일')}"></td>-->
+                    <td>2020년 11월 31일</td>
+                    <td><a id="myBtn">QR코드</a></td>
+                    <!-- The Modal -->
+                    <td id="myModal" class="modal">
 
-                            </td>
-                            <td class="text-center small mt-2" id="checkMsg" style="color: red"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <h2 th:text="${sportsList.title}"></h2>
+                            </div>
+                            <div class="modal-body">
+                                <img th:src="@{/qrcode/}+${sportsList.id}" width="10%" height="10%" >
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+
+                    </td>
+                    <td class="text-center small mt-2" id="checkMsg" style="color: red"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+
     </div>
 
-    <!-- FOOTER -->
-    <div th:insert="common/footer.html" id="footer"></div>
+</div>
+
+
 </body>
 
 <script>
@@ -132,19 +136,19 @@
 
     // When the user clicks the button, open the modal
     btn.onclick = function() {
-      modal.style.display = "block";
+        modal.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 
     // connect Ethereum and get Account
